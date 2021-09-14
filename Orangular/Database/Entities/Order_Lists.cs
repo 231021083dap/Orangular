@@ -12,7 +12,7 @@ namespace Orangular.Database.Entities
     public class Order_Lists
     {
         [Key]
-        public int orders_lists_id { get; set; }
+        public int order_lists_id { get; set; }
 
         [Required]
         [ForeignKey("Users.users_id")]

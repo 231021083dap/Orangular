@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Orangular.Database.Entities
 {
-    public class Order_Items
+    public class Orders_Items
     {
         [Key]
         public int order_items_id { get; set; }
