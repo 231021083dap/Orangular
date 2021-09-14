@@ -26,4 +26,21 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTO\Addresses\Requests\" />
+    <Folder Include="DTO\Addresses\Responses\" />
+    <Folder Include="DTO\Categories\Requests\" />
+    <Folder Include="DTO\Categories\Responses\" />
+    <Folder Include="DTO\Login\Requests\" />
+    <Folder Include="DTO\Login\Responses\" />
+    <Folder Include="DTO\Order_Items\Requests\" />
+    <Folder Include="DTO\Order_Items\Responses\" />
+    <Folder Include="DTO\Order_Lists\Requests\" />
+    <Folder Include="DTO\Order_Lists\Responses\" />
+    <Folder Include="DTO\Products\Requests\" />
+    <Folder Include="DTO\Products\Responses\" />
+    <Folder Include="DTO\Users\Requests\" />
+    <Folder Include="DTO\Users\Responses\" />
+  </ItemGroup>
+
 </Project>
