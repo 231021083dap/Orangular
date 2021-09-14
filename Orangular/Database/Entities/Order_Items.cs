@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Database
+namespace Orangular.Database.Entities
 {
-    public class sletmig
+    public class Order_Items
     {
     }
 }

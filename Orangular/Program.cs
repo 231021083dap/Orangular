@@ -11,6 +11,8 @@ namespace Orangular
 {
     public class Program
     {
+        // Hej hilsen Victor. V ses i databasemappen.
+        //hej hilsem Muhmrn
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
