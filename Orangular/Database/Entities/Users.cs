@@ -11,21 +11,22 @@ namespace Orangular.Database.Entities
 {
     public class Users
     {
-        [Key]
-        public int users_id { get; set; }
+        // -----  ----- Muhmen //
+            [Key]
+            public int users_id { get; set; }
 
-        [Required]
-        [Column(TypeName = "nvarchar(255)")]
-        public string email { get; set; }
+            [Required]
+            [Column(TypeName = "nvarchar(255)")]
+            public string email { get; set; }
 
-        [Required]
-        [Column(TypeName = "nvarchar(255)")]
-        public string password { get; set; }
+            [Required]
+            [Column(TypeName = "nvarchar(255)")]
+            public string password { get; set; }
 
 
-        [Column(TypeName = "bool")]
-        public Boolean role { get; set; }
-
+            [Column(TypeName = "bool")]
+            public Boolean role { get; set; }
+        // -----  ----- Muhmen //
 
 
 
