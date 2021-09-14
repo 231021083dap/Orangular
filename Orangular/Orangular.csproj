@@ -29,7 +29,6 @@
   <ItemGroup>
     <Folder Include="DTO\Addresses\Requests\" />
     <Folder Include="DTO\Addresses\Responses\" />
-    <Folder Include="DTO\Categories\Requests\" />
     <Folder Include="DTO\Categories\Responses\" />
     <Folder Include="DTO\Login\Requests\" />
     <Folder Include="DTO\Login\Responses\" />
