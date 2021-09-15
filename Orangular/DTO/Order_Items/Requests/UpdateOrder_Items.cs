@@ -4,24 +4,26 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.DTO.Addresses.Requests
+namespace Orangular.DTO.Order_Items.Requests
 {
-    public class UpdateAddress
+    public class UpdateOrder_Items
     {
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [Range(1, int.MaxValue)]
-        public int users_id { get; set; }
+        public int products_id { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
-        [StringLength(255, ErrorMessage = "Max string length is 255")]
-        [MinLength(1, ErrorMessage = "Min string length is 1")]
-        public string address { get; set; }
+        [Range(1, int.MaxValue)]
+        public int order_lists_id { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
-        public int zip_code { get; set; }
+        [Required]
+        [Range(1, int.MaxValue)]
+        public int price { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
-        [StringLength(255, ErrorMessage = "Max string length is 255")]
-        public string city_name { get; set; }
+        [Required]
+        [Range(1, int.MaxValue)]
+        public int quantity { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
     }
 }

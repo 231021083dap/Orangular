@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.DTO.Order_Items.Requests
+namespace Orangular.DTO.Products.Requests
 {
-    public class UpdateOrder_Item
+    public class NewProducts
     {
     }
 }

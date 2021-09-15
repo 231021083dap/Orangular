@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Orangular.DTO.Categories.Requests
 {
-    public class NewCategory
+    public class NewCategories
     {
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
