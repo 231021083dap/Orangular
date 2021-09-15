@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 //using LibraryProject.API.Database.Entities;
 using Microsoft.EntityFrameworkCore;
-using Orangular.API.Helpers
+using Orangular.API.Helpers;
 
 namespace Orangular.Database.Entities
 {
@@ -32,7 +32,7 @@ namespace Orangular.Database.Entities
             {
                 users_id = 1,
                 email = "victor@reipur.com",
-                admin = Role.
+                role = Role.Admin
             },
             new Users
             {
