@@ -18,12 +18,15 @@ namespace Orangular.Database.Entities
             [ForeignKey("Categories.categories_id")]
             public int categories_id { get; set; }
 
+            [Required]
             [Column(TypeName = "nvarchar(255)")]
             public string breed_name { get;  set; }
 
+            [Required]
             [Range(1, int.MaxValue)]
             public int price { get; set; }
 
+            [Required]
             [Range(1, int.MaxValue)]
             public float weight { get; set; }
 

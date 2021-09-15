@@ -18,6 +18,7 @@ namespace Orangular.Database.Entities
         [ForeignKey("Users.users_id")]
         public int users_id { get; set; }
 
+        [Required]
         public DateTime order_date_time;
     }
 }

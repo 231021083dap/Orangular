@@ -5,31 +5,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-//using LibraryProject.API.Helpers;
+using LibraryProject.API.Helpers;
 
 
 namespace Orangular.Database.Entities
 {
     public class Users
     {
-        // -----  ----- Muhmen //
-            [Key]
-            public int users_id { get; set; }
+        [Key]
+        public int users_id { get; set; }
 
-            [Required]
-            [Column(TypeName = "nvarchar(255)")]
-            public string email { get; set; }
+        [Required]
+        [Column(TypeName = "nvarchar(255)")]
+        public string email { get; set; }
 
-            [Required]
-            [Column(TypeName = "nvarchar(255)")]
-            public string password { get; set; }
+        [Required]
+        [Column(TypeName = "nvarchar(255)")]
+        public string password { get; set; }
 
-
-            [Column(TypeName = "bool")]
-            public Boolean role { get; set; }
-        // -----  ----- Muhmen //
-
-
-
+        [Required]
+        public Role role { get; set; }
     }
 }

@@ -15,6 +15,10 @@ namespace Orangular.Database.Entities
         public int order_items_id { get; set; }
 
         [Required]
+        [ForeignKey("Order_Lists.order_lists_id")]
+        public int order_lists_id { get; set; }
+
+        [Required]
         [ForeignKey("Products.products_id")]
         public int products_id { get; set; }
 
