@@ -44,6 +44,13 @@ namespace Orangular
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Orangular v1"));
             }
 
+            // skal implementeres Victor 
+            //services.AddControllers().AddJsonOptions(x =>
+            //{
+            //    // serialize enums as strings in api responses (e.g. Role)
+            //    x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            //});
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
