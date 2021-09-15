@@ -31,10 +31,22 @@ namespace Orangular.Database.Entities
             new Users
             {
                 users_id = 1,
-                email = "victor@reipur.com",
+                email = "admin@admins.com",
                 role = Role.Admin
             },
             new Users
+            {
+                users_id = 2,
+                email = "user@users.com",
+                role = Role.User
+            });
+
+            // Addresses
+            modelBuilder.Entity<Addresses>().HasData(
+            new Addresses
+            {
+            },
+            new Addresses
             {
             });
 
@@ -42,6 +54,8 @@ namespace Orangular.Database.Entities
             modelBuilder.Entity<Order_Lists>().HasData(
             new Order_Lists
             {
+                order_lists_id = 1,
+
             },
             new Order_Lists
             {
@@ -53,15 +67,6 @@ namespace Orangular.Database.Entities
             {
             },
             new Order_Items
-            {
-            });
-
-            // Addresses
-            modelBuilder.Entity<Addresses>().HasData(
-            new Addresses
-            {
-            },
-            new Addresses
             {
             });
 

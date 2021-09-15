@@ -12,27 +12,25 @@ namespace Orangular.Database.Entities
     {
 
         // -----  ----- Muhmen //
-            [Key]
-            public int products_id {get; set;}
+        [Key]
+        public int products_id {get; set;}
 
-            [ForeignKey("Categories.categories_id")]
-            public int categories_id { get; set; }
+        [ForeignKey("Categories.categories_id")]
+        public int categories_id { get; set; }
 
-            [Required]
-            [Column(TypeName = "nvarchar(255)")]
-            public string breed_name { get;  set; }
+        [Required]
+        [Column(TypeName = "nvarchar(255)")]
+        public string breed_name { get;  set; }
 
-            [Required]
-            [Range(1, int.MaxValue)]
-            public int price { get; set; }
+        [Required]
+        [Range(1, int.MaxValue)]
+        public int price { get; set; }
 
-            [Required]
-            [Range(1, int.MaxValue)]
-            public float weight { get; set; }
+        [Required]
+        public float weight { get; set; }
 
-            [Column(TypeName = "nvarchar(255)")]
-             public string description { get; set; }
-
+        [Column(TypeName = "nvarchar(255)")]
+            public string description { get; set; }
         // -----  ----- Muhmen //
     }
 }
