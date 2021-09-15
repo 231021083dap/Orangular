@@ -24,13 +24,15 @@ namespace Orangular.Database.Entities
 
         [Required]
         [Range(1, int.MaxValue)]
-        public int price { get; set; }
+        public int price { get; set; } // price angives i øre. 100kr = 10000 øre
 
         [Required]
-        public float weight { get; set; }
+        public int weight { get; set; } // weight unit is gram. 35kg = 35000
+
+        public string gender { get; set; } // gender = male | female | null (reptil)
 
         [Column(TypeName = "nvarchar(255)")]
-            public string description { get; set; }
+        public string description { get; set; }
         // -----  ----- Muhmen //
     }
 }
