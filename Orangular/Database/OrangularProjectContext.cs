@@ -45,9 +45,17 @@ namespace Orangular.Database.Entities
             modelBuilder.Entity<Addresses>().HasData(
             new Addresses
             {
+                addresses_id = 1,
+                users_id = 1,
+                address = "TEC Ballerup",
+                zip_code = 2750
             },
             new Addresses
             {
+                addresses_id = 2,
+                users_id = 2,
+                address = "Hjem Helsingør",
+                zip_code = 3000
             });
 
             // Order_Lists
