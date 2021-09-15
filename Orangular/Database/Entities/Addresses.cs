@@ -22,7 +22,7 @@ namespace Orangular.Database.Entities
         public string address { get; set; }
 
         [Column(TypeName = "nvarchar(255)")]
-        public string zip_code { get; set; }
+        public int zip_code { get; set; }
 
         [Column(TypeName = "nvarchar(255)")]
         public string city_name { get; set; }

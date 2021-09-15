@@ -14,7 +14,7 @@ namespace Orangular.Database.Entities
         public int categories_id { get; set;  }
 
         [Required]
-        [Column(TypeName = "nvarchar(32)")]
+        [Column(TypeName = "nvarchar(255)")]
         public string category_name { get; set; }
     }
 }
