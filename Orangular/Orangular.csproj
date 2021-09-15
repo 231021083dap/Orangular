@@ -33,7 +33,6 @@
     <Folder Include="DTO\Order_Items\Responses\" />
     <Folder Include="DTO\Order_Lists\Responses\" />
     <Folder Include="DTO\Products\Responses\" />
-    <Folder Include="DTO\Users\Requests\" />
     <Folder Include="DTO\Users\Responses\" />
   </ItemGroup>
 
