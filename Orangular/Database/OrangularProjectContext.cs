@@ -63,37 +63,48 @@ namespace Orangular.Database.Entities
             new Order_Lists
             {
                 order_lists_id = 1,
-
-            },
-            new Order_Lists
-            {
+                order_date_time = DateTime.Now
             });
 
             // Order_Items
             modelBuilder.Entity<Order_Items>().HasData(
             new Order_Items
             {
-            },
-            new Order_Items
-            {
+                order_items_id = 1,
+                order_lists_id = 1,
+                products_id = 1,
+                price = 750000,
+                quantity = 2
             });
 
             // Categories
             modelBuilder.Entity<Categories>().HasData(
             new Categories
             {
-            },
-            new Categories
-            {
+                categories_id = 1,
+                category_name = "hund"
             });
 
             // Products
             modelBuilder.Entity<Products>().HasData(
             new Products
             {
-            },
-            new Products
-            {
+                products_id = 1,
+                breed_name = "chefer hund",
+                price = 750000,
+                weight = 35000,
+                gender = "male",
+                description =
+                @"
+                Tamhunden (Canis lupus familiaris) er det husdyr,
+                som tidligst blev tæmmet af mennesket,
+                og som derfor har den længste historie til fælles med os.
+                Den har gennem historien været brugt til jagt, som vagthund,
+                krigshund (eks. anti-tank-hunde), sporhund, redningshund, eller som 'følgesvend'.
+                Desuden som servicehund for blinde og handicappede, som politi- og redningshund, 
+                som narkohund eller som terapihund.
+                Hunde kan også lugte sig frem til kræftsvulster,[2] termitangreb og forudsige epilepsianfald.
+                "
             });
         }
         // ----- Fylder data ind i tabellerne ----- Victor //
