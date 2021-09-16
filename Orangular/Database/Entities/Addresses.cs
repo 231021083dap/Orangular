@@ -26,7 +26,7 @@ namespace Orangular.Database.Entities
         [Required]
         [ForeignKey("Users.users_id")]
         public int users_id { get; set; }
-        public Users User { get; set; } // Property behøver ikke være lower
+        public Users user { get; set; } // Property behøver ikke være lower
                                         // fordi den ikke repræsentere en kolonne i en tabel.
         // --- Victor --- //
 

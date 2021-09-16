@@ -28,37 +28,45 @@ namespace Orangular.Database.Entities
         {
 
             // --- Users Foreign keys opførsel --- //
-            // Når brugeren slettes, slettes tilknyttet addresse også.
-            modelBuilder.Entity<Addresses>()
-                .HasOne(lambda => lambda.User)
-                .WithMany(lambda => lambda.addresses)
-                .OnDelete(DeleteBehavior.Cascade);
-
             // Forhindre at slette brugeren, hvis bruger har ordre liggende i systemet.
             modelBuilder.Entity<Order_Lists>()
-                .HasOne(lambda => lambda.User)
+                .HasOne(lambda => lambda.user)
                 .WithMany(lambda => lambda.order_lists)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            // Når brugeren slettes, slettes tilknyttet addresse også.
+            modelBuilder.Entity<Addresses>()
+                .HasOne(lambda => lambda.user)
+                .WithMany(lambda => lambda.addresses)
+                .OnDelete(DeleteBehavior.Cascade);
             // --- Users Foreign keys opførsel --- Victor //
 
 
 
             // --- Order_Lists Foreign keys opførsel --- //
-            //modelBuilder.Entity<Order_Items>()
-            //    .HasOne(lambda => lambda.Order_List)
-            //    .WithMany(lambda => lambda.Order)
-            //    .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Order_Items>()
+               .HasOne(lambda => lambda.order_list)
+               .WithMany(lambda => lambda.order_items)
+               .OnDelete(DeleteBehavior.Restrict);
 
             // --- Order_Lists Foreign keys opførsel --- //
 
 
             // --- Categories Foreign keys opførsel --- //
-            modelBuilder.Entity<Order_Lists>()
-                .HasOne(lambda => lambda.Cate)
-                .WithMany(lambda => lambda.order_lists)
+            // On delete restrict
+            modelBuilder.Entity<Products>()
+                .HasOne(lambda => lambda.category)
+                .WithMany(lambda => lambda.products)
                 .OnDelete(DeleteBehavior.Restrict);
             // --- Categories Foreign keys opførsel --- //
+
+            // --- Products Foreign keys opførsel --- //
+            // On delete restrict
+            modelBuilder.Entity<Order_Items>()
+                .HasOne(lambda => lambda.product)
+                .WithMany(lambda => lambda.order_items)
+                .OnDelete(DeleteBehavior.Restrict);
+            // --- Products Foreign keys opførsel --- //
 
             // Users
             modelBuilder.Entity<Users>().HasData(
