@@ -55,7 +55,7 @@ namespace Orangular.Database.Entities
 
             // --- Categories Foreign keys opførsel --- //
             modelBuilder.Entity<Order_Lists>()
-                .HasOne(lambda => lambda.Cate)
+                .HasOne(lambda => lambda.User)
                 .WithMany(lambda => lambda.order_lists)
                 .OnDelete(DeleteBehavior.Restrict);
             // --- Categories Foreign keys opførsel --- //

@@ -12,6 +12,6 @@ namespace Orangular.Services.categories
         Task<Categories> getById(int categoriesId);
         Task<Categories> create(Categories categories);
         Task<Categories> update(int categoriesId, Categories categories);
-        Task<bool> delete(int categoriesId)
+        Task<bool> delete(int categoriesId);
     }
 }
