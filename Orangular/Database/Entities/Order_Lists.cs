@@ -19,6 +19,6 @@ namespace Orangular.Database.Entities
         public int users_id { get; set; }
 
         [Required]
-        public DateTime order_date_time;
+        public DateTime order_date_time { get; set; }
     }
 }
