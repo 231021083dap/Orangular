@@ -31,6 +31,7 @@
     <Folder Include="DTO\Login\Responses\" />
     <Folder Include="DTO\Order_Lists\Responses\" />
     <Folder Include="DTO\Users\Responses\" />
+    <Folder Include="Repositories\order_list\" />
   </ItemGroup>
 
 </Project>
