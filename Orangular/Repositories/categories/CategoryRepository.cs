@@ -21,7 +21,7 @@ namespace Orangular.Repositories.categories
     public class CategoryRepository : ICategoryRepository
     {
 
-        // ----- Interface signature of category ----- Muhmen P.//
+        // ----- CRUD on category ----- Muhmen P.//
 
         //linking to the database context. This files includes rules for the DB and will be called to manipulate data
         private readonly OrangularProjectContext _context;
@@ -65,5 +65,7 @@ namespace Orangular.Repositories.categories
 
             return updateCategories;
         }
+
+        // ----- CRUD on category ----- Muhmen P.//
     }
 }
