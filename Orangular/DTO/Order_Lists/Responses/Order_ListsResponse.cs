@@ -11,5 +11,10 @@ namespace Orangular.DTO.Order_Lists.Responses
 
         public DateTime order_date_time { get; set; }
 
+        public List<Order_ListsOrder_ItemsResponse> Order_Items { get; set; }
+
+        public Order_ListsUsersResponse Users { get; set; }
+
+
     }
 }
