@@ -9,19 +9,18 @@ using Orangular.Helpers;
 
 
 namespace Orangular.Database.Entities
-{
+    {
+    // Properties er angivet i samme række som de står i E/R Diagrammet
+    // F.eks.
+    // Users
+    //      users_id
+    //      email
+    //      password
+    //      role
+    //
+    // Victor
     public class Users
     {
-        // Properties er angivet i samme række som de står i E/R Diagrammet
-        // F.eks.
-        // Users
-        //      users_id
-        //      email
-        //      password
-        //      role
-        //
-        // Victor
-
         [Key]
         public int users_id { get; set; }
 
@@ -38,7 +37,11 @@ namespace Orangular.Database.Entities
 
         // -- Skaber relation med foreign keys i databasen -- /
         public List<Order_Lists> order_lists { get; set; } = new();
-        public List<Addresses> addresses { get; set; } = new();
+        public List<Addresses> addresses { get; set; }
+        //public Addresses address { get; set; }
+        // #nullable enable
+        // public Addresses? address { get; set; }
+        // #nullable disable
         // -- Skaber relation med foreign keys i databasen -- /
     }
 }
