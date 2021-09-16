@@ -18,6 +18,7 @@ namespace Orangular.DTO.Addresses.Requests
         [MinLength(1, ErrorMessage = "Min string length is 1")]
         public string address { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
+        [StringLength(255, ErrorMessage = "Max string length is 255")]
         public int zip_code { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [StringLength(255, ErrorMessage = "Max string length is 255")]

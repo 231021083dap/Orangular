@@ -23,11 +23,13 @@ namespace Orangular.DTO.Products.Requests
         public int price { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
-        [Range(1, float.MaxValue)]
-        public float weight { get; set; }
+        [Range(1, int.MaxValue)]
+        public int weight { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [StringLength(255, ErrorMessage = "Max string length is 255")]
-        [MinLength(1, ErrorMessage = "Min string length is 1")]
+        public string gender { get; set; }
+        // -----------------------------------------------------------------------------------------------------------------------
+        [StringLength(255, ErrorMessage = "Max string length is 255")]
         public string description { get; set; }
     }
 }
