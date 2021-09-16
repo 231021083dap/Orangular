@@ -10,13 +10,27 @@ namespace Orangular.Database.Entities
 {
     public class Products
     {
+        // Properties er angivet i samme række som de står i E/R Diagrammet
+        // F.eks.
+        // Users
+        //      users_id
+        //      email
+        //      password
+        //      role
+        //
+        // Victor
 
         // -----  ----- Muhmen //
         [Key]
         public int products_id {get; set;}
 
+        // --- Objecktet skal være til stede i klassen for at --- Victor //
+        // --- konvertere C# til SQL med korrekt foreign keys --- //
         [ForeignKey("Categories.categories_id")]
         public int categories_id { get; set; }
+        public Categories Category { get; set; }    // Property behøver ikke være lower
+                                                    // fordi den ikke repræsentere en kolonne i en tabel.
+        // --- Victor --- //
 
         [Required]
         [Column(TypeName = "nvarchar(255)")]

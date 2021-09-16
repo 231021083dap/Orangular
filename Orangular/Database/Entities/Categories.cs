@@ -8,6 +8,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Orangular.Database.Entities
 {
+    // Properties er angivet i samme række som de står i E/R Diagrammet
+    // F.eks.
+    // Users
+    //      users_id
+    //      email
+    //      password
+    //      role
+    //
+    // Victor
     public class Categories
     {
         [Key]
