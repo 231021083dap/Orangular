@@ -8,6 +8,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Orangular.Database.Entities
 {
+    // Properties er angivet i samme række som de står i E/R Diagrammet
+    // F.eks.
+    // Users
+    //      users_id
+    //      email
+    //      password
+    //      role
+    //
+    // Victor
     public class Categories
     {
         [Key]
@@ -16,5 +25,9 @@ namespace Orangular.Database.Entities
         [Required]
         [Column(TypeName = "nvarchar(255)")]
         public string category_name { get; set; }
+
+        // -- Skaber relation med foreign keys i databasen -- /
+        public List<Products> products { get; set; } = new();
+        // -- Skaber relation med foreign keys i databasen -- /
     }
 }

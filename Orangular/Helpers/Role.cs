@@ -1,4 +1,4 @@
-namespace Orangular.API.Helpers
+namespace Orangular.Helpers
 {
     public enum Role
     {
