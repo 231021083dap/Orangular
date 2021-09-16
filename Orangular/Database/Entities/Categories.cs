@@ -25,5 +25,9 @@ namespace Orangular.Database.Entities
         [Required]
         [Column(TypeName = "nvarchar(255)")]
         public string category_name { get; set; }
+
+        // -- Skaber relation med foreign keys i databasen -- /
+        public List<Products> products { get; set; } = new();
+        // -- Skaber relation med foreign keys i databasen -- /
     }
 }

@@ -36,8 +36,9 @@ namespace Orangular.Database.Entities
         [Required]
         public Role role { get; set; }
 
+        // -- Skaber relation med foreign keys i databasen -- /
         public List<Order_Lists> order_lists { get; set; } = new();
-
         public List<Addresses> addresses { get; set; } = new();
+        // -- Skaber relation med foreign keys i databasen -- /
     }
 }
