@@ -2,6 +2,8 @@
 using Orangular.DTO.Products.Requests;
 using Orangular.DTO.Products.Responses;
 using Orangular.Repositories;
+using Orangular.Repositories.products;
+using Orangular.Services.products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +11,7 @@ using System.Threading.Tasks;
 
 namespace Orangular.Services
 {
-    public interface IProductsService
-    {
-        Task<List<ProductsResponse>> GetAllProducts();
-        Task<ProductsResponse> GetById(int products_id);
-        Task<ProductsResponse> Create(NewProducts newProducts);
-        Task<ProductsResponse> Update(int products_id, UpdateProducts updateAuthor);
-        Task<bool> Delete(int products_id);
 
-
-
-    }
 
     public class ProductService : IProductsService
     {
@@ -97,25 +89,27 @@ namespace Orangular.Services
             };
         }
 
-        public async Task<ProductsResponse> Update(int products_id, UpdateProducts updateAuthor)
+        public async Task<ProductsResponse> Update(int products_id, UpdateProducts updateProducts)
         {
             Products products = new Products
             {
-                breed_name = UpdateProducts.breed_name,
-                price = UpdateProducts.price,
-                weight = UpdateProducts.weight,
-                gender = UpdateProducts.gender,
-                description = UpdateProducts.description,
+                breed_name = updateProducts.breed_name,
+                price = updateProducts.price,
+                weight = updateProducts.weight,
+                gender = updateProducts.gender,
+                description = updateProducts.description,
             };
 
             products = await _productsRepository.Update(products_id, products);
 
             return products == null ? null : new ProductsResponse
             {
-                Id = author.Id,
-                FirstName = author.FirstName,
-                LastName = author.LastName,
-                MiddleName = author.MiddleName
+                products_id = products_id,
+                breed_name = products.breed_name,
+                price = products.price,
+                weight = products.weight,
+                gender = products.gender,
+                description = products.description
             };
         }
     }
