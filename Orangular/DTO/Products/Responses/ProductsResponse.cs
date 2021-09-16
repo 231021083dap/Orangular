@@ -14,6 +14,6 @@ namespace Orangular.DTO.Products.Responses
         public string gender { get; set; }
         public string description { get; set; }
         public ProductsCategoriesResponse Categories { get; set; }
-        public List<ProductsOrder_ItemsResponse> Order_Items { get; set; }
+       
     }
 }
