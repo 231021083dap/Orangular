@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Repositories.addresses
+namespace Orangular.Services.addresses
 {
-    interface IAddressesRepository
+    interface IAddressesService
     {
         Task<List<Addresses>> getAll();
         Task<Addresses> getById(int addressesId);

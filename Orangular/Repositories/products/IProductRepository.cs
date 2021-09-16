@@ -13,7 +13,7 @@ namespace Orangular.Repositories.products
         Task<Products> getById(int productsId);
         Task<Products> create(Products products);
         Task<Products> update(int productsId, Products products);
-        Task<Products> delete(int productsId);
+        Task<bool> delete(int productsId);
         // ----- Interface signature of product ----- Muhmen P.//
 
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Orangular.Repositories.order_items
 {
-    interface IOrderItems
+    interface IOrderItemsRepository
     {
         Task<List<Order_Items>> getAll();
         Task<Order_Items> getById(int orderItemsId);
