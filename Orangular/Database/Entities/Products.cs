@@ -29,6 +29,7 @@ namespace Orangular.Database.Entities
         [Required]
         public int weight { get; set; } // weight unit is gram. 35kg = 35000
 
+        [Column(TypeName = "nvarchar(255)")]
         public string gender { get; set; } // gender = male | female | null (reptil)
 
         [Column(TypeName = "nvarchar(255)")]

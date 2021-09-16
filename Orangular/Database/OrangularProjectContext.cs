@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-//using LibraryProject.API.Database.Entities;
+using Orangular.Database.Entities;
 using Microsoft.EntityFrameworkCore;
-using Orangular.API.Helpers;
+using Orangular.Helpers;
 
 namespace Orangular.Database.Entities
 {
@@ -32,12 +32,14 @@ namespace Orangular.Database.Entities
             {
                 users_id = 1,
                 email = "admin@admins.com",
+                password = "Passw0rd",
                 role = Role.Admin
             },
             new Users
             {
                 users_id = 2,
                 email = "user@users.com",
+                password = "Passw0rd",
                 role = Role.User
             });
 

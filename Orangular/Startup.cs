@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,6 +12,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+// -- tilføjet af Victor -- //
+using Orangular.Database.Entities;
+// -- tilføjet af Victor -- //
 
 namespace Orangular
 {
@@ -26,6 +31,11 @@ namespace Orangular
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // -- tilføjet af Victor -- //
+            // Forbinder sql serveren
+            services.AddDbContext<OrangularProjectContext>(
+                o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
+            // -- tilføjet af Victor -- //
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -50,6 +60,7 @@ namespace Orangular
             //    // serialize enums as strings in api responses (e.g. Role)
             //    x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
             //});
+
 
             app.UseHttpsRedirection();
 
