@@ -22,6 +22,12 @@ namespace Orangular.Services.categories
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
+
+        public CategoryService(ICategoryRepository categoryRepository)
+        {
+            _categoryRepository = categoryRepository;
+        }
+
         public async Task<CategoriesResponse> create(NewCategories newCategories)
         {
             Categories categories = new Categories

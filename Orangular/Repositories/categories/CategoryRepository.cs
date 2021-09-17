@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Orangular.Repositories.categories
 {
-    interface ICategoryRepository
+  public  interface ICategoryRepository
     {
         // ----- Interface signature of category ----- Muhmen P.//
         Task<List<Categories>> getAll();
