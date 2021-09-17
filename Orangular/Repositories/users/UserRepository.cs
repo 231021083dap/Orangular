@@ -7,8 +7,16 @@ using System.Threading.Tasks;
 
 namespace Orangular.Repositories.users
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository 
     {
+        interface IUserRepository
+        {
+            Task<List<Users>> GetAll();
+            Task<Users> GetById(int userId);
+            Task<Users> Create(Users user);
+            Task<Users> Update(int userId, Users user);
+            Task<Users> Delete(int userId);
+        }
 
         private readonly OrangularProjectContext _context;
         public UserRepository(OrangularProjectContext Context)
@@ -32,8 +40,9 @@ namespace Orangular.Repositories.users
         // Users mangler muligvis et check for korrekt data. Jeg vender tilbage når user er fuldt implementeret - Julian
         public async Task<Users> Create(Users user)
         {
-            if (_context.Users.Any(u => u.email == user.email)) throw new Exception("Email " + user.email + " is already taken");
-            if (user.password == null) throw new Exception("You must enter a password");
+            if (_context.Users.Any(u => u.users_id == user.users_id)) throw new Exception("Nice try, userId " + user.users_id + " already Exists");
+            else if (_context.Users.Any(u => u.email == user.email)) throw new Exception("Email " + user.email + " is already taken");
+            else if (user.password == null) throw new Exception("You must enter a password");
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return user;

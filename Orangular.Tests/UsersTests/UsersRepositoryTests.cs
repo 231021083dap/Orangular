@@ -137,9 +137,13 @@ namespace Orangular.Tests.UsersTests
             // Act
             Func<Task> action = async () => await _sut.Create(user);
             // Assert
-            var ex = await Assert.ThrowsAsync<ArgumentException>(action);
-            Assert.Contains("Error: Tried to add user with existing id", ex.Message);
+            var ex = await Assert.ThrowsAsync<Exception>(action);
+            Assert.Contains("Nice try, userId " + user.users_id + " already Exists", ex.Message);
         }
+
+        // Create skal fejle hvis email allerede existere
+
+        // Create skal fejle hvis Password er null
         // -----------------------------------------------------------------------------------------------------------------------
         // Update Tests
 
