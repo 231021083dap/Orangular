@@ -47,7 +47,8 @@ namespace Orangular.Repositories.categories
 
         public async Task<List<Categories>> getAll()
         {
-            return await _context.Categories.ToListAsync();
+            return await _context.Categories
+                .Include(p => p.products).ToListAsync();
         }
         public async Task<Categories> getById(int categoriesId)
         {
@@ -66,6 +67,6 @@ namespace Orangular.Repositories.categories
             return updateCategories;
         }
 
-        // ----- CRUD on category ----- Muhmen P.//
+
     }
 }

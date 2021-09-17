@@ -9,7 +9,7 @@ namespace Orangular.DTO.Categories.Responses
     {
         public int categories_id { get; set; }
         public string category_name { get; set; }
-        public List<CategoriesProductsResponse> Products { get; set; }
+        public List<CategoriesProductsResponse> products { get; set; }
 
     }
 }

@@ -11,17 +11,18 @@ namespace Orangular.Services.categories
 {
     interface ICategoryService
     {
-        Task<List<Categories>> getAll();
-        Task<Categories> getById(int categoriesId);
-        Task<Categories> create(NewCategories newCategories);
-        Task<Categories> update(int categoriesId, UpdateCategories updateCategories);
+        Task<List<CategoriesResponse>> getAll();
+        Task<CategoriesResponse> getById(int categoriesId);
+        Task<CategoriesResponse> create(NewCategories newCategories);
+        Task<CategoriesResponse> update(int categoriesId, UpdateCategories updateCategories);
         Task<bool> delete(int categoriesId);
     }
 
+    // -----  ----- Muhmen P.//
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
-        public async Task<Categories> create(NewCategories newCategories)
+        public async Task<CategoriesResponse> create(NewCategories newCategories)
         {
             Categories categories = new Categories
             {
@@ -30,31 +31,67 @@ namespace Orangular.Services.categories
 
             categories = await _categoryRepository.create(categories);
 
-        /*    return categories == null ? null : new CategoriesResponse
+            return categories == null ? null : new CategoriesResponse
+            {
+             category_name = newCategories.category_name,
+
+            };
+        }
+
+        public async Task<bool> delete(int categoriesId)
+        {
+            var result = await _categoryRepository.delete(categoriesId);
+            return true;
+        }
+
+        public async Task<List<CategoriesResponse>> getAll()
+        {
+            List<Categories> categories = await _categoryRepository.getAll();
+            return categories.Select(c => new CategoriesResponse
+            {
+                categories_id = c.categories_id,
+                category_name = c.category_name,
+                products = c.products.Select(p => new CategoriesProductsResponse
+                {
+                    products_id = p.products_id,
+                    breed_name = p.breed_name,
+                    price = p.price,
+                    weight = p.weight,
+                    gender = p.gender,
+                    description = p.description
+
+                }).ToList()
+
+            }).ToList();
+        }
+
+        public async Task<CategoriesResponse> getById(int categoriesId)
+        {
+            Categories categories = await _categoryRepository.getById(categoriesId);
+            return categories == null ? null : new CategoriesResponse
             {
                 categories_id = categories.categories_id,
                 category_name = categories.category_name
-            }; */
+            };
         }
 
-        public Task<bool> delete(int categoriesId)
+        public async Task<CategoriesResponse> update(int categoriesId, UpdateCategories updateCategories)
         {
-            throw new NotImplementedException();
+           Categories categories = new Categories
+           {
+               category_name = updateCategories.category_name
+           };
+
+           categories = await _categoryRepository.update(categoriesId, categories);
+
+            return categories == null ? null : new CategoriesResponse { 
+                categories_id = categories.categories_id, 
+                category_name = categories.category_name 
+            };
         }
 
-        public Task<List<Categories>> getAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Categories> getById(int categoriesId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Categories> update(int categoriesId, UpdateCategories updateCategories)
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }
+
+// ----- CRUD on category ----- Muhmen P.//
