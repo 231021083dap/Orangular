@@ -55,6 +55,7 @@ namespace Orangular.Repositories
                 updateProducts.description = products.description;
                 await _context.SaveChangesAsync();
             }
+            return updateProducts;
         }
     }
 }
