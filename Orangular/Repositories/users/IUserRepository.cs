@@ -11,8 +11,8 @@ namespace Orangular.Repositories.users
         // ----- Interface signature of user ----- Muhmen P.//
         Task<List<Users>> GetAll();
         Task<Users> GetById(int userId);
-        Task<Users> Create(Users users);
-        Task<Users> Update(int userId, Users users);
+        Task<Users> Create(Users user);
+        Task<Users> Update(int userId, Users user);
         Task<Users> Delete(int userId);
         // ----- Interface signature of user ----- Muhmen P.//
     }
