@@ -28,7 +28,7 @@ namespace Orangular.Database.Entities
         // --- konvertere C# til SQL med korrekt foreign keys --- //
         [ForeignKey("Categories.categories_id")]
         public int categories_id { get; set; }
-        public Categories Category { get; set; }    // Property behøver ikke være lower
+        public Categories category { get; set; }    // Property behøver ikke være lower
                                                     // fordi den ikke repræsentere en kolonne i en tabel.
         // --- Victor --- //
 
@@ -49,5 +49,9 @@ namespace Orangular.Database.Entities
         [Column(TypeName = "nvarchar(255)")]
         public string description { get; set; }
         // -----  ----- Muhmen //
+
+        // -- Skaber relation med foreign keys i databasen -- /
+        public List<Order_Items> order_items { get; set; } = new();
+        // -- Skaber relation med foreign keys i databasen -- /
     }
 }
