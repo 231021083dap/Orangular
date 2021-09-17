@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Orangular.Services.categories
 {
-    interface ICategoryService
+   public interface ICategoryService
     {
         Task<List<CategoriesResponse>> getAll();
         Task<CategoriesResponse> getById(int categoriesId);
