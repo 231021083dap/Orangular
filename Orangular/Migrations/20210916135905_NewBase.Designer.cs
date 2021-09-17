@@ -10,7 +10,7 @@ using Orangular.Database.Entities;
 namespace Orangular.Migrations
 {
     [DbContext(typeof(OrangularProjectContext))]
-    [Migration("20210916084913_NewBase")]
+    [Migration("20210916135905_NewBase")]
     partial class NewBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,6 +46,9 @@ namespace Orangular.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.HasKey("addresses_id");
+
+                    b.HasIndex("users_id")
+                        .IsUnique();
 
                     b.HasIndex("users_id1");
 
@@ -101,16 +104,26 @@ namespace Orangular.Migrations
                     b.Property<int>("order_lists_id")
                         .HasColumnType("int");
 
+                    b.Property<int?>("order_lists_id1")
+                        .HasColumnType("int");
+
                     b.Property<int>("price")
                         .HasColumnType("int");
 
                     b.Property<int>("products_id")
                         .HasColumnType("int");
 
+                    b.Property<int?>("products_id1")
+                        .HasColumnType("int");
+
                     b.Property<int>("quantity")
                         .HasColumnType("int");
 
                     b.HasKey("order_items_id");
+
+                    b.HasIndex("order_lists_id1");
+
+                    b.HasIndex("products_id1");
 
                     b.ToTable("Order_Items");
 
@@ -151,7 +164,7 @@ namespace Orangular.Migrations
                         new
                         {
                             order_lists_id = 1,
-                            order_date_time = new DateTime(2021, 9, 16, 10, 49, 13, 151, DateTimeKind.Local).AddTicks(5701),
+                            order_date_time = new DateTime(2021, 9, 16, 15, 59, 5, 397, DateTimeKind.Local).AddTicks(4760),
                             users_id = 0
                         });
                 });
@@ -170,6 +183,9 @@ namespace Orangular.Migrations
                     b.Property<int>("categories_id")
                         .HasColumnType("int");
 
+                    b.Property<int?>("categorycategories_id")
+                        .HasColumnType("int");
+
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(255)");
 
@@ -184,6 +200,8 @@ namespace Orangular.Migrations
 
                     b.HasKey("products_id");
 
+                    b.HasIndex("categorycategories_id");
+
                     b.ToTable("Products");
 
                     b.HasData(
@@ -192,7 +210,7 @@ namespace Orangular.Migrations
                             products_id = 1,
                             breed_name = "chefer hund",
                             categories_id = 0,
-                            description = "\r\n                Tamhunden (Canis lupus familiaris) er det husdyr,\r\n                som tidligst blev tæmmet af mennesket,\r\n                og som derfor har den længste historie til fælles med os.\r\n                Den har gennem historien været brugt til jagt, som vagthund,\r\n                krigshund (eks. anti-tank-hunde), sporhund, redningshund, eller som 'følgesvend'.\r\n                Desuden som servicehund for blinde og handicappede, som politi- og redningshund, \r\n                som narkohund eller som terapihund.\r\n                Hunde kan også lugte sig frem til kræftsvulster,[2] termitangreb og forudsige epilepsianfald.\r\n                ",
+                            description = "Description",
                             gender = "male",
                             price = 750000,
                             weight = 35000
@@ -248,6 +266,23 @@ namespace Orangular.Migrations
                     b.Navigation("user");
                 });
 
+            modelBuilder.Entity("Orangular.Database.Entities.Order_Items", b =>
+                {
+                    b.HasOne("Orangular.Database.Entities.Order_Lists", "order_list")
+                        .WithMany("order_items")
+                        .HasForeignKey("order_lists_id1")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Orangular.Database.Entities.Products", "product")
+                        .WithMany("order_items")
+                        .HasForeignKey("products_id1")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("order_list");
+
+                    b.Navigation("product");
+                });
+
             modelBuilder.Entity("Orangular.Database.Entities.Order_Lists", b =>
                 {
                     b.HasOne("Orangular.Database.Entities.Users", "user")
@@ -256,6 +291,31 @@ namespace Orangular.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("user");
+                });
+
+            modelBuilder.Entity("Orangular.Database.Entities.Products", b =>
+                {
+                    b.HasOne("Orangular.Database.Entities.Categories", "category")
+                        .WithMany("products")
+                        .HasForeignKey("categorycategories_id")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("category");
+                });
+
+            modelBuilder.Entity("Orangular.Database.Entities.Categories", b =>
+                {
+                    b.Navigation("products");
+                });
+
+            modelBuilder.Entity("Orangular.Database.Entities.Order_Lists", b =>
+                {
+                    b.Navigation("order_items");
+                });
+
+            modelBuilder.Entity("Orangular.Database.Entities.Products", b =>
+                {
+                    b.Navigation("order_items");
                 });
 
             modelBuilder.Entity("Orangular.Database.Entities.Users", b =>

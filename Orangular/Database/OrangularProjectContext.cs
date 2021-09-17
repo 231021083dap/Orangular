@@ -27,38 +27,59 @@ namespace Orangular.Database.Entities
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            // --- Users Foreign keys opførsel --- //
-            // Når brugeren slettes, slettes tilknyttet addresse også.
-            modelBuilder.Entity<Addresses>()
-                .HasOne(lambda => lambda.User)
-                .WithMany(lambda => lambda.addresses)
-                .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<Users>()
+            //    .HasOne(a => a.address).WithMa(b => b.user)                
+            //    .HasForeignKey<Addresses>(e => e.users_id);
+            //modelBuilder.Entity<Users>().ToTable("Users");
+            //modelBuilder.Entity<Addresses>().ToTable("Users");
 
+            // --- Users Foreign keys opførsel --- //
             // Forhindre at slette brugeren, hvis bruger har ordre liggende i systemet.
             modelBuilder.Entity<Order_Lists>()
-                .HasOne(lambda => lambda.User)
+                .HasOne(lambda => lambda.user)
                 .WithMany(lambda => lambda.order_lists)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            // Når brugeren slettes, slettes tilknyttet addresse også.
+            modelBuilder.Entity<Addresses>()
+                .HasOne(lambda => lambda.user)
+                .WithMany(lambda => lambda.addresses)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Gør så at en bruger kun kan have en addresse
+            modelBuilder.Entity<Addresses>()
+                .HasIndex(u => u.users_id)
+                .IsUnique();
             // --- Users Foreign keys opførsel --- Victor //
 
 
 
             // --- Order_Lists Foreign keys opførsel --- //
-            //modelBuilder.Entity<Order_Items>()
-            //    .HasOne(lambda => lambda.Order_List)
-            //    .WithMany(lambda => lambda.Order)
-            //    .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Order_Items>()
+               .HasOne(lambda => lambda.order_list)
+               .WithMany(lambda => lambda.order_items)
+               .OnDelete(DeleteBehavior.Restrict);
 
             // --- Order_Lists Foreign keys opførsel --- //
 
 
             // --- Categories Foreign keys opførsel --- //
-            modelBuilder.Entity<Order_Lists>()
-                .HasOne(lambda => lambda.User)
-                .WithMany(lambda => lambda.order_lists)
+            // On delete restrict
+            modelBuilder.Entity<Products>()
+                .HasOne(lambda => lambda.category)
+                .WithMany(lambda => lambda.products)
                 .OnDelete(DeleteBehavior.Restrict);
             // --- Categories Foreign keys opførsel --- //
+
+            // --- Products Foreign keys opførsel --- //
+            // On delete restrict
+            modelBuilder.Entity<Order_Items>()
+                .HasOne(lambda => lambda.product)
+                .WithMany(lambda => lambda.order_items)
+                .OnDelete(DeleteBehavior.Restrict);
+            // --- Products Foreign keys opførsel --- //
+
+
 
             // Users
             modelBuilder.Entity<Users>().HasData(
@@ -130,17 +151,7 @@ namespace Orangular.Database.Entities
                 price = 750000,
                 weight = 35000,
                 gender = "male",
-                description =
-                @"
-                Tamhunden (Canis lupus familiaris) er det husdyr,
-                som tidligst blev tæmmet af mennesket,
-                og som derfor har den længste historie til fælles med os.
-                Den har gennem historien været brugt til jagt, som vagthund,
-                krigshund (eks. anti-tank-hunde), sporhund, redningshund, eller som 'følgesvend'.
-                Desuden som servicehund for blinde og handicappede, som politi- og redningshund, 
-                som narkohund eller som terapihund.
-                Hunde kan også lugte sig frem til kræftsvulster,[2] termitangreb og forudsige epilepsianfald.
-                "
+                description = "Description"
             });
         }
         // ----- Fylder data ind i tabellerne ----- Victor //

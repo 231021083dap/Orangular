@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orangular", "Orangular\Orangular.csproj", "{506B1AF6-D8E0-4405-A689-963BCB3658C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangular", "Orangular\Orangular.csproj", "{506B1AF6-D8E0-4405-A689-963BCB3658C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orangular.Tests", "Orangular.Tests\Orangular.Tests.csproj", "{2A953C41-D0CE-4138-B29E-37C35F46DA74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{506B1AF6-D8E0-4405-A689-963BCB3658C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{506B1AF6-D8E0-4405-A689-963BCB3658C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{506B1AF6-D8E0-4405-A689-963BCB3658C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A953C41-D0CE-4138-B29E-37C35F46DA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A953C41-D0CE-4138-B29E-37C35F46DA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A953C41-D0CE-4138-B29E-37C35F46DA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A953C41-D0CE-4138-B29E-37C35F46DA74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
