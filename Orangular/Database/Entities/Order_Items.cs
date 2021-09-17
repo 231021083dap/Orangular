@@ -28,12 +28,12 @@ namespace Orangular.Database.Entities
         [Required]
         [ForeignKey("Order_Lists.order_lists_id")]
         public int order_lists_id { get; set; }
-        public Order_Lists Order_List { get; set; } // Property behøver ikke være lower
+        public Order_Lists order_list { get; set; } // Property behøver ikke være lower
                                                     // fordi den ikke repræsentere en kolonne i en tabel.
         [Required]
         [ForeignKey("Products.products_id")]
         public int products_id { get; set; }
-        public Products Product { get; set; }   // Property behøver ikke være lower
+        public Products product { get; set; }   // Property behøver ikke være lower
                                                 // fordi den ikke repræsentere en kolonne i en tabel.
         // --- Victor --- //
 
