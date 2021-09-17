@@ -8,13 +8,12 @@ namespace Orangular.Repositories.users
 {
     interface IUserRepository
     {
-
         // ----- Interface signature of user ----- Muhmen P.//
-        Task<List<Users>> getAll();
-        Task<Users> getById(int userId);
-        Task<Users> create(Users users);
-        Task<Users> update(int userId, Users users);
-        Task<Users> delete(int userId);
+        Task<List<Users>> GetAll();
+        Task<Users> GetById(int userId);
+        Task<Users> Create(Users user);
+        Task<Users> Update(int userId, Users user);
+        Task<Users> Delete(int userId);
         // ----- Interface signature of user ----- Muhmen P.//
     }
 }
