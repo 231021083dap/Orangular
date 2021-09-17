@@ -32,10 +32,8 @@ namespace Orangular.Repositories.users
         // Users mangler muligvis et check for korrekt data. Jeg vender tilbage når user er fuldt implementeret - Julian
         public async Task<Users> Create(Users user)
         {
-            if (_context.Users.Any(u => u.email == user.email))
-            {
-                throw new Exception("Email " + user.email + " is already taken");
-            }
+            if (_context.Users.Any(u => u.email == user.email)) throw new Exception("Email " + user.email + " is already taken");
+            if (user.password == null) throw new Exception("You must enter a password");
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return user;
@@ -60,7 +58,7 @@ namespace Orangular.Repositories.users
         public async Task<Users> Delete(int userId)
         {
             Users deleteUser = await _context.Users.FirstOrDefaultAsync(u => u.users_id == userId);
-            if ( deleteUser != null)
+            if (deleteUser != null)
             {
                 _context.Users.Remove(deleteUser);
                 await _context.SaveChangesAsync();

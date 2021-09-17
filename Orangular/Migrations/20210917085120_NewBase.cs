@@ -156,7 +156,7 @@ namespace Orangular.Migrations
             migrationBuilder.InsertData(
                 table: "Order_Lists",
                 columns: new[] { "order_lists_id", "order_date_time", "users_id", "users_id1" },
-                values: new object[] { 1, new DateTime(2021, 9, 16, 15, 59, 5, 397, DateTimeKind.Local).AddTicks(4760), 0, null });
+                values: new object[] { 1, new DateTime(2021, 9, 17, 10, 51, 19, 930, DateTimeKind.Local).AddTicks(2010), 0, null });
 
             migrationBuilder.InsertData(
                 table: "Products",

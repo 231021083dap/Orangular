@@ -6,10 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace Orangular.Tests.UsersTests
 {
-    class UsersRepositoryTests
+   public class UsersRepositoryTests
     {
         private readonly UserRepository _sut;
         private readonly OrangularProjectContext _context;
@@ -17,7 +18,132 @@ namespace Orangular.Tests.UsersTests
         public UsersRepositoryTests()
         {
             _options = new DbContextOptionsBuilder<OrangularProjectContext>()
-                .UseInMemoryDatabase(databaseName "")
+            .UseInMemoryDatabase(databaseName: "OrangularUsersDatabase")
+            .Options;
+            _context = new OrangularProjectContext(_options);
+            _sut = new UserRepository(_context);
         }
+        // -----------------------------------------------------------------------------------------------------------------------
+        // GetAll Tests
+        [Fact]
+        public async Task GetAll_ShouldReturnListOfUsers_WhenUsersExists()
+        {
+            //Arrange
+            await _context.Database.EnsureDeletedAsync();
+            _context.Users.Add(new Users
+            {
+                users_id = 1,
+                email = "Test1@Mail.com",
+                password = "Passw0rd",
+                role = Helpers.Role.Admin
+            });
+            _context.Users.Add(new Users
+            {
+                users_id = 2,
+                email = "Test2@Mail.com",
+                password = "Passw0rd",
+                role = Helpers.Role.User
+            });
+            await _context.SaveChangesAsync();
+            //Act
+            var result = await _sut.GetAll();
+            //Assert
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Count);
+            Assert.IsType<List<Users>>(result);
+        }
+        [Fact]
+        public async Task GetAll_ShouldReturnEmptyListOfUsers_WhenNoUsersExists()
+        {
+            //Arrange
+            await _context.Database.EnsureDeletedAsync();
+            await _context.SaveChangesAsync();
+            //Act
+            var result = await _sut.GetAll();
+            //Assert
+            Assert.NotNull(result);
+            Assert.Empty(result);
+            Assert.IsType<List<Users>>(result);
+        }
+        // -----------------------------------------------------------------------------------------------------------------------
+        // GetById Tests
+        [Fact]
+        public async Task GetById_ShouldReturnUser_IfUserExists()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int userId = 1;
+            _context.Users.Add(new Users
+            {
+                users_id = userId,
+                email = "Test1@Mail.com",
+                password = "Passw0rd",
+                role = Helpers.Role.Admin
+            });
+            await _context.SaveChangesAsync();
+            // Act
+            var result = await _sut.GetById(userId);
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<Users>(result);
+            Assert.Equal(userId, result.users_id);
+        }
+        [Fact]
+        public async Task GetById_ShouldReturnNull_IfUserDoesNotExist()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int userId = 1;
+            // Act
+            var result = await _sut.GetById(userId);
+            // Assert
+            Assert.Null(result);
+        }
+        // -----------------------------------------------------------------------------------------------------------------------
+        // Create Tests
+        [Fact]
+        public async Task Create_ShouldAddIdToUser_WhenSavingToDatabase()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int expectedId = 1;
+            Users user = new Users
+            {
+                email = "Test1@Mail.com",
+                password = "Passw0rd",
+                role = Helpers.Role.User
+            };
+            // Act
+            var result = await _sut.Create(user);
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<Users>(result);
+            Assert.Equal(expectedId, result.users_id);
+        }
+        [Fact]
+        public async Task Create_ShouldFailToAddUser_WhenAddingUserWithExistingId()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            Users user = new Users
+            {
+                users_id = 1,
+                email = "Test1@Mail.com",
+                password = "Passw0rd",
+                role = Helpers.Role.User
+            };
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+            // Act
+            Func<Task> action = async () => await _sut.Create(user);
+            // Assert
+            var ex = await Assert.ThrowsAsync<ArgumentException>(action);
+            Assert.Contains("Error: Tried to add user with existing id", ex.Message);
+        }
+        // -----------------------------------------------------------------------------------------------------------------------
+        // Update Tests
+
+        // -----------------------------------------------------------------------------------------------------------------------
+        // Delete Tests
     }
 }
