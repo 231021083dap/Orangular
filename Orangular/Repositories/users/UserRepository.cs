@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Orangular.Repositories.users
 {
-    public class UserRepository 
+   public interface IUserRepository
     {
-        interface IUserRepository
-        {
-            Task<List<Users>> GetAll();
-            Task<Users> GetById(int userId);
-            Task<Users> Create(Users user);
-            Task<Users> Update(int userId, Users user);
-            Task<Users> Delete(int userId);
-        }
+        Task<List<Users>> GetAll();
+        Task<Users> GetById(int userId);
+        Task<Users> Create(Users user);
+        Task<Users> Update(int userId, Users user);
+        Task<Users> Delete(int userId);
+    }
+    public class UserRepository : IUserRepository
+    {
 
         private readonly OrangularProjectContext _context;
         public UserRepository(OrangularProjectContext Context)
@@ -39,12 +39,15 @@ namespace Orangular.Repositories.users
         }
         public async Task<Users> Create(Users user)
         {
-            if (_context.Users.Any(u => u.users_id == user.users_id)) throw new Exception("Nice try, userId " + user.users_id + " already Exists");
-            else if (_context.Users.Any(u => u.email == user.email)) throw new Exception("Email " + user.email + " is already taken");
-            else if (user.password == null) throw new Exception("You must enter a password");
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-            return user;
+            if (user.email != null && user.password != null)
+            {
+                if (_context.Users.Any(u => u.users_id == user.users_id)) throw new Exception("Nice try, userId " + user.users_id + " already Exists");
+                if (_context.Users.Any(u => u.email == user.email)) throw new Exception("Email " + user.email + " is already taken");
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+                return user;
+            }
+            throw new Exception("You must enter an email and a password to create a user");
         }
         public async Task<Users> Update(int userId, Users user)
         {
@@ -52,9 +55,10 @@ namespace Orangular.Repositories.users
             if (updateUser != null)
             {
                 if (_context.Users.Any(u => u.users_id != userId && u.email == user.email)) throw new Exception("Email " + user.email + " is already taken");
-                updateUser.email = user.email;
+                if (user.email != null) updateUser.email = user.email;
                 if (user.password != null) updateUser.password = user.password;
-                updateUser.role = user.role;
+                if (user.role != 0) updateUser.role = user.role;
+                await _context.SaveChangesAsync();
             }
             return updateUser;
         }

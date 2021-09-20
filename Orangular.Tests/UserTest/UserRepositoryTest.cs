@@ -10,12 +10,12 @@ using Xunit;
 
 namespace Orangular.Tests.UsersTests
 {
-   public class UsersRepositoryTests
+   public class UserRepositoryTest
     {
         private readonly UserRepository _sut;
         private readonly OrangularProjectContext _context;
         private readonly DbContextOptions<OrangularProjectContext> _options;
-        public UsersRepositoryTests()
+        public UserRepositoryTest()
         {
             _options = new DbContextOptionsBuilder<OrangularProjectContext>()
             .UseInMemoryDatabase(databaseName: "OrangularUsersDatabase")
@@ -168,38 +168,146 @@ namespace Orangular.Tests.UsersTests
             Assert.Contains("Email " + user1.email + " is already taken", ex.Message);
         }
         [Fact]
-        public async Task Create_ShouldFailToAddUser_WhenPasswordIsNull()
+        public async Task Create_ShouldFailToAddUser_WhenPasswordAndOrEmailIsNull()
         {
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             Users user = new Users
             {
                 users_id = 1,
-                email = "Test1@Mail.com",
                 role = Helpers.Role.User
             };
             // Act
             Func<Task> action = async () => await _sut.Create(user);
             // Assert
             var ex = await Assert.ThrowsAsync<Exception>(action);
-            Assert.Contains("You must enter a password", ex.Message);
+            Assert.Contains("You must enter an email and a password to create a user", ex.Message);
         }
         // -----------------------------------------------------------------------------------------------------------------------
         // Update Tests
         [Fact]
         public async Task Update_ShouldChangeValuesOnUser_WhenUserExists()
         {
+            // Arrange
             await _context.Database.EnsureDeletedAsync();
             int userId = 1;
-            Users user1 = new Users
+            Users user = new Users
             {
-                users_id = 1,
+                users_id = userId,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
                 role = Helpers.Role.User
             };
+            Users userUpdate = new Users
+            {
+                users_id = userId,
+                email = "est1@Mail.com",
+                password = "assw0rd",
+                role = Helpers.Role.Admin
+            };
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+            // Act
+            var result = await _sut.Update(userId, userUpdate);
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<Users>(result);
+            Assert.Equal(userId, result.users_id);
+            Assert.Equal(userUpdate.email, result.email);
+            Assert.Equal(userUpdate.password, result.password);
+            Assert.Equal(userUpdate.role, result.role);
+        }
+        [Fact]
+        public async Task Update_ShouldReturnNull_WhenUserDoesNotExist()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int userId = 1;
+            Users userUpdate = new Users
+            {
+                users_id = userId,
+                email = "Test1@Mail.com",
+                password = "Passw0rd",
+                role = Helpers.Role.User
+            };
+            // Act
+            var result = await _sut.Update(userId, userUpdate);
+            // Assert
+            Assert.Null(result);
+        }
+        [Fact]
+        public async Task Update_ShouldFailToUpdateUser_WhenUpdatingEmailToExistingEmail()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int user1Id = 1;
+            Users user1 = new Users
+            {
+                users_id = user1Id,
+                email = "Test1@Mail.com",
+                password = "Passw0rd",
+                role = Helpers.Role.User
+            };
+            Users user2 = new Users
+            {
+                users_id = 2,
+                email = "Test2@Mail.com",
+                password = "Passw0rd",
+                role = Helpers.Role.Admin
+            };
+            _context.Users.Add(user1); 
+            _context.Users.Add(user2);
+            await _context.SaveChangesAsync();
+            Users user1Update = new Users
+            {
+                users_id = user1Id,
+                email = "Test2@Mail.com",
+                password = "Passw0rd",
+                role = Helpers.Role.User
+            };
+            // Act
+            Func<Task> action = async () => await _sut.Update(user1Id, user1Update);
+            // Assert
+            var ex = await Assert.ThrowsAsync<Exception>(action);
+            Assert.Contains("Email " + user2.email + " is already taken", ex.Message);
         }
         // -----------------------------------------------------------------------------------------------------------------------
         // Delete Tests
+        [Fact]
+        public async Task Delete_ShouldReturnDeletedUser_WhenUserIsDeleted()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int userId = 1;
+            Users user = new Users
+            {
+                users_id = userId,
+                email = "Test1@Mail.com",
+                password = "Passw0rd",
+                role = Helpers.Role.User
+            };
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+            // Act
+            var result = await _sut.Delete(userId);
+            var users = await _sut.GetAll();
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<Users>(result);
+            Assert.Equal(userId, result.users_id);
+            Assert.Empty(users);
+        }
+        [Fact]
+        public async Task Delete_ShouldReturnNull_WhenUserDoesNotExist()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int userId = 1;
+            // Act
+            var result = await _sut.Delete(userId);
+            // Assert
+            Assert.Null(result);
+        }
+
     }
 }
