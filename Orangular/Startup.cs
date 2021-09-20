@@ -15,6 +15,8 @@ using System.Threading.Tasks;
 
 // -- tilføjet af Victor -- //
 using Orangular.Database.Entities;
+using Orangular.Services.users;
+using Orangular.Repositories.users;
 // -- tilføjet af Victor -- //
 
 namespace Orangular
@@ -36,6 +38,9 @@ namespace Orangular
             services.AddDbContext<OrangularProjectContext>(
                 o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
             // -- tilføjet af Victor -- //
+
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

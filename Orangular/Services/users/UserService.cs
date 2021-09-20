@@ -25,11 +25,11 @@ namespace Orangular.Services.users
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private readonly IJwtUtils _jwtUtils;
-        public UserService(IUserRepository userRepository, IJwtUtils jwtUtils)
+       // private readonly IJwtUtils _jwtUtils;
+        public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
-            _jwtUtils = jwtUtils;
+           // _jwtUtils = jwtUtils;
         }
         public async Task<List<UsersResponse>> GetAll()
         {
@@ -39,7 +39,8 @@ namespace Orangular.Services.users
                 users_id = u.users_id,
                 email = u.email,
                 role = u.role,
-                Order_Lists = u.order_lists.Select(o => new UsersOrder_ListsResponse{
+                Order_Lists = u.order_lists.Select(o => new UsersOrder_ListsResponse
+                {
                     order_lists_id = o.order_lists_id,
                     order_date_time = o.order_date_time
                 }).ToList(),
