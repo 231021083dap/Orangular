@@ -8,6 +8,6 @@ namespace Orangular.Tests.CategoriesTests
 {
     class CategoriesServiceTest
     {
-        private readonly C
+        
     }
 }

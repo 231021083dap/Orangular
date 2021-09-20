@@ -26,6 +26,11 @@ namespace Orangular.Repositories.categories
         //linking to the database context. This files includes rules for the DB and will be called to manipulate data
         private readonly OrangularProjectContext _context;
 
+        public CategoryRepository(OrangularProjectContext context)
+        {
+            _context = context;
+        }
+
         //Creating asyncs CRUD functions. 
         public async Task<Categories> create(Categories categories)
         {
