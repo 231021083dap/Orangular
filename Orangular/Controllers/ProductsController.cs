@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Orangular.DTO.Products.Requests;
 using Orangular.DTO.Products.Responses;
@@ -145,3 +146,4 @@ namespace Orangular.Controllers
         }
     }
 }
+

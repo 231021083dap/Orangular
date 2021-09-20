@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Orangular.Database.Entities;
 using Orangular.Repositories.products;
 using System;
@@ -25,6 +25,7 @@ namespace Orangular.Repositories
             return products;
         }
 
+
         public async Task<Products> Delete(int products_id)
         {
             Products products = await _context.Products.FirstOrDefaultAsync(a => a.products_id == products_id);
@@ -46,7 +47,7 @@ namespace Orangular.Repositories
         public async Task<Products> GetById(int products_id)
         {
             return await _context.Products.FirstOrDefaultAsync(a => a.products_id == products_id);
-        }
+       }
 
         public async Task<Products> Update(int products_id, Products products)
         {

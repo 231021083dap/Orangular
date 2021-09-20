@@ -1,4 +1,4 @@
-﻿using Orangular.Database.Entities;
+using Orangular.Database.Entities;
 using Orangular.DTO.Products.Requests;
 using Orangular.DTO.Products.Responses;
 using Orangular.Repositories;
