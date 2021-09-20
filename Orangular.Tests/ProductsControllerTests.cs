@@ -66,11 +66,11 @@ namespace Orangular.Tests
         public async void GetAll_ShouldReturnStatusCode204_whenNoDataExists()
         {
             // Arrange
-            List<ProductsResponse> authors = new();
+            List<ProductsResponse> Productss = new();
 
             _productsService
                 .Setup(s => s.GetAllProducts())
-                .ReturnsAsync(authors);
+                .ReturnsAsync(Productss);
 
             // Act
             var result = await _sut.GetAll();
@@ -143,7 +143,7 @@ namespace Orangular.Tests
         }
 
         [Fact]
-        public async void GetById_ShouldReturnStatusCode404_WhenAuthorDoesNotExist()
+        public async void GetById_ShouldReturnStatusCode404_WhenProductsDoesNotExist()
         {
             // Arrange
             int products_id = 1;
@@ -299,7 +299,7 @@ namespace Orangular.Tests
         }
 
         [Fact]
-        public async void Delete_ShouldReturnStatusCode204_WhenAuthorIsDeleted()
+        public async void Delete_ShouldReturnStatusCode204_WhenProductsIsDeleted()
         {
             // Arrange
             int products_id = 1;
