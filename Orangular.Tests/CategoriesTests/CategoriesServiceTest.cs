@@ -1,5 +1,6 @@
 ﻿using Moq;
 using Orangular.Database.Entities;
+using Orangular.DTO.Categories.Requests;
 using Orangular.DTO.Categories.Responses;
 using Orangular.Repositories.categories;
 using Orangular.Services.categories;
@@ -107,6 +108,55 @@ namespace Orangular.Tests.CategoriesTests
             var result = await _systemUnderTest.getById(categoryId);
 
             Assert.Null(result);
+        }
+
+  /*
+        [Fact]
+      public async void create_ShouldReturnCategoryResponse_whenCreateIsSucces()
+        {
+
+            NewCategories newCategories = new NewCategories
+            {
+                category_name = "Katte",
+                
+            };
+            int categoryId = 1;
+
+            Categories categories = new Categories
+            {
+              categories_id = categoryId,
+              category_name = "Hunde"
+            };
+
+            _categoryRepository
+                .Setup(a => a.create(It.IsAny<Categories>()))
+                .ReturnsAsync(categories);
+            var result = await _systemUnderTest.create(newCategories);
+
+            Assert.NotNull(result);
+            Assert.IsType<CategoriesResponse>(result);
+            Assert.Equal(categoryId, result.categories_id);
+            Assert.Equal(newCategories.category_name, result.category_name);      
+        }
+   */
+        [Fact]
+        public async void delete_shouldReturnTrue_WhenDeleteIsSuccess()
+        {
+            int categoryId = 1;
+            Categories categories = new Categories
+            {
+                categories_id = categoryId,
+                category_name ="Hunde"
+
+            };
+
+            _categoryRepository
+                .Setup(a => a.delete(It.IsAny<int>()))
+                .ReturnsAsync(categories);
+
+            var result = await _systemUnderTest.delete(categoryId);
+
+            Assert.True(result);
         }
 
     }
