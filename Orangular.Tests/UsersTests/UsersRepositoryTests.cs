@@ -140,13 +140,65 @@ namespace Orangular.Tests.UsersTests
             var ex = await Assert.ThrowsAsync<Exception>(action);
             Assert.Contains("Nice try, userId " + user.users_id + " already Exists", ex.Message);
         }
-
-        // Create skal fejle hvis email allerede existere
-
-        // Create skal fejle hvis Password er null
+        [Fact]
+        public async Task Create_ShouldFailToAddUser_WhenAddingUserWithExistingEmail()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            Users user1 = new Users
+            {
+                users_id = 1,
+                email = "Test1@Mail.com",
+                password = "Passw0rd",
+                role = Helpers.Role.User
+            };
+            Users user2 = new Users
+            {
+                users_id = 2,
+                email = "Test1@Mail.com",
+                password = "Passw0rd",
+                role = Helpers.Role.User
+            };
+            _context.Users.Add(user1);
+            await _context.SaveChangesAsync();
+            // Act
+            Func<Task> action = async () => await _sut.Create(user2);
+            // Assert
+            var ex = await Assert.ThrowsAsync<Exception>(action);
+            Assert.Contains("Email " + user1.email + " is already taken", ex.Message);
+        }
+        [Fact]
+        public async Task Create_ShouldFailToAddUser_WhenPasswordIsNull()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            Users user = new Users
+            {
+                users_id = 1,
+                email = "Test1@Mail.com",
+                role = Helpers.Role.User
+            };
+            // Act
+            Func<Task> action = async () => await _sut.Create(user);
+            // Assert
+            var ex = await Assert.ThrowsAsync<Exception>(action);
+            Assert.Contains("You must enter a password", ex.Message);
+        }
         // -----------------------------------------------------------------------------------------------------------------------
         // Update Tests
-
+        [Fact]
+        public async Task Update_ShouldChangeValuesOnUser_WhenUserExists()
+        {
+            await _context.Database.EnsureDeletedAsync();
+            int userId = 1;
+            Users user1 = new Users
+            {
+                users_id = 1,
+                email = "Test1@Mail.com",
+                password = "Passw0rd",
+                role = Helpers.Role.User
+            };
+        }
         // -----------------------------------------------------------------------------------------------------------------------
         // Delete Tests
     }

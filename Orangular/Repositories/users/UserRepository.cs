@@ -30,14 +30,13 @@ namespace Orangular.Repositories.users
                 .Include(b => b.order_lists)
                 .ToListAsync();
         }
-        public async Task<Users> GetById(int userId)
+        public async Task<Users> GetById(int userId) // Mangler check hvis id ikke findes
         {
             return await _context.Users
                 .Include(a => a.addresses)
                 .Include(b => b.order_lists)
                 .FirstOrDefaultAsync(u => u.users_id == userId);
         }
-        // Users mangler muligvis et check for korrekt data. Jeg vender tilbage når user er fuldt implementeret - Julian
         public async Task<Users> Create(Users user)
         {
             if (_context.Users.Any(u => u.users_id == user.users_id)) throw new Exception("Nice try, userId " + user.users_id + " already Exists");
@@ -52,15 +51,10 @@ namespace Orangular.Repositories.users
             Users updateUser = await _context.Users.FirstOrDefaultAsync(u => u.users_id == userId);
             if (updateUser != null)
             {
-                if (_context.Users.Any(u => u.users_id != userId && u.email == user.email)) // hvis en anden user allerede har email adressen
-                {
-                    throw new Exception("Email " + user.email + " is already taken");
-                }
-
+                if (_context.Users.Any(u => u.users_id != userId && u.email == user.email)) throw new Exception("Email " + user.email + " is already taken");
                 updateUser.email = user.email;
                 if (user.password != null) updateUser.password = user.password;
                 updateUser.role = user.role;
-
             }
             return updateUser;
         }
