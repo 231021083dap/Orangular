@@ -52,6 +52,7 @@ namespace Orangular.Repositories.categories
 
         public async Task<List<Categories>> getAll()
         {
+            //
             return await _context.Categories
                 .Include(p => p.products).ToListAsync();
         }
