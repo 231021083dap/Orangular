@@ -13,6 +13,11 @@ namespace Orangular.Repositories
     {
         private readonly OrangularProjectContext _context;
 
+        public ProductsRepository(OrangularProjectContext context)
+        {
+            _context = context;
+        }
+
         public async Task<Products> Create(Products products)
         {
             _context.Products.Add(products);

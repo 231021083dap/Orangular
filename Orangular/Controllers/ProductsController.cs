@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Orangular.DTO.Products.Requests;
 using Orangular.DTO.Products.Responses;
 using Orangular.Services;
+using Orangular.Services.products;
 using System;
 using System.Collections.Generic;
 using System.Linq;

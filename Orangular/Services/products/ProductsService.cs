@@ -13,9 +13,14 @@ namespace Orangular.Services
 {
 
 
-    public class ProductService : IProductsService
+    public class ProductsService : IProductsService
     {
         private readonly IProductsRepository _productsRepository;
+
+        public ProductsService(IProductsRepository productsRepository)
+        {
+            _productsRepository = productsRepository;
+        }
 
         public async Task<ProductsResponse> Create(NewProducts newProducts)
         {
