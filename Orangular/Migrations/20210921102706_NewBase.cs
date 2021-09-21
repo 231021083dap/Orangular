@@ -156,7 +156,7 @@ namespace Orangular.Migrations
             migrationBuilder.InsertData(
                 table: "Order_Lists",
                 columns: new[] { "order_lists_id", "order_date_time", "users_id", "users_id1" },
-                values: new object[] { 1, new DateTime(2021, 9, 17, 10, 51, 19, 930, DateTimeKind.Local).AddTicks(2010), 0, null });
+                values: new object[] { 1, new DateTime(2021, 9, 21, 12, 27, 5, 786, DateTimeKind.Local).AddTicks(1521), 0, null });
 
             migrationBuilder.InsertData(
                 table: "Products",
@@ -168,8 +168,8 @@ namespace Orangular.Migrations
                 columns: new[] { "users_id", "email", "password", "role" },
                 values: new object[,]
                 {
-                    { 1, "admin@admins.com", "Passw0rd", 0 },
-                    { 2, "user@users.com", "Passw0rd", 1 }
+                    { 1, "admin@admins.com", "Passw0rd", 1 },
+                    { 2, "user@users.com", "Passw0rd", 2 }
                 });
 
             migrationBuilder.CreateIndex(

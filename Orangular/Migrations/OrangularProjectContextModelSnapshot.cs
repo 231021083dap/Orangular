@@ -162,7 +162,7 @@ namespace Orangular.Migrations
                         new
                         {
                             order_lists_id = 1,
-                            order_date_time = new DateTime(2021, 9, 17, 10, 51, 19, 930, DateTimeKind.Local).AddTicks(2010),
+                            order_date_time = new DateTime(2021, 9, 21, 12, 27, 5, 786, DateTimeKind.Local).AddTicks(1521),
                             users_id = 0
                         });
                 });
@@ -243,14 +243,14 @@ namespace Orangular.Migrations
                             users_id = 1,
                             email = "admin@admins.com",
                             password = "Passw0rd",
-                            role = 0
+                            role = 1
                         },
                         new
                         {
                             users_id = 2,
                             email = "user@users.com",
                             password = "Passw0rd",
-                            role = 1
+                            role = 2
                         });
                 });
 

@@ -27,7 +27,6 @@ namespace Orangular
         {
             Configuration = configuration;
         }
-        // HI
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -35,14 +34,13 @@ namespace Orangular
         {
             // -- tilføjet af Victor -- //
             // Forbinder sql serveren
-            services.AddDbContext<OrangularProjectContext>(
-                o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddControllers();
+            services.AddDbContext<OrangularProjectContext>(o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
             // -- tilføjet af Victor -- //
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
-
-            services.AddControllers();
+           
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Orangular", Version = "v1" });

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Orangular.Tests.UsersTests
+namespace Orangular.Tests.UserTest
 {
    public class UserRepositoryTest
     {
@@ -96,6 +96,40 @@ namespace Orangular.Tests.UsersTests
             int userId = 1;
             // Act
             var result = await _sut.GetById(userId);
+            // Assert
+            Assert.Null(result);
+        }
+        // -----------------------------------------------------------------------------------------------------------------------
+        // GetByEmail Tests
+        [Fact]
+        public async Task GetByEmail_ShouldReturnEmail_IfEmailExists()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            string userEmail = "Test1@Mail.com";
+            _context.Users.Add(new Users
+            {
+                users_id = 1,
+                email = userEmail,
+                password = "Passw0rd",
+                role = Helpers.Role.Admin
+            });
+            await _context.SaveChangesAsync();
+            // Act
+            var result = await _sut.GetByEmail(userEmail);
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<Users>(result);
+            Assert.Equal(userEmail, result.email);
+        }
+        [Fact]
+        public async Task GetByEmail_ShouldReturnNull_IfEmailDoesNotExist()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            string userEmail = "Test1@Mail.com";
+            // Act
+            var result = await _sut.GetByEmail(userEmail);
             // Assert
             Assert.Null(result);
         }

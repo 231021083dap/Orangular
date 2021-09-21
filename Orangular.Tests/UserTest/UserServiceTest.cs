@@ -18,15 +18,39 @@ namespace Orangular.Tests.UserTest
     {
         private readonly UserService _sut;
         private readonly Mock<IUserRepository> _userRepository = new();
-       // private readonly Mock<IJwtUtils> _jwtUtils = new();
+        // private readonly Mock<IJwtUtils> _jwtUtils = new();
         public UserServiceTest()
         {
             _sut = new UserService(_userRepository.Object);
         }
         // -----------------------------------------------------------------------------------------------------------------------
+        // Authenticate Tests
+        [Fact]
+        public async Task Authenticate_ShouldReturnLoginResponse_WhenAuthenticateIsSuccess()
+        {
+            // Arrange
+            // Act
+            // Assert
+        }
+        [Fact]
+        public async Task Authenticate_ShouldReturnNull_WhenEmailIsNull()
+        {
+            // Arrange
+            // Act
+            // Assert
+        }
+        [Fact]
+        public async Task Authenticate_ShouldReturnNull_WhenPasswordIsNull()
+        {
+            // Arrange
+            // Act
+            // Assert
+        }
+
+        // -----------------------------------------------------------------------------------------------------------------------
         // GetAll Tests
         [Fact]
-        public async void GetAll_ShouldReturnListOfUserResponses_WhenUsersExists()
+        public async Task GetAll_ShouldReturnListOfUserResponses_WhenUsersExists()
         {
             // Arrange
             List<Users> user = new();
@@ -35,8 +59,8 @@ namespace Orangular.Tests.UserTest
                 users_id = 1,
                 email = "Test1@Mail.com",
                 role = Helpers.Role.User,
-                order_lists = new List<Order_Lists> {},
-                addresses = new List<Addresses> {}
+                order_lists = new List<Order_Lists> { },
+                addresses = new List<Addresses> { }
 
             });
             user.Add(new Users
@@ -44,8 +68,8 @@ namespace Orangular.Tests.UserTest
                 users_id = 2,
                 email = "Test2@Mail.com",
                 role = Helpers.Role.User,
-                order_lists = new List<Order_Lists> {},
-                addresses = new List<Addresses> {}
+                order_lists = new List<Order_Lists> { },
+                addresses = new List<Addresses> { }
             });
             _userRepository.Setup(u => u.GetAll()).ReturnsAsync(user);
             // Act
@@ -103,9 +127,9 @@ namespace Orangular.Tests.UserTest
             Assert.Null(result);
         }
         // -----------------------------------------------------------------------------------------------------------------------
-        // Register Tests
+        // Create Tests
         [Fact]
-        public async Task Register_ShouldReturnUserResponse_WhenCreateIsSuccess()
+        public async Task Create_ShouldReturnUserResponse_WhenCreateIsSuccess()
         {
             // Arrange
             NewUser newUser = new NewUser // vi sender ind
@@ -118,7 +142,7 @@ namespace Orangular.Tests.UserTest
             {
                 users_id = userId,
                 email = "Test1@Mail.com",
-                password = "Passw0rd", 
+                password = "Passw0rd",
                 role = Helpers.Role.User
             };
             _userRepository.Setup(a => a.Create(It.IsAny<Users>())).ReturnsAsync(user);
@@ -130,10 +154,10 @@ namespace Orangular.Tests.UserTest
             Assert.Equal(userId, result.users_id);
             Assert.Equal(newUser.Email, result.email);
             Assert.Equal(newUser.Password, result.password);
-            Assert.Equal(Helpers.Role.User, result.role );
+            Assert.Equal(Helpers.Role.User, result.role);
         }
         [Fact]
-        public async Task Register_ShouldReturnNull_WhenCreatedUserIsNull()
+        public async Task Create_ShouldReturnNull_WhenCreatedUserIsNull()
         {
             // Arrange
             NewUser newUser = new NewUser
@@ -201,31 +225,37 @@ namespace Orangular.Tests.UserTest
         public async Task Delete_ShouldReturnTrue_WhenDeleteIsSuccess()
         {
             // Arrange
+            int userId = 1;
+            Users user = new Users
+            {
+                users_id = userId,
+                email = "Test1@Mail.com",
+                password = "Passw0rd",
+                role = Helpers.Role.User,
+            };
+            _userRepository.Setup(a => a.Delete(It.IsAny<int>())).ReturnsAsync(user);
             // Act
+            var result = await _sut.Delete(userId);
             // Assert
+            Assert.True(result);
         }
         [Fact]
         public async Task Delete_ShouldReturnFalse_WhenDeleteIsUnsuccessfull()
         {
             // Arrange
+            int userId = 1;
+            Users user = new Users
+            {
+                users_id = userId,
+                email = "Test1@Mail.com",
+                password = "Passw0rd",
+                role = Helpers.Role.User,
+            };
+            _userRepository.Setup(a => a.Delete(It.IsAny<int>())).ReturnsAsync(() => null);
             // Act
+            var result = await _sut.Delete(userId);
             // Assert
-        }
-        // -----------------------------------------------------------------------------------------------------------------------
-        // Authenticate Tests
-        [Fact]
-        public async Task Testname1()
-        {
-            // Arrange
-            // Act
-            // Assert
-        }
-        [Fact]
-        public async Task TestName2()
-        {
-            // Arrange
-            // Act
-            // Assert
+            Assert.False(result);
         }
     }
 }

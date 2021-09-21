@@ -14,13 +14,12 @@ namespace Orangular.Services.users
 
     public interface IUserService
     {
-        //Task<LoginResponse> Authenticate(LoginRequest login);
+       // Task<LoginResponse> Authenticate(LoginRequest login);
         Task<List<UsersResponse>> GetAll();
         Task<UsersResponse> GetById(int userId);
-        
         Task<UsersResponse> Create(NewUser newUser);
         Task<UsersResponse> Update(int userId, UpdateUser updateUser);
-         Task<bool> Delete(int userId);
+        Task<bool> Delete(int userId);
     }
     public class UserService : IUserService
     {
@@ -29,7 +28,34 @@ namespace Orangular.Services.users
         public UserService(IUserRepository userRepository/*, IJwtUtils jwtUtils*/)
         {
             _userRepository = userRepository;
-           // _jwtUtils = jwtUtils;
+         //   _jwtUtils = jwtUtils;
+        }
+        //public async Task<LoginResponse> Authenticate(LoginRequest login)
+        //{
+        //    Users user = await _userRepository.GetByEmail(login.Email);
+        //    if (user == null) return null;
+        //    if (user.password == login.Password)
+        //    {
+        //        LoginResponse response = new LoginResponse
+        //        {
+        //            Id = user.users_id,
+        //            Email = user.email,
+        //            Role = user.role,
+        //            Token = _jwtUtils.GenerateJwtToken(user)
+        //        };
+        //        return response;
+        //    }
+        //    return null;
+        //}
+        private UsersResponse userResponse(Users user) // userResponse bliver brugt til GetById, Create & Update
+        {
+            return user == null ? null : new UsersResponse
+            {
+                users_id = user.users_id,
+                email = user.email,
+                password = user.password,
+                role = user.role
+            };
         }
         public async Task<List<UsersResponse>> GetAll()
         {
@@ -53,23 +79,11 @@ namespace Orangular.Services.users
                 }).ToList()
             }).ToList();
         }
-        
-        private UsersResponse userResponse(Users user) // userResponse bliver brugt til GetById, Create & Update...
-        {
-            return user == null ? null : new UsersResponse
-            { 
-                users_id = user.users_id,
-                email = user.email,
-                password = user.password,
-                role = user.role
-            };
-        }
         public async Task<UsersResponse> GetById(int userId)
         {
             Users user = await _userRepository.GetById(userId);
             return userResponse(user);
         }
-
         public async Task<UsersResponse> Create(NewUser newUser)
         {
             Users user = new Users
@@ -81,7 +95,6 @@ namespace Orangular.Services.users
             user = await _userRepository.Create(user);
             return userResponse(user);
         }
-
         public async Task<UsersResponse> Update(int userId, UpdateUser updateUser)
         {
             Users user = new Users
@@ -99,6 +112,5 @@ namespace Orangular.Services.users
             if (result != null) return true;
             else return false;
         }
-
     }
 }

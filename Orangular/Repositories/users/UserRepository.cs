@@ -11,6 +11,7 @@ namespace Orangular.Repositories.users
     {
         Task<List<Users>> GetAll();
         Task<Users> GetById(int userId);
+        Task<Users> GetByEmail(string email);
         Task<Users> Create(Users user);
         Task<Users> Update(int userId, Users user);
         Task<Users> Delete(int userId);
@@ -36,6 +37,10 @@ namespace Orangular.Repositories.users
                 .Include(a => a.addresses)
                 .Include(b => b.order_lists)
                 .FirstOrDefaultAsync(u => u.users_id == userId);
+        }
+        public async Task<Users> GetByEmail(string email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.email == email);
         }
         public async Task<Users> Create(Users user)
         {
