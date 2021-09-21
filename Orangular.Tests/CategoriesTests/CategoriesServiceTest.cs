@@ -23,6 +23,10 @@ namespace Orangular.Tests.CategoriesTests
             _systemUnderTest = new CategoryService(_categoryRepository.Object);
         }
 
+        // arrange
+        // act
+        // assert
+
         [Fact]
         public async void getAll_ShouldAReturnListOfCategoryResponse_WhenCategoryExist()
         {

@@ -32,6 +32,11 @@ namespace Orangular.Tests.CategoriesTests
             _systemUnderTest = new CategoryRepository(_context);
         }
 
+        // arrange
+        // act
+        // assert
+
+
         //------------ Test scenario for getAll-method ---------------//
 
         [Fact]
