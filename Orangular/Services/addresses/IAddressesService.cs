@@ -1,17 +1,19 @@
 ﻿using Orangular.Database.Entities;
+using Orangular.DTO.Addresses.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace Orangular.Services.addresses
 {
     interface IAddressesService
     {
-        Task<List<Addresses>> getAll();
-        Task<Addresses> getById(int addressesId);
-        Task<Addresses> create(Addresses addresses);
-        Task<Addresses> update(int addressesId, Addresses addresses);
+        Task<List<AddressesResponse>> getAll();
+        Task<AddressesResponse> getById(int addressesId);
+        Task<AddressesResponse> create(Addresses addresses);
+        Task<AddressesResponse> update(int addressesId, Addresses addresses);
         Task<bool> delete(int addressesId);
     }
 }

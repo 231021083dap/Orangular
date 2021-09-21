@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 
 // -- tilføjet af Victor -- //
 using Orangular.Database.Entities;
+using Orangular.Database;
 // -- tilføjet af Victor -- //
 
 namespace Orangular
