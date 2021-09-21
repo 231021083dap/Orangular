@@ -14,19 +14,19 @@ namespace Orangular.Services.users
 
     public interface IUserService
     {
+        //Task<LoginResponse> Authenticate(LoginRequest login);
         Task<List<UsersResponse>> GetAll();
         Task<UsersResponse> GetById(int userId);
-        //Task<LoginResponse> Authenticate(LoginRequest login);
-        //Task<UsersResponse> Register(RegisterUser newUser);
-        //Task<UsersResponse> Update(int userId, UpdateUser updateUser);
-
-        // delete
+        
+        Task<UsersResponse> Create(NewUser newUser);
+        Task<UsersResponse> Update(int userId, UpdateUser updateUser);
+         Task<bool> Delete(int userId);
     }
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
        // private readonly IJwtUtils _jwtUtils;
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository/*, IJwtUtils jwtUtils*/)
         {
             _userRepository = userRepository;
            // _jwtUtils = jwtUtils;
@@ -34,7 +34,7 @@ namespace Orangular.Services.users
         public async Task<List<UsersResponse>> GetAll()
         {
             List<Users> users = await _userRepository.GetAll();
-            return users == null ? null : users.Select(u => new UsersResponse
+            return users.Select(u => new UsersResponse
             {
                 users_id = u.users_id,
                 email = u.email,
@@ -53,9 +53,52 @@ namespace Orangular.Services.users
                 }).ToList()
             }).ToList();
         }
+        
+        private UsersResponse userResponse(Users user) // userResponse bliver brugt til GetById, Create & Update...
+        {
+            return user == null ? null : new UsersResponse
+            { 
+                users_id = user.users_id,
+                email = user.email,
+                password = user.password,
+                role = user.role
+            };
+        }
         public async Task<UsersResponse> GetById(int userId)
         {
-            return null;
+            Users user = await _userRepository.GetById(userId);
+            return userResponse(user);
         }
+
+        public async Task<UsersResponse> Create(NewUser newUser)
+        {
+            Users user = new Users
+            {
+                email = newUser.Email,
+                password = newUser.Password,
+                role = Helpers.Role.User // All users created through Register has the role of user
+            };
+            user = await _userRepository.Create(user);
+            return userResponse(user);
+        }
+
+        public async Task<UsersResponse> Update(int userId, UpdateUser updateUser)
+        {
+            Users user = new Users
+            {
+                email = updateUser.Email,
+                password = updateUser.Password,
+                role = updateUser.Role
+            };
+            user = await _userRepository.Update(userId, user);
+            return userResponse(user);
+        }
+        public async Task<bool> Delete(int userId)
+        {
+            var result = await _userRepository.Delete(userId);
+            if (result != null) return true;
+            else return false;
+        }
+
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Orangular.DTO.Login.Requests
 {
-    public class RegisterUser
+    public class NewUser
     {
         [Required]
         [StringLength(255, ErrorMessage = "Email must be less than 255 chars")]
