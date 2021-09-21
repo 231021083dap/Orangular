@@ -50,7 +50,6 @@ namespace Orangular.Tests.CategoriesTests
             Assert.Equal(2, result.Count);
             Assert.IsType<List<CategoriesResponse>>(result);
         }
-
         [Fact]
         public async void getAll_ShouldReturnEmptyListOfCategoryResponse_WhenNoCategoryExists()
         {
@@ -95,7 +94,6 @@ namespace Orangular.Tests.CategoriesTests
      
 
         }
-
         [Fact]
         public async void getbyID_ShouldReturnNull_WhenNoAuthorExists()
         {
@@ -109,8 +107,8 @@ namespace Orangular.Tests.CategoriesTests
 
             Assert.Null(result);
         }
-   [Fact]
-      public async void create_ShouldReturnCategoryResponse_whenCreateIsSucces()
+        [Fact]
+        public async void create_ShouldReturnCategoryResponse_whenCreateIsSucces()
         {
 
             NewCategories newCategories = new NewCategories
@@ -136,7 +134,7 @@ namespace Orangular.Tests.CategoriesTests
             Assert.Equal(categoryId, result.categories_id);
             Assert.Equal(newCategories.category_name, result.category_name);      
         }
-     [Fact]
+        [Fact]
         public async void delete_shouldReturnTrue_WhenDeleteIsSuccess()
         {
             int categoryId = 1;
@@ -154,6 +152,37 @@ namespace Orangular.Tests.CategoriesTests
             var result = await _systemUnderTest.delete(categoryId);
 
             Assert.True(result);
+        }
+
+        [Fact]
+        public async void Update_ShouldReturnAuthorResponse_whenUpdateIsSucces()
+        {
+
+            UpdateCategories updateCategories = new  UpdateCategories
+            {
+              category_name = "Katte"
+            };
+            int categoryId = 1;
+
+            Categories categories = new Categories
+            {
+                categories_id = categoryId,
+                category_name = "Katte"
+            };
+
+            _categoryRepository
+                .Setup(c => c.update(It.IsAny<int>(), It.IsAny<Categories>()))
+                .ReturnsAsync(categories);
+
+            var result = await _systemUnderTest.update(categoryId, updateCategories);
+            Assert.NotNull(result);
+            Assert.IsType<CategoriesResponse>(result);
+            Assert.Equal(categoryId, result.categories_id);
+            Assert.Equal(updateCategories.category_name, result.category_name);
+
+
+
+
         }
 
     }
