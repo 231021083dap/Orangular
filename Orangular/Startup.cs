@@ -41,6 +41,7 @@ namespace Orangular
 
             services.AddControllers();
             //Addedd by Muhmen
+            //These two lines refering to Service, and Repository files and Interfaces
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
 

@@ -21,6 +21,7 @@ namespace Orangular.Controllers
         {
             _categoryService = categoryService;
         }
+        // ---------------------- Muhmen P.//
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -55,13 +56,13 @@ namespace Orangular.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> getById([FromRoute] int categoriesId)
+        public async Task<IActionResult> getById([FromRoute] int categories_id)
         {
 
 
             try
             {
-                CategoriesResponse categoriesResponse = await _categoryService.getById(categoriesId);
+                CategoriesResponse categoriesResponse = await _categoryService.getById(categories_id);
 
                 if (categoriesResponse == null)
                 {
@@ -113,13 +114,13 @@ namespace Orangular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> update([FromRoute] int authorId, [FromBody] UpdateCategories updateCategories)
+        public async Task<IActionResult> update([FromRoute] int categories_id, [FromBody] UpdateCategories updateCategories)
         {
 
 
             try
             {
-                CategoriesResponse categoriesResponse = await _categoryService.update(authorId, updateCategories);
+                CategoriesResponse categoriesResponse = await _categoryService.update(categories_id, updateCategories);
 
                 if (categoriesResponse == null)
                 {
@@ -144,12 +145,12 @@ namespace Orangular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> delete([FromRoute] int categoriesId)
+        public async Task<IActionResult> delete([FromRoute] int categories_id)
         {
 
             try
             {
-                bool result = await _categoryService.delete(categoriesId);
+                bool result = await _categoryService.delete(categories_id);
 
                 if (!result)
                 {
@@ -167,6 +168,7 @@ namespace Orangular.Controllers
 
 
         }
+        // ---------------------- Muhmen P.//
     }
 }
 
