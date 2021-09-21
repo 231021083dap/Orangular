@@ -12,7 +12,7 @@ namespace Orangular.Services.products
         Task<List<ProductsResponse>> GetAllProducts();
         Task<ProductsResponse> GetById(int products_id);
         Task<ProductsResponse> Create(NewProducts newProducts);
-        Task<ProductsResponse> Update(int products_id, UpdateProducts updateAuthor);
+        Task<ProductsResponse> Update(int products_id, UpdateProducts updateProducts);
         Task<bool> Delete(int products_id);
 
 
