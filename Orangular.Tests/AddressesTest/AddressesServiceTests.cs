@@ -127,7 +127,7 @@ namespace Orangular.Tests.AddressesTest
                 // Arrange
                 int search_id = 1;
 
-                Addresses address = new Addresses
+                Addresses newAddress = new Addresses
                 {
                     addresses_id = 1,
                     users_id = 1,
@@ -135,6 +135,12 @@ namespace Orangular.Tests.AddressesTest
                     zip_code = 2750
                 };
 
+                _addressesRepository
+                    .Setup(a => a.Create(It.IsAny<Addresses>()))
+                .ReturnsAsync(newAddress);
+
+                // Act
+                var result = await _sut.create(newAddress);
                 
             }
         // ---- Create Tests ---- //
