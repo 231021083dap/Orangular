@@ -39,7 +39,8 @@ namespace Orangular.Services.categories
 
             return categories == null ? null : new CategoriesResponse
             {
-             category_name = newCategories.category_name,
+            categories_id = categories.categories_id,
+             category_name = categories.category_name
 
             };
         }

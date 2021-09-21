@@ -109,9 +109,7 @@ namespace Orangular.Tests.CategoriesTests
 
             Assert.Null(result);
         }
-
-  /*
-        [Fact]
+   [Fact]
       public async void create_ShouldReturnCategoryResponse_whenCreateIsSucces()
         {
 
@@ -125,7 +123,7 @@ namespace Orangular.Tests.CategoriesTests
             Categories categories = new Categories
             {
               categories_id = categoryId,
-              category_name = "Hunde"
+              category_name = "Katte"
             };
 
             _categoryRepository
@@ -138,8 +136,7 @@ namespace Orangular.Tests.CategoriesTests
             Assert.Equal(categoryId, result.categories_id);
             Assert.Equal(newCategories.category_name, result.category_name);      
         }
-   */
-        [Fact]
+     [Fact]
         public async void delete_shouldReturnTrue_WhenDeleteIsSuccess()
         {
             int categoryId = 1;
