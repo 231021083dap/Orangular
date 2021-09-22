@@ -15,6 +15,8 @@ using System.Threading.Tasks;
 
 // -- tilføjet af Victor -- //
 using Orangular.Database.Entities;
+using Orangular.Services.categories;
+using Orangular.Repositories.categories;
 // -- tilføjet af Victor -- //
 
 namespace Orangular
@@ -38,6 +40,11 @@ namespace Orangular
             // -- tilføjet af Victor -- //
 
             services.AddControllers();
+            //Addedd by Muhmen
+            //These two lines refering to Service, and Repository files and Interfaces
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Orangular", Version = "v1" });

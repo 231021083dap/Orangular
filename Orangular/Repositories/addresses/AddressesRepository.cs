@@ -8,10 +8,15 @@ namespace Orangular.Repositories.addresses
 {
     interface IAddressesRepository
     {
+
+        // ----- Interface signature of address ----- Muhmen P.//
         Task<List<Addresses>> getAll();
         Task<Addresses> getById(int addressesId);
         Task<Addresses> create(Addresses addresses);
         Task<Addresses> update(int addressesId, Addresses addresses);
         Task<bool> delete(int addressesId);
+
+
+        // ----- Interface signature of address ----- Muhmen P.//
     }
 }
