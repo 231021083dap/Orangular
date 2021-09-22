@@ -22,7 +22,7 @@ namespace Orangular.Database.Entities
         [Key]
         public int addresses_id { get; set; }
 
-        // --- Objecktet skal være til stede i klassen for at --- Victor //
+        // --- Objektet skal være til stede i klassen for at --- Victor //
         // --- konvertere C# til SQL med korrekt foreign keys --- //
 
         // [ForeignKey("Users.users_id")]
