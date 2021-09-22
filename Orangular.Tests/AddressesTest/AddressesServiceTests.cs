@@ -128,22 +128,30 @@ namespace Orangular.Tests.AddressesTest
                 // Arrange
                 int search_id = 1;
 
-                Addresses newAddress = new Addresses
+                Addresses addressssss = new Addresses
                 {
-                    addresses_id = 1,
+
+                };
+
+                NewAddresses newAddress = new NewAddresses
+                {
                     users_id = 1,
                     address = "TEC Ballerup",
                     zip_code = 2750
                 };
 
                 _addressesRepository
-                    .Setup(a => a.Create(Moq.It.IsAny<Addresses>()))
-                .ReturnsAsync(newAddress);
+                    .Setup(a => a.Create(It.IsAny<Addresses>()))
+                .ReturnsAsync(addressssss);
 
                 // Act
                 var result = await _sut.create(newAddress);
-                
-            }
+
+                // Assert
+                Assert.NotNull(result);
+                Assert.IsType<AddressesResponse>(result);
+
+        }
         // ---- Create Tests ---- //
 
         // ---- Update Tests ---- //

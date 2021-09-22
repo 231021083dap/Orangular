@@ -18,12 +18,12 @@ namespace Orangular.Repositories.addresses
     }
 
 
-    public class AddressesRespository : IAddressesRepository
+    public class AddressesRepository : IAddressesRepository
     {
         private readonly OrangularProjectContext _context;
 
         // Bruges af AddressesRespositoryTests - xunit
-        public AddressesRespository(OrangularProjectContext context)
+        public AddressesRepository(OrangularProjectContext context)
         {
             _context = context;
         }

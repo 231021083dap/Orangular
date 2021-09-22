@@ -17,7 +17,7 @@ namespace Orangular.Tests.AddressesTest
 {
     public class AddressesRepositoryTests
     {
-        private readonly AddressesRespository _sut;
+        private readonly AddressesRepository _sut;
         private readonly OrangularProjectContext _context;
         private readonly DbContextOptions<OrangularProjectContext> _options;
 
@@ -29,7 +29,7 @@ namespace Orangular.Tests.AddressesTest
 
             _context = new OrangularProjectContext(_options);
 
-            _sut = new AddressesRespository(_context);
+            _sut = new AddressesRepository(_context);
         }
 
 

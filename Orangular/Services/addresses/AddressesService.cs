@@ -50,21 +50,21 @@ namespace Orangular.Services.addresses
                 addresses_id =  addresses.addresses_id,
                 address =  addresses.address,
                 zip_code =  addresses.zip_code,
-                city_name = null,
+                city_name = addresses.city_name,
                 Users = null
 
             };
         }
 
-        public async Task<AddressesResponse> create(Addresses input_address)
-        {
+        public async Task<AddressesResponse> create(NewAddresses input_address)
         {
             Addresses address = new Addresses
             {
-                addresses_id = input_address.addresses_id,
+           
                 users_id = input_address.users_id,
                 address = input_address.address,
-                zip_code = input_address.zip_code
+                zip_code = input_address.zip_code,
+                city_name = input_address.city_name
             };
 
 
@@ -78,7 +78,6 @@ namespace Orangular.Services.addresses
                 city_name = null,
                 Users = null
             };
-        }
         }
 
         public async Task<AddressesResponse> update(int input_address_id, UpdateAddresses input_address)

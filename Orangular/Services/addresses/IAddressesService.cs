@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Orangular.Services.addresses
 {
-    interface IAddressesService
+    public interface IAddressesService
     {
         Task<List<AddressesResponse>> getAll();
         Task<AddressesResponse> getById(int addressesId);
-        Task<AddressesResponse> create(Addresses addresses);
+        Task<AddressesResponse> create(NewAddresses addresses);
         Task<AddressesResponse> update(int addressesId, UpdateAddresses addresses);
         Task<Boolean> delete(int addressesId);
     }
