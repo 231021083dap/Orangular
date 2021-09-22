@@ -87,6 +87,8 @@ namespace Orangular
 
             app.UseAuthorization();
 
+            app.UseCors(CORSRules);
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
