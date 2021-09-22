@@ -10,7 +10,7 @@ namespace Orangular.Services.order_items
 {
     public interface IOrderItemService
     {
-        Task<List<Order_Items>> GetAll();
+        Task<List<Order_ItemsResponse>> GetAll();
         //Task<Order_Items> GetById(int orderItemsId);
         //Task<Order_Items> Create(Order_Items order_Items);
         //Task<Order_Items> Update(int orderItemsId, Order_Items order_Items);
@@ -32,10 +32,18 @@ namespace Orangular.Services.order_items
                 quantity = o.quantity,
                 Order_Lists = new Order_ItemsOrder_ListsResponse
                 {
-                    //order_lists_id = o.order_list,
-                    //order_date_time = o.
+                   order_lists_id = o.order_list.order_lists_id,
+                   order_date_time = o.order_list.order_date_time
+                },
+                Products = new Order_ItemsProductsResponse
+                {
+                    products_id = o.product.products_id,
+                    breed_name = o.product.breed_name,
+                    price = o.product.price,
+                    weight = o.product.weight,
+                    gender = o.product.gender,
+                    description = o.product.description
                 }
-
             }).ToList();
         }
     }
