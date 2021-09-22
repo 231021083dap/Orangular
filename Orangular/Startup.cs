@@ -13,12 +13,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-// -- tilføjet af Victor -- //
+// -- tilfï¿½jet af Victor -- //
 using Orangular.Database.Entities;
 using Orangular.Database;
 using Orangular.Services.addresses;
 using Orangular.Repositories.addresses;
-// -- tilføjet af Victor -- //
+using Orangular.Services.users;
+using Orangular.Repositories.users;
+// -- tilfï¿½jet af Victor -- //
 
 namespace Orangular
 {
@@ -28,24 +30,25 @@ namespace Orangular
         {
             Configuration = configuration;
         }
-        // HI
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // -- tilføjet af Victor -- //
+            // -- tilfï¿½jet af Victor -- //
             // Forbinder sql serveren
-            services.AddDbContext<OrangularProjectContext>(
-                o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
-            // -- tilføjet af Victor -- //
+            services.AddControllers();
+            services.AddDbContext<OrangularProjectContext>(o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
+            // -- tilfï¿½jet af Victor -- //
+
 
             // ---- Victor --- //
             services.AddScoped<IAddressesService, AddressesService>();
             services.AddScoped<IAddressesRepository, AddressesRepository>(); 
             // ---- Victor --- //
-
-            services.AddControllers();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+           
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Orangular", Version = "v1" });

@@ -8,6 +8,15 @@ using System.Threading.Tasks;
 
 namespace Orangular.Repositories.users
 {
+   public interface IUserRepository
+    {
+        Task<List<Users>> GetAll();
+        Task<Users> GetById(int userId);
+        Task<Users> GetByEmail(string email);
+        Task<Users> Create(Users user);
+        Task<Users> Update(int userId, Users user);
+        Task<Users> Delete(int userId);
+    }
     public class UserRepository : IUserRepository
     {
 
@@ -23,45 +32,46 @@ namespace Orangular.Repositories.users
                 .Include(b => b.order_lists)
                 .ToListAsync();
         }
-        public async Task<Users> GetById(int userId)
+        public async Task<Users> GetById(int userId) // Mangler check hvis id ikke findes
         {
             return await _context.Users
                 .Include(a => a.addresses)
                 .Include(b => b.order_lists)
                 .FirstOrDefaultAsync(u => u.users_id == userId);
         }
-        // Users mangler muligvis et check for korrekt data. Jeg vender tilbage når user er fuldt implementeret - Julian
+        public async Task<Users> GetByEmail(string email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.email == email);
+        }
         public async Task<Users> Create(Users user)
         {
-            if (_context.Users.Any(u => u.email == user.email))
+            if (user.email != null && user.password != null)
             {
-                throw new Exception("Email " + user.email + " is already taken");
+                if (_context.Users.Any(u => u.users_id == user.users_id)) throw new Exception("Nice try, userId " + user.users_id + " already Exists");
+                if (_context.Users.Any(u => u.email == user.email)) throw new Exception("Email " + user.email + " is already taken");
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+                return user;
             }
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-            return user;
+            throw new Exception("You must enter an email and a password to create a user");
         }
         public async Task<Users> Update(int userId, Users user)
         {
             Users updateUser = await _context.Users.FirstOrDefaultAsync(u => u.users_id == userId);
             if (updateUser != null)
             {
-                if (_context.Users.Any(u => u.users_id != userId && u.email == user.email)) // hvis en anden user allerede har email adressen
-                {
-                    throw new Exception("Email " + user.email + " is already taken");
-                }
-
-                updateUser.email = user.email;
+                if (_context.Users.Any(u => u.users_id != userId && u.email == user.email)) throw new Exception("Email " + user.email + " is already taken");
+                if (user.email != null) updateUser.email = user.email;
                 if (user.password != null) updateUser.password = user.password;
-                updateUser.role = user.role;
-
+                if (user.role != 0) updateUser.role = user.role;
+                await _context.SaveChangesAsync();
             }
             return updateUser;
         }
         public async Task<Users> Delete(int userId)
         {
             Users deleteUser = await _context.Users.FirstOrDefaultAsync(u => u.users_id == userId);
-            if ( deleteUser != null)
+            if (deleteUser != null)
             {
                 _context.Users.Remove(deleteUser);
                 await _context.SaveChangesAsync();
