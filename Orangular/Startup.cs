@@ -46,7 +46,7 @@ namespace Orangular
                     });
             });
             // -- tilføjet af Victor -- //
-            // Forbinder sql serveren
+            // Forbinder sql serverenw
             services.AddDbContext<OrangularProjectContext>(
                 o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
             // -- tilføjet af Victor -- //
