@@ -1,10 +1,8 @@
-
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Orangular.DTO.Products.Requests;
-using Orangular.DTO.Products.Responses;
-using Orangular.Services;
-using Orangular.Services.products;
+using Orangular.DTO.Order_Lists.Requests;
+using Orangular.DTO.Order_Lists.Responses;
+using Orangular.Services.Order_List;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +12,13 @@ namespace Orangular.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class Order_ListsController : ControllerBase
     {
-        private readonly IProductsService _productsService;
+        private readonly IOrder_ListsService _order_ListsService;
 
-        public ProductsController(IProductsService productsService)
+        public Order_ListsController(IOrder_ListsService orderListsService)
         {
-            _productsService = productsService;
+            _order_ListsService = orderListsService;
         }
 
         [HttpGet]
@@ -31,19 +29,19 @@ namespace Orangular.Controllers
         {
             try
             {
-                List<ProductsResponse> Products = await _productsService.GetAllProducts();
+                List<Order_ListsResponse> Order_Lists = await _order_ListsService.GetAllOrder_Lists();
 
-                if (Products == null)
+                if (Order_Lists == null)
                 {
                     return Problem("Got no data, not even an empty list, this is unexpected");
                 }
 
-                if (Products.Count == 0)
+                if (Order_Lists.Count == 0)
                 {
                     return NoContent();
                 }
 
-                return Ok(Products);
+                return Ok(Order_Lists);
 
             }
             catch (Exception ex)
@@ -52,23 +50,23 @@ namespace Orangular.Controllers
             }
         }
 
-        [HttpGet("{products_id}")]
+        [HttpGet("{order_lists_id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetById([FromRoute] int products_id)
+        public async Task<IActionResult> GetById([FromRoute] int order_lists_id)
         {
             try
             {
-                ProductsResponse Products = await _productsService.GetById(products_id);
+                Order_ListsResponse Order_Lists = await _order_ListsService.GetById(order_lists_id);
 
-                if (Products == null)
+                if (Order_Lists == null)
                 {
                     return NotFound();
                 }
 
-                return Ok(Products);
+                return Ok(Order_Lists);
             }
             catch (Exception ex)
             {
@@ -80,18 +78,18 @@ namespace Orangular.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create([FromBody] NewProducts newProducts)
+        public async Task<IActionResult> Create([FromBody] NewOrder_Lists newOrder_Lists)
         {
             try
             {
-                ProductsResponse Products = await _productsService.Create(newProducts);
+                Order_ListsResponse Order_Lists = await _order_ListsService.Create(newOrder_Lists);
 
-                if (Products == null)
+                if (Order_Lists == null)
                 {
                     return Problem("Product was not created, something went wrong");
                 }
 
-                return Ok(Products);
+                return Ok(Order_Lists);
             }
             catch (Exception ex)
             {
@@ -99,22 +97,22 @@ namespace Orangular.Controllers
             }
         }
 
-        [HttpPut("{products_id}")]
+        [HttpPut("{order_lists_id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update([FromRoute] int products_id, [FromBody] UpdateProducts updateProducts)
+        public async Task<IActionResult> Update([FromRoute] int order_lists_id, [FromBody] UpdateOrder_Lists updateOrder_Lists)
         {
             try
             {
-                ProductsResponse Products = await _productsService.Update(products_id, updateProducts);
+                Order_ListsResponse Order_Lists = await _order_ListsService.Update(order_lists_id, updateOrder_Lists);
 
-                if (Products == null)
+                if (Order_Lists == null)
                 {
                     return Problem("Product was not updated, something went wrong");
                 }
 
-                return Ok(Products);
+                return Ok(Order_Lists);
             }
             catch (Exception ex)
             {
@@ -122,19 +120,19 @@ namespace Orangular.Controllers
             }
         }
 
-        [HttpDelete("{products_id}")]
+        [HttpDelete("{order_lists_id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Delete([FromRoute] int products_id)
+        public async Task<IActionResult> Delete([FromRoute] int order_lists_id)
         {
             try
             {
-                bool result = await _productsService.Delete(products_id);
+                bool result = await _order_ListsService.Delete(order_lists_id);
 
                 if (!result)
                 {
-                    return Problem("Product was not deleted, something went wrong");
+                    return Problem("Order_Lists was not deleted, something went wrong");
                 }
 
                 return NoContent();
@@ -146,4 +144,3 @@ namespace Orangular.Controllers
         }
     }
 }
-
