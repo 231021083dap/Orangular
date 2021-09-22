@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Orangular.Database.Entities;
+using Orangular.Repositories.order_lists;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,12 @@ namespace Orangular.Repositories.order_lists
     public class Order_ListsRepository : IOrder_ListsRepository
     {
         private readonly OrangularProjectContext _context;
+
+        public Order_ListsRepository(OrangularProjectContext context)
+        {
+            _context = context;
+        }
+
         public async Task<Order_Lists> Create(Order_Lists order_Lists)
         {
             _context.Order_Lists.Add(order_Lists);
