@@ -1,5 +1,6 @@
 using Orangular.Database.Entities;
 using Orangular.DTO.Addresses.Responses;
+using Orangular.DTO.Addresses.Requests;
 using Orangular.Repositories.addresses;
 using Orangular.Services.addresses;
 using Moq;
@@ -136,7 +137,7 @@ namespace Orangular.Tests.AddressesTest
                 };
 
                 _addressesRepository
-                    .Setup(a => a.Create(It.IsAny<Addresses>()))
+                    .Setup(a => a.Create(Moq.It.IsAny<Addresses>()))
                 .ReturnsAsync(newAddress);
 
                 // Act
@@ -149,21 +150,97 @@ namespace Orangular.Tests.AddressesTest
             [Fact]
             public async void Update_ShouldReturnUpdatedAddressesResponse_WhenUpdateIsSuccess()
             {
-                
+                // Arrange
+                int search_id = 1;
+
+                UpdateAddresses updateAddress = new UpdateAddresses
+                {
+                    users_id = 2,
+                    address = "Hjem Helsingør",
+                    zip_code = 3000,
+                    city_name = "Helsingør"
+                };
+
+                Addresses address = new Addresses
+                {
+                    addresses_id = 1,
+                    users_id = 2,
+                    address = "Hjem Helsingør",
+                    zip_code = 3000,
+                    city_name = "Helsingør"
+                };
+
+                // Opstiller address service typen så den retunere 'address' instancen. 
+                _addressesRepository
+                    .Setup(lambda => lambda.Update(It.IsAny<int>(), It.IsAny<Addresses>()))
+                    .ReturnsAsync(address);
+
+                // Act - vi forventer en autherResponse
+                var result = await _sut.update(1, updateAddress);
+
+                // Assert
+                Assert.NotNull(result);
+                Assert.IsType<AddressesResponse>(result);
+                Assert.Equal(search_id, result.addresses_id);
+                Assert.Equal(updateAddress.address, result.address);
+                Assert.Equal(updateAddress.zip_code, result.zip_code);
             }
+
             [Fact]
             public async void Update_ShouldReturnNull_WhenAddressesDoesNotExist()
             {
-                
-            }
+                // Arrange
+                int search_id = 1;
+
+                UpdateAddresses updateAddress = new UpdateAddresses
+                {
+                    users_id = 2,
+                    address = "Hjem Helsingør",
+                    zip_code = 3000,
+                    city_name = "Helsingør"
+                };
+
+            // Opstiller 
+            _addressesRepository
+                .Setup(lambda => lambda.Update(It.IsAny<int>(), It.IsAny<Addresses>()))
+                .ReturnsAsync(() => null);
+
+            // Act
+            var result = await _sut.update(1, updateAddress);
+
+            // Assert
+            Assert.Null(result);
+        }
         // ---- Update Tests ---- //
 
         // ---- Delete Tests ---- //
             [Fact]
             public async void Delete_ShouldReturnTrue_WhenDeleteIsSuccess()
             {
-                
-            }
+                // Arrange
+                int search_id = 1;
+
+                Addresses address = new Addresses
+                {
+                    addresses_id = 1,
+                    users_id = 2,
+                    address = "Hjem Helsingør",
+                    zip_code = 3000,
+                    city_name = "Helsingør"
+                };
+
+                // Opstiller 
+                _addressesRepository
+                    .Setup(a => a.Delete(It.IsAny<int>()))
+                    .ReturnsAsync(true);
+
+
+                // Act
+                var result = await _sut.delete(1);
+
+                // Assert
+                Assert.True(result);
+        }
         // ---- Delete Tests ---- //
     }
 }

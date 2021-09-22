@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Orangular.Repositories.addresses;
 using Orangular.DTO.Addresses.Responses;
+using Orangular.DTO.Addresses.Requests;
 
 namespace Orangular.Services.addresses
 {
@@ -80,24 +81,26 @@ namespace Orangular.Services.addresses
         }
         }
 
-        public async Task<AddressesResponse> update(int input_address_id, Addresses input_address)
+        public async Task<AddressesResponse> update(int input_address_id, UpdateAddresses input_address)
         {
             Addresses address = new Addresses
             {
-                addresses_id = input_address.addresses_id,
                 users_id = input_address.users_id,
                 address = input_address.address,
-                zip_code = input_address.zip_code
+                zip_code = input_address.zip_code,
+                city_name = input_address.city_name
             };
 
-            address = await _addressRepository.Update(input_address_id, input_address);
+            address = await _addressRepository.Update(input_address_id, address);
+
+
 
             return address == null ? null : new AddressesResponse
             {
                 addresses_id =  address.addresses_id,
                 address =  address.address,
                 zip_code =  address.zip_code,
-                city_name = null,
+                city_name = address.city_name,
                 Users = null
             };
         }

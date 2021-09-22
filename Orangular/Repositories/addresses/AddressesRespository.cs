@@ -62,9 +62,11 @@ namespace Orangular.Repositories.addresses
                 updatedAddress.address = updateThisAddress.address;
                 updatedAddress.zip_code = updateThisAddress.zip_code;
                 await _context.SaveChangesAsync();
+
+                return updatedAddress;
             }
 
-            return updatedAddress;
+            return null;
 
         }
     
