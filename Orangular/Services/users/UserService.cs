@@ -64,6 +64,7 @@ namespace Orangular.Services.users
             {
                 users_id = u.users_id,
                 email = u.email,
+                password = u.password, // Fjernes hvis password ikke skal vises.
                 role = u.role,
                 Order_Lists = u.order_lists.Select(o => new UsersOrder_ListsResponse
                 {

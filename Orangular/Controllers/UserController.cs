@@ -62,7 +62,6 @@ namespace Orangular.Controllers
             }
         }
 
-        // GetById
         [HttpGet("{userId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -84,9 +83,58 @@ namespace Orangular.Controllers
                 return Problem(ex.Message);
             }
         }
-        // Create
-        // Update
-        // Delete
 
+        [HttpPost("Create")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Create([FromBody] NewUser newUser)
+        {
+            try
+            {
+                UsersResponse user = await _userService.Create(newUser);
+                if (user == null) return Problem("Returned null, User was not created");
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
+        }
+        
+        [HttpPut("{userId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Update([FromRoute] int userId, [FromBody] UpdateUser updateUser)
+        {
+            try
+            {
+                UsersResponse user = await _userService.Update(userId, updateUser);
+                if (user == null) return Problem("Returned null, Author was not updated");
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
+        }
+        [HttpDelete("{userId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Delete([FromRoute] int userId)
+        {
+            try
+            {
+                bool result = await _userService.Delete(userId);
+                if (!result) return Problem("Return was false, user was not deleted");
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
+        }
     }
 }
