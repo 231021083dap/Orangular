@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Orangular.Database;
 using Orangular.Database.Entities;
 using Orangular.Repositories;
 using System;
