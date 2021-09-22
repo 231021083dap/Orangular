@@ -23,6 +23,8 @@ namespace Orangular
 {
     public class Startup
     {
+
+        private readonly string CORSRules = "CORSRules";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,6 +35,16 @@ namespace Orangular
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: CORSRules,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
             // -- tilføjet af Victor -- //
             // Forbinder sql serveren
             services.AddDbContext<OrangularProjectContext>(
