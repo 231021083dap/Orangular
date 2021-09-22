@@ -29,7 +29,7 @@ namespace Orangular.Repositories.users
         {
             return await _context.Users
                 .Include(a => a.addresses)
-                .Include(b => b.order_lists)
+                .Include(a => a.order_lists)
                 .ToListAsync();
         }
         public async Task<Users> GetById(int userId) // Mangler check hvis id ikke findes

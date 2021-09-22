@@ -15,12 +15,18 @@ using System.Threading.Tasks;
 
 // -- tilf�jet af Victor -- //
 using Orangular.Database.Entities;
+
 using Orangular.Database;
 using Orangular.Services.addresses;
 using Orangular.Repositories.addresses;
 using Orangular.Services.users;
 using Orangular.Repositories.users;
 // -- tilf�jet af Victor -- //
+
+using Orangular.Services.users;
+using Orangular.Repositories.users;
+// -- tilf�jet af Victor -- //
+
 
 namespace Orangular
 {
@@ -39,6 +45,7 @@ namespace Orangular
             // Forbinder sql serveren
             services.AddControllers();
             services.AddDbContext<OrangularProjectContext>(o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
+
             // -- tilf�jet af Victor -- //
 
 
@@ -46,6 +53,9 @@ namespace Orangular
             services.AddScoped<IAddressesService, AddressesService>();
             services.AddScoped<IAddressesRepository, AddressesRepository>(); 
             // ---- Victor --- //
+
+            // -- tilf�jet af Victor -- //
+
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
            
