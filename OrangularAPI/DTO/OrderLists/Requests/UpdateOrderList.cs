@@ -4,15 +4,17 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.DTO.Categories.Requests
+namespace OrangularAPI.DTO.OrderLists.Requests
 {
-    public class UpdateCategories
+    public class UpdateOrderList
     {
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
-        [StringLength(255, ErrorMessage = "Max string length is 255")]
-        [MinLength(1, ErrorMessage = "Min string length is 1")]
-        public string category_name { get; set; }
+        [Range(1, int.MaxValue)]
+        public int users_id { get; set; }
+        // -----------------------------------------------------------------------------------------------------------------------
+        [Required]
+        public DateTime order_date_time { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
     }
 }

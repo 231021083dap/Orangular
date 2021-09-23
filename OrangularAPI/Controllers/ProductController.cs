@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OrangularAPI.DTO.Products.Requests;
 using OrangularAPI.DTO.Products.Responses;
-using OrangularAPI.Services.ProductService;
+using OrangularAPI.Services.ProductServices;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

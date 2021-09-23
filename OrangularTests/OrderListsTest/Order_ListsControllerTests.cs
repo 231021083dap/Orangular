@@ -1,12 +1,12 @@
 ﻿using OrangularAPI.Controllers;
-using OrangularAPI.DTO.Order_Lists.Requests;
-using OrangularAPI.DTO.Order_Lists.Responses;
+using OrangularAPI.DTO.OrderLists.Requests;
+using OrangularAPI.DTO.OrderLists.Responses;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Moq;
 using System;
 using System.Collections.Generic;
 using Xunit;
-using OrangularAPI.Services.OrderListService;
+using OrangularAPI.Services.OrderListServices;
 
 namespace OrangularTests.OrderListsTest
 {
@@ -39,7 +39,7 @@ namespace OrangularTests.OrderListsTest
             });
 
             _order_ListsService
-                .Setup(s => s.GetAll())
+                .Setup(s => s.GetAllOrder_Lists())
                 .ReturnsAsync(order_Lists);
 
 
@@ -60,7 +60,7 @@ namespace OrangularTests.OrderListsTest
             List<Order_ListsResponse> order_Listss = new();
 
             _order_ListsService
-                .Setup(s => s.GetAll())
+                .Setup(s => s.GetAllOrder_Lists())
                 .ReturnsAsync(order_Listss);
 
             // Act
@@ -77,7 +77,7 @@ namespace OrangularTests.OrderListsTest
         {
             // Arrange
             _order_ListsService
-                .Setup(s => s.GetAll())
+                .Setup(s => s.GetAllOrder_Lists())
                 .ReturnsAsync(() => null);
 
             // Act
@@ -94,7 +94,7 @@ namespace OrangularTests.OrderListsTest
         {
             // Arrange
             _order_ListsService
-                .Setup(s => s.GetAll())
+                .Setup(s => s.GetAllOrder_Lists())
                 .ReturnsAsync(() => throw new Exception("This is an exception"));
 
             // Act

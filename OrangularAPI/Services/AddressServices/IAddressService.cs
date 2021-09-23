@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace OrangularAPI.Services.AddressService
+namespace OrangularAPI.Services.AddressServices
 {
     public interface IAddressService
     {

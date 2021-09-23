@@ -1,16 +1,16 @@
 ﻿using OrangularAPI.Database.Entities;
-using OrangularAPI.DTO.Order_Items.Responses;
-using OrangularAPI.Repositories.order_items;
+using OrangularAPI.DTO.OrderItems.Responses;
+using OrangularAPI.Repositories.OrderItemsRepository;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Services.OrderItemService
+namespace OrangularAPI.Services.OrderItemServices
 {
     public class OrderItemService : IOrderItemService
     {
-        private readonly IOrderItemsRepository _orderItemsRepository;
-        public OrderItemService(IOrderItemsRepository orderItemsRepository)
+        private readonly IOrderItemRepository _orderItemsRepository;
+        public OrderItemService(IOrderItemRepository orderItemsRepository)
         {
             _orderItemsRepository = orderItemsRepository;
         }

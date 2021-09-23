@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using OrangularAPI.Repositories.addresses;
 using OrangularAPI.DTO.Addresses.Responses;
 using OrangularAPI.DTO.Addresses.Requests;
+using OrangularAPI.Repositories.AddressesRepository;
 
-namespace OrangularAPI.Services.AddressService
+namespace OrangularAPI.Services.AddressServices
 {
     public class AddressService : IAddressService
     {

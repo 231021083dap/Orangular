@@ -1,14 +1,10 @@
 ﻿using OrangularAPI.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace OrangularAPI.DTO.Addresses.Responses
 {
-    public class AddressesUsersResponse
+    public class AddressUserResponse
     {
-        public int users_id { get; set; }
+        public int userID { get; set; }
         public string email { get; set; }
         public string password { get; set; }
         public Role role { get; set; }

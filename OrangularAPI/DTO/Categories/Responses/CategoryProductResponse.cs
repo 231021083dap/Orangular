@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OrangularAPI.DTO.Categories.Responses
 {
-    public class CategoriesProductsResponse
+    public class CategoryProductResponse
     {
         public int products_id { get; set; }
 

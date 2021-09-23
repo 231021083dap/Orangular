@@ -1,10 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OrangularAPI.Database;
 using OrangularAPI.Database.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using OrangularAPI.Repositories.OrderListsRepository;
 using System.Threading.Tasks;
 
 namespace OrangularAPI.Repositories.OrderListsRepository

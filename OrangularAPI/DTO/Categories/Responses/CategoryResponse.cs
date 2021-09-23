@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace OrangularAPI.DTO.Categories.Responses
 {
-    public class CategoriesResponse
+    public class CategoryResponse
     {
         public int categories_id { get; set; }
         public string category_name { get; set; }
-        public List<CategoriesProductsResponse> Products { get; set; }
+        public List<CategoryProductResponse> Products { get; set; }
 
     }
 }

@@ -6,19 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Repositories.addresses
+namespace OrangularAPI.Repositories.AddressesRepository
 {
-    public interface IAddressesRepository
-    {
-        Task<List<Addresses>> GetAll();
-        Task<Addresses> GetById(int addressesId);
-        Task<Addresses> Create(Addresses addresses);
-        Task<Addresses> Update(int addressesId, Addresses addresses);
-        Task<bool> Delete(int addressesId);
-    }
-
-
-    public class AddressesRepository : IAddressesRepository
+    public class AddressesRepository : IAddressRepository
     {
         private readonly OrangularProjectContext _context;
 

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OrangularAPI.DTO.Addresses.Requests;
 using OrangularAPI.DTO.Addresses.Responses;
-using OrangularAPI.Services.AddressService;
+using OrangularAPI.Services.AddressServices;
 
 namespace OrangularAPI.Controllers
 {
@@ -29,7 +29,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                List<AddressesResponse> Addresses = await _addressService.GetAll();
+                List<AddressResponse> Addresses = await _addressService.GetAll();
 
                 if (Addresses == null)
                 {

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace OrangularAPI.Repositories.OrderItemsRepository
 {
-    
-    public class OrderItemsRepository : IOrderItemsRepository
+
+    public class OrderItemRepository : IOrderItemRepository
     {
         private readonly OrangularProjectContext _context;
-        public OrderItemsRepository(OrangularProjectContext context)
+        public OrderItemRepository(OrangularProjectContext context)
         {
             _context = context;
         }

@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using OrangularAPI.DTO.Order_Lists.Requests;
-using OrangularAPI.DTO.Order_Lists.Responses;
-using OrangularAPI.Services.OrderListService;
+using OrangularAPI.Services.OrderListServices;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

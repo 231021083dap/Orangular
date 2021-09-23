@@ -7,9 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 using OrangularAPI.Database;
-using OrangularAPI.Repositories.addresses;
-using OrangularAPI.Repositories.users;
-using OrangularAPI.Services.AddressService;
+using OrangularAPI.Services.AddressServices;
 using OrangularAPI.Services.UsersService;
 
 namespace Orangular
@@ -34,14 +32,18 @@ namespace Orangular
             // --- sql connect --- //
 
 
-            // --- Scopes --- //
+            // --- Scopes (Service og Repository) --- //
             // This is where we are pointing to concrete implementations
             // when using these interfaces
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IUserRepository, UserRepository>();
+            
             services.AddScoped<IAddressService, AddressService>();
+
+
+            services.AddScoped<IUserService, UserService>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAddressesRepository, AddressesRepository>(); 
-            // --- Scopes --- //
+            // --- Scopes (Service og Repository) --- //
 
             services.AddSwaggerGen(c =>
             {

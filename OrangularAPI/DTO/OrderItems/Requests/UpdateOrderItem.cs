@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.DTO.Order_Items.Requests
+namespace OrangularAPI.DTO.OrderItems.Requests
 {
-    public class NewOrder_Items
+    public class UpdateOrder_Items
     {
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.DTO.Order_Items.Responses
+namespace OrangularAPI.DTO.OrderItems.Responses
 {
-    public class Order_ItemsProductsResponse
+    public class OrderItemProductResponse
     {
         public int products_id { get; set; }
         public string breed_name { get; set; }

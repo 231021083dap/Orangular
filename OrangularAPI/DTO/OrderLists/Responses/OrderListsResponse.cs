@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.DTO.Order_Lists.Responses
+namespace OrangularAPI.DTO.OrderLists.Responses
 {
     public class Order_ListsResponse
     {

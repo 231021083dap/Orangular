@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrangularAPI.DTO.Addresses.Requests
 {
-    public class NewAddresses
+    public class NewAddress
     {
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]

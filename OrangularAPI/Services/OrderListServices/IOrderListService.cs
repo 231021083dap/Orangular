@@ -1,11 +1,11 @@
-﻿using OrangularAPI.DTO.Order_Lists.Requests;
-using OrangularAPI.DTO.Order_Lists.Responses;
+﻿using OrangularAPI.DTO.OrderLists.Requests;
+using OrangularAPI.DTO.OrderLists.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Services.OrderListService
+namespace OrangularAPI.Services.OrderListServices
 {
     public interface IOrderListService
     {
