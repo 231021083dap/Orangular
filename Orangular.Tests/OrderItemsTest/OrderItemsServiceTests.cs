@@ -18,7 +18,7 @@ namespace Orangular.Tests.OrderItemsTest
     public class OrderItemsServiceTests
     {
         private readonly OrderItemService _sut;
-        private readonly Mock<IOrderItemsRepository> _orderItemsRepository = new();
+        private readonly Mock<IOrderItemRepository> _orderItemsRepository = new();
         private readonly Mock<IOrder_ListsRepository> _order_ListsRepository = new();
         private readonly Mock<IProductsRepository> _productsRepository = new();
         public OrderItemsServiceTests()

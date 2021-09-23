@@ -20,11 +20,11 @@ namespace Orangular.Services.order_items
     }
     public class OrderItemService : IOrderItemService
     {
-        private readonly IOrderItemsRepository _orderItemsRepository;
+        private readonly IOrderItemRepository _orderItemsRepository;
         private readonly IOrder_ListsRepository _orderListsRepository;
         private readonly IProductsRepository _productsRepository;
 
-        public OrderItemService(IOrderItemsRepository orderItemsRepository, IOrder_ListsRepository order_ListsRepository, IProductsRepository productsRepository)
+        public OrderItemService(IOrderItemRepository orderItemsRepository, IOrder_ListsRepository order_ListsRepository, IProductsRepository productsRepository)
         {
             _orderItemsRepository = orderItemsRepository;
             _orderListsRepository = order_ListsRepository;
@@ -38,20 +38,20 @@ namespace Orangular.Services.order_items
                 order_items_id = o.order_items_id,
                 price = o.price,
                 quantity = o.quantity,
-                Order_Lists = new Order_ItemsOrder_ListsResponse
-                {
-                    order_lists_id = o.order_list.order_lists_id,
-                    order_date_time = o.order_list.order_date_time
-                },
-                Products = new Order_ItemsProductsResponse
-                {
-                    products_id = o.product.products_id,
-                    breed_name = o.product.breed_name,
-                    price = o.product.price,
-                    weight = o.product.weight,
-                    gender = o.product.gender,
-                    description = o.product.description
-                }
+                //Order_Lists = new Order_ItemsOrder_ListsResponse
+                //{
+                //    order_lists_id = o.order_list.order_lists_id,
+                //    order_date_time = o.order_list.order_date_time
+                //},
+                //Products = new Order_ItemsProductsResponse
+                //{
+                //    products_id = o.product.products_id,
+                //    breed_name = o.product.breed_name,
+                //    price = o.product.price,
+                //    weight = o.product.weight,
+                //    gender = o.product.gender,
+                //    description = o.product.description
+                //}
             }).ToList();
         }
         public async Task<Order_ItemsResponse> GetById(int orderItemsId)
@@ -62,20 +62,20 @@ namespace Orangular.Services.order_items
                 order_items_id = orderItem.order_items_id,
                 price = orderItem.price,
                 quantity = orderItem.quantity,
-                Order_Lists = new Order_ItemsOrder_ListsResponse
-                {
-                    order_lists_id = orderItem.order_list.order_lists_id,
-                    order_date_time = orderItem.order_list.order_date_time
-                },
-                Products = new Order_ItemsProductsResponse
-                {
-                    products_id = orderItem.product.products_id,
-                    breed_name = orderItem.product.breed_name,
-                    price = orderItem.product.price,
-                    weight = orderItem.product.weight,
-                    gender = orderItem.product.gender,
-                    description = orderItem.product.description
-                }
+                //Order_Lists = new Order_ItemsOrder_ListsResponse
+                //{
+                //    order_lists_id = orderItem.order_list.order_lists_id,
+                //    order_date_time = orderItem.order_list.order_date_time
+                //},
+                //Products = new Order_ItemsProductsResponse
+                //{
+                //    products_id = orderItem.product.products_id,
+                //    breed_name = orderItem.product.breed_name,
+                //    price = orderItem.product.price,
+                //    weight = orderItem.product.weight,
+                //    gender = orderItem.product.gender,
+                //    description = orderItem.product.description
+                //}
             };
         }
         public async Task<Order_ItemsResponse> Create(NewOrder_Items newOrder_Items)
@@ -115,7 +115,6 @@ namespace Orangular.Services.order_items
                     }
                 };
             }
-
         }
        public async Task<Order_ItemsResponse> Update(int orderItemsId, UpdateOrder_Items updateOrder_Items)
         {

@@ -25,6 +25,14 @@ using Orangular.Repositories.users;
 
 using Orangular.Services.users;
 using Orangular.Repositories.users;
+using Orangular.Repositories.order_items;
+using Orangular.Services.order_items;
+using Orangular.Repositories.order_lists;
+using Orangular.Services.Order_List;
+using Orangular.Services.products;
+using Orangular.Services;
+using Orangular.Repositories.products;
+using Orangular.Repositories;
 // -- tilf�jet af Victor -- //
 
 
@@ -51,11 +59,23 @@ namespace Orangular
 
             // ---- Victor --- //
             services.AddScoped<IAddressesService, AddressesService>();
-            services.AddScoped<IAddressesRepository, AddressesRepository>(); 
+            services.AddScoped<IAddressesRepository, AddressesRepository>();
             // ---- Victor --- //
 
             // -- tilf�jet af Victor -- //
+            // Tilføjer scope til OrderLists services & repository
+            services.AddScoped<IProductsService, ProductsService>();
+            services.AddScoped<IProductsRepository, ProductsRepository>();
 
+            // Tilføjer scope til OrderLists services & repository
+            services.AddScoped<IOrder_ListsService, Order_ListsService>();
+            services.AddScoped<IOrder_ListsRepository, Order_ListsRepository>();
+
+            // Tilføjer scope til OrderItems services & repository
+            services.AddScoped<IOrderItemService, OrderItemService>();
+            services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+
+            // Tilføjer scope til User services & repository
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
            
