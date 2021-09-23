@@ -13,13 +13,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace OrangularTests.UserTest
+namespace OrangularTests.UserTests
 {
-    public class UserControllerTest
+    public class UserControllerTests
     {
         private readonly UserController _sut;
         private readonly Mock<IUserService> _userService = new();
-        public UserControllerTest()
+        public UserControllerTests()
         {
             _sut = new UserController(_userService.Object);
         }
