@@ -9,7 +9,7 @@ namespace OrangularAPI.Services.OrderListService
 {
     public interface IOrderListService
     {
-        Task<List<Order_ListsResponse>> GetAllOrder_Lists();
+        Task<List<Order_ListsResponse>> GetAll();
         Task<Order_ListsResponse> GetById(int order_lists_id);
         Task<Order_ListsResponse> Create(NewOrder_Lists newOrder_Lists);
         Task<Order_ListsResponse> Update(int order_lists_id, UpdateOrder_Lists updateOrder_Lists);
