@@ -1,14 +1,10 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangular", "Orangular\Orangular.csproj", "{506B1AF6-D8E0-4405-A689-963BCB3658C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrangularAPI", "OrangularAPI\OrangularAPI.csproj", "{838D8586-69A0-417E-8479-020627ED50FE}"
 EndProject
-
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orangular.Tests", "Orangular.Tests\Orangular.Tests.csproj", "{F2AD2410-2E3D-490D-A016-FEBF337D206A}"
-
-
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrangularTests", "OrangularTests\OrangularTests.csproj", "{BE6C4F28-D0D8-4E27-98ED-159F018B66EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,16 +12,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{506B1AF6-D8E0-4405-A689-963BCB3658C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{506B1AF6-D8E0-4405-A689-963BCB3658C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{506B1AF6-D8E0-4405-A689-963BCB3658C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{506B1AF6-D8E0-4405-A689-963BCB3658C5}.Release|Any CPU.Build.0 = Release|Any CPU
-
-		{F2AD2410-2E3D-490D-A016-FEBF337D206A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F2AD2410-2E3D-490D-A016-FEBF337D206A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F2AD2410-2E3D-490D-A016-FEBF337D206A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F2AD2410-2E3D-490D-A016-FEBF337D206A}.Release|Any CPU.Build.0 = Release|Any CPU
-
+		{838D8586-69A0-417E-8479-020627ED50FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{838D8586-69A0-417E-8479-020627ED50FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{838D8586-69A0-417E-8479-020627ED50FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{838D8586-69A0-417E-8479-020627ED50FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE6C4F28-D0D8-4E27-98ED-159F018B66EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE6C4F28-D0D8-4E27-98ED-159F018B66EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE6C4F28-D0D8-4E27-98ED-159F018B66EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE6C4F28-D0D8-4E27-98ED-159F018B66EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
