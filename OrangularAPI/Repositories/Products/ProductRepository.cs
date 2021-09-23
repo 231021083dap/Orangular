@@ -1,20 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using OrangularAPI.Database;
 using OrangularAPI.Database.Entities;
-using OrangularAPI.Repositories.products;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Repositories
+namespace OrangularAPI.Repositories.ProductsRepository
 {
-    
-    public class ProductsRepository : IProductsRepository
+
+    public class ProductRepository : IProductRepository
     {
         private readonly OrangularProjectContext _context;
 
-        public ProductsRepository(OrangularProjectContext context)
+        public ProductRepository(OrangularProjectContext context)
         {
             _context = context;
         }

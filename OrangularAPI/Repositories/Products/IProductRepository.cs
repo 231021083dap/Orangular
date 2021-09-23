@@ -1,12 +1,10 @@
 ﻿using OrangularAPI.Database.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Repositories.products
+namespace OrangularAPI.Repositories.ProductsRepository
 {
-    public interface IProductsRepository
+    public interface IProductRepository
     {
         Task<List<Products>> GetAll();
         Task<Products> GetById(int products_id);
