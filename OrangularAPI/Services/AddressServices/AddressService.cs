@@ -11,9 +11,9 @@ namespace OrangularAPI.Services.AddressService
 {
     public class AddressService : IAddressService
     {
-        private readonly IAddressesRepository _addressRepository;
+        private readonly IAddressRepository _addressRepository;
 
-        public AddressService(IAddressesRepository addressesRepository)
+        public AddressService(IAddressRepository addressesRepository)
         {
             _addressRepository = addressesRepository;
         }
