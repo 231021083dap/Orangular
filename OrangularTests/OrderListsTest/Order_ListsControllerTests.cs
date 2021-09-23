@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace OrangularTests
+namespace OrangularTests.OrderListsTest
 {
     public class Order_ListsControllerTests
     {

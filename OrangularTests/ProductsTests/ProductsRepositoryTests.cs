@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace OrangularTests
+namespace OrangularTests.ProductsTests
 {
     public class ProductsRepositoryTests
     {

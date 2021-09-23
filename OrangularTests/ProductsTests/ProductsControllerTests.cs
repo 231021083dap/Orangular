@@ -11,7 +11,7 @@ using OrangularAPI.DTO.Products.Responses;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using OrangularAPI.DTO.Products.Requests;
 
-namespace OrangularTests
+namespace OrangularTests.ProductsTests
 {
     public class ProductsControllerTests
     {
