@@ -1,5 +1,4 @@
 ﻿using OrangularAPI.Controllers;
-using OrangularAPI.Services.products;
 using OrangularAPI.DTO.Products.Responses;
 using OrangularAPI.DTO.Products.Requests;
 
@@ -8,18 +7,18 @@ using System.Collections.Generic;
 using Xunit;
 using Moq;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-
+using OrangularAPI.Services.ProductService;
 
 namespace OrangularTests.ProductsTests
 {
     public class ProductsControllerTests
     {
-        private readonly ProductsController _sut;
-        private readonly Mock<IProductsService> _productsService = new();
+        private readonly ProductController _sut;
+        private readonly Mock<IProductService> _productsService = new();
 
         public ProductsControllerTests()
         {
-            _sut = new ProductsController(_productsService.Object);
+            _sut = new ProductController(_productsService.Object);
         }
 
         [Fact]
@@ -47,7 +46,7 @@ namespace OrangularTests.ProductsTests
             });
 
             _productsService
-                .Setup(s => s.GetAllProducts())
+                .Setup(s => s.GetAll())
                 .ReturnsAsync(products);
 
 
@@ -68,7 +67,7 @@ namespace OrangularTests.ProductsTests
             List<ProductsResponse> Productss = new();
 
             _productsService
-                .Setup(s => s.GetAllProducts())
+                .Setup(s => s.GetAll())
                 .ReturnsAsync(Productss);
 
             // Act
@@ -85,7 +84,7 @@ namespace OrangularTests.ProductsTests
         {
             // Arrange
             _productsService
-                .Setup(s => s.GetAllProducts())
+                .Setup(s => s.GetAll())
                 .ReturnsAsync(() => null);
 
             // Act
@@ -102,7 +101,7 @@ namespace OrangularTests.ProductsTests
         {
             // Arrange
             _productsService
-                .Setup(s => s.GetAllProducts())
+                .Setup(s => s.GetAll())
                 .ReturnsAsync(() => throw new Exception("This is an exception"));
 
             // Act

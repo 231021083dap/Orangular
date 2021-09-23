@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using OrangularAPI.Helpers;
-using OrangularAPI.Services.users;
+using OrangularAPI.Services.UsersService;
 using System;
 using System.Collections.Generic;
 using System.Linq;

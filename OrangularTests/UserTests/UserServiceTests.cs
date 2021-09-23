@@ -8,7 +8,7 @@ using OrangularAPI.DTO.Login.Requests;
 using OrangularAPI.DTO.Users.Responses;
 using OrangularAPI.Helpers;
 using OrangularAPI.Repositories.users;
-using OrangularAPI.Services.users;
+using OrangularAPI.Services.UsersService;
 // Orangular
 
 namespace OrangularTests.UserTest

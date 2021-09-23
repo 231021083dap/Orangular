@@ -12,12 +12,12 @@ namespace OrangularTests.OrderListsTest
 {
     public class OrderListControllerTests
     {
-        private readonly OrderListsController _sut;
+        private readonly OrderListController _sut;
         private readonly Mock<IOrderListService> _order_ListsService = new();
 
         public OrderListControllerTests()
         {
-            _sut = new Order_ListsController(_order_ListsService.Object);
+            _sut = new OrderListController(_order_ListsService.Object);
         }
 
         [Fact]
@@ -39,7 +39,7 @@ namespace OrangularTests.OrderListsTest
             });
 
             _order_ListsService
-                .Setup(s => s.GetAllOrder_Lists())
+                .Setup(s => s.GetAll())
                 .ReturnsAsync(order_Lists);
 
 
@@ -60,7 +60,7 @@ namespace OrangularTests.OrderListsTest
             List<Order_ListsResponse> order_Listss = new();
 
             _order_ListsService
-                .Setup(s => s.GetAllOrder_Lists())
+                .Setup(s => s.GetAll())
                 .ReturnsAsync(order_Listss);
 
             // Act
@@ -77,7 +77,7 @@ namespace OrangularTests.OrderListsTest
         {
             // Arrange
             _order_ListsService
-                .Setup(s => s.GetAllOrder_Lists())
+                .Setup(s => s.GetAll())
                 .ReturnsAsync(() => null);
 
             // Act
@@ -94,7 +94,7 @@ namespace OrangularTests.OrderListsTest
         {
             // Arrange
             _order_ListsService
-                .Setup(s => s.GetAllOrder_Lists())
+                .Setup(s => s.GetAll())
                 .ReturnsAsync(() => throw new Exception("This is an exception"));
 
             // Act

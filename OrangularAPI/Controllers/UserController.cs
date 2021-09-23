@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using OrangularAPI.DTO.Login.Requests;
 using OrangularAPI.DTO.Login.Responses;
 using OrangularAPI.DTO.Users.Responses;
-using OrangularAPI.Services.users;
+using OrangularAPI.Services.UsersService;
 using System;
 using System.Collections.Generic;
 using System.Linq;

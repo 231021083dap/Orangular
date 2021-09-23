@@ -6,10 +6,10 @@ using OrangularAPI.DTO.Users.Responses;
 // Orangular
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Moq;
-using OrangularAPI.Services.users;
 using System;
 using System.Collections.Generic;
 using Xunit;
+using OrangularAPI.Services.UsersService;
 
 namespace OrangularTests.UserTests
 {

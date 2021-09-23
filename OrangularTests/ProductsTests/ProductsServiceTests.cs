@@ -7,6 +7,7 @@ using OrangularAPI.DTO.Products.Requests;
 using OrangularAPI.DTO.Products.Responses;
 using OrangularAPI.Repositories.products;
 using OrangularAPI.Services;
+using OrangularAPI.Services.ProductService;
 // Orangular
 
 namespace OrangularTests.ProductsTests
@@ -14,12 +15,12 @@ namespace OrangularTests.ProductsTests
     public class ProductserviceTests
     {
 
-        private readonly ProductsService _sut;
+        private readonly ProductService _sut;
         private readonly Mock<IProductsRepository> _productsRepository = new();
 
         public ProductserviceTests()
         {
-            _sut = new ProductsService(_productsRepository.Object);
+            _sut = new ProductService(_productsRepository.Object);
         }
         [Fact]
         public async void GetAll_ShouldReturnListOfProductsResponses_WhenProductsExist()
@@ -51,7 +52,7 @@ namespace OrangularTests.ProductsTests
                 .ReturnsAsync(Products);
 
             // Act
-            var result = await _sut.GetAllProducts();
+            var result = await _sut.GetAll();
 
             // Assert
             Assert.NotNull(result);
@@ -70,7 +71,7 @@ namespace OrangularTests.ProductsTests
                 .ReturnsAsync(Products);
 
             // Act
-            var result = await _sut.GetAllProducts();
+            var result = await _sut.GetAll();
 
             // Assert
             Assert.NotNull(result);
