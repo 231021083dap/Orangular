@@ -1,20 +1,12 @@
 ﻿using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Order_Items.Responses;
 using OrangularAPI.Repositories.order_items;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Services.order_items
+namespace OrangularAPI.Services.OrderItemService
 {
-    public interface IOrderItemService
-    {
-        Task<List<Order_ItemsResponse>> GetAll();
-        //Task<Order_Items> GetById(int orderItemsId);
-        //Task<Order_Items> Create(Order_Items order_Items);
-        //Task<Order_Items> Update(int orderItemsId, Order_Items order_Items);
-    }
     public class OrderItemService : IOrderItemService
     {
         private readonly IOrderItemsRepository _orderItemsRepository;

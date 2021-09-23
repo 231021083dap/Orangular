@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Services.categories
+namespace OrangularAPI.Services.CategoryService
 {
-    interface ICategoryService
+    public interface ICategoryService
     {
         Task<List<Categories>> getAll();
         Task<Categories> getById(int categoriesId);

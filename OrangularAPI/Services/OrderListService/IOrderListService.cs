@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Services.Order_List
+namespace OrangularAPI.Services.OrderListService
 {
-    public interface IOrder_ListsService
+    public interface IOrderListService
     {
         Task<List<Order_ListsResponse>> GetAllOrder_Lists();
         Task<Order_ListsResponse> GetById(int order_lists_id);

@@ -1,27 +1,14 @@
-﻿using OrangularAPI.Authorization;
-using OrangularAPI.Database.Entities;
+﻿using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Login.Requests;
-using OrangularAPI.DTO.Login.Responses;
 using OrangularAPI.DTO.Users.Responses;
 using OrangularAPI.Helpers;
 using OrangularAPI.Repositories.users;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Services.users
+namespace OrangularAPI.Services.UsersService
 {
-
-    public interface IUserService
-    {
-       // Task<LoginResponse> Authenticate(LoginRequest login);
-        Task<List<UsersResponse>> GetAll();
-        Task<UsersResponse> GetById(int userId);
-        Task<UsersResponse> Create(NewUser newUser);
-        Task<UsersResponse> Update(int userId, UpdateUser updateUser);
-        Task<bool> Delete(int userId);
-    }
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;

@@ -7,19 +7,19 @@ using OrangularAPI.Repositories.addresses;
 using OrangularAPI.DTO.Addresses.Responses;
 using OrangularAPI.DTO.Addresses.Requests;
 
-namespace OrangularAPI.Services.addresses
+namespace OrangularAPI.Services.AddressService
 {
-    public class AddressesService : IAddressesService
+    public class AddressService : IAddressService
     {
         private readonly IAddressesRepository _addressRepository;
 
-        public AddressesService(IAddressesRepository addressesRepository)
+        public AddressService(IAddressesRepository addressesRepository)
         {
             _addressRepository = addressesRepository;
         }
         
         // Retunere en liste med alle adresser
-        public async Task<List<AddressesResponse>> getAll()
+        public async Task<List<AddressesResponse>> GetAll()
         {
             // Henter alle addresser fra database
             List<Addresses> addresses = await _addressRepository.GetAll();
@@ -41,7 +41,7 @@ namespace OrangularAPI.Services.addresses
             }).ToList();
         }
 
-        public async Task<AddressesResponse> getById(int addressesId)
+        public async Task<AddressesResponse> GetById(int addressesId)
         {
             Addresses addresses = await _addressRepository.GetById(addressesId);
 
@@ -56,7 +56,7 @@ namespace OrangularAPI.Services.addresses
             };
         }
 
-        public async Task<AddressesResponse> create(NewAddresses input_address)
+        public async Task<AddressesResponse> Create(NewAddresses input_address)
         {
             Addresses address = new Addresses
             {
@@ -80,7 +80,7 @@ namespace OrangularAPI.Services.addresses
             };
         }
 
-        public async Task<AddressesResponse> update(int input_address_id, UpdateAddresses input_address)
+        public async Task<AddressesResponse> Update(int input_address_id, UpdateAddresses input_address)
         {
             Addresses address = new Addresses
             {
@@ -104,7 +104,7 @@ namespace OrangularAPI.Services.addresses
             };
         }
 
-        public async Task<bool> delete(int input_address_id)
+        public async Task<bool> Delete(int input_address_id)
         {
             Boolean result = await _addressRepository.Delete(input_address_id);
 

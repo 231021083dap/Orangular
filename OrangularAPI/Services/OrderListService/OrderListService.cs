@@ -7,13 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Services.Order_List
+namespace OrangularAPI.Services.OrderListService
 {
-    public class Order_ListsService : IOrder_ListsService
+    public class OrderListService : IOrderListService
     {
         private readonly IOrder_ListsRepository _order_ListsRepository;
 
-        public Order_ListsService(IOrder_ListsRepository order_ListsRepository)
+        public OrderListService(IOrder_ListsRepository order_ListsRepository)
         {
             _order_ListsRepository = order_ListsRepository;
         }

@@ -1,23 +1,20 @@
 using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Products.Requests;
 using OrangularAPI.DTO.Products.Responses;
-using OrangularAPI.Repositories;
 using OrangularAPI.Repositories.products;
-using OrangularAPI.Services.products;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Services
+namespace OrangularAPI.Services.ProductService
 {
 
 
-    public class ProductsService : IProductsService
+    public class ProductService : IProductService
     {
         private readonly IProductsRepository _productsRepository;
 
-        public ProductsService(IProductsRepository productsRepository)
+        public ProductService(IProductsRepository productsRepository)
         {
             _productsRepository = productsRepository;
         }

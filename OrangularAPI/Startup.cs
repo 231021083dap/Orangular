@@ -1,31 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-// -- tilf�jet af Victor -- //
-using OrangularAPI.Database.Entities;
 
 using OrangularAPI.Database;
-using OrangularAPI.Services.addresses;
 using OrangularAPI.Repositories.addresses;
-using OrangularAPI.Services.users;
 using OrangularAPI.Repositories.users;
-// -- tilf�jet af Victor -- //
-
-using OrangularAPI.Services.users;
-using OrangularAPI.Repositories.users;
-// -- tilf�jet af Victor -- //
+using OrangularAPI.Services.AddressService;
 
 
 namespace Orangular
@@ -49,12 +33,13 @@ namespace Orangular
             // -- tilf�jet af Victor -- //
 
 
-            // ---- Victor --- //
             services.AddScoped<IAddressesService, AddressesService>();
             services.AddScoped<IAddressesRepository, AddressesRepository>(); 
-            // ---- Victor --- //
+            
 
             // -- tilf�jet af Victor -- //
+
+            // Scopes 
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
