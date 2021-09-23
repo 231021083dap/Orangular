@@ -5,7 +5,7 @@
 
 # Victor
 # Ignorere migrations mappen
-Orangular/Migrations/*
+OrangularAPI/Migrations/*
 
 # User-specific files
 *.rsuser
