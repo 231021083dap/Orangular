@@ -49,7 +49,7 @@ namespace OrangularAPI.Services.ProductService
             return (result != null);
         }
 
-        public async Task<List<ProductsResponse>> GetAllProducts()
+        public async Task<List<ProductsResponse>> GetAll()
         {
             List<Products> products = await _productsRepository.GetAll();
 

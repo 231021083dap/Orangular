@@ -36,13 +36,8 @@ namespace OrangularAPI.Services.OrderListService
             };
         }
 
-        public async Task<bool> Delete(int order_lists_id)
-        {
-            var result = await _order_ListsRepository.Delete(order_lists_id);
-            return (result != null);
-        }
 
-        public async Task<List<Order_ListsResponse>> GetAllOrder_Lists()
+        public async Task<List<Order_ListsResponse>> GetAll()
         {
             List<Order_Lists> order_Lists = await _order_ListsRepository.GetAll();
 
@@ -90,5 +85,12 @@ namespace OrangularAPI.Services.OrderListService
 
             };
         }
+
+        public async Task<bool> Delete(int order_lists_id)
+        {
+            var result = await _order_ListsRepository.Delete(order_lists_id);
+            return (result != null);
+        }
+
     }
 }
