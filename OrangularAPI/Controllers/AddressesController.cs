@@ -5,19 +5,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OrangularAPI.DTO.Addresses.Requests;
 using OrangularAPI.DTO.Addresses.Responses;
-using OrangularAPI.Services.addresses;
-
-
+using OrangularAPI.Services.AddressService;
 
 namespace OrangularAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AddressesController : ControllerBase
+    public class AddressController : ControllerBase
     {
-        private readonly IAddressesService _addressService;
+        private readonly IAddressService _addressService;
 
-        public AddressesController(IAddressesService addressService)
+        public AddressController(IAddressService addressService)
         {
             // _authorService far værdien authoerService
             _addressService = addressService;
@@ -31,7 +29,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                List<AddressesResponse> Addresses = await _addressService.getAll();
+                List<AddressesResponse> Addresses = await _addressService.GetAll();
 
                 if (Addresses == null)
                 {
@@ -60,7 +58,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                AddressesResponse address = await _addressService.getById(addresses_id);
+                AddressesResponse address = await _addressService.GetById(addresses_id);
 
                 if (address == null)
                 {
@@ -84,7 +82,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                AddressesResponse address = await _addressService.create(newAddress);
+                AddressesResponse address = await _addressService.Create(newAddress);
 
                 if (address == null)
                 {
@@ -108,7 +106,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                AddressesResponse address_response = await _addressService.update(addresses_id, updateAddress);
+                AddressesResponse address_response = await _addressService.Update(addresses_id, updateAddress);
 
                 if (address_response == null)
                 {
@@ -132,7 +130,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                bool result = await _addressService.delete(address_id);
+                bool result = await _addressService.Delete(address_id);
 
                 if (!result)
                 {

@@ -2,21 +2,21 @@ using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Addresses.Responses;
 using OrangularAPI.DTO.Addresses.Requests;
 using OrangularAPI.Repositories.addresses;
-using OrangularAPI.Services.addresses;
 using Moq;
 using System.Collections.Generic;
 using Xunit;
+using OrangularAPI.Services.AddressService;
 
 namespace OrangularTests.AddressesTest
 {
     public class AddressesServiceTests
     {
-        private readonly AddressesService _sut;
+        private readonly AddressService _sut;
         private readonly Mock<IAddressesRepository> _addressesRepository = new();
 
         public AddressesServiceTests()
         {
-            _sut = new AddressesService(_addressesRepository.Object);
+            _sut = new AddressService(_addressesRepository.Object);
         }
 
         // ---- GetAll Tests ---- //
@@ -46,7 +46,7 @@ namespace OrangularTests.AddressesTest
                     .ReturnsAsync(Addresses);
 
                 // Act
-                var result = await _sut.getAll();
+                var result = await _sut.GetAll();
 
                 // Assert
                 Assert.NotNull(result);
@@ -66,7 +66,7 @@ namespace OrangularTests.AddressesTest
                 .ReturnsAsync(Addresses);
 
             // Act
-            var result = await _sut.getAll();
+            var result = await _sut.GetAll();
 
             // Assert
             Assert.NotNull(result);
@@ -95,7 +95,7 @@ namespace OrangularTests.AddressesTest
                     .ReturnsAsync(address);
 
                 // Act
-                var result = await _sut.getById(search_id);
+                var result = await _sut.GetById(search_id);
 
                 // Assert
                 Assert.NotNull(result);
@@ -114,7 +114,7 @@ namespace OrangularTests.AddressesTest
                 .ReturnsAsync(() => null);
                 
                 // Act
-                var result = await _sut.getById(search_id);
+                var result = await _sut.GetById(search_id);
 
                 // Assert
                 Assert.Null(result);
@@ -145,7 +145,7 @@ namespace OrangularTests.AddressesTest
                 .ReturnsAsync(addressssss);
 
                 // Act
-                var result = await _sut.create(newAddress);
+                var result = await _sut.Create(newAddress);
 
                 // Assert
                 Assert.NotNull(result);
@@ -184,7 +184,7 @@ namespace OrangularTests.AddressesTest
                     .ReturnsAsync(address);
 
                 // Act - vi forventer en autherResponse
-                var result = await _sut.update(1, updateAddress);
+                var result = await _sut.Update(1, updateAddress);
 
                 // Assert
                 Assert.NotNull(result);
@@ -214,7 +214,7 @@ namespace OrangularTests.AddressesTest
                 .ReturnsAsync(() => null);
 
             // Act
-            var result = await _sut.update(1, updateAddress);
+            var result = await _sut.Update(1, updateAddress);
 
             // Assert
             Assert.Null(result);
@@ -244,7 +244,7 @@ namespace OrangularTests.AddressesTest
 
 
                 // Act
-                var result = await _sut.delete(1);
+                var result = await _sut.Delete(1);
 
                 // Assert
                 Assert.True(result);

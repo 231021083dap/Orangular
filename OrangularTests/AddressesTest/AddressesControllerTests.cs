@@ -1,25 +1,23 @@
-﻿using OrangularAPI.Database.Entities;
-using OrangularAPI.DTO.Addresses.Responses;
+﻿using OrangularAPI.DTO.Addresses.Responses;
 using OrangularAPI.DTO.Addresses.Requests;
-using OrangularAPI.Repositories.addresses;
-using OrangularAPI.Services.addresses;
 using Moq;
 using System.Collections.Generic;
 using Xunit;
 using OrangularAPI.Controllers;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using OrangularAPI.Services.AddressService;
 
 namespace OrangularTests.AddressesTest
 {
-    public class AddressesControllerTests
+    public class AddressControllerTests
     {
-        private readonly AddressesController _sut;
+        private readonly AddressController _sut;
 
-        private readonly Mock<IAddressesService> _addressesService = new();
+        private readonly Mock<IAddressService> _addressesService = new();
 
-        public AddressesControllerTests()
+        public AddressControllerTests()
         {
-            _sut = new AddressesController(_addressesService.Object);
+            _sut = new AddressController(_addressesService.Object);
         }
 
         [Fact]
@@ -45,7 +43,7 @@ namespace OrangularTests.AddressesTest
             });
 
 
-            _addressesService.Setup(s => s.getAll()).ReturnsAsync(addresses);
+            _addressesService.Setup(s => s.GetAll()).ReturnsAsync(addresses);
 
 
             // Act
@@ -62,7 +60,7 @@ namespace OrangularTests.AddressesTest
             // Arrange
             List<AddressesResponse> addresses = new();
 
-            _addressesService.Setup(s => s.getAll()).ReturnsAsync(addresses);
+            _addressesService.Setup(s => s.GetAll()).ReturnsAsync(addresses);
 
             // Act
             var result = await _sut.GetAll();
@@ -76,7 +74,7 @@ namespace OrangularTests.AddressesTest
         public async void GetAll_ShouldReturnStatusCode500_WhenNullIsReturnedFromService()
         {
             // Arrange
-            _addressesService.Setup(s => s.getAll()).ReturnsAsync(() => null);
+            _addressesService.Setup(s => s.GetAll()).ReturnsAsync(() => null);
             // Act
             var result = await _sut.GetAll();
             // Assert
@@ -88,7 +86,7 @@ namespace OrangularTests.AddressesTest
         public async void GetAll_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
             // Arrange
-            _addressesService.Setup(s => s.getAll()).ReturnsAsync(() => throw new System.Exception("This is an exeption"));
+            _addressesService.Setup(s => s.GetAll()).ReturnsAsync(() => throw new System.Exception("This is an exeption"));
             // Act
             var result = await _sut.GetAll();
             // Assert
@@ -109,7 +107,7 @@ namespace OrangularTests.AddressesTest
             };
 
 
-            _addressesService.Setup(s => s.getById(1)).ReturnsAsync(address);
+            _addressesService.Setup(s => s.GetById(1)).ReturnsAsync(address);
 
 
             // Act
@@ -133,7 +131,7 @@ namespace OrangularTests.AddressesTest
             };
 
 
-            _addressesService.Setup(s => s.getById(1)).ReturnsAsync(() => null);
+            _addressesService.Setup(s => s.GetById(1)).ReturnsAsync(() => null);
 
 
             // Act
@@ -156,7 +154,7 @@ namespace OrangularTests.AddressesTest
             };
 
 
-            _addressesService.Setup(s => s.getById(1)).ReturnsAsync(() => throw new System.Exception("This is an exeption"));
+            _addressesService.Setup(s => s.GetById(1)).ReturnsAsync(() => throw new System.Exception("This is an exeption"));
 
 
             // Act
@@ -186,7 +184,7 @@ namespace OrangularTests.AddressesTest
                 zip_code = 2800,
                 city_name = "Lyngby"
             };
-            _addressesService.Setup(s => s.create(newAddress)).ReturnsAsync(addressResponse);
+            _addressesService.Setup(s => s.Create(newAddress)).ReturnsAsync(addressResponse);
 
             // Act
             var result = await _sut.Create(newAddress);
@@ -210,7 +208,7 @@ namespace OrangularTests.AddressesTest
                 city_name = "Lyngby"
             };
 
-            _addressesService.Setup(s => s.create(It.IsAny<NewAddresses>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));
+            _addressesService.Setup(s => s.Create(It.IsAny<NewAddresses>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act
             var result = await _sut.Create(newAddress);
@@ -241,7 +239,7 @@ namespace OrangularTests.AddressesTest
                 city_name = "Lyngby"
             };
 
-            _addressesService.Setup(s => s.update(1,updateAddress)).ReturnsAsync(addressResponse);
+            _addressesService.Setup(s => s.Update(1,updateAddress)).ReturnsAsync(addressResponse);
 
             // Act
             var result = await _sut.Update(1,updateAddress);
@@ -265,7 +263,7 @@ namespace OrangularTests.AddressesTest
                 city_name = "Lyngby"
             };
 
-            _addressesService.Setup(s => s.update(It.IsAny<int>(), It.IsAny<UpdateAddresses>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));
+            _addressesService.Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateAddresses>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act
             var result = await _sut.Update(1, updateAddress);
@@ -281,7 +279,7 @@ namespace OrangularTests.AddressesTest
             // Arrange
             int search_id = 1;
 
-            _addressesService.Setup(s => s.delete(It.IsAny<int>())).ReturnsAsync(() => true);
+            _addressesService.Setup(s => s.Delete(It.IsAny<int>())).ReturnsAsync(() => true);
 
             // Act
             var result = await _sut.Delete(1);
@@ -296,7 +294,7 @@ namespace OrangularTests.AddressesTest
             // Arrange
             int search_id = 1;
 
-            _addressesService.Setup(s => s.delete(It.IsAny<int>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));
+            _addressesService.Setup(s => s.Delete(It.IsAny<int>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act
             var result = await _sut.Delete(1);

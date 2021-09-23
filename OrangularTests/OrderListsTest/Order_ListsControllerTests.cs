@@ -1,22 +1,21 @@
 ﻿using OrangularAPI.Controllers;
 using OrangularAPI.DTO.Order_Lists.Requests;
 using OrangularAPI.DTO.Order_Lists.Responses;
-using OrangularAPI.Services.Order_List;
-
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Moq;
 using System;
 using System.Collections.Generic;
 using Xunit;
+using OrangularAPI.Services.OrderListService;
 
 namespace OrangularTests.OrderListsTest
 {
-    public class Order_ListsControllerTests
+    public class OrderListControllerTests
     {
-        private readonly Order_ListsController _sut;
-        private readonly Mock<IOrder_ListsService> _order_ListsService = new();
+        private readonly OrderListsController _sut;
+        private readonly Mock<IOrderListService> _order_ListsService = new();
 
-        public Order_ListsControllerTests()
+        public OrderListControllerTests()
         {
             _sut = new Order_ListsController(_order_ListsService.Object);
         }
