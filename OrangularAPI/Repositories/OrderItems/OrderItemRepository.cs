@@ -6,15 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Repositories.order_items
+namespace OrangularAPI.Repositories.OrderItemsRepository
 {
-    public interface IOrderItemsRepository
-    {
-        Task<List<Order_Items>> GetAll();
-        Task<Order_Items> GetById(int orderItemId);
-        Task<Order_Items> Create(Order_Items order_Items);
-        Task<Order_Items> Update(int orderItemId, Order_Items order_Item);
-    }
+    
     public class OrderItemsRepository : IOrderItemsRepository
     {
         private readonly OrangularProjectContext _context;

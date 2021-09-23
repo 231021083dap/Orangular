@@ -1,19 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OrangularAPI.Database;
 using OrangularAPI.Database.Entities;
-using OrangularAPI.Repositories.order_lists;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using OrangularAPI.Repositories.OrderListsRepository;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Repositories.order_lists
+namespace OrangularAPI.Repositories.OrderListsRepository
 {
-    public class Order_ListsRepository : IOrder_ListsRepository
+    public class OrderListRepository : IOrderListRepository
     {
         private readonly OrangularProjectContext _context;
 
-        public Order_ListsRepository(OrangularProjectContext context)
+        public OrderListRepository(OrangularProjectContext context)
         {
             _context = context;
         }
