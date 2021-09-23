@@ -10,8 +10,8 @@ using Orangular.Database;
 namespace Orangular.Migrations
 {
     [DbContext(typeof(OrangularProjectContext))]
-    [Migration("20210923061331_newBase")]
-    partial class newBase
+    [Migration("20210923070745_NewBase")]
+    partial class NewBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -164,7 +164,7 @@ namespace Orangular.Migrations
                         new
                         {
                             order_lists_id = 1,
-                            order_date_time = new DateTime(2021, 9, 23, 8, 13, 30, 811, DateTimeKind.Local).AddTicks(9146),
+                            order_date_time = new DateTime(2021, 9, 23, 9, 7, 45, 269, DateTimeKind.Local).AddTicks(6903),
                             users_id = 0
                         });
                 });

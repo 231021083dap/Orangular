@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Orangular.Migrations
 {
-    public partial class newBase : Migration
+    public partial class NewBase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -156,7 +156,7 @@ namespace Orangular.Migrations
             migrationBuilder.InsertData(
                 table: "Order_Lists",
                 columns: new[] { "order_lists_id", "order_date_time", "users_id", "users_id1" },
-                values: new object[] { 1, new DateTime(2021, 9, 23, 8, 13, 30, 811, DateTimeKind.Local).AddTicks(9146), 0, null });
+                values: new object[] { 1, new DateTime(2021, 9, 23, 9, 7, 45, 269, DateTimeKind.Local).AddTicks(6903), 0, null });
 
             migrationBuilder.InsertData(
                 table: "Products",
