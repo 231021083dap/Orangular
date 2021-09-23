@@ -1,17 +1,15 @@
-﻿using Moq;
-using OrangularAPI.Authorization;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Moq;
+using Xunit;
+// Orangular
 using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Login.Requests;
 using OrangularAPI.DTO.Users.Responses;
 using OrangularAPI.Helpers;
 using OrangularAPI.Repositories.users;
 using OrangularAPI.Services.users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
+// Orangular
 
 namespace OrangularTests.UserTest
 {

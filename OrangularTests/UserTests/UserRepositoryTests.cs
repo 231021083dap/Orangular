@@ -1,14 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using OrangularAPI.Database;
+﻿// Orangular
 using OrangularAPI.Database.Entities;
-using OrangularAPI.Repositories.users;
 using OrangularAPI.Helpers;
-using System;
+using OrangularAPI.Repositories.users;
+using OrangularAPI.Database;
+// Orangular
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using Microsoft.EntityFrameworkCore;
+using System;
+
 
 namespace OrangularTests.UserTest
 {

@@ -1,16 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Moq;
+﻿// Orangular
+using OrangularAPI.Helpers;
 using OrangularAPI.Controllers;
-using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Login.Requests;
 using OrangularAPI.DTO.Users.Responses;
-using OrangularAPI.Helpers;
+// Orangular
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Moq;
 using OrangularAPI.Services.users;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace OrangularTests.UserTests

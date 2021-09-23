@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-using Moq;
-using OrangularAPI.Controllers;
+﻿using OrangularAPI.Controllers;
 using OrangularAPI.Services.products;
 using OrangularAPI.DTO.Products.Responses;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 using OrangularAPI.DTO.Products.Requests;
+
+using System;
+using System.Collections.Generic;
+using Xunit;
+using Moq;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+
 
 namespace OrangularTests.ProductsTests
 {

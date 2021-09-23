@@ -1,15 +1,13 @@
-﻿using Moq;
+﻿using System.Collections.Generic;
+using Moq;
+using Xunit;
+// Orangular
 using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Products.Requests;
 using OrangularAPI.DTO.Products.Responses;
 using OrangularAPI.Repositories.products;
 using OrangularAPI.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
+// Orangular
 
 namespace OrangularTests.ProductsTests
 {
