@@ -20,7 +20,7 @@ namespace Orangular.Tests
         public ProductsRepositoryTests()
         {
             _options = new DbContextOptionsBuilder<OrangularProjectContext>()
-                .UseInMemoryDatabase(databaseName: "OrangularProject")
+                .UseInMemoryDatabase(databaseName: "OrangularProjectProductsRepositoryTests")
                 .Options;
 
             _context = new OrangularProjectContext(_options);

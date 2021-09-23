@@ -223,7 +223,7 @@ namespace Orangular.Tests
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Products>(result);
+            Assert.IsType<Order_Lists>(result);
             Assert.Equal(order_lists_id, result.order_lists_id);
 
             Assert.Empty(Order_Lists);
