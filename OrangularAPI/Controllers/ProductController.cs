@@ -3,22 +3,20 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OrangularAPI.DTO.Products.Requests;
 using OrangularAPI.DTO.Products.Responses;
-using OrangularAPI.Services;
-using OrangularAPI.Services.products;
+using OrangularAPI.Services.ProductService;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace OrangularAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class ProductController : ControllerBase
     {
-        private readonly IProductsService _productsService;
+        private readonly IProductService _productsService;
 
-        public ProductsController(IProductsService productsService)
+        public ProductController(IProductService productsService)
         {
             _productsService = productsService;
         }
@@ -31,7 +29,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                List<ProductsResponse> Products = await _productsService.GetAllProducts();
+                List<ProductsResponse> Products = await _productsService.GetAll();
 
                 if (Products == null)
                 {

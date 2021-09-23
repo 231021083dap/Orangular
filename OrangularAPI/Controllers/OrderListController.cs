@@ -2,21 +2,20 @@
 using Microsoft.AspNetCore.Mvc;
 using OrangularAPI.DTO.Order_Lists.Requests;
 using OrangularAPI.DTO.Order_Lists.Responses;
-using OrangularAPI.Services.Order_List;
+using OrangularAPI.Services.OrderListService;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace OrangularAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Order_ListsController : ControllerBase
+    public class OrderListController : ControllerBase
     {
-        private readonly IOrder_ListsService _order_ListsService;
+        private readonly IOrderListService _order_ListsService;
 
-        public Order_ListsController(IOrder_ListsService orderListsService)
+        public OrderListController(IOrderListService orderListsService)
         {
             _order_ListsService = orderListsService;
         }
@@ -29,7 +28,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                List<Order_ListsResponse> Order_Lists = await _order_ListsService.GetAllOrder_Lists();
+                List<Order_ListsResponse> Order_Lists = await _order_ListsService.GetAll();
 
                 if (Order_Lists == null)
                 {
