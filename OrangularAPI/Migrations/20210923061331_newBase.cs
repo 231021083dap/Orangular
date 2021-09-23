@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Orangular.Migrations
+namespace OrangularAPI.Migrations
 {
     public partial class newBase : Migration
     {

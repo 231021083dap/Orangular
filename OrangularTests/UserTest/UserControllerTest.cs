@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Moq;
-using Orangular.Controllers;
-using Orangular.Database.Entities;
+using OrangularAPI.Controllers;
+using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Login.Requests;
 using OrangularAPI.DTO.Users.Responses;
-using Orangular.Services.users;
+using OrangularAPI.Helpers;
+using OrangularAPI.Services.users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Orangular.Tests.UserTest
+namespace OrangularTests.UserTest
 {
     public class UserControllerTest
     {
@@ -33,13 +34,13 @@ namespace Orangular.Tests.UserTest
             {
                 users_id = 1,
                 email = "Test1@Mail.com",
-                role = Helpers.Role.User
+                role = Role.User
             });
             user.Add(new UsersResponse
             {
                 users_id = 1,
                 email = "Test1@Mail.com",
-                role = Helpers.Role.User,
+                role = Role.User,
             });
             _userService.Setup(u => u.GetAll()).ReturnsAsync(user);
             // Act
@@ -138,7 +139,7 @@ namespace Orangular.Tests.UserTest
                 users_id = 1,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.User,
+                role = Role.User,
                 Order_Lists = new List<UsersOrder_ListsResponse>(),
                 Addresses = new List<UsersAddressesResponse>()
             };

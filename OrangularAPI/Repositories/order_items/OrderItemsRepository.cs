@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Orangular.Database;
-using Orangular.Database.Entities;
+using OrangularAPI.Database;
+using OrangularAPI.Database.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Repositories.order_items
+namespace OrangularAPI.Repositories.order_items
 {
     public interface IOrderItemsRepository
     {

@@ -1,13 +1,13 @@
-using Orangular.Database.Entities;
+using OrangularAPI.Database.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Orangular.Repositories.addresses;
+using OrangularAPI.Repositories.addresses;
 using OrangularAPI.DTO.Addresses.Responses;
 using OrangularAPI.DTO.Addresses.Requests;
 
-namespace Orangular.Services.addresses
+namespace OrangularAPI.Services.addresses
 {
     public class AddressesService : IAddressesService
     {

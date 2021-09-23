@@ -7,13 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Orangular.Services;
-using Orangular.Repositories.addresses;
-using Orangular.Database;
-using Orangular.Database.Entities;
-using Orangular.Helpers;
+using OrangularAPI.Services;
+using OrangularAPI.Repositories.addresses;
+using OrangularAPI.Database;
+using OrangularAPI.Database.Entities;
+using OrangularAPI.Helpers;
 
-namespace Orangular.Tests.AddressesTest
+namespace OrangularTests.AddressesTest
 {
     public class AddressesRepositoryTests
     {

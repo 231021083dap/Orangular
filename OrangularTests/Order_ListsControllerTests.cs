@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Moq;
-using Orangular.Controllers;
+using OrangularAPI.Controllers;
 using OrangularAPI.DTO.Order_Lists.Requests;
 using OrangularAPI.DTO.Order_Lists.Responses;
-using Orangular.Services.Order_List;
+using OrangularAPI.Services.Order_List;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Orangular.Tests
+namespace OrangularTests
 {
     public class Order_ListsControllerTests
     {

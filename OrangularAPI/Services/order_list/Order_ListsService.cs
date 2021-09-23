@@ -1,13 +1,13 @@
-﻿using Orangular.Database.Entities;
+﻿using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Order_Lists.Requests;
 using OrangularAPI.DTO.Order_Lists.Responses;
-using Orangular.Repositories.order_lists;
+using OrangularAPI.Repositories.order_lists;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Services.Order_List
+namespace OrangularAPI.Services.Order_List
 {
     public class Order_ListsService : IOrder_ListsService
     {

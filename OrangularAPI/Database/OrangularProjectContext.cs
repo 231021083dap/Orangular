@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Orangular.Database.Entities;
+using OrangularAPI.Database.Entities;
 using Microsoft.EntityFrameworkCore;
-using Orangular.Helpers;
+using OrangularAPI.Helpers;
 
-namespace Orangular.Database
+namespace OrangularAPI.Database
 {
     public class OrangularProjectContext : DbContext
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Orangular.Tests
+namespace OrangularTests
 {
     class Order_ListsServiceTests
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Helpers
+namespace OrangularAPI.Helpers
 {
     public class AppSettings
     {

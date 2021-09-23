@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Orangular.Database;
-using Orangular.Database.Entities;
-using Orangular.Repositories;
-using Orangular.Repositories.order_lists;
+using OrangularAPI.Database;
+using OrangularAPI.Database.Entities;
+using OrangularAPI.Repositories;
+using OrangularAPI.Repositories.order_lists;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Orangular.Tests
+namespace OrangularTests
 {
     public class Order_ListsRepositoryTests
     {

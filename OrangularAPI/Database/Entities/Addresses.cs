@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Orangular.Database.Entities
+namespace OrangularAPI.Database.Entities
 {
     // Properties er angivet i samme række som de står i E/R Diagrammet
     // F.eks.

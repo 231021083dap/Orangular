@@ -4,13 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using OrangularAPI.DTO.Login.Requests;
 using OrangularAPI.DTO.Login.Responses;
 using OrangularAPI.DTO.Users.Responses;
-using Orangular.Services.users;
+using OrangularAPI.Services.users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Controllers
+namespace OrangularAPI.Controllers
 {
     //[Authorize]
     [Route("api/[controller]")]

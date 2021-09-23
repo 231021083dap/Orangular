@@ -14,17 +14,17 @@ using System.Linq;
 using System.Threading.Tasks;
 
 // -- tilf�jet af Victor -- //
-using Orangular.Database.Entities;
+using OrangularAPI.Database.Entities;
 
-using Orangular.Database;
-using Orangular.Services.addresses;
-using Orangular.Repositories.addresses;
-using Orangular.Services.users;
-using Orangular.Repositories.users;
+using OrangularAPI.Database;
+using OrangularAPI.Services.addresses;
+using OrangularAPI.Repositories.addresses;
+using OrangularAPI.Services.users;
+using OrangularAPI.Repositories.users;
 // -- tilf�jet af Victor -- //
 
-using Orangular.Services.users;
-using Orangular.Repositories.users;
+using OrangularAPI.Services.users;
+using OrangularAPI.Repositories.users;
 // -- tilf�jet af Victor -- //
 
 

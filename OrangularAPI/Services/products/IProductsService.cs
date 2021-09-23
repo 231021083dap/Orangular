@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Services.products
+namespace OrangularAPI.Services.products
 {
     public interface IProductsService
     {

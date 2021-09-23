@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Orangular.Database;
-using Orangular.Database.Entities;
-using Orangular.Repositories.order_lists;
+using OrangularAPI.Database;
+using OrangularAPI.Database.Entities;
+using OrangularAPI.Repositories.order_lists;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Repositories.order_lists
+namespace OrangularAPI.Repositories.order_lists
 {
     public class Order_ListsRepository : IOrder_ListsRepository
     {

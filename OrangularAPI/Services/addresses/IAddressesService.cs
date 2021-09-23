@@ -1,4 +1,4 @@
-﻿using Orangular.Database.Entities;
+﻿using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Addresses.Responses;
 using OrangularAPI.DTO.Addresses.Requests;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace Orangular.Services.addresses
+namespace OrangularAPI.Services.addresses
 {
     public interface IAddressesService
     {

@@ -1,12 +1,12 @@
-﻿using Orangular.Database.Entities;
+﻿using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Order_Items.Responses;
-using Orangular.Repositories.order_items;
+using OrangularAPI.Repositories.order_items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Services.order_items
+namespace OrangularAPI.Services.order_items
 {
     public interface IOrderItemService
     {

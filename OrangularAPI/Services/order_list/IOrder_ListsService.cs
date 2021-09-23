@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Services.Order_List
+namespace OrangularAPI.Services.Order_List
 {
     public interface IOrder_ListsService
     {

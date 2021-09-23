@@ -1,15 +1,16 @@
-﻿using Orangular.Authorization;
-using Orangular.Database.Entities;
+﻿using OrangularAPI.Authorization;
+using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Login.Requests;
 using OrangularAPI.DTO.Login.Responses;
 using OrangularAPI.DTO.Users.Responses;
-using Orangular.Repositories.users;
+using OrangularAPI.Helpers;
+using OrangularAPI.Repositories.users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Services.users
+namespace OrangularAPI.Services.users
 {
 
     public interface IUserService
@@ -91,7 +92,7 @@ namespace Orangular.Services.users
             {
                 email = newUser.Email,
                 password = newUser.Password,
-                role = Helpers.Role.User // All users created through Register has the role of user
+                role = Role.User // All users created through Register has the role of user
             };
             user = await _userRepository.Create(user);
             return userResponse(user);

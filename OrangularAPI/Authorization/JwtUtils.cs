@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Orangular.Database.Entities;
-using Orangular.Helpers;
+using OrangularAPI.Database.Entities;
+using OrangularAPI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -10,7 +10,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Orangular.Authorization
+namespace OrangularAPI.Authorization
 {
     
         public interface IJwtUtils

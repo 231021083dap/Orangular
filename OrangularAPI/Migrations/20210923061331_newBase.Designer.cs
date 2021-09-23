@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Orangular.Database;
+using OrangularAPI.Database;
 
-namespace Orangular.Migrations
+namespace OrangularAPI.Migrations
 {
     [DbContext(typeof(OrangularProjectContext))]
     [Migration("20210923061331_newBase")]
@@ -21,7 +21,7 @@ namespace Orangular.Migrations
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Orangular.Database.Entities.Addresses", b =>
+            modelBuilder.Entity("OrangularAPI.Database.Entities.Addresses", b =>
                 {
                     b.Property<int>("addresses_id")
                         .ValueGeneratedOnAdd()
@@ -71,7 +71,7 @@ namespace Orangular.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Orangular.Database.Entities.Categories", b =>
+            modelBuilder.Entity("OrangularAPI.Database.Entities.Categories", b =>
                 {
                     b.Property<int>("categories_id")
                         .ValueGeneratedOnAdd()
@@ -94,7 +94,7 @@ namespace Orangular.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Orangular.Database.Entities.Order_Items", b =>
+            modelBuilder.Entity("OrangularAPI.Database.Entities.Order_Items", b =>
                 {
                     b.Property<int>("order_items_id")
                         .ValueGeneratedOnAdd()
@@ -138,7 +138,7 @@ namespace Orangular.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Orangular.Database.Entities.Order_Lists", b =>
+            modelBuilder.Entity("OrangularAPI.Database.Entities.Order_Lists", b =>
                 {
                     b.Property<int>("order_lists_id")
                         .ValueGeneratedOnAdd()
@@ -169,7 +169,7 @@ namespace Orangular.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Orangular.Database.Entities.Products", b =>
+            modelBuilder.Entity("OrangularAPI.Database.Entities.Products", b =>
                 {
                     b.Property<int>("products_id")
                         .ValueGeneratedOnAdd()
@@ -217,7 +217,7 @@ namespace Orangular.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Orangular.Database.Entities.Users", b =>
+            modelBuilder.Entity("OrangularAPI.Database.Entities.Users", b =>
                 {
                     b.Property<int>("users_id")
                         .ValueGeneratedOnAdd()
@@ -256,9 +256,9 @@ namespace Orangular.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Orangular.Database.Entities.Addresses", b =>
+            modelBuilder.Entity("OrangularAPI.Database.Entities.Addresses", b =>
                 {
-                    b.HasOne("Orangular.Database.Entities.Users", "user")
+                    b.HasOne("OrangularAPI.Database.Entities.Users", "user")
                         .WithMany("addresses")
                         .HasForeignKey("users_id1")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -266,14 +266,14 @@ namespace Orangular.Migrations
                     b.Navigation("user");
                 });
 
-            modelBuilder.Entity("Orangular.Database.Entities.Order_Items", b =>
+            modelBuilder.Entity("OrangularAPI.Database.Entities.Order_Items", b =>
                 {
-                    b.HasOne("Orangular.Database.Entities.Order_Lists", "order_list")
+                    b.HasOne("OrangularAPI.Database.Entities.Order_Lists", "order_list")
                         .WithMany("order_items")
                         .HasForeignKey("order_lists_id1")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Orangular.Database.Entities.Products", "product")
+                    b.HasOne("OrangularAPI.Database.Entities.Products", "product")
                         .WithMany("order_items")
                         .HasForeignKey("products_id1")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -283,9 +283,9 @@ namespace Orangular.Migrations
                     b.Navigation("product");
                 });
 
-            modelBuilder.Entity("Orangular.Database.Entities.Order_Lists", b =>
+            modelBuilder.Entity("OrangularAPI.Database.Entities.Order_Lists", b =>
                 {
-                    b.HasOne("Orangular.Database.Entities.Users", "user")
+                    b.HasOne("OrangularAPI.Database.Entities.Users", "user")
                         .WithMany("order_lists")
                         .HasForeignKey("users_id1")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -293,9 +293,9 @@ namespace Orangular.Migrations
                     b.Navigation("user");
                 });
 
-            modelBuilder.Entity("Orangular.Database.Entities.Products", b =>
+            modelBuilder.Entity("OrangularAPI.Database.Entities.Products", b =>
                 {
-                    b.HasOne("Orangular.Database.Entities.Categories", "category")
+                    b.HasOne("OrangularAPI.Database.Entities.Categories", "category")
                         .WithMany("products")
                         .HasForeignKey("categorycategories_id")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -303,22 +303,22 @@ namespace Orangular.Migrations
                     b.Navigation("category");
                 });
 
-            modelBuilder.Entity("Orangular.Database.Entities.Categories", b =>
+            modelBuilder.Entity("OrangularAPI.Database.Entities.Categories", b =>
                 {
                     b.Navigation("products");
                 });
 
-            modelBuilder.Entity("Orangular.Database.Entities.Order_Lists", b =>
+            modelBuilder.Entity("OrangularAPI.Database.Entities.Order_Lists", b =>
                 {
                     b.Navigation("order_items");
                 });
 
-            modelBuilder.Entity("Orangular.Database.Entities.Products", b =>
+            modelBuilder.Entity("OrangularAPI.Database.Entities.Products", b =>
                 {
                     b.Navigation("order_items");
                 });
 
-            modelBuilder.Entity("Orangular.Database.Entities.Users", b =>
+            modelBuilder.Entity("OrangularAPI.Database.Entities.Users", b =>
                 {
                     b.Navigation("addresses");
 

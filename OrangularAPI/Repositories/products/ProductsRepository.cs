@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using Orangular.Database;
-using Orangular.Database.Entities;
-using Orangular.Repositories.products;
+using OrangularAPI.Database;
+using OrangularAPI.Database.Entities;
+using OrangularAPI.Repositories.products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Repositories
+namespace OrangularAPI.Repositories
 {
     
     public class ProductsRepository : IProductsRepository

@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OrangularAPI.DTO.Addresses.Requests;
 using OrangularAPI.DTO.Addresses.Responses;
-using Orangular.Services.addresses;
+using OrangularAPI.Services.addresses;
 
 
 
-namespace Orangular.Controllers
+namespace OrangularAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Orangular.Database;
-using Orangular.Database.Entities;
-using Orangular.Repositories.users;
+using OrangularAPI.Database;
+using OrangularAPI.Database.Entities;
+using OrangularAPI.Repositories.users;
+using OrangularAPI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Orangular.Tests.UserTest
+namespace OrangularTests.UserTest
 {
    public class UserRepositoryTest
     {
@@ -36,14 +37,14 @@ namespace Orangular.Tests.UserTest
                 users_id = 1,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.Admin
+                role = Role.Admin
             });
             _context.Users.Add(new Users
             {
                 users_id = 2,
                 email = "Test2@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.User
+                role = Role.User
             });
             await _context.SaveChangesAsync();
             //Act
@@ -79,7 +80,7 @@ namespace Orangular.Tests.UserTest
                 users_id = userId,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.Admin
+                role = Role.Admin
             });
             await _context.SaveChangesAsync();
             // Act
@@ -113,7 +114,7 @@ namespace Orangular.Tests.UserTest
                 users_id = 1,
                 email = userEmail,
                 password = "Passw0rd",
-                role = Helpers.Role.Admin
+                role = Role.Admin
             });
             await _context.SaveChangesAsync();
             // Act
@@ -146,7 +147,7 @@ namespace Orangular.Tests.UserTest
             {
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.User
+                role = Role.User
             };
             // Act
             var result = await _sut.Create(user);
@@ -165,7 +166,7 @@ namespace Orangular.Tests.UserTest
                 users_id = 1,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.User
+                role = Role.User
             };
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -185,14 +186,14 @@ namespace Orangular.Tests.UserTest
                 users_id = 1,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.User
+                role = Role.User
             };
             Users user2 = new Users
             {
                 users_id = 2,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.User
+                role = Role.User
             };
             _context.Users.Add(user1);
             await _context.SaveChangesAsync();
@@ -210,7 +211,7 @@ namespace Orangular.Tests.UserTest
             Users user = new Users
             {
                 users_id = 1,
-                role = Helpers.Role.User
+                role = Role.User
             };
             // Act
             Func<Task> action = async () => await _sut.Create(user);
@@ -231,14 +232,14 @@ namespace Orangular.Tests.UserTest
                 users_id = userId,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.User
+                role = Role.User
             };
             Users userUpdate = new Users
             {
                 users_id = userId,
                 email = "est1@Mail.com",
                 password = "assw0rd",
-                role = Helpers.Role.Admin
+                role = Role.Admin
             };
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -263,7 +264,7 @@ namespace Orangular.Tests.UserTest
                 users_id = userId,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.User
+                role = Role.User
             };
             // Act
             var result = await _sut.Update(userId, userUpdate);
@@ -281,14 +282,14 @@ namespace Orangular.Tests.UserTest
                 users_id = user1Id,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.User
+                role = Role.User
             };
             Users user2 = new Users
             {
                 users_id = 2,
                 email = "Test2@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.Admin
+                role = Role.Admin
             };
             _context.Users.Add(user1); 
             _context.Users.Add(user2);
@@ -298,7 +299,7 @@ namespace Orangular.Tests.UserTest
                 users_id = user1Id,
                 email = "Test2@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.User
+                role = Role.User
             };
             // Act
             Func<Task> action = async () => await _sut.Update(user1Id, user1Update);
@@ -319,7 +320,7 @@ namespace Orangular.Tests.UserTest
                 users_id = userId,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.User
+                role = Role.User
             };
             _context.Users.Add(user);
             await _context.SaveChangesAsync();

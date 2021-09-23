@@ -1,15 +1,15 @@
-using Orangular.Database.Entities;
+using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Products.Requests;
 using OrangularAPI.DTO.Products.Responses;
-using Orangular.Repositories;
-using Orangular.Repositories.products;
-using Orangular.Services.products;
+using OrangularAPI.Repositories;
+using OrangularAPI.Repositories.products;
+using OrangularAPI.Services.products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Services
+namespace OrangularAPI.Services
 {
 
 

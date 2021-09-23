@@ -1,10 +1,10 @@
-﻿using Orangular.Database.Entities;
+﻿using OrangularAPI.Database.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Repositories.order_lists
+namespace OrangularAPI.Repositories.order_lists
 {
     public interface IOrder_ListsRepository
     {

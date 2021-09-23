@@ -3,14 +3,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OrangularAPI.DTO.Products.Requests;
 using OrangularAPI.DTO.Products.Responses;
-using Orangular.Services;
-using Orangular.Services.products;
+using OrangularAPI.Services;
+using OrangularAPI.Services.products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Controllers
+namespace OrangularAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using Moq;
-using Orangular.Controllers;
-using Orangular.Services.products;
+using OrangularAPI.Controllers;
+using OrangularAPI.Services.products;
 using OrangularAPI.DTO.Products.Responses;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using OrangularAPI.DTO.Products.Requests;
 
-namespace Orangular.Tests
+namespace OrangularTests
 {
     public class ProductsControllerTests
     {

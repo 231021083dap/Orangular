@@ -1,10 +1,11 @@
 ﻿using Moq;
-using Orangular.Authorization;
-using Orangular.Database.Entities;
+using OrangularAPI.Authorization;
+using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Login.Requests;
 using OrangularAPI.DTO.Users.Responses;
-using Orangular.Repositories.users;
-using Orangular.Services.users;
+using OrangularAPI.Helpers;
+using OrangularAPI.Repositories.users;
+using OrangularAPI.Services.users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Orangular.Tests.UserTest
+namespace OrangularTests.UserTest
 {
     public class UserServiceTest
     {
@@ -58,7 +59,7 @@ namespace Orangular.Tests.UserTest
             {
                 users_id = 1,
                 email = "Test1@Mail.com",
-                role = Helpers.Role.User,
+                role = Role.User,
                 order_lists = new List<Order_Lists> { },
                 addresses = new List<Addresses> { }
 
@@ -67,7 +68,7 @@ namespace Orangular.Tests.UserTest
             {
                 users_id = 2,
                 email = "Test2@Mail.com",
-                role = Helpers.Role.User,
+                role = Role.User,
                 order_lists = new List<Order_Lists> { },
                 addresses = new List<Addresses> { }
             });
@@ -103,7 +104,7 @@ namespace Orangular.Tests.UserTest
             {
                 users_id = userId,
                 email = "Test1@Mail.com",
-                role = Helpers.Role.User
+                role = Role.User
             };
             _userRepository.Setup(u => u.GetById(It.IsAny<int>())).ReturnsAsync(user);
             // Act
@@ -143,7 +144,7 @@ namespace Orangular.Tests.UserTest
                 users_id = userId,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.User
+                role = Role.User
             };
             _userRepository.Setup(a => a.Create(It.IsAny<Users>())).ReturnsAsync(user);
             // Act
@@ -154,7 +155,7 @@ namespace Orangular.Tests.UserTest
             Assert.Equal(userId, result.users_id);
             Assert.Equal(newUser.Email, result.email);
             Assert.Equal(newUser.Password, result.password);
-            Assert.Equal(Helpers.Role.User, result.role);
+            Assert.Equal(Role.User, result.role);
         }
         [Fact]
         public async Task Create_ShouldReturnNull_WhenCreatedUserIsNull()
@@ -182,14 +183,14 @@ namespace Orangular.Tests.UserTest
             {
                 Email = "Test1@Mail.com",
                 Password = "Passw0rd",
-                Role = Helpers.Role.User
+                Role = Role.User
             };
             Users user = new Users // sendes til repository
             {
                 users_id = userId,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.User
+                role = Role.User
             };
             _userRepository.Setup(u => u.Update(It.IsAny<int>(), It.IsAny<Users>())).ReturnsAsync(user);
             // Act
@@ -210,7 +211,7 @@ namespace Orangular.Tests.UserTest
             {
                 Email = "Test1@Mail.com",
                 Password = "Passw0rd",
-                Role = Helpers.Role.User
+                Role = Role.User
             };
             int userId = 1;
             _userRepository.Setup(u => u.Update(It.IsAny<int>(), It.IsAny<Users>())).ReturnsAsync(() => null);
@@ -231,7 +232,7 @@ namespace Orangular.Tests.UserTest
                 users_id = userId,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.User,
+                role = Role.User,
             };
             _userRepository.Setup(a => a.Delete(It.IsAny<int>())).ReturnsAsync(user);
             // Act
@@ -249,7 +250,7 @@ namespace Orangular.Tests.UserTest
                 users_id = userId,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
-                role = Helpers.Role.User,
+                role = Role.User,
             };
             _userRepository.Setup(a => a.Delete(It.IsAny<int>())).ReturnsAsync(() => null);
             // Act

@@ -1,9 +1,9 @@
 ﻿using Moq;
-using Orangular.Database.Entities;
+using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Products.Requests;
 using OrangularAPI.DTO.Products.Responses;
-using Orangular.Repositories.products;
-using Orangular.Services;
+using OrangularAPI.Repositories.products;
+using OrangularAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Orangular.Tests
+namespace OrangularTests
 {
     public class ProductserviceTests
     {

@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Orangular/bin/Debug/net5.0/Orangular.dll",
+            "program": "${workspaceFolder}/Orangular/bin/Debug/net5.0/OrangularAPI.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Orangular",
             "stopAtEntry": false,

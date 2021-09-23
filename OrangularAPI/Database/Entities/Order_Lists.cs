@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace Orangular.Database.Entities
+namespace OrangularAPI.Database.Entities
 {
     public class Order_Lists
     {

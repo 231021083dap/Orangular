@@ -1,10 +1,10 @@
-﻿using Orangular.Database.Entities;
+﻿using OrangularAPI.Database.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Services.categories
+namespace OrangularAPI.Services.categories
 {
     interface ICategoryService
     {

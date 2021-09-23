@@ -1,13 +1,13 @@
-using Orangular.Database.Entities;
+using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Addresses.Responses;
 using OrangularAPI.DTO.Addresses.Requests;
-using Orangular.Repositories.addresses;
-using Orangular.Services.addresses;
+using OrangularAPI.Repositories.addresses;
+using OrangularAPI.Services.addresses;
 using Moq;
 using System.Collections.Generic;
 using Xunit;
 
-namespace Orangular.Tests.AddressesTest
+namespace OrangularTests.AddressesTest
 {
     public class AddressesServiceTests
     {
