@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Orangular.Repositories.order_items
 {
-    public interface IOrderItemsRepository
+    public interface IOrderItemRepository
     {
         Task<List<Order_Items>> GetAll();
         Task<Order_Items> GetById(int orderItemId);
         Task<Order_Items> Create(Order_Items order_Items);
         Task<Order_Items> Update(int orderItemId, Order_Items order_Item);
     }
-    public class OrderItemsRepository : IOrderItemsRepository
+    public class OrderItemRepository : IOrderItemRepository
     {
         private readonly OrangularProjectContext _context;
-        public OrderItemsRepository(OrangularProjectContext context)
+        public OrderItemRepository(OrangularProjectContext context)
         {
             _context = context;
         }

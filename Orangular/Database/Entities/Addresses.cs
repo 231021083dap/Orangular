@@ -25,7 +25,7 @@ namespace Orangular.Database.Entities
         // --- Objektet skal være til stede i klassen for at --- Victor //
         // --- konvertere C# til SQL med korrekt foreign keys --- //
 
-        // [ForeignKey("Users.users_id")]
+        [ForeignKey("Users.users_id")]
         public int users_id { get; set; }
         public Users user { get; set; } // Property behøver ikke være lower
                                         // fordi den ikke repræsentere en kolonne i en tabel.

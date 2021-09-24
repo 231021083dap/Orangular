@@ -13,7 +13,7 @@ namespace Orangular.Tests.OrderItemsTest
 {
     public class OrderItemsRepositoryTests
     {
-        private readonly OrderItemsRepository _sut;
+        private readonly OrderItemRepository _sut;
         private readonly OrangularProjectContext _context;
         private readonly DbContextOptions<OrangularProjectContext> _options;
         public OrderItemsRepositoryTests()
@@ -22,7 +22,7 @@ namespace Orangular.Tests.OrderItemsTest
                 .UseInMemoryDatabase(databaseName: "OrangularOrderItemsDatabase")
                 .Options;
             _context = new OrangularProjectContext(_options);
-            _sut = new OrderItemsRepository(_context);
+            _sut = new OrderItemRepository(_context);
         }
         // -----------------------------------------------------------------------------------------------------------------------
         // GetAll Tests
