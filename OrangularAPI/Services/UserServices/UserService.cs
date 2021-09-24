@@ -56,15 +56,15 @@ namespace OrangularAPI.Services.UsersService
                 role = u.role,
                 orderLists = u.order_lists.Select(o => new UserOrderListResponse
                 {
-                    orderListID = o.order_lists_id,
-                    orderDateTime = o.order_date_time
+                    OrderListID = o.order_lists_id,
+                    OrderDateTime = o.order_date_time
                 }).ToList(),
                 addresses = u.addresses.Select(a => new UserAddressResponse
                 {
-                    addressID = a.addresses_id,
-                    address = a.address,
-                    zipCode = a.zip_code,
-                    cityName = a.city_name
+                    AddressID = a.addresses_id,
+                    Address = a.address,
+                    ZipCode = a.zip_code,
+                    CityName = a.city_name
                 }).ToList()
             }).ToList();
         }

@@ -7,9 +7,9 @@ namespace OrangularAPI.DTO.Users.Responses
 {
     public class UserOrderListResponse
     {
-        public int orderListID { get; set; }
+        public int OrderListID { get; set; }
 
-        public DateTime orderDateTime { get; set; }
+        public DateTime OrderDateTime { get; set; }
 
     }
 }

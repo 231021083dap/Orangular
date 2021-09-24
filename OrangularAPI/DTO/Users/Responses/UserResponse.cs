@@ -8,14 +8,14 @@ namespace OrangularAPI.DTO.Users.Responses
 {
     public class UserResponse
     {
-        public int userID { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
-        public Role role { get; set; }
+        public int UserID { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public Role Role { get; set; }
 
-        public List<UserOrderListResponse> orderLists { get; set; } = new();
+        public List<UserOrderListResponse> OrderList { get; set; } = new();
 
-        public List<UserAddressResponse> addresses { get; set; } = new();
+        public List<UserAddressResponse> Address { get; set; } = new();
 
 
     }

@@ -7,13 +7,13 @@ namespace OrangularAPI.DTO.Users.Responses
 {
     public class UserAddressResponse
     {
-        public int addressID { get; set; }
+        public int AddressID { get; set; }
 
-        public string address { get; set; }
+        public string Address { get; set; }
 
-        public int zipCode { get; set; }
+        public int ZipCode { get; set; }
 
-        public string cityName { get; set; }
+        public string CityName { get; set; }
 
     }
 }
