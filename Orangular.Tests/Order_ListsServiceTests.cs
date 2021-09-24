@@ -13,7 +13,7 @@ using Xunit;
 
 namespace Orangular.Tests
 {
-    class Order_ListsServiceTests
+    public class Order_ListsServiceTests
     {
         public class Order_ListserviceTests
         {
