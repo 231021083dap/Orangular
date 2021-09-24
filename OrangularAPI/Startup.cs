@@ -7,8 +7,16 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using OrangularAPI.Database;
 using OrangularAPI.Repositories.AddressesRepository;
+using OrangularAPI.Repositories.CategoriesRepository;
+using OrangularAPI.Repositories.OrderItemsRepository;
+using OrangularAPI.Repositories.OrderListsRepository;
+using OrangularAPI.Repositories.ProductsRepository;
 using OrangularAPI.Repositories.users;
 using OrangularAPI.Services.AddressServices;
+using OrangularAPI.Services.CategoryServices;
+using OrangularAPI.Services.OrderItemServices;
+using OrangularAPI.Services.OrderListServices;
+using OrangularAPI.Services.ProductServices;
 using OrangularAPI.Services.UsersService;
 
 namespace Orangular
@@ -43,7 +51,7 @@ namespace Orangular
             services.AddScoped<IOrderListService, OrderListService>();
             services.AddScoped<IOrderListRepository, OrderListRepository>();
 
-            services.AddScoped<ICategoryService, CategoryService>();
+            //services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             services.AddScoped<IProductService, ProductService>();
