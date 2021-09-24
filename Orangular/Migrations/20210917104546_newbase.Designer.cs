@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Orangular.Database;
+using Orangular.Database.Entities;
 
 namespace Orangular.Migrations
 {
     [DbContext(typeof(OrangularProjectContext))]
-    partial class OrangularProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20210917104546_newbase")]
+    partial class newbase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -162,9 +164,7 @@ namespace Orangular.Migrations
                         new
                         {
                             order_lists_id = 1,
-
-                            order_date_time = new DateTime(2021, 9, 24, 8, 49, 17, 663, DateTimeKind.Local).AddTicks(5490),
-                            
+                            order_date_time = new DateTime(2021, 9, 17, 12, 45, 45, 561, DateTimeKind.Local).AddTicks(7937),
                             users_id = 0
                         });
                 });
@@ -245,14 +245,14 @@ namespace Orangular.Migrations
                             users_id = 1,
                             email = "admin@admins.com",
                             password = "Passw0rd",
-                            role = 1
+                            role = 0
                         },
                         new
                         {
                             users_id = 2,
                             email = "user@users.com",
                             password = "Passw0rd",
-                            role = 2
+                            role = 1
                         });
                 });
 

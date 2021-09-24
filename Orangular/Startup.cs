@@ -16,6 +16,8 @@ using System.Threading.Tasks;
 // -- tilf�jet af Victor -- //
 using Orangular.Database.Entities;
 
+using Orangular.Services.categories;
+using Orangular.Repositories.categories;
 using Orangular.Database;
 using Orangular.Services.addresses;
 using Orangular.Repositories.addresses;
@@ -40,6 +42,8 @@ namespace Orangular
 {
     public class Startup
     {
+
+        private readonly string CORSRules = "CORSRules";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -56,6 +60,10 @@ namespace Orangular
 
             // -- tilf�jet af Victor -- //
 
+            //Addedd by Muhmen
+            //These two lines refering to Service, and Repository files and Interfaces
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             // ---- Victor --- //
             services.AddScoped<IAddressesService, AddressesService>();
@@ -108,6 +116,8 @@ namespace Orangular
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(CORSRules);
 
             app.UseEndpoints(endpoints =>
             {

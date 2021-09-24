@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+
+using Microsoft.EntityFrameworkCore;
 using Orangular.Database;
 using Orangular.Database.Entities;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Orangular.Repositories.addresses
 {
+
     public interface IAddressesRepository
     {
         Task<List<Addresses>> GetAll();
