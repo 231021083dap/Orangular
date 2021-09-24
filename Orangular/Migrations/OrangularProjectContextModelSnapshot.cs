@@ -162,7 +162,7 @@ namespace Orangular.Migrations
                         new
                         {
                             order_lists_id = 1,
-                            order_date_time = new DateTime(2021, 9, 23, 9, 7, 45, 269, DateTimeKind.Local).AddTicks(6903),
+                            order_date_time = new DateTime(2021, 9, 24, 8, 49, 17, 663, DateTimeKind.Local).AddTicks(5490),
                             users_id = 0
                         });
                 });
