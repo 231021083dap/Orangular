@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 
 namespace OrangularAPI.DTO.Products.Responses
 {
-    public class ProductsResponse
+    public class ProductResponse
     {
-        public int products_id { get; set; }
-        public string breed_name { get; set; }
+        public int productID { get; set; }
+        public string breedName { get; set; }
         public int price { get; set; }
         public int weight { get; set; }
         public string gender { get; set; }
         public string description { get; set; }
-        public ProductsCategoriesResponse Categories { get; set; }
+        public ProductCategoryResponse category { get; set; }
        
     }
 }

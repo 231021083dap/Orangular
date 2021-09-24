@@ -7,8 +7,8 @@ namespace OrangularAPI.DTO.OrderItems.Responses
 {
     public class OrderItemProductResponse
     {
-        public int products_id { get; set; }
-        public string breed_name { get; set; }
+        public int productID { get; set; }
+        public string breedName { get; set; }
         public int price { get; set; }
         public int weight { get; set; }
         public string gender { get; set; }

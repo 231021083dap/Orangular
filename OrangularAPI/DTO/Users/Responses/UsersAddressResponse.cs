@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 
 namespace OrangularAPI.DTO.Users.Responses
 {
-    public class UsersAddressesResponse
+    public class UsersAddressResponse
     {
-        public int addresses_id { get; set; }
+        public int addressID { get; set; }
 
         public string address { get; set; }
 
-        public int zip_code { get; set; }
+        public int zipCode { get; set; }
 
-        public string city_name { get; set; }
+        public string cityName { get; set; }
 
     }
 }

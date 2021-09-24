@@ -8,9 +8,9 @@ namespace OrangularAPI.DTO.Login.Responses
 {
     public class LoginResponse
     {
-        public int Id { get; set; }
-        public string Email { get; set; }
-        public Role Role { get; set; }
-        public string Token { get; set; }
+        public int id { get; set; }
+        public string email { get; set; }
+        public Role role { get; set; }
+        public string token { get; set; }
     }
 }

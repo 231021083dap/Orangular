@@ -11,7 +11,7 @@ namespace OrangularAPI.DTO.Addresses.Requests
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [Range(1, int.MaxValue)]
-        public int users_id { get; set; }
+        public int userID { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [StringLength(255, ErrorMessage = "Max string length is 255")]
@@ -19,10 +19,10 @@ namespace OrangularAPI.DTO.Addresses.Requests
         public string address { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         //[StringLength(255, ErrorMessage = "Max string length is 255")]
-        public int zip_code { get; set; }
+        public int zipCode { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [StringLength(255, ErrorMessage = "Max string length is 255")]
-        public string city_name { get; set; }
+        public string cityName { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
     }
 }

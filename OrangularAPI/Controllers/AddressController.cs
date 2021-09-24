@@ -29,9 +29,9 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                List<AddressResponse> Addresses = await _addressService.GetAll();
+                List<AddressResponse> Address = await _addressService.GetAll();
 
-                if (Addresses == null)
+                if (Address == null)
                 {
                     string problem = "Got no data, not even an empty list, this is unexpected";
                     return Problem(problem);
@@ -49,16 +49,16 @@ namespace OrangularAPI.Controllers
         }
 
         // GetById
-        [HttpGet("{addresses_id}")]
+        [HttpGet("{address_id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetById([FromRoute] int addresses_id)
+        public async Task<IActionResult> GetById([FromRoute] int address_id)
         {
             try
             {
-                AddressesResponse address = await _addressService.GetById(addresses_id);
+                AddressResponse address = await _addressService.GetById(address_id);
 
                 if (address == null)
                 {
@@ -78,11 +78,11 @@ namespace OrangularAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create([FromBody] NewAddresses newAddress)
+        public async Task<IActionResult> Create([FromBody] NewAddress newAddress)
         {
             try
             {
-                AddressesResponse address = await _addressService.Create(newAddress);
+                AddressResponse address = await _addressService.Create(newAddress);
 
                 if (address == null)
                 {

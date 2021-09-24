@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 
 namespace OrangularAPI.DTO.OrderItems.Responses
 {
-    public class Order_ItemsResponse
+    public class OrderItemResponse
     {
-        public int order_items_id { get; set; }
+        public int orderItemsID { get; set; }
 
         public int price { get; set; }
         
         public int quantity { get; set; }
 
-        public Order_ItemsProductsResponse Products { get; set; }
+        public Order_ItemsProductsResponse Product { get; set; }
 
-        public Order_ItemsOrder_ListsResponse Order_Lists { get; set; }
+        public Order_ItemsOrder_ListsResponse OrderList { get; set; }
     }
 }
