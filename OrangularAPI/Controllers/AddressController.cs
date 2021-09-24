@@ -102,11 +102,11 @@ namespace OrangularAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update([FromRoute] int addresses_id, [FromBody] UpdateAddresses updateAddress)
+        public async Task<IActionResult> Update([FromRoute] int addresses_id, [FromBody] UpdateAddress updateAddress)
         {
             try
             {
-                AddressesResponse address_response = await _addressService.Update(addresses_id, updateAddress);
+                AddressResponse address_response = await _addressService.Update(addresses_id, updateAddress);
 
                 if (address_response == null)
                 {

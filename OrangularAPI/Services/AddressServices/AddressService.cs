@@ -19,7 +19,7 @@ namespace OrangularAPI.Services.AddressServices
         }
         
         // Retunere en liste med alle adresser
-        public async Task<List<AddressesResponse>> GetAll()
+        public async Task<List<AddressResponse>> GetAll()
         {
             // Henter alle addresser fra database
             List<Addresses> addresses = await _addressRepository.GetAll();
@@ -41,7 +41,7 @@ namespace OrangularAPI.Services.AddressServices
             }).ToList();
         }
 
-        public async Task<AddressesResponse> GetById(int addressesId)
+        public async Task<AddressResponse> GetById(int addressesId)
         {
             Addresses addresses = await _addressRepository.GetById(addressesId);
 
@@ -56,7 +56,7 @@ namespace OrangularAPI.Services.AddressServices
             };
         }
 
-        public async Task<AddressesResponse> Create(NewAddresses input_address)
+        public async Task<AddressResponse> Create(NewAddress input_address)
         {
             Addresses address = new Addresses
             {
@@ -80,7 +80,7 @@ namespace OrangularAPI.Services.AddressServices
             };
         }
 
-        public async Task<AddressesResponse> Update(int input_address_id, UpdateAddresses input_address)
+        public async Task<AddressResponse> Update(int input_address_id, UpdateAddress input_address)
         {
             Addresses address = new Addresses
             {

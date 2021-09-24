@@ -14,23 +14,23 @@ namespace OrangularAPI.Services.OrderItemServices
         {
             _orderItemsRepository = orderItemsRepository;
         }
-        public async Task<List<Order_ItemsResponse>> GetAll()
+        public async Task<List<OrderItemResponse>> GetAll()
         {
             List<Order_Items> orderItems = await _orderItemsRepository.GetAll();
-            return orderItems.Select(o => new Order_ItemsResponse
+            return orderItems.Select(o => new OrderItemResponse
             {
-                order_items_id = o.order_items_id,
+                orderItemsID = o.order_items_id,
                 price = o.price,
                 quantity = o.quantity,
-                Order_Lists = new Order_ItemsOrder_ListsResponse
+                orders = new OrderItem_OrderListResponse
                 {
-                   order_lists_id = o.order_list.order_lists_id,
-                   order_date_time = o.order_list.order_date_time
+                   orderListID = o.order_list.order_lists_id,
+                   orderDateTime = o.order_list.order_date_time
                 },
-                Products = new Order_ItemsProductsResponse
+                products = new OrderItemProductResponse
                 {
-                    products_id = o.product.products_id,
-                    breed_name = o.product.breed_name,
+                    productID = o.product.products_id,
+                    breedName = o.product.breed_name,
                     price = o.product.price,
                     weight = o.product.weight,
                     gender = o.product.gender,

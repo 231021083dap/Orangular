@@ -49,7 +49,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                List<UsersResponse> users = await _userService.GetAll();
+                List<UserResponse> users = await _userService.GetAll();
                 if (users == null) return Problem("No data received, null was returned");
                 if (users.Count == 0) return NoContent();
                 return Ok(users);
@@ -72,7 +72,7 @@ namespace OrangularAPI.Controllers
                 // Only admins can access other user records
                 // var currentUser = (UsersResponse)HttpContext.Items["User"];
                 // if (userId != currentUser.users_id && currentUser.role != Helpers.Role.Admin) return Unauthorized(new { message = "Unauthorized" });
-                UsersResponse user = await _userService.GetById(userId);
+                UserResponse user = await _userService.GetById(userId);
                 if (user == null) return NotFound();
                 return Ok(user);
             }
@@ -90,7 +90,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                UsersResponse user = await _userService.Create(newUser);
+                UserResponse user = await _userService.Create(newUser);
                 if (user == null) return Problem("Returned null, User was not created");
                 return Ok(user);
             }
@@ -108,7 +108,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                UsersResponse user = await _userService.Update(userId, updateUser);
+                UserResponse user = await _userService.Update(userId, updateUser);
                 if (user == null) return Problem("Returned null, Author was not updated");
                 return Ok(user);
             }

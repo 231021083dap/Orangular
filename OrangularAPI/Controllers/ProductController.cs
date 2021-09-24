@@ -16,9 +16,9 @@ namespace OrangularAPI.Controllers
     {
         private readonly IProductService _productsService;
 
-        public ProductController(IProductService productsService)
+        public ProductController(IProductService productService)
         {
-            _productsService = productsService;
+            _productService = productService;
         }
 
         [HttpGet]
@@ -29,7 +29,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                List<ProductsResponse> Products = await _productsService.GetAll();
+                List<ProductResponse> Products = await _productService.GetAll();
 
                 if (Products == null)
                 {
@@ -59,7 +59,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                ProductsResponse Products = await _productsService.GetById(products_id);
+                ProductResponse Products = await _productsService.GetById(products_id);
 
                 if (Products == null)
                 {
@@ -78,11 +78,11 @@ namespace OrangularAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create([FromBody] NewProducts newProducts)
+        public async Task<IActionResult> Create([FromBody] NewProduct newProducts)
         {
             try
             {
-                ProductsResponse Products = await _productsService.Create(newProducts);
+                ProductResponse Products = await _productsService.Create(newProduct);
 
                 if (Products == null)
                 {
@@ -101,11 +101,11 @@ namespace OrangularAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update([FromRoute] int products_id, [FromBody] UpdateProducts updateProducts)
+        public async Task<IActionResult> Update([FromRoute] int products_id, [FromBody] UpdateProduct updateProduct)
         {
             try
             {
-                ProductsResponse Products = await _productsService.Update(products_id, updateProducts);
+                ProductResponse Products = await _productsService.Update(products_id, updateProduct);
 
                 if (Products == null)
                 {

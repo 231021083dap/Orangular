@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OrangularAPI.DTO.OrderLists.Requests;
+using OrangularAPI.DTO.OrderLists.Responses;
 using OrangularAPI.Services.OrderListServices;
 using System;
 using System.Collections.Generic;
@@ -26,7 +28,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                List<Order_ListsResponse> Order_Lists = await _order_ListsService.GetAll();
+                List<Order_ListResponse> Order_Lists = await _order_ListsService.GetAll();
 
                 if (Order_Lists == null)
                 {
@@ -56,7 +58,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                Order_ListsResponse Order_Lists = await _order_ListsService.GetById(order_lists_id);
+                OrderListResponse Order_Lists = await _order_ListsService.GetById(order_lists_id);
 
                 if (Order_Lists == null)
                 {
@@ -75,11 +77,11 @@ namespace OrangularAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create([FromBody] NewOrder_Lists newOrder_Lists)
+        public async Task<IActionResult> Create([FromBody] NewOrderList newOrder_Lists)
         {
             try
             {
-                Order_ListsResponse Order_Lists = await _order_ListsService.Create(newOrder_Lists);
+                OrderListResponse Order_Lists = await _order_ListsService.Create(newOrderList);
 
                 if (Order_Lists == null)
                 {
@@ -98,11 +100,11 @@ namespace OrangularAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update([FromRoute] int order_lists_id, [FromBody] UpdateOrder_Lists updateOrder_Lists)
+        public async Task<IActionResult> Update([FromRoute] int order_lists_id, [FromBody] UpdateOrderList updateOrder_Lists)
         {
             try
             {
-                Order_ListsResponse Order_Lists = await _order_ListsService.Update(order_lists_id, updateOrder_Lists);
+                OrderListResponse Order_Lists = await _order_ListsService.Update(order_lists_id, updateOrder_Lists);
 
                 if (Order_Lists == null)
                 {

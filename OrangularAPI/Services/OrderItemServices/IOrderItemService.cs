@@ -6,6 +6,6 @@ namespace OrangularAPI.Services.OrderItemServices
 {
     public interface IOrderItemService
     {
-        Task<List<Order_ItemsResponse>> GetAll();
+        Task<List<OrderItemResponse>> GetAll();
     }
 }
