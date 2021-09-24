@@ -24,10 +24,6 @@ namespace OrangularAPI.Services.AddressServices
             // Henter alle addresser fra database
             List<Address> address = await _addressRepository.GetAll();
 
-            // addresses_id = 1,
-            // users_id = 1,
-            // address = "TEC Ballerup",
-            // zip_code = 2750
 
             // Retuner listen med addresses
             return address == null ? null : address.Select(
@@ -37,7 +33,7 @@ namespace OrangularAPI.Services.AddressServices
                 Address = a.AddressName,
                 ZipCode = a.ZipCode,
                 CityName = null,
-                User = null
+                AddressUserResponse = null
             }).ToList();
         }
 
@@ -51,7 +47,7 @@ namespace OrangularAPI.Services.AddressServices
                 Address =  address.AddressName,
                 ZipCode =  address.ZipCode,
                 CityName = address.CityName,
-                User = null
+                AddressUserResponse = null
             };
         }
 
@@ -60,7 +56,7 @@ namespace OrangularAPI.Services.AddressServices
             Address address = new Address
             {
            
-                UserId = newAddress.UserId,
+                // UserId = newAddress.UserId,
                 AddressName = newAddress.Address,
                 ZipCode = newAddress.ZipCode,
                 CityName = newAddress.CityName
@@ -75,7 +71,7 @@ namespace OrangularAPI.Services.AddressServices
                 Address =  address.AddressName,
                 ZipCode =  address.ZipCode,
                 CityName = null,
-                User = null
+                AddressUserResponse = null
             };
         }
 
@@ -83,7 +79,7 @@ namespace OrangularAPI.Services.AddressServices
         {
             Address address = new Address
             {
-                UserId = input_address.UserId,
+                // UserId = input_address.UserId,
                 AddressName = input_address.Address,
                 ZipCode = input_address.ZipCode,
                 CityName = input_address.CityName
@@ -99,7 +95,7 @@ namespace OrangularAPI.Services.AddressServices
                 Address =  address.AddressName,
                 ZipCode =  address.ZipCode,
                 CityName = address.CityName,
-                User = null
+                AddressUserResponse = null
             };
         }
 

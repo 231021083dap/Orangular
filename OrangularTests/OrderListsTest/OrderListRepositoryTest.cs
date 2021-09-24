@@ -9,13 +9,13 @@ using Xunit;
 
 namespace OrangularTests.OrderListsTest
 {
-    public class Order_ListsRepositoryTests
+    public class OrderListRepositoryTest
     {
         private readonly OrderListRepository _sut;
         private readonly OrangularProjectContext _context;
         private readonly DbContextOptions<OrangularProjectContext> _options;
 
-        public Order_ListsRepositoryTests()
+        public OrderListRepositoryTest()
         {
             _options = new DbContextOptionsBuilder<OrangularProjectContext>()
                 .UseInMemoryDatabase(databaseName: "OrangularProject")

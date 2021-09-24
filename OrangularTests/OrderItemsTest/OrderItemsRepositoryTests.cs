@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 using OrangularAPI.Repositories.OrderItemsRepository;
+using OrangularAPI.Helpers;
 
 namespace OrangularTests.OrderItemsTest
 {
@@ -25,36 +26,57 @@ namespace OrangularTests.OrderItemsTest
         // -----------------------------------------------------------------------------------------------------------------------
         // GetAll Tests
         [Fact]
-        public async Task GetAll_ShouldReturnListOfOrderItems_WhenOrderItemsExists()
+        public async Task GetAll_ShouldReturnListOfOrderItem_WhenOrderItemExists()
         {
             // Arrange
             await _context.Database.EnsureDeletedAsync();
-            _context.OrderItem.Add(new OrderItem
-            { 
-                Id = 1, 
-                Price = 1,
-                Quantity = 1,
-                OrderList = new OrderList { },
-                Product = new Product { }
-            });
+            
             _context.OrderItem.Add(new OrderItem
             {
-                Id = 2,
-                Price = 1,
-                Quantity = 1,
-                OrderList = new OrderList{},
-                Product = new Product{}
+                Id = 1,
+                Price = 750000,     // F.eks to hunde købt til 7500 kr stykket
+                Quantity = 2,
+                OrderList = new OrderList
+                {
+                    Id = 1,
+                    OrderDateTime = DateTime.Now,
+                    User = new User
+                    {
+                        Id = 1,
+                        Email = "admin@admins.com",
+                        Password = "Passw0rd",
+                        Role = Role.Admin,
+                    }
+                },
+                Product = new Product
+                {
+                    Id = 1,
+                    BreedName = "chefer hund",
+                    Price = 750000,
+                    Weight = 35000,
+                    Gender = "male",
+                    Description = "Description",
+                    Category = new Category
+                    {
+                        Id = 1,
+                        CategoryName = "hund"
+                    }
+                }
             });
+
             await _context.SaveChangesAsync();
+
             // Act
             var result = await _sut.GetAll();
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<List<OrderItem>>(result);
-            Assert.Equal(2, result.Count);
         }
+
+
         [Fact]
-        public async Task GetAll_ShouldReturnEmptyListOfOrderItems_WhenNoOrderItemsExists()
+        public async Task GetAll_ShouldReturnEmptyListOfOrderItem_WhenNoOrderItemExist()
         {
             // Arrange
             await _context.Database.EnsureDeletedAsync();
@@ -75,11 +97,35 @@ namespace OrangularTests.OrderItemsTest
             int orderItemId = 1;
             _context.OrderItem.Add(new OrderItem
             {
-                Id = orderItemId,
-                Price = 1,
-                Quantity = 1,
-                OrderList = new OrderList { },
-                Product = new Product { }
+                Id = 1,
+                Price = 750000,     // F.eks to hunde købt til 7500 kr stykket
+                Quantity = 2,
+                OrderList = new OrderList
+                {
+                    Id = 1,
+                    OrderDateTime = DateTime.Now,
+                    User = new User
+                    {
+                        Id = 1,
+                        Email = "admin@admins.com",
+                        Password = "Passw0rd",
+                        Role = Role.Admin,
+                    }
+                },
+                Product = new Product
+                {
+                    Id = 1,
+                    BreedName = "chefer hund",
+                    Price = 750000,
+                    Weight = 35000,
+                    Gender = "male",
+                    Description = "Description",
+                    Category = new Category
+                    {
+                        Id = 1,
+                        CategoryName = "hund"
+                    }
+                }
             });
             await _context.SaveChangesAsync();
             // Act
@@ -89,6 +135,8 @@ namespace OrangularTests.OrderItemsTest
             Assert.IsType<OrderItem>(result);
             Assert.Equal(orderItemId, result.Id);
         }
+
+
         [Fact]
         public async Task GetById_ShouldReturnNull_IfOrderItemDoesNotExist()
         {
@@ -108,17 +156,44 @@ namespace OrangularTests.OrderItemsTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int expectedId = 1;
-            OrderItem orderItem = new OrderItem
+            OrderItem orderItem = new()
             {
-                Id = expectedId,
-                Price = 1,
-                Quantity = 1,
-                OrderList = new OrderList{},
-                Product = new Product{}
+                Id = 1,
+                Price = 750000,     // F.eks to hunde købt til 7500 kr stykket
+                Quantity = 2,
+                OrderList = new OrderList
+                {
+                    Id = 1,
+                    OrderDateTime = DateTime.Now,
+                    User = new User
+                    {
+                        Id = 1,
+                        Email = "admin@admins.com",
+                        Password = "Passw0rd",
+                        Role = Role.Admin,
+                    }
+                },
+                Product = new Product
+                {
+                    Id = 1,
+                    BreedName = "chefer hund",
+                    Price = 750000,
+                    Weight = 35000,
+                    Gender = "male",
+                    Description = "Description",
+                    Category = new Category
+                    {
+                        Id = 1,
+                        CategoryName = "hund"
+                    }
+                }
             };
+
+
             // Act
             var result = await _sut.Create(orderItem);
             // Assert
+
             Assert.NotNull(result);
             Assert.IsType<OrderItem>(result);
             Assert.Equal(expectedId, result.Id);
@@ -128,7 +203,7 @@ namespace OrangularTests.OrderItemsTest
         {
             // Arrange
             await _context.Database.EnsureDeletedAsync();
-            OrderItem orderItem = new OrderItem
+            OrderItem orderItem = new()
             {
                 Id = 1,
                 Price = 1,
@@ -159,8 +234,8 @@ namespace OrangularTests.OrderItemsTest
                 Id = orderItemId,
                 Price = 1,
                 Quantity = 1,
-                OrderListIdxxx = 1,
-                ProductId = 1
+                // OrderListIdxxx = 1,
+                // ProductId = 1
             };
             _context.OrderItem.Add(orderItem);
             await _context.SaveChangesAsync();
@@ -169,8 +244,8 @@ namespace OrangularTests.OrderItemsTest
                 Id = orderItemId,
                 Price = 2,
                 Quantity = 2,
-                OrderListIdxxx = 2,
-                ProductId = 2
+                // OrderListIdxxx = 2,
+                // ProductId = 2
             };
             // Act
             var result = await _sut.Update(orderItemId, updateOrderItem);
@@ -180,8 +255,8 @@ namespace OrangularTests.OrderItemsTest
             Assert.Equal(orderItemId, result.Id);
             Assert.Equal(updateOrderItem.Price, result.Price);
             Assert.Equal(updateOrderItem.Quantity, result.Quantity);
-            Assert.Equal(updateOrderItem.OrderListIdxxx, result.OrderListIdxxx);
-            Assert.Equal(updateOrderItem.ProductId, result.ProductId);
+            // Assert.Equal(updateOrderItem.OrderListIdxxx, result.OrderListIdxxx);
+            // Assert.Equal(updateOrderItem.ProductId, result.ProductId);
         }
         [Fact]
         public async Task Update_ShouldNotChangeValues_WhereNoValuesWasPut()
@@ -198,8 +273,8 @@ namespace OrangularTests.OrderItemsTest
                 Id = orderItemId,
                 Price = orderItemPrice,
                 Quantity = orderItemQuantity,
-                OrderListIdxxx = orderItemOrderListsId,
-                ProductId = orderItemProductsId
+                // OrderListIdxxx = orderItemOrderListsId,
+                // ProductId = orderItemProductsId
             };
             _context.OrderItem.Add(orderItem);
             await _context.SaveChangesAsync();
@@ -217,8 +292,8 @@ namespace OrangularTests.OrderItemsTest
             Assert.Equal(orderItemId, result.Id);
             Assert.Equal(orderItemPrice, result.Price);
             Assert.Equal(orderItem.Quantity, result.Quantity);
-            Assert.Equal(orderItem.OrderListIdxxx, result.OrderListIdxxx);
-            Assert.Equal(orderItem.ProductId, result.ProductId);
+            // Assert.Equal(orderItem.OrderListIdxxx, result.OrderListIdxxx);
+            // Assert.Equal(orderItem.ProductId, result.ProductId);
         }
         [Fact]
         public async Task Update_ShouldReturnNull_WhenOrderItemDoesNotExist()

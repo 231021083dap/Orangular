@@ -25,26 +25,29 @@ namespace OrangularTests.AddressesTest
             public async void GetAll_ShouldReturnListOfAddressesResponses_WhenAddressesExist()
             {
                 // Arrange
-                List<Address> Addresses = new List<Address>();
+                List<Address> Address = new List<Address>();
 
-                Addresses.Add(new Address
+                Address.Add(new Address
                 {
                     Id = 1,
-                    UserId = 1,
                     AddressName = "TEC Ballerup",
-                    ZipCode = 2750
+                    ZipCode = 2750,
+                    CityName = "Ballerup",
+                    UserId = 1,
                 });
-                Addresses.Add(new Address
+                Address.Add(new Address
                 {
                     Id = 2,
-                    UserId = 2,
                     AddressName = "Hjem Helsingør",
-                    ZipCode = 3000
+                    ZipCode = 3000,
+                    CityName = "Helsingør",
+                    UserId = 2
                 });
 
                 _addressesRepository
-                    .Setup(a => a.GetAll())
-                    .ReturnsAsync(Addresses);
+                    .Setup(_addressRepository => 
+                    _addressRepository.GetAll())
+                    .ReturnsAsync(Address);
 
                 // Act
                 var result = await _sut.GetAll();
@@ -53,8 +56,10 @@ namespace OrangularTests.AddressesTest
                 Assert.NotNull(result);
                 Assert.Equal(2, result.Count);
                 Assert.IsType<List<AddressResponse>>(result); // vi forventer en liste af typen AddressesResponse
-            } 
-        
+            }
+
+
+
             [Fact]
             public async void GetAll_ShouldReturnEmptyListOfAddressesResponses_WhenNoAddressesExists()
             {
@@ -86,9 +91,9 @@ namespace OrangularTests.AddressesTest
                 Address address = new Address
                 {
                     Id = 1,
-                    UserId = 1,
                     AddressName = "TEC Ballerup",
-                    ZipCode = 2750
+                    ZipCode = 2750,
+                    // UserId = 1,
                 };
 
                 _addressesRepository
@@ -173,7 +178,7 @@ namespace OrangularTests.AddressesTest
                 Address address = new Address
                 {
                     Id = 1,
-                    UserId = 2,
+                    // UserId = 2,
                     AddressName = "Hjem Helsingør",
                     ZipCode = 3000,
                     CityName = "Helsingør"
@@ -232,7 +237,7 @@ namespace OrangularTests.AddressesTest
                 Address address = new Address
                 {
                     Id = 1,
-                    UserId = 2,
+                    // UserId = 2,
                     AddressName = "Hjem Helsingør",
                     ZipCode = 3000,
                     CityName = "Helsingør"

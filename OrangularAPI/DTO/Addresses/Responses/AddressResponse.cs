@@ -15,6 +15,6 @@ namespace OrangularAPI.DTO.Addresses.Responses
 
         public string CityName { get; set; }
 
-        public AddressUserResponse User { get; set; }
+        public AddressUserResponse AddressUserResponse { get; set; }
     }
 }

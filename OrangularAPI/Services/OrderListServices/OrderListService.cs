@@ -20,7 +20,7 @@ namespace OrangularAPI.Services.OrderListServices
         {
             OrderList orderList = new OrderList
             {
-                UserIdxxx = newOrderList.UserId,
+                // UserIdxxx = newOrderList.UserId,
                 OrderDateTime = newOrderList.OrderDateTime
 
             };
@@ -68,7 +68,7 @@ namespace OrangularAPI.Services.OrderListServices
             OrderList orderList = new OrderList
             {
                 OrderDateTime = updateOrderList.OrderDateTime,
-                UserIdxxx = updateOrderList.UserId,
+                // UserIdxxx = updateOrderList.UserId,
 
             };
 

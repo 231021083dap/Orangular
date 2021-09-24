@@ -19,6 +19,9 @@ namespace OrangularAPI.Database.Entities
         [Required]
         [Column(TypeName = "nvarchar(255)")]
         public string CategoryName { get; set; }
+
+
+
         public List<Product> Product { get; set; } = new();
     }
 }

@@ -40,7 +40,8 @@ namespace OrangularAPI.Database.Entities
         public string Description { get; set; }
 
 
-
+        [ForeignKey("Category")]
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
 
 

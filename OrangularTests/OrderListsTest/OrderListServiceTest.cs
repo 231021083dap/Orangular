@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrangularTests.OrderListsTest
 {
-    class Order_ListsServiceTests
+    class OrderListServiceTest
     {
     }
 }

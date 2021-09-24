@@ -13,7 +13,7 @@ namespace OrangularAPI.DTO.Products.Responses
         public int Weight { get; set; }
         public string Gender { get; set; }
         public string Description { get; set; }
-        public ProductCategoryResponse Category { get; set; }
+        public ProductCategoryResponse ProductCategoryResponse { get; set; }
        
     }
 }

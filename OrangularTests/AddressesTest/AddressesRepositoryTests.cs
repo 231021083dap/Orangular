@@ -36,7 +36,6 @@ namespace OrangularTests.AddressesTest
             public async Task GetAll_ShouldReturnListOfAddresses_WhenAddressesExists()
             {
 
-                // null = fejl
                 // Arrange
                 await _context.Database.EnsureDeletedAsync();
 
@@ -63,19 +62,21 @@ namespace OrangularTests.AddressesTest
                 _context.Address.Add(
                 new Address
                 {
-                    Id = 1,
-                    UserId = 1,
+                    Id = 1,                    
                     AddressName = "TEC Ballerup",
-                    ZipCode = 2750
+                    ZipCode = 2750,
+                    CityName = "Ballerup",
+                    UserId = 1,
                 });
 
                 _context.Address.Add(
                 new Address
                 {
-                    Id = 2,
-                    UserId = 2,
+                    Id = 2,                    
                     AddressName = "Hjem Helsingør",
-                    ZipCode = 3000
+                    ZipCode = 3000,
+                    CityName = "Helsingør",
+                    UserId = 2
                 });
 
 
@@ -117,7 +118,7 @@ namespace OrangularTests.AddressesTest
                 new Address
                 {
                     Id = 1,
-                    UserId = 1,
+                    // UserId = 1,
                     AddressName = "TEC Ballerup",
                     ZipCode = 2750
                 });
@@ -160,7 +161,7 @@ namespace OrangularTests.AddressesTest
                 Address address = new Address
                 {
                     Id = 2,
-                    UserId = 2,
+                    // UserId = 2,
                     AddressName = "Hjem Helsingør",
                     ZipCode = 3000
                 };
@@ -182,7 +183,7 @@ namespace OrangularTests.AddressesTest
                 Address address = new Address
                 {
                     Id = 2,
-                    UserId = 2,
+                    // UserId = 2,
                     AddressName = "Hjem Helsingør",
                     ZipCode = 3000
                 };
@@ -210,7 +211,7 @@ namespace OrangularTests.AddressesTest
                 Address address = new Address
                 {
                     Id = updateTargetId,
-                    UserId = 2,
+                    // UserId = 2,
                     AddressName = "Hjem Helsingør",
                     ZipCode = 3000
                 };
@@ -225,7 +226,7 @@ namespace OrangularTests.AddressesTest
                 Address updateAddress = new Address
                 {
                     Id = 1,
-                    UserId = 1,
+                    // UserId = 1,
                     AddressName = "TEC Ballerup",
                     ZipCode = 2750
                 };
@@ -237,7 +238,7 @@ namespace OrangularTests.AddressesTest
                 Assert.NotNull(result);
                 Assert.IsType<Address>(result);
                 Assert.Equal(updateTargetId, result.Id);
-                Assert.Equal(updateAddress.UserId, result.UserId);
+                // Assert.Equal(updateAddress.UserId, result.UserId);
                 Assert.Equal(updateAddress.AddressName, result.AddressName);
                 Assert.Equal(updateAddress.ZipCode, result.ZipCode);
             }
@@ -253,7 +254,7 @@ namespace OrangularTests.AddressesTest
                 Address updateAddresses = new Address
                 {
                     Id = 1,
-                    UserId = 1,
+                    // UserId = 1,
                     AddressName = "TEC Ballerup",
                     ZipCode = 2750
                 };
@@ -275,7 +276,7 @@ namespace OrangularTests.AddressesTest
                 Address address = new Address
                 {
                     Id = 1,
-                    UserId = 1,
+                    // UserId = 1,
                     AddressName = "TEC Ballerup",
                     ZipCode = 2750
                 };

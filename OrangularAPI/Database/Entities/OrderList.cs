@@ -20,10 +20,8 @@ namespace OrangularAPI.Database.Entities
         public DateTime OrderDateTime { get; set; }
 
 
-
-        [Required]
-        [ForeignKey("User.Id")]
-        public int UserIdxxx { get; set; }
+        [ForeignKey("User")]
+        public int UserId { get; set; }
         public User User { get; set; }
 
 

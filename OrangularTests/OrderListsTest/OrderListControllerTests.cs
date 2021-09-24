@@ -7,40 +7,47 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 using OrangularAPI.Services.OrderListServices;
+using OrangularAPI.Database.Entities;
+using OrangularAPI.Helpers;
 
 namespace OrangularTests.OrderListsTest
 {
     public class OrderListControllerTests
     {
         private readonly OrderListController _sut;
-        private readonly Mock<IOrderListService> _order_ListsService = new();
+        private readonly Mock<IOrderListService> _orderListService;
 
         public OrderListControllerTests()
         {
-            _sut = new OrderListController(_order_ListsService.Object);
+            _sut = new OrderListController(_orderListService.Object);
         }
 
         [Fact]
         public async void GetAll_ShouldReturnStatusCode200_whenDataExists()
         {
             // Arrange
-            List<OrderListResponse> order_Lists = new();
-            order_Lists.Add(new OrderListResponse
+            List<OrderListResponse> OrderList = new();
+            OrderList.Add(new OrderListResponse
             {
                 OrderListId = 1,
-                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00"),
+                //Order
+                OrderListUserResponse = new OrderListUserResponse
+                {
+                    
 
+                }
             });
-            order_Lists.Add(new OrderListResponse
+            OrderList.Add(new OrderListResponse
             {
                 OrderListId = 2,
                 OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
 
             });
 
-            _order_ListsService
+            _orderListService
                 .Setup(s => s.GetAll())
-                .ReturnsAsync(order_Lists);
+                .ReturnsAsync(OrderList);
 
 
 
@@ -59,7 +66,7 @@ namespace OrangularTests.OrderListsTest
             // Arrange
             List<OrderListResponse> order_Listss = new();
 
-            _order_ListsService
+            _orderListService
                 .Setup(s => s.GetAll())
                 .ReturnsAsync(order_Listss);
 
@@ -76,7 +83,7 @@ namespace OrangularTests.OrderListsTest
         public async void GetAll_ShouldReturnStatusCode500_whenNullIsReturnedFromService()
         {
             // Arrange
-            _order_ListsService
+            _orderListService
                 .Setup(s => s.GetAll())
                 .ReturnsAsync(() => null);
 
@@ -93,7 +100,7 @@ namespace OrangularTests.OrderListsTest
         public async void GetAll_ShouldReturnStatusCode500_whenExceptionIsRaised()
         {
             // Arrange
-            _order_ListsService
+            _orderListService
                 .Setup(s => s.GetAll())
                 .ReturnsAsync(() => throw new Exception("This is an exception"));
 
@@ -117,7 +124,7 @@ namespace OrangularTests.OrderListsTest
                 OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
-            _order_ListsService
+            _orderListService
                 .Setup(s => s.GetById(It.IsAny<int>()))
                 .ReturnsAsync(order_Lists);
 
@@ -135,7 +142,7 @@ namespace OrangularTests.OrderListsTest
             // Arrange
             int order_lists_id = 1;
 
-            _order_ListsService
+            _orderListService
                 .Setup(s => s.GetById(It.IsAny<int>()))
                 .ReturnsAsync(() => null);
             // Act
@@ -150,7 +157,7 @@ namespace OrangularTests.OrderListsTest
         public async void GetById_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
             // Arrange
-            _order_ListsService
+            _orderListService
                 .Setup(s => s.GetById(It.IsAny<int>()))
                 .ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
@@ -178,7 +185,7 @@ namespace OrangularTests.OrderListsTest
                 OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
-            _order_ListsService
+            _orderListService
                 .Setup(s => s.Create(It.IsAny<NewOrderList>()))
                 .ReturnsAsync(order_Lists);
 
@@ -199,7 +206,7 @@ namespace OrangularTests.OrderListsTest
                 OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
-            _order_ListsService
+            _orderListService
                 .Setup(s => s.Create(It.IsAny<NewOrderList>()))
                 .ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
@@ -227,7 +234,7 @@ namespace OrangularTests.OrderListsTest
                 OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
-            _order_ListsService
+            _orderListService
                 .Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateOrderList>()))
                 .ReturnsAsync(order_Lists);
 
@@ -249,7 +256,7 @@ namespace OrangularTests.OrderListsTest
                 OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
-            _order_ListsService
+            _orderListService
                 .Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateOrderList>()))
                 .ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
@@ -267,7 +274,7 @@ namespace OrangularTests.OrderListsTest
             // Arrange
             int order_lists_id = 1;
 
-            _order_ListsService
+            _orderListService
                 .Setup(s => s.Delete(It.IsAny<int>()))
                 .ReturnsAsync(true);
 
@@ -285,7 +292,7 @@ namespace OrangularTests.OrderListsTest
             // Arrange
             int order_lists_id = 1;
 
-            _order_ListsService
+            _orderListService
                 .Setup(s => s.Delete(It.IsAny<int>()))
                 .ReturnsAsync(() => throw new System.Exception("This is an exception"));
 

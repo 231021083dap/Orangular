@@ -88,7 +88,7 @@ namespace OrangularAPI.Database
                 Id = 1,
                 Email = "admin@admins.com",
                 Password = "Passw0rd",
-                Role = Role.Admin
+                Role = Role.Admin,
             },
             new User
             {
@@ -103,16 +103,18 @@ namespace OrangularAPI.Database
             new Address
             {
                 Id = 1,
-                UserId = 1,
                 AddressName = "TEC Ballerup",
-                ZipCode = 2750
+                ZipCode = 2750,
+                CityName = "Ballerup",
+                UserId = 1,
             },
             new Address
             {
                 Id = 2,
-                UserId = 2,
                 AddressName = "Hjem Helsingør",
-                ZipCode = 3000
+                ZipCode = 3000,
+                CityName = "Helsingør",
+                UserId = 2
             });
 
             // Order_Lists
@@ -120,7 +122,8 @@ namespace OrangularAPI.Database
             new OrderList
             {
                 Id = 1,
-                OrderDateTime = DateTime.Now
+                OrderDateTime = DateTime.Now,
+                UserId = 1
             });
 
             // Order_Items
@@ -128,10 +131,10 @@ namespace OrangularAPI.Database
             new OrderItem
             {
                 Id = 1,
-                OrderListIdxxx = 1,
-                ProductId = 1,
-                Price = 750000,
-                Quantity = 2
+                Price = 750000,     // F.eks to hunde købt til 7500 kr stykket
+                Quantity = 2,
+                OrderListId = 1,    // reference til køberen
+                ProductId = 1       // reference til produktet (hunden)
             });
 
             // Categories
@@ -151,7 +154,8 @@ namespace OrangularAPI.Database
                 Price = 750000,
                 Weight = 35000,
                 Gender = "male",
-                Description = "Description"
+                Description = "Description",
+                CategoryId = 1
             });
         }
         // ----- Fylder data ind i tabellerne ----- Victor //

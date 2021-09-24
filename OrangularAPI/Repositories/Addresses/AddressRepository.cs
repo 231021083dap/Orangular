@@ -48,7 +48,7 @@ namespace OrangularAPI.Repositories.AddressesRepository
 
             if (updatedAddress != null)
             {
-                updatedAddress.UserId = updateThisAddress.UserId;
+                // updatedAddress.UserId = updateThisAddress.UserId;
                 updatedAddress.AddressName = updateThisAddress.AddressName;
                 updatedAddress.ZipCode = updateThisAddress.ZipCode;
                 await _context.SaveChangesAsync();

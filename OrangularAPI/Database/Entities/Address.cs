@@ -31,7 +31,7 @@ namespace OrangularAPI.Database.Entities
 
 
 
-        [ForeignKey("User.Id")]
+        [ForeignKey("User")]
         public int UserId { get; set; }
         public User User { get; set; }
     }

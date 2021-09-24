@@ -43,8 +43,8 @@ namespace OrangularAPI.Repositories.OrderItemsRepository
             {
                 if (order_Item.Price != 0) updateOrderItem.Price = order_Item.Price;
                 if (order_Item.Quantity != 0) updateOrderItem.Quantity = order_Item.Quantity;
-                if (order_Item.Id != 0) updateOrderItem.OrderListIdxxx = order_Item.OrderListIdxxx;
-                if (order_Item.ProductId != 0) updateOrderItem.ProductId = order_Item.ProductId;
+                // if (order_Item.Id != 0) updateOrderItem.OrderListIdxxx = order_Item.OrderListIdxxx;
+                // if (order_Item.ProductId != 0) updateOrderItem.ProductId = order_Item.ProductId;
                 await _context.SaveChangesAsync();
             }
             return updateOrderItem;
