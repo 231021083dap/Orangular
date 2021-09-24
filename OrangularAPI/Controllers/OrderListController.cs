@@ -13,11 +13,11 @@ namespace OrangularAPI.Controllers
     [ApiController]
     public class OrderListController : ControllerBase
     {
-        private readonly IOrderListService _order_ListsService;
+        private readonly IOrderListService _orderListService;
 
         public OrderListController(IOrderListService orderListsService)
         {
-            _order_ListsService = orderListsService;
+            _orderListService = orderListsService;
         }
 
         [HttpGet]
@@ -58,7 +58,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                OrderListResponse Order_Lists = await _order_ListsService.GetById(order_lists_id);
+                OrderListResponse Order_Lists = await _orderListService.GetById(order_lists_id);
 
                 if (Order_Lists == null)
                 {
@@ -77,11 +77,11 @@ namespace OrangularAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create([FromBody] NewOrderList newOrder_Lists)
+        public async Task<IActionResult> Create([FromBody] NewOrderList newOrderList)
         {
             try
             {
-                OrderListResponse Order_Lists = await _order_ListsService.Create(newOrderList);
+                OrderListResponse Order_Lists = await _orderListService.Create(newOrderList);
 
                 if (Order_Lists == null)
                 {
@@ -104,7 +104,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                OrderListResponse Order_Lists = await _order_ListsService.Update(order_lists_id, updateOrder_Lists);
+                OrderListResponse Order_Lists = await _orderListService.Update(order_lists_id, updateOrder_Lists);
 
                 if (Order_Lists == null)
                 {
@@ -127,7 +127,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                bool result = await _order_ListsService.Delete(order_lists_id);
+                bool result = await _orderListService.Delete(order_lists_id);
 
                 if (!result)
                 {

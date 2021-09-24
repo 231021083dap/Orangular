@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OrangularAPI.Database;
 using OrangularAPI.Database.Entities;
-using OrangularAPI.Repositories.order_lists;
-
+using OrangularAPI.Repositories.OrderListsRepository;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,7 +11,7 @@ namespace OrangularTests.OrderListsTest
 {
     public class Order_ListsRepositoryTests
     {
-        private readonly Order_ListsRepository _sut;
+        private readonly OrderListRepository _sut;
         private readonly OrangularProjectContext _context;
         private readonly DbContextOptions<OrangularProjectContext> _options;
 
@@ -24,7 +23,7 @@ namespace OrangularTests.OrderListsTest
 
             _context = new OrangularProjectContext(_options);
 
-            _sut = new Order_ListsRepository(_context);
+            _sut = new OrderListRepository(_context);
         }
 
         [Fact]

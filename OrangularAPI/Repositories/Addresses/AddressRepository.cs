@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace OrangularAPI.Repositories.AddressesRepository
 {
-    public class AddressesRepository : IAddressRepository
+    public class AddressRepository : IAddressRepository
     {
         private readonly OrangularProjectContext _context;
 
         // Bruges af AddressesRespositoryTests - xunit
-        public AddressesRepository(OrangularProjectContext context)
+        public AddressRepository(OrangularProjectContext context)
         {
             _context = context;
         }

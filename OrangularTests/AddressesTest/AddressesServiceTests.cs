@@ -1,18 +1,19 @@
 using OrangularAPI.Database.Entities;
-using OrangularAPI.DTO.Addresses.Responses;
-using OrangularAPI.DTO.Addresses.Requests;
-using OrangularAPI.Repositories.addresses;
 using Moq;
 using System.Collections.Generic;
 using Xunit;
-using OrangularAPI.Services.AddressService;
+
+using OrangularAPI.Services.AddressServices;
+using OrangularAPI.DTO.Addresses.Requests;
+using OrangularAPI.DTO.Addresses.Responses;
+using OrangularAPI.Repositories.AddressesRepository;
 
 namespace OrangularTests.AddressesTest
 {
     public class AddressesServiceTests
     {
         private readonly AddressService _sut;
-        private readonly Mock<IAddressesRepository> _addressesRepository = new();
+        private readonly Mock<IAddressRepository> _addressesRepository = new();
 
         public AddressesServiceTests()
         {
@@ -51,7 +52,7 @@ namespace OrangularTests.AddressesTest
                 // Assert
                 Assert.NotNull(result);
                 Assert.Equal(2, result.Count);
-                Assert.IsType<List<AddressesResponse>>(result); // vi forventer en liste af typen AddressesResponse
+                Assert.IsType<List<AddressResponse>>(result); // vi forventer en liste af typen AddressesResponse
             } 
         
             [Fact]
@@ -71,7 +72,7 @@ namespace OrangularTests.AddressesTest
             // Assert
             Assert.NotNull(result);
             Assert.Empty(result);
-            Assert.IsType<List<AddressesResponse>>(result);
+            Assert.IsType<List<AddressResponse>>(result);
             }
         // ---- GetAll Tests ---- //
 
@@ -99,8 +100,8 @@ namespace OrangularTests.AddressesTest
 
                 // Assert
                 Assert.NotNull(result);
-                Assert.IsType<AddressesResponse>(result);
-                Assert.Equal(address.addresses_id, result.addresses_id);
+                Assert.IsType<AddressResponse>(result);
+                Assert.Equal(address.addresses_id, result.addressID);
             }
 
             [Fact]
@@ -133,11 +134,11 @@ namespace OrangularTests.AddressesTest
 
                 };
 
-                NewAddresses newAddress = new NewAddresses
+                NewAddress newAddress = new NewAddress
                 {
-                    users_id = 1,
+                    userID = 1,
                     address = "TEC Ballerup",
-                    zip_code = 2750
+                    zipCode = 2750
                 };
 
                 _addressesRepository
@@ -149,7 +150,7 @@ namespace OrangularTests.AddressesTest
 
                 // Assert
                 Assert.NotNull(result);
-                Assert.IsType<AddressesResponse>(result);
+                Assert.IsType<AddressResponse>(result);
 
         }
         // ---- Create Tests ---- //
@@ -161,12 +162,12 @@ namespace OrangularTests.AddressesTest
                 // Arrange
                 int search_id = 1;
 
-                UpdateAddresses updateAddress = new UpdateAddresses
+                UpdateAddress updateAddress = new UpdateAddress
                 {
-                    users_id = 2,
+                    userID = 2,
                     address = "Hjem Helsingør",
-                    zip_code = 3000,
-                    city_name = "Helsingør"
+                    zipCode = 3000,
+                    cityName = "Helsingør"
                 };
 
                 Addresses address = new Addresses
@@ -188,10 +189,10 @@ namespace OrangularTests.AddressesTest
 
                 // Assert
                 Assert.NotNull(result);
-                Assert.IsType<AddressesResponse>(result);
-                Assert.Equal(search_id, result.addresses_id);
+                Assert.IsType<AddressResponse>(result);
+                Assert.Equal(search_id, result.addressID);
                 Assert.Equal(updateAddress.address, result.address);
-                Assert.Equal(updateAddress.zip_code, result.zip_code);
+                Assert.Equal(updateAddress.zipCode, result.zipCode);
             }
 
             [Fact]
@@ -200,12 +201,12 @@ namespace OrangularTests.AddressesTest
                 // Arrange
                 int search_id = 1;
 
-                UpdateAddresses updateAddress = new UpdateAddresses
+                UpdateAddress updateAddress = new UpdateAddress
                 {
-                    users_id = 2,
+                    userID = 2,
                     address = "Hjem Helsingør",
-                    zip_code = 3000,
-                    city_name = "Helsingør"
+                    zipCode = 3000,
+                    cityName = "Helsingør"
                 };
 
             // Opstiller 

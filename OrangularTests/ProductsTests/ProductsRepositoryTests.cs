@@ -7,6 +7,7 @@ using Xunit;
 using OrangularAPI.Database.Entities;
 using OrangularAPI.Repositories;
 using OrangularAPI.Database;
+using OrangularAPI.Repositories.ProductsRepository;
 // Orangular
 
 
@@ -16,7 +17,7 @@ namespace OrangularTests.ProductsTests
 {
     public class ProductsRepositoryTests
     {
-        private readonly ProductsRepository _sut;
+        private readonly ProductRepository _sut;
         private readonly OrangularProjectContext _context;
         private readonly DbContextOptions<OrangularProjectContext> _options;
 
@@ -28,7 +29,7 @@ namespace OrangularTests.ProductsTests
 
             _context = new OrangularProjectContext(_options);
 
-            _sut = new ProductsRepository(_context);
+            _sut = new ProductRepository(_context);
         }
 
         [Fact]

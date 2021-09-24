@@ -54,12 +54,12 @@ namespace OrangularAPI.Services.UsersService
                 email = u.email,
                 password = u.password, // Fjernes hvis password ikke skal vises.
                 role = u.role,
-                Order_Lists = u.order_lists.Select(o => new UserOrderListResponse
+                orderLists = u.order_lists.Select(o => new UserOrderListResponse
                 {
                     orderListID = o.order_lists_id,
                     orderDateTime = o.order_date_time
                 }).ToList(),
-                Addresses = u.addresses.Select(a => new UserAddressResponse
+                addresses = u.addresses.Select(a => new UserAddressResponse
                 {
                     addressID = a.addresses_id,
                     address = a.address,

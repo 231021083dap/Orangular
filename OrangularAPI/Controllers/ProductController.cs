@@ -14,7 +14,7 @@ namespace OrangularAPI.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly IProductService _productsService;
+        private readonly IProductService _productService;
 
         public ProductController(IProductService productService)
         {
@@ -59,7 +59,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                ProductResponse Products = await _productsService.GetById(products_id);
+                ProductResponse Products = await _productService.GetById(products_id);
 
                 if (Products == null)
                 {
@@ -78,11 +78,11 @@ namespace OrangularAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create([FromBody] NewProduct newProducts)
+        public async Task<IActionResult> Create([FromBody] NewProduct newProduct)
         {
             try
             {
-                ProductResponse Products = await _productsService.Create(newProduct);
+                ProductResponse Products = await _productService.Create(newProduct);
 
                 if (Products == null)
                 {
@@ -105,7 +105,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                ProductResponse Products = await _productsService.Update(products_id, updateProduct);
+                ProductResponse Products = await _productService.Update(products_id, updateProduct);
 
                 if (Products == null)
                 {
@@ -128,7 +128,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                bool result = await _productsService.Delete(products_id);
+                bool result = await _productService.Delete(products_id);
 
                 if (!result)
                 {

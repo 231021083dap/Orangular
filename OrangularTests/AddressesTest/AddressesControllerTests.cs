@@ -1,11 +1,11 @@
-﻿using OrangularAPI.DTO.Addresses.Responses;
-using OrangularAPI.DTO.Addresses.Requests;
-using Moq;
+﻿using Moq;
 using System.Collections.Generic;
 using Xunit;
 using OrangularAPI.Controllers;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using OrangularAPI.Services.AddressService;
+using OrangularAPI.Services.AddressServices;
+using OrangularAPI.DTO.Addresses.Requests;
+using OrangularAPI.DTO.Addresses.Responses;
 
 namespace OrangularTests.AddressesTest
 {
@@ -13,37 +13,37 @@ namespace OrangularTests.AddressesTest
     {
         private readonly AddressController _sut;
 
-        private readonly Mock<IAddressService> _addressesService = new();
+        private readonly Mock<IAddressService> _addressService = new();
 
         public AddressControllerTests()
         {
-            _sut = new AddressController(_addressesService.Object);
+            _sut = new AddressController(_addressService.Object);
         }
 
         [Fact]
         public async void GetAll_ShouldReturnStatusCode200_WhenDataExists()
         {
             // Arrange
-            List<AddressesResponse> addresses = new();
+            List<AddressResponse> addresses = new();
 
-            addresses.Add(new AddressesResponse
+            addresses.Add(new AddressResponse
             {
-                addresses_id = 1,
+                addressID = 1,
                 address = "Vinkelvej",
-                zip_code = 2800,
-                city_name = "Lyngby"
+                zipCode = 2800,
+                cityName = "Lyngby"
             });
 
-            addresses.Add(new AddressesResponse
+            addresses.Add(new AddressResponse
             {
-                addresses_id = 2,
+                addressID = 2,
                 address = "Kusør",
-                zip_code = 1234,
-                city_name = "Kagerup"
+                zipCode = 1234,
+                cityName = "Kagerup"
             });
 
 
-            _addressesService.Setup(s => s.GetAll()).ReturnsAsync(addresses);
+            _addressService.Setup(s => s.GetAll()).ReturnsAsync(addresses);
 
 
             // Act
@@ -58,9 +58,9 @@ namespace OrangularTests.AddressesTest
         public async void GetAll_ShouldReturnStatusCode204_WhenNoElementExists()
         {
             // Arrange
-            List<AddressesResponse> addresses = new();
+            List<AddressResponse> addresses = new();
 
-            _addressesService.Setup(s => s.GetAll()).ReturnsAsync(addresses);
+            _addressService.Setup(s => s.GetAll()).ReturnsAsync(addresses);
 
             // Act
             var result = await _sut.GetAll();
@@ -74,7 +74,7 @@ namespace OrangularTests.AddressesTest
         public async void GetAll_ShouldReturnStatusCode500_WhenNullIsReturnedFromService()
         {
             // Arrange
-            _addressesService.Setup(s => s.GetAll()).ReturnsAsync(() => null);
+            _addressService.Setup(s => s.GetAll()).ReturnsAsync(() => null);
             // Act
             var result = await _sut.GetAll();
             // Assert
@@ -86,7 +86,7 @@ namespace OrangularTests.AddressesTest
         public async void GetAll_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
             // Arrange
-            _addressesService.Setup(s => s.GetAll()).ReturnsAsync(() => throw new System.Exception("This is an exeption"));
+            _addressService.Setup(s => s.GetAll()).ReturnsAsync(() => throw new System.Exception("This is an exeption"));
             // Act
             var result = await _sut.GetAll();
             // Assert
@@ -98,16 +98,16 @@ namespace OrangularTests.AddressesTest
         public async void GetById_ShouldReturnStatusCode200_WhenDataExists()
         {
             // Arrange
-            AddressesResponse address = new AddressesResponse
+            AddressResponse address = new AddressResponse
             {
-                addresses_id = 1,
+                addressID = 1,
                 address = "Vinkelvej",
-                zip_code = 2800,
-                city_name = "Lyngby"
+                zipCode = 2800,
+                cityName = "Lyngby"
             };
 
 
-            _addressesService.Setup(s => s.GetById(1)).ReturnsAsync(address);
+            _addressService.Setup(s => s.GetById(1)).ReturnsAsync(address);
 
 
             // Act
@@ -122,16 +122,16 @@ namespace OrangularTests.AddressesTest
         public async void GetById_ShouldReturnStatusCode404_WhenAddressDoesNotExist()
         {
             // Arrange
-            AddressesResponse address = new AddressesResponse
+            AddressResponse address = new AddressResponse
             {
-                addresses_id = 1,
+                addressID = 1,
                 address = "Vinkelvej",
-                zip_code = 2800,
-                city_name = "Lyngby"
+                zipCode = 2800,
+                cityName = "Lyngby"
             };
 
 
-            _addressesService.Setup(s => s.GetById(1)).ReturnsAsync(() => null);
+            _addressService.Setup(s => s.GetById(1)).ReturnsAsync(() => null);
 
 
             // Act
@@ -145,16 +145,16 @@ namespace OrangularTests.AddressesTest
         public async void GetById_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
             // Arrange
-            AddressesResponse address = new AddressesResponse
+            AddressResponse address = new AddressResponse
             {
-                addresses_id = 1,
+                addressID = 1,
                 address = "Vinkelvej",
-                zip_code = 2800,
-                city_name = "Lyngby"
+                zipCode = 2800,
+                cityName = "Lyngby"
             };
 
 
-            _addressesService.Setup(s => s.GetById(1)).ReturnsAsync(() => throw new System.Exception("This is an exeption"));
+            _addressService.Setup(s => s.GetById(1)).ReturnsAsync(() => throw new System.Exception("This is an exeption"));
 
 
             // Act
@@ -169,22 +169,22 @@ namespace OrangularTests.AddressesTest
         public async void Create_ShouldReturnStatusCode200_WhenDataIsCreated()
         {
             // Arrange
-            NewAddresses newAddress = new NewAddresses
+            NewAddress newAddress = new NewAddress
             {
-                users_id = 1,
+                userID = 1,
                 address = "Vinkelvej",
-                zip_code = 2800,
-                city_name = "Lyngby"
+                zipCode = 2800,
+                cityName = "Lyngby"
             };
 
-            AddressesResponse addressResponse = new AddressesResponse
+            AddressResponse addressResponse = new AddressResponse
             {
-                addresses_id = 1,
+                addressID = 1,
                 address = "Vinkelvej",
-                zip_code = 2800,
-                city_name = "Lyngby"
+                zipCode = 2800,
+                cityName = "Lyngby"
             };
-            _addressesService.Setup(s => s.Create(newAddress)).ReturnsAsync(addressResponse);
+            _addressService.Setup(s => s.Create(newAddress)).ReturnsAsync(addressResponse);
 
             // Act
             var result = await _sut.Create(newAddress);
@@ -200,15 +200,15 @@ namespace OrangularTests.AddressesTest
         public async void Create_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
             // Arrange
-            NewAddresses newAddress = new NewAddresses
+            NewAddress newAddress = new NewAddress
             {
-                users_id = 1,
+                userID = 1,
                 address = "Vinkelvej",
-                zip_code = 2800,
-                city_name = "Lyngby"
+                zipCode = 2800,
+                cityName = "Lyngby"
             };
 
-            _addressesService.Setup(s => s.Create(It.IsAny<NewAddresses>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));
+            _addressService.Setup(s => s.Create(It.IsAny<NewAddress>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act
             var result = await _sut.Create(newAddress);
@@ -223,23 +223,23 @@ namespace OrangularTests.AddressesTest
         public async void Update_ShouldReturnStatusCode200_WhenDataIsSaved()
         {
             // Arrange
-            UpdateAddresses updateAddress = new UpdateAddresses
+            UpdateAddress updateAddress = new UpdateAddress
             {
-                users_id = 1,
+                userID = 1,
                 address = "Vinkelvej",
-                zip_code = 2800,
-                city_name = "Lyngby"
+                zipCode = 2800,
+                cityName = "Lyngby"
             };
 
-            AddressesResponse addressResponse = new AddressesResponse
+            AddressResponse addressResponse = new AddressResponse
             {
-                addresses_id = 1,
+                addressID = 1,
                 address = "Vinkelvej",
-                zip_code = 2800,
-                city_name = "Lyngby"
+                zipCode = 2800,
+                cityName = "Lyngby"
             };
 
-            _addressesService.Setup(s => s.Update(1,updateAddress)).ReturnsAsync(addressResponse);
+            _addressService.Setup(s => s.Update(1,updateAddress)).ReturnsAsync(addressResponse);
 
             // Act
             var result = await _sut.Update(1,updateAddress);
@@ -255,15 +255,15 @@ namespace OrangularTests.AddressesTest
         public async void Update_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
             // Arrange
-            UpdateAddresses updateAddress = new UpdateAddresses
+            UpdateAddress updateAddress = new UpdateAddress
             {
-                users_id = 1,
+                userID = 1,
                 address = "Vinkelvej",
-                zip_code = 2800,
-                city_name = "Lyngby"
+                zipCode = 2800,
+                cityName = "Lyngby"
             };
 
-            _addressesService.Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateAddresses>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));
+            _addressService.Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateAddress>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act
             var result = await _sut.Update(1, updateAddress);
@@ -279,7 +279,7 @@ namespace OrangularTests.AddressesTest
             // Arrange
             int search_id = 1;
 
-            _addressesService.Setup(s => s.Delete(It.IsAny<int>())).ReturnsAsync(() => true);
+            _addressService.Setup(s => s.Delete(It.IsAny<int>())).ReturnsAsync(() => true);
 
             // Act
             var result = await _sut.Delete(1);
@@ -294,7 +294,7 @@ namespace OrangularTests.AddressesTest
             // Arrange
             int search_id = 1;
 
-            _addressesService.Setup(s => s.Delete(It.IsAny<int>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));
+            _addressService.Setup(s => s.Delete(It.IsAny<int>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act
             var result = await _sut.Delete(1);

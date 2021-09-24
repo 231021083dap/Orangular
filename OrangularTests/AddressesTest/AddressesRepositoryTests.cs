@@ -6,18 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using OrangularAPI.Services;
-using OrangularAPI.Repositories.addresses;
 using OrangularAPI.Database;
 using OrangularAPI.Database.Entities;
 using OrangularAPI.Helpers;
+using OrangularAPI.Repositories.AddressesRepository;
 
 namespace OrangularTests.AddressesTest
 {
     public class AddressesRepositoryTests
     {
-        private readonly AddressesRepository _sut;
+        private readonly AddressRepository _sut;
         private readonly OrangularProjectContext _context;
         private readonly DbContextOptions<OrangularProjectContext> _options;
 
@@ -29,7 +27,7 @@ namespace OrangularTests.AddressesTest
 
             _context = new OrangularProjectContext(_options);
 
-            _sut = new AddressesRepository(_context);
+            _sut = new AddressRepository(_context);
         }
 
 

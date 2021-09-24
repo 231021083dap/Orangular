@@ -1,18 +1,17 @@
 ﻿using OrangularAPI.Database;
 using OrangularAPI.Database.Entities;
-using OrangularAPI.Repositories.order_items;
-
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
+using OrangularAPI.Repositories.OrderItemsRepository;
 
 namespace OrangularTests.OrderItemsTest
 {
     public class OrderItemsRepositoryTests
     {
-        private readonly OrderItemsRepository _sut;
+        private readonly OrderItemRepository _sut;
         private readonly OrangularProjectContext _context;
         private readonly DbContextOptions<OrangularProjectContext> _options;
         public OrderItemsRepositoryTests()
@@ -21,7 +20,7 @@ namespace OrangularTests.OrderItemsTest
                 .UseInMemoryDatabase(databaseName: "OrangularOrderItemsDatabase")
                 .Options;
             _context = new OrangularProjectContext(_options);
-            _sut = new OrderItemsRepository(_context);
+            _sut = new OrderItemRepository(_context);
         }
         // -----------------------------------------------------------------------------------------------------------------------
         // GetAll Tests

@@ -138,8 +138,8 @@ namespace OrangularTests.UserTests
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
                 role = Role.User,
-                Order_Lists = new List<UserOrderListResponse>(),
-                Addresses = new List<UserAddressResponse>()
+                orderLists = new List<UserOrderListResponse>(),
+                addresses = new List<UserAddressResponse>()
             };
             _userService.Setup(s => s.Create(It.IsAny<NewUser>())).ReturnsAsync(userResponse) ;
             // Act
