@@ -10,9 +10,9 @@ namespace OrangularAPI.Repositories.OrderItemsRepository
 {
     public interface IOrderItemRepository
     {
-        Task<List<Order_Items>> GetAll();
-        Task<Order_Items> GetById(int orderItemId);
-        Task<Order_Items> Create(Order_Items order_Items);
-        Task<Order_Items> Update(int orderItemId, Order_Items order_Item);
+        Task<List<OrderItem>> GetAll();
+        Task<OrderItem> GetById(int orderItemId);
+        Task<OrderItem> Create(OrderItem order_Items);
+        Task<OrderItem> Update(int orderItemId, OrderItem order_Item);
     }
 }

@@ -11,7 +11,7 @@ namespace OrangularAPI.DTO.Addresses.Requests
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [Range(1, int.MaxValue)]
-        public int userId { get; set; }
+        public int UserId { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [StringLength(255, ErrorMessage = "Max string length is 255")]

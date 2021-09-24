@@ -21,46 +21,46 @@ namespace OrangularAPI.Services.ProductServices
 
         public async Task<ProductResponse> Create(NewProduct newProduct)
         {
-            Products product = new Products
+            Product product = new Product
             {
-                breed_name = newProduct.BreedName,
-                price = newProduct.Price,
-                weight = newProduct.Weight,
-                gender = newProduct.Gender,
-                description = newProduct.Description
+                BreedName = newProduct.BreedName,
+                Price = newProduct.Price,
+                Weight = newProduct.Weight,
+                Gender = newProduct.Gender,
+                Description = newProduct.Description
             };
 
             product = await _productRepository.Create(product);
 
             return product == null ? null : new ProductResponse
             {
-                ProductId = product.products_id,
-                BreedName = product.breed_name,
-                Price = product.price,
-                Weight = product.weight,
-                Gender = product.gender,
-                Description = product.description
+                ProductId = product.Id,
+                BreedName = product.BreedName,
+                Price = product.Price,
+                Weight = product.Weight,
+                Gender = product.Gender,
+                Description = product.Description
             };
         }
 
-        public async Task<bool> Delete(int products_id)
+        public async Task<bool> Delete(int productId)
         {
-            var result = await _productRepository.Delete(products_id);
+            var result = await _productRepository.Delete(productId);
             return (result != null);
         }
 
         public async Task<List<ProductResponse>> GetAll()
         {
-            List<Products> products = await _productRepository.GetAll();
+            List<Product> product = await _productRepository.GetAll();
 
-            return products.Select(a => new ProductResponse
+            return product.Select(a => new ProductResponse
             {
-                ProductId = a.products_id,
-                BreedName = a.breed_name,
-                Price = a.price,
-                Weight = a.weight,
-                Gender = a.gender,
-                Description = a.description
+                ProductId = a.Id,
+                BreedName = a.BreedName,
+                Price = a.Price,
+                Weight = a.Weight,
+                Gender = a.Gender,
+                Description = a.Description
 
                 //    Books = a.Books.Select(b => new AuthorBookResponse
                 //    {
@@ -71,17 +71,17 @@ namespace OrangularAPI.Services.ProductServices
                 }).ToList();
             }
 
-        public async Task<ProductResponse> GetById(int products_id)
+        public async Task<ProductResponse> GetById(int productId)
         {
-            Products entityProduct = await _productRepository.GetById(products_id);
-            return entityProduct == null ? null : new ProductResponse
+            Product product = await _productRepository.GetById(productId);
+            return product == null ? null : new ProductResponse
             {
-                ProductId = entityProduct.products_id,
-                BreedName = entityProduct.breed_name,
-                Price = entityProduct.price,
-                Weight = products.weight,
-                Gender = products.gender,
-                Description = products.description,
+                ProductId = product.Id,
+                BreedName = product.BreedName,
+                Price = product.Price,
+                Weight = product.Weight,
+                Gender = product.Gender,
+                Description = product.Description,
                 //Books = author.Books.Select(b => new AuthorBookResponse
                 //{
                 //    Id = b.Id,
@@ -91,27 +91,27 @@ namespace OrangularAPI.Services.ProductServices
             };
         }
 
-        public async Task<ProductResponse> Update(int products_id, UpdateProduct updateProducts)
+        public async Task<ProductResponse> Update(int productId, UpdateProduct updateProduct)
         {
-            Products products = new Products
+            Product product = new Product
             {
-                breed_name = updateProducts.BreedName,
-                price = updateProducts.Price,
-                weight = updateProducts.Weight,
-                gender = updateProducts.Gender,
-                description = updateProducts.Description,
+                BreedName = updateProduct.BreedName,
+                Price = updateProduct.Price,
+                Weight = updateProduct.Weight,
+                Gender = updateProduct.Gender,
+                Description = updateProduct.Description,
             };
 
-            products = await _productsRepository.Update(products_id, products);
+            product = await _productRepository.Update(productId, product);
 
-            return products == null ? null : new ProductResponse
+            return product == null ? null : new ProductResponse
             {
-                ProductID = products_id,
-                BreedName = products.breed_name,
-                Price = products.price,
-                Weight = products.weight,
-                Gender = products.gender,
-                Description = products.description
+                ProductId = productId,
+                BreedName = product.BreedName,
+                Price = product.Price,
+                Weight = product.Weight,
+                Gender = product.Gender,
+                Description = product.Description
             };
         }
     }

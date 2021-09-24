@@ -31,16 +31,16 @@ namespace OrangularTests.OrderListsTest
         {
             // Arrange
             await _context.Database.EnsureDeletedAsync();
-            _context.Order_Lists.Add(new Order_Lists
+            _context.OrderList.Add(new OrderList
             {
-                order_lists_id = 1,
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                Id = 1,
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
 
             });
-            _context.Order_Lists.Add(new Order_Lists
+            _context.OrderList.Add(new OrderList
             {
-                order_lists_id = 2,
-                order_date_time = DateTime.Parse("2020-12-21 12:57:00")
+                Id = 2,
+                OrderDateTime = DateTime.Parse("2020-12-21 12:57:00")
             });
             await _context.SaveChangesAsync();
             int expectedSize = 2;
@@ -50,7 +50,7 @@ namespace OrangularTests.OrderListsTest
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<List<Order_Lists>>(result);
+            Assert.IsType<List<OrderList>>(result);
             Assert.Equal(expectedSize, result.Count);
         }
 
@@ -65,7 +65,7 @@ namespace OrangularTests.OrderListsTest
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<List<Order_Lists>>(result);
+            Assert.IsType<List<OrderList>>(result);
             Assert.Empty(result);
         }
 
@@ -75,10 +75,10 @@ namespace OrangularTests.OrderListsTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int order_lists_id = 1;
-            _context.Order_Lists.Add(new Order_Lists
+            _context.OrderList.Add(new OrderList
             {
-                order_lists_id = order_lists_id,
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                Id = order_lists_id,
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             });
             await _context.SaveChangesAsync();
 
@@ -87,8 +87,8 @@ namespace OrangularTests.OrderListsTest
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Order_Lists>(result);
-            Assert.Equal(order_lists_id, result.order_lists_id);
+            Assert.IsType<OrderList>(result);
+            Assert.Equal(order_lists_id, result.Id);
         }
 
         [Fact]
@@ -111,9 +111,9 @@ namespace OrangularTests.OrderListsTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int expectedId = 1;
-            Order_Lists Order_Lists = new Order_Lists
+            OrderList Order_Lists = new OrderList
             {
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
             // act
@@ -121,8 +121,8 @@ namespace OrangularTests.OrderListsTest
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Order_Lists>(result);
-            Assert.Equal(expectedId, result.order_lists_id);
+            Assert.IsType<OrderList>(result);
+            Assert.Equal(expectedId, result.Id);
         }
 
         [Fact]
@@ -131,13 +131,13 @@ namespace OrangularTests.OrderListsTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
 
-            Order_Lists Order_Lists = new Order_Lists
+            OrderList Order_Lists = new OrderList
             {
-                order_lists_id = 1,
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                Id = 1,
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
-            _context.Order_Lists.Add(Order_Lists);
+            _context.OrderList.Add(Order_Lists);
             await _context.SaveChangesAsync();
 
             // act
@@ -154,19 +154,19 @@ namespace OrangularTests.OrderListsTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int order_lists_id = 1;
-            Order_Lists Order_Lists = new Order_Lists
+            OrderList Order_Lists = new OrderList
             {
-                order_lists_id = order_lists_id,
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                Id = order_lists_id,
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
 
             };
-            _context.Order_Lists.Add(Order_Lists);
+            _context.OrderList.Add(Order_Lists);
             await _context.SaveChangesAsync();
 
-            Order_Lists updateOrder_Lists = new Order_Lists
+            OrderList updateOrder_Lists = new OrderList
             {
-                order_lists_id = order_lists_id,
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00"),
+                Id = order_lists_id,
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00"),
 
             };
 
@@ -175,9 +175,9 @@ namespace OrangularTests.OrderListsTest
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Order_Lists>(result);
-            Assert.Equal(order_lists_id, result.order_lists_id);
-            Assert.Equal(updateOrder_Lists.order_date_time, result.order_date_time);
+            Assert.IsType<OrderList>(result);
+            Assert.Equal(order_lists_id, result.Id);
+            Assert.Equal(updateOrder_Lists.OrderDateTime, result.OrderDateTime);
 
         }
 
@@ -187,10 +187,10 @@ namespace OrangularTests.OrderListsTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int order_lists_id = 1;
-            Order_Lists updateOrder_Lists = new Order_Lists
+            OrderList updateOrder_Lists = new OrderList
             {
-                order_lists_id = order_lists_id,
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                Id = order_lists_id,
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
             // Act
@@ -206,13 +206,13 @@ namespace OrangularTests.OrderListsTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int order_lists_id = 1;
-            Order_Lists order_Lists = new Order_Lists
+            OrderList order_Lists = new OrderList
             {
-                order_lists_id = order_lists_id,
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                Id = order_lists_id,
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
 
             };
-            _context.Order_Lists.Add(order_Lists);
+            _context.OrderList.Add(order_Lists);
             await _context.SaveChangesAsync();
 
             var result = await _sut.Delete(order_lists_id);
@@ -220,8 +220,8 @@ namespace OrangularTests.OrderListsTest
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Order_Lists>(result);
-            Assert.Equal(order_lists_id, result.order_lists_id);
+            Assert.IsType<OrderList>(result);
+            Assert.Equal(order_lists_id, result.Id);
 
             Assert.Empty(Order_Lists);
         }

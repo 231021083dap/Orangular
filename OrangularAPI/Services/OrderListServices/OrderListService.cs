@@ -16,32 +16,32 @@ namespace OrangularAPI.Services.OrderListServices
         {
             _orderListRepository = orderListRepository;
         }
-        public async Task<OrderListResponse> Create(NewOrderList newOrder_Lists)
+        public async Task<OrderListResponse> Create(NewOrderList newOrderList)
         {
-            Order_Lists order_Lists = new Order_Lists
+            OrderList orderList = new OrderList
             {
-                users_id = newOrder_Lists.UserId,
-                order_date_time = newOrder_Lists.OrderDateTime
+                UserIdxxx = newOrderList.UserId,
+                OrderDateTime = newOrderList.OrderDateTime
 
             };
 
-            order_Lists = await _orderListRepository.Create(order_Lists);
+            orderList = await _orderListRepository.Create(orderList);
 
-            return order_Lists == null ? null : new OrderListResponse
+            return orderList == null ? null : new OrderListResponse
             {
-                OrderListId = order_Lists.order_lists_id,
-                OrderDateTime = order_Lists.order_date_time
+                OrderListId = orderList.Id,
+                OrderDateTime = orderList.OrderDateTime
 
             };
         }
         public async Task<List<OrderListResponse>> GetAll()
         {
-            List<Order_Lists> order_Lists = await _orderListRepository.GetAll();
+            List<OrderList> orderList = await _orderListRepository.GetAll();
 
-            return order_Lists.Select(a => new OrderListResponse
+            return orderList.Select(a => new OrderListResponse
             {
-                OrderListId = a.order_lists_id,
-                OrderDateTime = a.order_date_time,
+                OrderListId = a.Id,
+                OrderDateTime = a.OrderDateTime,
 
 
                 //    Books = a.Books.Select(b => new AuthorBookResponse
@@ -52,38 +52,38 @@ namespace OrangularAPI.Services.OrderListServices
                 //    }).ToList()
             }).ToList();
         }
-        public async Task<OrderListResponse> GetById(int order_lists_id)
+        public async Task<OrderListResponse> GetById(int orderListId)
         {
-            Order_Lists order_Lists = await _orderListRepository.GetById(order_lists_id);
-            return order_Lists == null ? null : new OrderListResponse
+            OrderList orderList = await _orderListRepository.GetById(orderListId);
+            return orderList == null ? null : new OrderListResponse
             {
-                OrderListId = order_Lists.order_lists_id,
-                OrderDateTime = order_Lists.order_date_time
+                OrderListId = orderList.Id,
+                OrderDateTime = orderList.OrderDateTime
 
             };
         }
 
-        public async Task<OrderListResponse> Update(int order_lists_id, UpdateOrderList updateOrder_Lists)
+        public async Task<OrderListResponse> Update(int orderListId, UpdateOrderList updateOrderList)
         {
-            Order_Lists order_Lists = new Order_Lists
+            OrderList orderList = new OrderList
             {
-                order_date_time = updateOrder_Lists.OrderDateTime,
-                users_id = updateOrder_Lists.UserId,
+                OrderDateTime = updateOrderList.OrderDateTime,
+                UserIdxxx = updateOrderList.UserId,
 
             };
 
-            order_Lists = await _orderListRepository.Update(order_lists_id, order_Lists);
+            orderList = await _orderListRepository.Update(orderListId, orderList);
 
-            return order_Lists == null ? null : new OrderListResponse
+            return orderList == null ? null : new OrderListResponse
             {
-                OrderListId = order_lists_id,
-                OrderDateTime = order_Lists.order_date_time
+                OrderListId = orderListId,
+                OrderDateTime = orderList.OrderDateTime
 
             };
         }
-        public async Task<bool> Delete(int order_lists_id)
+        public async Task<bool> Delete(int orderlistId)
         {
-            var result = await _orderListRepository.Delete(order_lists_id);
+            var result = await _orderListRepository.Delete(orderlistId);
             return (result != null);
         }
 

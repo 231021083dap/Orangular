@@ -42,40 +42,40 @@ namespace OrangularTests.AddressesTest
 
 
                 // Tilføj Users
-                _context.Users.Add(
-                new Users
+                _context.User.Add(
+                new User
                 {
-                    users_id = 1,
-                    email = "admin@admins.com",
-                    password = "Passw0rd",
-                    role = Role.Admin
+                    Id = 1,
+                    Email = "admin@admins.com",
+                    Password = "Passw0rd",
+                    Role = Role.Admin
                 });
 
-                _context.Users.Add(
-                new Users
+                _context.User.Add(
+                new User
                 {
-                    users_id = 2,
-                    email = "user@users.com",
-                    password = "Passw0rd",
-                    role = Role.User
+                    Id = 2,
+                    Email = "user@users.com",
+                    Password = "Passw0rd",
+                    Role = Role.User
                 });
 
-                _context.Addresses.Add(
-                new Addresses
+                _context.Address.Add(
+                new Address
                 {
-                    addresses_id = 1,
-                    users_id = 1,
-                    address = "TEC Ballerup",
-                    zip_code = 2750
+                    Id = 1,
+                    UserId = 1,
+                    AddressName = "TEC Ballerup",
+                    ZipCode = 2750
                 });
 
-                _context.Addresses.Add(
-                new Addresses
+                _context.Address.Add(
+                new Address
                 {
-                    addresses_id = 2,
-                    users_id = 2,
-                    address = "Hjem Helsingør",
-                    zip_code = 3000
+                    Id = 2,
+                    UserId = 2,
+                    AddressName = "Hjem Helsingør",
+                    ZipCode = 3000
                 });
 
 
@@ -86,7 +86,7 @@ namespace OrangularTests.AddressesTest
 
                 // Assert
                 Assert.NotNull(result);
-                Assert.IsType<List<Addresses>>(result);
+                Assert.IsType<List<Address>>(result);
                 Assert.Equal(2, result.Count);
             }
             [Fact]
@@ -100,7 +100,7 @@ namespace OrangularTests.AddressesTest
 
                 // Assert
                 Assert.NotNull(result);
-                Assert.IsType<List<Addresses>>(result);
+                Assert.IsType<List<Address>>(result);
                 Assert.Empty(result);    
             }
         // ---- GetAll tests ---- //
@@ -113,13 +113,13 @@ namespace OrangularTests.AddressesTest
                 // Arrange
                 await _context.Database.EnsureDeletedAsync();
                 int search_id = 1;
-                _context.Addresses.Add(
-                new Addresses
+                _context.Address.Add(
+                new Address
                 {
-                    addresses_id = 1,
-                    users_id = 1,
-                    address = "TEC Ballerup",
-                    zip_code = 2750
+                    Id = 1,
+                    UserId = 1,
+                    AddressName = "TEC Ballerup",
+                    ZipCode = 2750
                 });
                 await _context.SaveChangesAsync();
 
@@ -128,8 +128,8 @@ namespace OrangularTests.AddressesTest
 
                 // Assert
                 Assert.NotNull(result);
-                Assert.IsType<Addresses>(result);
-                Assert.Equal(search_id, result.addresses_id);
+                Assert.IsType<Address>(result);
+                Assert.Equal(search_id, result.Id);
             }
 
 
@@ -157,12 +157,12 @@ namespace OrangularTests.AddressesTest
                 // Vi kan kun bruge det her id til at finde den nye bruger fordi vi ved at den er 1. 
                 // Fordi vi har slettet databasen.
                 int expectedId = 1;
-                Addresses address = new Addresses
+                Address address = new Address
                 {
-                    addresses_id = 2,
-                    users_id = 2,
-                    address = "Hjem Helsingør",
-                    zip_code = 3000
+                    Id = 2,
+                    UserId = 2,
+                    AddressName = "Hjem Helsingør",
+                    ZipCode = 3000
                 };
 
                 // Act
@@ -170,8 +170,8 @@ namespace OrangularTests.AddressesTest
 
                 // Assert
                 Assert.NotNull(result);
-                Assert.IsType<Addresses>(result);
-                Assert.Equal(expectedId, result.addresses_id);
+                Assert.IsType<Address>(result);
+                Assert.Equal(expectedId, result.Id);
             }
             // [Fact]
             public async Task Create_ShouldFailToAddAddress_WhenAddingAddressWithExistingId()
@@ -179,14 +179,14 @@ namespace OrangularTests.AddressesTest
                 // Arrange
                 await _context.Database.EnsureDeletedAsync();
 
-                Addresses address = new Addresses
+                Address address = new Address
                 {
-                    addresses_id = 2,
-                    users_id = 2,
-                    address = "Hjem Helsingør",
-                    zip_code = 3000
+                    Id = 2,
+                    UserId = 2,
+                    AddressName = "Hjem Helsingør",
+                    ZipCode = 3000
                 };
-                _context.Addresses.Add(address);
+                _context.Address.Add(address);
                 await _context.SaveChangesAsync();
 
                 // Act
@@ -207,27 +207,27 @@ namespace OrangularTests.AddressesTest
                 await _context.Database.EnsureDeletedAsync();
                 int updateTargetId = 1;
 
-                Addresses address = new Addresses
+                Address address = new Address
                 {
-                    addresses_id = updateTargetId,
-                    users_id = 2,
-                    address = "Hjem Helsingør",
-                    zip_code = 3000
+                    Id = updateTargetId,
+                    UserId = 2,
+                    AddressName = "Hjem Helsingør",
+                    ZipCode = 3000
                 };
 
-                _context.Addresses.Add(address);
+                _context.Address.Add(address);
                 await _context.SaveChangesAsync();
 
 
 
 
                 // Act
-                Addresses updateAddress = new Addresses
+                Address updateAddress = new Address
                 {
-                    addresses_id = 1,
-                    users_id = 1,
-                    address = "TEC Ballerup",
-                    zip_code = 2750
+                    Id = 1,
+                    UserId = 1,
+                    AddressName = "TEC Ballerup",
+                    ZipCode = 2750
                 };
 
                 var result = await _sut.Update(updateTargetId, updateAddress);
@@ -235,11 +235,11 @@ namespace OrangularTests.AddressesTest
 
                 // Assert
                 Assert.NotNull(result);
-                Assert.IsType<Addresses>(result);
-                Assert.Equal(updateTargetId, result.addresses_id);
-                Assert.Equal(updateAddress.users_id, result.users_id);
-                Assert.Equal(updateAddress.address, result.address);
-                Assert.Equal(updateAddress.zip_code, result.zip_code);
+                Assert.IsType<Address>(result);
+                Assert.Equal(updateTargetId, result.Id);
+                Assert.Equal(updateAddress.UserId, result.UserId);
+                Assert.Equal(updateAddress.AddressName, result.AddressName);
+                Assert.Equal(updateAddress.ZipCode, result.ZipCode);
             }
             
             [Fact]
@@ -250,12 +250,12 @@ namespace OrangularTests.AddressesTest
                 int addressId = 1;
 
                 // Act
-                Addresses updateAddresses = new Addresses
+                Address updateAddresses = new Address
                 {
-                    addresses_id = 1,
-                    users_id = 1,
-                    address = "TEC Ballerup",
-                    zip_code = 2750
+                    Id = 1,
+                    UserId = 1,
+                    AddressName = "TEC Ballerup",
+                    ZipCode = 2750
                 };
                 var result = await _sut.Update(addressId, updateAddresses);
                 // Assert
@@ -272,14 +272,14 @@ namespace OrangularTests.AddressesTest
                 // Arrange
                 await _context.Database.EnsureDeletedAsync();
                 int addressId = 1;
-                Addresses address = new Addresses
+                Address address = new Address
                 {
-                    addresses_id = 1,
-                    users_id = 1,
-                    address = "TEC Ballerup",
-                    zip_code = 2750
+                    Id = 1,
+                    UserId = 1,
+                    AddressName = "TEC Ballerup",
+                    ZipCode = 2750
                 };
-                _context.Addresses.Add(address);
+                _context.Address.Add(address);
                 await _context.SaveChangesAsync();
 
 

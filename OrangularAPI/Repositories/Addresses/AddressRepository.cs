@@ -18,39 +18,39 @@ namespace OrangularAPI.Repositories.AddressesRepository
             _context = context;
         }
 
-        public async Task<List<Addresses>> GetAll()
+        public async Task<List<Address>> GetAll()
         {
             // Retunere en liste af alle objekter af typen Addresses
-            return await _context.Addresses
-            .Include(users => users.user) // henter user objekt i forhold til foreign key
+            return await _context.Address
+            .Include(users => users.User) // henter user objekt i forhold til foreign key
             .ToListAsync();
         }
 
-        public async Task<Addresses> GetById(int addressesId)
+        public async Task<Address> GetById(int addressesId)
         {
             // retunere et objekt af typen Addresses med id'et addressesId
-            return await _context.Addresses
-                .FirstOrDefaultAsync(lambdaVar => lambdaVar.addresses_id == addressesId);
+            return await _context.Address
+                .FirstOrDefaultAsync(lambdaVar => lambdaVar.Id == addressesId);
         }
 
-        public async Task<Addresses> Create(Addresses addresses)
+        public async Task<Address> Create(Address addresses)
         {
             // Retunere samme input xD
-            _context.Addresses.Add(addresses);
+            _context.Address.Add(addresses);
             await _context.SaveChangesAsync();
             return addresses;
         }
 
-        public async Task<Addresses> Update(int updateTargetAddressId, Addresses updateThisAddress)
+        public async Task<Address> Update(int updateTargetAddressId, Address updateThisAddress)
         {
-            Addresses updatedAddress = await _context.Addresses
-                .FirstOrDefaultAsync(address => address.addresses_id == updateTargetAddressId);
+            Address updatedAddress = await _context.Address
+                .FirstOrDefaultAsync(address => address.Id == updateTargetAddressId);
 
             if (updatedAddress != null)
             {
-                updatedAddress.users_id = updateThisAddress.users_id;
-                updatedAddress.address = updateThisAddress.address;
-                updatedAddress.zip_code = updateThisAddress.zip_code;
+                updatedAddress.UserId = updateThisAddress.UserId;
+                updatedAddress.AddressName = updateThisAddress.AddressName;
+                updatedAddress.ZipCode = updateThisAddress.ZipCode;
                 await _context.SaveChangesAsync();
 
                 return updatedAddress;
@@ -63,12 +63,12 @@ namespace OrangularAPI.Repositories.AddressesRepository
         public async Task<bool> Delete(int addressId)
         {
 
-            Addresses address = await _context.Addresses.FirstOrDefaultAsync(
-                address => address.addresses_id == addressId);
+            Address address = await _context.Address.FirstOrDefaultAsync(
+                address => address.Id == addressId);
 
             if (address != null)
             {
-                _context.Addresses.Remove(address);
+                _context.Address.Remove(address);
                 await _context.SaveChangesAsync();
                 return true;
             }

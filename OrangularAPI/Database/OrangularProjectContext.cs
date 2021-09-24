@@ -15,12 +15,12 @@ namespace OrangularAPI.Database
 
         // ----- Alle entities ----- Victor //
         // Opretter tabeller
-        public DbSet<Users> Users { get; set; } // DbSet fortæller navnet på databasen User
-        public DbSet<Order_Lists> Order_Lists { get; set; } // Order_list
-        public DbSet<Order_Items> Order_Items { get; set; }
-        public DbSet<Categories> Categories { get; set; }
-        public DbSet<Products> Products { get; set; }
-        public DbSet<Addresses> Addresses { get; set; }
+        public DbSet<User> User { get; set; } // DbSet fortæller navnet på databasen User
+        public DbSet<OrderList> OrderList { get; set; } // Order_list
+        public DbSet<OrderItem> OrderItem { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Address> Address { get; set; }
         // ----- Alle entities ----- Victor //
 
         // ----- Fylder data ind i tabellerne ----- Victor //
@@ -33,125 +33,125 @@ namespace OrangularAPI.Database
             //modelBuilder.Entity<Users>().ToTable("Users");
             //modelBuilder.Entity<Addresses>().ToTable("Users");
 
-            // --- Users Foreign keys opførsel --- //
-            // Forhindre at slette brugeren, hvis bruger har ordre liggende i systemet.
-            modelBuilder.Entity<Order_Lists>()
-                .HasOne(lambda => lambda.user)
-                .WithMany(lambda => lambda.order_lists)
-                .OnDelete(DeleteBehavior.Restrict);
+            //// --- Users Foreign keys opførsel --- //
+            //// Forhindre at slette brugeren, hvis bruger har ordre liggende i systemet.
+            //modelBuilder.Entity<OrderList>()
+            //    .HasOne(lambda => lambda.User)
+            //    .WithMany(lambda => lambda.OrderList)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            // Når brugeren slettes, slettes tilknyttet addresse også.
-            modelBuilder.Entity<Addresses>()
-                .HasOne(lambda => lambda.user)
-                .WithMany(lambda => lambda.addresses)
-                .OnDelete(DeleteBehavior.Cascade);
+            //// Når brugeren slettes, slettes tilknyttet addresse også.
+            //modelBuilder.Entity<Address>()
+            //    .HasOne(lambda => lambda.User)
+            //    .WithMany(lambda => lambda.Address)
+            //    .OnDelete(DeleteBehavior.Cascade);
 
-            // Gør så at en bruger kun kan have en addresse
-            modelBuilder.Entity<Addresses>()
-                .HasIndex(u => u.users_id)
-                .IsUnique();
-            // --- Users Foreign keys opførsel --- Victor //
-
-
-
-            // --- Order_Lists Foreign keys opførsel --- //
-            modelBuilder.Entity<Order_Items>()
-               .HasOne(lambda => lambda.order_list)
-               .WithMany(lambda => lambda.order_items)
-               .OnDelete(DeleteBehavior.Restrict);
-
-            // --- Order_Lists Foreign keys opførsel --- //
+            //// Gør så at en bruger kun kan have en addresse
+            //modelBuilder.Entity<Address>()
+            //    .HasIndex(u => u.UserId)
+            //    .IsUnique();
+            //// --- Users Foreign keys opførsel --- Victor //
 
 
-            // --- Categories Foreign keys opførsel --- //
-            // On delete restrict
-            modelBuilder.Entity<Products>()
-                .HasOne(lambda => lambda.category)
-                .WithMany(lambda => lambda.products)
-                .OnDelete(DeleteBehavior.Restrict);
-            // --- Categories Foreign keys opførsel --- //
 
-            // --- Products Foreign keys opførsel --- //
-            // On delete restrict
-            modelBuilder.Entity<Order_Items>()
-                .HasOne(lambda => lambda.product)
-                .WithMany(lambda => lambda.order_items)
-                .OnDelete(DeleteBehavior.Restrict);
-            // --- Products Foreign keys opførsel --- //
+            //// --- Order_Lists Foreign keys opførsel --- //
+            //modelBuilder.Entity<OrderItem>()
+            //   .HasOne(lambda => lambda.OrderList)
+            //   .WithMany(lambda => lambda.OrderItem)
+            //   .OnDelete(DeleteBehavior.Restrict);
+
+            //// --- Order_Lists Foreign keys opførsel --- //
+
+
+            //// --- Categories Foreign keys opførsel --- //
+            //// On delete restrict
+            //modelBuilder.Entity<Product>()
+            //    .HasOne(lambda => lambda.Category)
+            //    .WithMany(lambda => lambda.Product)
+            //    .OnDelete(DeleteBehavior.Restrict);
+            //// --- Categories Foreign keys opførsel --- //
+
+            //// --- Products Foreign keys opførsel --- //
+            //// On delete restrict
+            //modelBuilder.Entity<OrderItem>()
+            //    .HasOne(lambda => lambda.Product)
+            //    .WithMany(lambda => lambda.OrderItem)
+            //    .OnDelete(DeleteBehavior.Restrict);
+            //// --- Products Foreign keys opførsel --- //
 
 
 
             // Users
-            modelBuilder.Entity<Users>().HasData(
-            new Users
+            modelBuilder.Entity<User>().HasData(
+            new User
             {
-                users_id = 1,
-                email = "admin@admins.com",
-                password = "Passw0rd",
-                role = Role.Admin
+                Id = 1,
+                Email = "admin@admins.com",
+                Password = "Passw0rd",
+                Role = Role.Admin
             },
-            new Users
+            new User
             {
-                users_id = 2,
-                email = "user@users.com",
-                password = "Passw0rd",
-                role = Role.User
+                Id = 2,
+                Email = "user@users.com",
+                Password = "Passw0rd",
+                Role = Role.User
             });
 
             // Addresses
-            modelBuilder.Entity<Addresses>().HasData(
-            new Addresses
+            modelBuilder.Entity<Address>().HasData(
+            new Address
             {
-                addresses_id = 1,
-                users_id = 1,
-                address = "TEC Ballerup",
-                zip_code = 2750
+                Id = 1,
+                UserId = 1,
+                AddressName = "TEC Ballerup",
+                ZipCode = 2750
             },
-            new Addresses
+            new Address
             {
-                addresses_id = 2,
-                users_id = 2,
-                address = "Hjem Helsingør",
-                zip_code = 3000
+                Id = 2,
+                UserId = 2,
+                AddressName = "Hjem Helsingør",
+                ZipCode = 3000
             });
 
             // Order_Lists
-            modelBuilder.Entity<Order_Lists>().HasData(
-            new Order_Lists
+            modelBuilder.Entity<OrderList>().HasData(
+            new OrderList
             {
-                order_lists_id = 1,
-                order_date_time = DateTime.Now
+                Id = 1,
+                OrderDateTime = DateTime.Now
             });
 
             // Order_Items
-            modelBuilder.Entity<Order_Items>().HasData(
-            new Order_Items
+            modelBuilder.Entity<OrderItem>().HasData(
+            new OrderItem
             {
-                order_items_id = 1,
-                order_lists_id = 1,
-                products_id = 1,
-                price = 750000,
-                quantity = 2
+                Id = 1,
+                OrderListIdxxx = 1,
+                ProductId = 1,
+                Price = 750000,
+                Quantity = 2
             });
 
             // Categories
-            modelBuilder.Entity<Categories>().HasData(
-            new Categories
+            modelBuilder.Entity<Category>().HasData(
+            new Category
             {
-                categories_id = 1,
-                category_name = "hund"
+                Id = 1,
+                CategoryName = "hund"
             });
 
             // Products
-            modelBuilder.Entity<Products>().HasData(
-            new Products
+            modelBuilder.Entity<Product>().HasData(
+            new Product
             {
-                products_id = 1,
-                breed_name = "chefer hund",
-                price = 750000,
-                weight = 35000,
-                gender = "male",
-                description = "Description"
+                Id = 1,
+                BreedName = "chefer hund",
+                Price = 750000,
+                Weight = 35000,
+                Gender = "male",
+                Description = "Description"
             });
         }
         // ----- Fylder data ind i tabellerne ----- Victor //

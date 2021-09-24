@@ -16,35 +16,35 @@ namespace OrangularAPI.Repositories.OrderItemsRepository
         {
             _context = context;
         }
-        public async Task<List<Order_Items>> GetAll()
+        public async Task<List<OrderItem>> GetAll()
         {
-            return await _context.Order_Items
-                .Include(a => a.product)
-                .Include(a => a.order_list)
+            return await _context.OrderItem
+                .Include(a => a.Product)
+                .Include(a => a.OrderList)
                 .ToListAsync();
         }
-        public async Task<Order_Items> GetById(int orderItemId)
+        public async Task<OrderItem> GetById(int orderItemId)
         {
-            return await _context.Order_Items
-                   .Include(a => a.product)
-                   .Include(a => a.order_list)
-                   .FirstOrDefaultAsync(a => a.order_items_id == orderItemId);
+            return await _context.OrderItem
+                   .Include(a => a.Product)
+                   .Include(a => a.OrderList)
+                   .FirstOrDefaultAsync(a => a.Id == orderItemId);
         }
-        public async Task<Order_Items> Create(Order_Items order_Item)
+        public async Task<OrderItem> Create(OrderItem order_Item)
         {
-            _context.Order_Items.Add(order_Item);
+            _context.OrderItem.Add(order_Item);
             await _context.SaveChangesAsync();
             return order_Item;
         }
-        public async Task<Order_Items> Update(int orderItemId, Order_Items order_Item)
+        public async Task<OrderItem> Update(int orderItemId, OrderItem order_Item)
         {
-            Order_Items updateOrderItem = await _context.Order_Items.FirstOrDefaultAsync(a => a.order_items_id == orderItemId);
+            OrderItem updateOrderItem = await _context.OrderItem.FirstOrDefaultAsync(a => a.Id == orderItemId);
             if (updateOrderItem != null)
             {
-                if (order_Item.price != 0) updateOrderItem.price = order_Item.price;
-                if (order_Item.quantity != 0) updateOrderItem.quantity = order_Item.quantity;
-                if (order_Item.order_items_id != 0) updateOrderItem.order_lists_id = order_Item.order_lists_id;
-                if (order_Item.products_id != 0) updateOrderItem.products_id = order_Item.products_id;
+                if (order_Item.Price != 0) updateOrderItem.Price = order_Item.Price;
+                if (order_Item.Quantity != 0) updateOrderItem.Quantity = order_Item.Quantity;
+                if (order_Item.Id != 0) updateOrderItem.OrderListIdxxx = order_Item.OrderListIdxxx;
+                if (order_Item.ProductId != 0) updateOrderItem.ProductId = order_Item.ProductId;
                 await _context.SaveChangesAsync();
             }
             return updateOrderItem;

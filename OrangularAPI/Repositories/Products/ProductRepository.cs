@@ -16,47 +16,47 @@ namespace OrangularAPI.Repositories.ProductsRepository
             _context = context;
         }
 
-        public async Task<Products> Create(Products products)
+        public async Task<Product> Create(Product products)
         {
-            _context.Products.Add(products);
+            _context.Product.Add(products);
             await _context.SaveChangesAsync();
             return products;
         }
 
 
-        public async Task<Products> Delete(int products_id)
+        public async Task<Product> Delete(int products_id)
         {
-            Products products = await _context.Products.FirstOrDefaultAsync(a => a.products_id == products_id);
+            Product products = await _context.Product.FirstOrDefaultAsync(a => a.Id == products_id);
             if (products != null)
             {
-                _context.Products.Remove(products);
+                _context.Product.Remove(products);
                 await _context.SaveChangesAsync();
             }
             return products;
         }
 
-        public async Task<List<Products>> GetAll()
+        public async Task<List<Product>> GetAll()
         {
-            return await _context.Products
+            return await _context.Product
                 //.Include(a => a.Books)
                 .ToListAsync();
         }
 
-        public async Task<Products> GetById(int products_id)
+        public async Task<Product> GetById(int products_id)
         {
-            return await _context.Products.FirstOrDefaultAsync(a => a.products_id == products_id);
+            return await _context.Product.FirstOrDefaultAsync(a => a.Id == products_id);
        }
 
-        public async Task<Products> Update(int products_id, Products products)
+        public async Task<Product> Update(int products_id, Product products)
         {
-            Products updateProducts = await _context.Products.FirstOrDefaultAsync(a => a.products_id == products_id);
+            Product updateProducts = await _context.Product.FirstOrDefaultAsync(a => a.Id == products_id);
             if (updateProducts != null)
             {
-                updateProducts.breed_name = products.breed_name;
-                updateProducts.price = products.price;
-                updateProducts.weight = products.weight;
-                updateProducts.gender = products.gender;
-                updateProducts.description = products.description;
+                updateProducts.BreedName = products.BreedName;
+                updateProducts.Price = products.Price;
+                updateProducts.Weight = products.Weight;
+                updateProducts.Gender = products.Gender;
+                updateProducts.Description = products.Description;
                 await _context.SaveChangesAsync();
             }
             return updateProducts;

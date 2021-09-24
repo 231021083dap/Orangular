@@ -5,7 +5,6 @@ using Xunit;
 using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Products.Requests;
 using OrangularAPI.DTO.Products.Responses;
-using OrangularAPI.Services;
 using OrangularAPI.Services.ProductServices;
 using OrangularAPI.Repositories.ProductsRepository;
 // Orangular
@@ -26,25 +25,25 @@ namespace OrangularTests.ProductsTests
         public async void GetAll_ShouldReturnListOfProductsResponses_WhenProductsExist()
         {
             // Arrange
-            List<Products> Products = new();
-            Products.Add(new Products
+            List<Product> Products = new();
+            Products.Add(new Product
             {
-                products_id = 1,
-                breed_name = "Cane Corso",
-                price = 3000,
-                weight = 30000,
-                gender = "Male",
-                description = "Test test"
+                Id = 1,
+                BreedName = "Cane Corso",
+                Price = 3000,
+                Weight = 30000,
+                Gender = "Male",
+                Description = "Test test"
             });
 
-            Products.Add(new Products
+            Products.Add(new Product
             {
-                products_id = 2,
-                breed_name = "Beetle",
-                price = 1000,
-                weight = 10000,
-                gender = "Male",
-                description = "Test test"
+                Id = 2,
+                BreedName = "Beetle",
+                Price = 1000,
+                Weight = 10000,
+                Gender = "Male",
+                Description = "Test test"
             });
 
             _productsRepository
@@ -64,7 +63,7 @@ namespace OrangularTests.ProductsTests
         public async void GetAll_ShouldReturnEmptyListOfProductsResponses_WhenNoProductsExists()
         {
             // Arrange
-            List<Products> Products = new();
+            List<Product> Products = new();
 
             _productsRepository
                 .Setup(a => a.GetAll())
@@ -85,14 +84,14 @@ namespace OrangularTests.ProductsTests
             // Arrange
             int products_Id = 1;
 
-            Products Products = new Products
+            Product Products = new Product
             {
-                products_id = products_Id,
-                breed_name = "Beetle",
-                price = 1000,
-                weight = 10000,
-                gender = "Male",
-                description = "Test test"
+                Id = products_Id,
+                BreedName = "Beetle",
+                Price = 1000,
+                Weight = 10000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             _productsRepository
@@ -105,12 +104,12 @@ namespace OrangularTests.ProductsTests
             // Assert
             Assert.NotNull(result);
             Assert.IsType<ProductResponse>(result);
-            Assert.Equal(Products.products_id, result.ProductID);
-            Assert.Equal(Products.breed_name, result.BreedName);
-            Assert.Equal(Products.price, result.Price);
-            Assert.Equal(Products.weight, result.Weight);
-            Assert.Equal(Products.gender, result.Gender);
-            Assert.Equal(Products.description, result.Description);
+            Assert.Equal(Products.Id, result.ProductId);
+            Assert.Equal(Products.BreedName, result.BreedName);
+            Assert.Equal(Products.Price, result.Price);
+            Assert.Equal(Products.Weight, result.Weight);
+            Assert.Equal(Products.Gender, result.Gender);
+            Assert.Equal(Products.Description, result.Description);
 
         }
 
@@ -146,18 +145,18 @@ namespace OrangularTests.ProductsTests
 
             int products_Id = 1;
 
-            Products Products = new()
+            Product Products = new()
             {
-                products_id = products_Id,
-                breed_name = "Beetle",
-                price = 1000,
-                weight = 10000,
-                gender = "Male",
-                description = "Test test"
+                Id = products_Id,
+                BreedName = "Beetle",
+                Price = 1000,
+                Weight = 10000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             _productsRepository
-                .Setup(a => a.Create(It.IsAny<Products>()))
+                .Setup(a => a.Create(It.IsAny<Product>()))
                 .ReturnsAsync(Products);
 
             // Act
@@ -166,12 +165,12 @@ namespace OrangularTests.ProductsTests
             // Assert
             Assert.NotNull(result);
             Assert.IsType<ProductResponse>(result);
-            Assert.Equal(Products.products_id, result.ProductID);
-            Assert.Equal(Products.breed_name, result.BreedName);
-            Assert.Equal(Products.price, result.Price);
-            Assert.Equal(Products.weight, result.Weight);
-            Assert.Equal(Products.gender, result.Gender);
-            Assert.Equal(Products.description, result.Description);
+            Assert.Equal(Products.Id, result.ProductId);
+            Assert.Equal(Products.BreedName, result.BreedName);
+            Assert.Equal(Products.Price, result.Price);
+            Assert.Equal(Products.Weight, result.Weight);
+            Assert.Equal(Products.Gender, result.Gender);
+            Assert.Equal(Products.Description, result.Description);
         }
 
         [Fact]
@@ -191,7 +190,7 @@ namespace OrangularTests.ProductsTests
 
             ProductResponse ProductResponse = new ProductResponse
             {
-                ProductID = products_Id,
+                ProductId = products_Id,
                 BreedName = "Cane Corso",
                 Price = 3000,
                 Weight = 30000,
@@ -199,18 +198,18 @@ namespace OrangularTests.ProductsTests
                 Description = "Test test"
             };
 
-            Products Products = new()
+            Product Products = new()
             {
-                products_id = products_Id,
-                breed_name = "Cane Corso",
-                price = 3000,
-                weight = 30000,
-                gender = "Male",
-                description = "Test test"
+                Id = products_Id,
+                BreedName = "Cane Corso",
+                Price = 3000,
+                Weight = 30000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             _productsRepository
-                .Setup(a => a.Update(It.IsAny<int>(), It.IsAny<Products>()))
+                .Setup(a => a.Update(It.IsAny<int>(), It.IsAny<Product>()))
                 .ReturnsAsync(Products);
 
             // Act
@@ -219,12 +218,12 @@ namespace OrangularTests.ProductsTests
             // Assert
             Assert.NotNull(result);
             Assert.IsType<ProductResponse>(result);
-            Assert.Equal(Products.products_id, result.ProductID);
-            Assert.Equal(Products.breed_name, result.BreedName);
-            Assert.Equal(Products.price, result.Price);
-            Assert.Equal(Products.weight, result.Weight);
-            Assert.Equal(Products.gender, result.Gender);
-            Assert.Equal(Products.description, result.Description);
+            Assert.Equal(Products.Id, result.ProductId);
+            Assert.Equal(Products.BreedName, result.BreedName);
+            Assert.Equal(Products.Price, result.Price);
+            Assert.Equal(Products.Weight, result.Weight);
+            Assert.Equal(Products.Gender, result.Gender);
+            Assert.Equal(Products.Description, result.Description);
         }
 
         [Fact]
@@ -243,7 +242,7 @@ namespace OrangularTests.ProductsTests
             int products_Id = 1;
 
             _productsRepository
-                .Setup(a => a.Update(It.IsAny<int>(), It.IsAny<Products>()))
+                .Setup(a => a.Update(It.IsAny<int>(), It.IsAny<Product>()))
                 .ReturnsAsync(() => null);
 
             // Act
@@ -259,14 +258,14 @@ namespace OrangularTests.ProductsTests
             // Arrange
             int products_Id = 1;
 
-            Products Products = new()
+            Product Products = new()
             {
-                products_id = products_Id,
-                breed_name = "Cane Corso",
-                price = 3000,
-                weight = 30000,
-                gender = "Male",
-                description = "Test test"
+                Id = products_Id,
+                BreedName = "Cane Corso",
+                Price = 3000,
+                Weight = 30000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             _productsRepository

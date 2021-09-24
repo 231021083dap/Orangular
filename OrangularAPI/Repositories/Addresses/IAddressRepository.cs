@@ -10,10 +10,10 @@ namespace OrangularAPI.Repositories.AddressesRepository
 {
     public interface IAddressRepository
     {
-        Task<List<Addresses>> GetAll();
-        Task<Addresses> GetById(int addressesId);
-        Task<Addresses> Create(Addresses addresses);
-        Task<Addresses> Update(int addressesId, Addresses addresses);
+        Task<List<Address>> GetAll();
+        Task<Address> GetById(int addressesId);
+        Task<Address> Create(Address addresses);
+        Task<Address> Update(int addressesId, Address addresses);
         Task<bool> Delete(int addressesId);
     }
 }

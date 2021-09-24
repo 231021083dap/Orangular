@@ -8,10 +8,10 @@ namespace OrangularAPI.Repositories.OrderListsRepository
 {
     public interface IOrderListRepository
     {
-        Task<List<Order_Lists>> GetAll();
-        Task<Order_Lists> GetById(int order_lists_id);
-        Task<Order_Lists> Create(Order_Lists order_Lists);
-        Task<Order_Lists> Update(int order_lists_id, Order_Lists order_Lists);
-        Task<Order_Lists> Delete(int order_lists_id);
+        Task<List<OrderList>> GetAll();
+        Task<OrderList> GetById(int order_lists_id);
+        Task<OrderList> Create(OrderList order_Lists);
+        Task<OrderList> Update(int order_lists_id, OrderList order_Lists);
+        Task<OrderList> Delete(int order_lists_id);
     }
 }

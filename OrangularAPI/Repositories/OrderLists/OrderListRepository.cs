@@ -15,41 +15,41 @@ namespace OrangularAPI.Repositories.OrderListsRepository
             _context = context;
         }
 
-        public async Task<Order_Lists> Create(Order_Lists order_Lists)
+        public async Task<OrderList> Create(OrderList order_Lists)
         {
-            _context.Order_Lists.Add(order_Lists);
+            _context.OrderList.Add(order_Lists);
             await _context.SaveChangesAsync();
             return order_Lists;
         }
 
-        public async Task<Order_Lists> Delete(int order_lists_id)
+        public async Task<OrderList> Delete(int order_lists_id)
         {
-            Order_Lists order_Lists = await _context.Order_Lists.FirstOrDefaultAsync(a => a.order_lists_id == order_lists_id);
+            OrderList order_Lists = await _context.OrderList.FirstOrDefaultAsync(a => a.Id == order_lists_id);
             if (order_Lists != null)
             {
-                _context.Order_Lists.Remove(order_Lists);
+                _context.OrderList.Remove(order_Lists);
                 await _context.SaveChangesAsync();
             }
             return order_Lists;
         }
 
-        public async Task<List<Order_Lists>> GetAll()
+        public async Task<List<OrderList>> GetAll()
         {
-            return await _context.Order_Lists
+            return await _context.OrderList
               .ToListAsync();
         }
 
-        public async Task<Order_Lists> GetById(int order_lists_id)
+        public async Task<OrderList> GetById(int order_lists_id)
         {
-            return await _context.Order_Lists.FirstOrDefaultAsync(a => a.order_lists_id == order_lists_id);
+            return await _context.OrderList.FirstOrDefaultAsync(a => a.Id == order_lists_id);
         }
 
-        public async Task<Order_Lists> Update(int order_lists_id, Order_Lists order_Lists)
+        public async Task<OrderList> Update(int order_lists_id, OrderList order_Lists)
         {
-            Order_Lists updateOrder_Lists = await _context.Order_Lists.FirstOrDefaultAsync(a => a.order_lists_id == order_lists_id);
+            OrderList updateOrder_Lists = await _context.OrderList.FirstOrDefaultAsync(a => a.Id == order_lists_id);
             if (updateOrder_Lists != null)
             {
-                updateOrder_Lists.user = order_Lists.user;
+                updateOrder_Lists.User = order_Lists.User;
                 await _context.SaveChangesAsync();
             }
             return updateOrder_Lists;

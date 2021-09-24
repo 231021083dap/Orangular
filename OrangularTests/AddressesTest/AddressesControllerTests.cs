@@ -28,7 +28,7 @@ namespace OrangularTests.AddressesTest
 
             addresses.Add(new AddressResponse
             {
-                AddressID = 1,
+                AddressId = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"
@@ -36,7 +36,7 @@ namespace OrangularTests.AddressesTest
 
             addresses.Add(new AddressResponse
             {
-                AddressID = 2,
+                AddressId = 2,
                 Address = "Kusør",
                 ZipCode = 1234,
                 CityName = "Kagerup"
@@ -100,7 +100,7 @@ namespace OrangularTests.AddressesTest
             // Arrange
             AddressResponse address = new AddressResponse
             {
-                AddressID = 1,
+                AddressId = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"
@@ -124,7 +124,7 @@ namespace OrangularTests.AddressesTest
             // Arrange
             AddressResponse address = new AddressResponse
             {
-                AddressID = 1,
+                AddressId = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"
@@ -147,7 +147,7 @@ namespace OrangularTests.AddressesTest
             // Arrange
             AddressResponse address = new AddressResponse
             {
-                AddressID = 1,
+                AddressId = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"
@@ -171,7 +171,7 @@ namespace OrangularTests.AddressesTest
             // Arrange
             NewAddress newAddress = new NewAddress
             {
-                UserID = 1,
+                UserId = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"
@@ -179,7 +179,7 @@ namespace OrangularTests.AddressesTest
 
             AddressResponse addressResponse = new AddressResponse
             {
-                AddressID = 1,
+                AddressId = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"
@@ -202,7 +202,7 @@ namespace OrangularTests.AddressesTest
             // Arrange
             NewAddress newAddress = new NewAddress
             {
-                UserID = 1,
+                UserId = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"
@@ -225,7 +225,7 @@ namespace OrangularTests.AddressesTest
             // Arrange
             UpdateAddress updateAddress = new UpdateAddress
             {
-                userID = 1,
+                UserId = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"
@@ -233,7 +233,7 @@ namespace OrangularTests.AddressesTest
 
             AddressResponse addressResponse = new AddressResponse
             {
-                AddressID = 1,
+                AddressId = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"
@@ -257,7 +257,7 @@ namespace OrangularTests.AddressesTest
             // Arrange
             UpdateAddress updateAddress = new UpdateAddress
             {
-                userID = 1,
+                UserId = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"

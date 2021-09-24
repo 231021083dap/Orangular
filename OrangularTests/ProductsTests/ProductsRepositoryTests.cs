@@ -37,23 +37,23 @@ namespace OrangularTests.ProductsTests
         {
             // Arrange
             await _context.Database.EnsureDeletedAsync();
-            _context.Products.Add(new Products
+            _context.Product.Add(new Product
             {
-                products_id = 1,
-                breed_name = "Cane Corso",
-                price = 3000,
-                weight = 30000,
-                gender = "Male",
-                description = "Test test"
+                Id = 1,
+                BreedName = "Cane Corso",
+                Price = 3000,
+                Weight = 30000,
+                Gender = "Male",
+                Description = "Test test"
             });
-            _context.Products.Add(new Products
+            _context.Product.Add(new Product
             {
-                products_id = 2,
-                breed_name = "Beetle",
-                price = 1000,
-                weight = 10000,
-                gender = "Male",
-                description = "Test test"
+                Id = 2,
+                BreedName = "Beetle",
+                Price = 1000,
+                Weight = 10000,
+                Gender = "Male",
+                Description = "Test test"
             });
             await _context.SaveChangesAsync();
             int expectedSize = 2;
@@ -63,7 +63,7 @@ namespace OrangularTests.ProductsTests
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<List<Products>>(result);
+            Assert.IsType<List<Product>>(result);
             Assert.Equal(expectedSize, result.Count);
         }
 
@@ -78,7 +78,7 @@ namespace OrangularTests.ProductsTests
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<List<Products>>(result);
+            Assert.IsType<List<Product>>(result);
             Assert.Empty(result);
         }
 
@@ -88,14 +88,14 @@ namespace OrangularTests.ProductsTests
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int products_Id = 1;
-            _context.Products.Add(new Products
+            _context.Product.Add(new Product
             {
-                products_id = products_Id,
-                breed_name = "Beetle",
-                price = 1000,
-                weight = 10000,
-                gender = "Male",
-                description = "Test test"
+                Id = products_Id,
+                BreedName = "Beetle",
+                Price = 1000,
+                Weight = 10000,
+                Gender = "Male",
+                Description = "Test test"
             });
             await _context.SaveChangesAsync();
 
@@ -104,8 +104,8 @@ namespace OrangularTests.ProductsTests
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Products>(result);
-            Assert.Equal(products_Id, result.products_id);
+            Assert.IsType<Product>(result);
+            Assert.Equal(products_Id, result.Id);
         }
 
         [Fact]
@@ -128,13 +128,13 @@ namespace OrangularTests.ProductsTests
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int expectedId = 1;
-            Products Products = new Products
+            Product Products = new Product
             {
-                breed_name = "Cane Corso",
-                price = 3000,
-                weight = 30000,
-                gender = "Male",
-                description = "Test test"
+                BreedName = "Cane Corso",
+                Price = 3000,
+                Weight = 30000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             // act
@@ -142,8 +142,8 @@ namespace OrangularTests.ProductsTests
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Products>(result);
-            Assert.Equal(expectedId, result.products_id);
+            Assert.IsType<Product>(result);
+            Assert.Equal(expectedId, result.Id);
         }
 
         [Fact]
@@ -152,17 +152,17 @@ namespace OrangularTests.ProductsTests
             // Arrange
             await _context.Database.EnsureDeletedAsync();
 
-            Products Products = new Products
+            Product Products = new Product
             {
-                products_id = 1,
-                breed_name = "Cane Corso",
-                price = 3000,
-                weight = 30000,
-                gender = "Male",
-                description = "Test test"
+                Id = 1,
+                BreedName = "Cane Corso",
+                Price = 3000,
+                Weight = 30000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
-            _context.Products.Add(Products);
+            _context.Product.Add(Products);
             await _context.SaveChangesAsync();
 
             // act
@@ -179,26 +179,26 @@ namespace OrangularTests.ProductsTests
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int products_Id = 1;
-            Products Products = new Products
+            Product Products = new Product
             {
-                products_id = products_Id,
-                breed_name = "Cane Corso",
-                price = 3000,
-                weight = 30000,
-                gender = "Male",
-                description = "Test test"
+                Id = products_Id,
+                BreedName = "Cane Corso",
+                Price = 3000,
+                Weight = 30000,
+                Gender = "Male",
+                Description = "Test test"
             };
-            _context.Products.Add(Products);
+            _context.Product.Add(Products);
             await _context.SaveChangesAsync();
 
-            Products updateProducts = new Products
+            Product updateProducts = new Product
             {
-                products_id = products_Id,
-                breed_name = "Beetle",
-                price = 1000,
-                weight = 10000,
-                gender = "Male",
-                description = "Test test"
+                Id = products_Id,
+                BreedName = "Beetle",
+                Price = 1000,
+                Weight = 10000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             // Act
@@ -206,13 +206,13 @@ namespace OrangularTests.ProductsTests
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Products>(result);
-            Assert.Equal(products_Id, result.products_id);
-            Assert.Equal(updateProducts.breed_name, result.breed_name);
-            Assert.Equal(updateProducts.price, result.price);
-            Assert.Equal(updateProducts.weight, result.weight);
-            Assert.Equal(updateProducts.gender, result.gender);
-            Assert.Equal(updateProducts.description, result.description);
+            Assert.IsType<Product>(result);
+            Assert.Equal(products_Id, result.Id);
+            Assert.Equal(updateProducts.BreedName, result.BreedName);
+            Assert.Equal(updateProducts.Price, result.Price);
+            Assert.Equal(updateProducts.Weight, result.Weight);
+            Assert.Equal(updateProducts.Gender, result.Gender);
+            Assert.Equal(updateProducts.Description, result.Description);
         }
 
         [Fact]
@@ -221,14 +221,14 @@ namespace OrangularTests.ProductsTests
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int products_Id = 1;
-            Products updateProducts = new Products
+            Product updateProducts = new Product
             {
-                products_id = products_Id,
-                breed_name = "Beetle",
-                price = 1000,
-                weight = 10000,
-                gender = "Male",
-                description = "Test test"
+                Id = products_Id,
+                BreedName = "Beetle",
+                Price = 1000,
+                Weight = 10000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             // Act
@@ -244,16 +244,16 @@ namespace OrangularTests.ProductsTests
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int products_Id = 1;
-            Products Products = new Products
+            Product Products = new Product
             {
-                products_id = products_Id,
-                breed_name = "Beetle",
-                price = 1000,
-                weight = 10000,
-                gender = "Male",
-                description = "Test test"
+                Id = products_Id,
+                BreedName = "Beetle",
+                Price = 1000,
+                Weight = 10000,
+                Gender = "Male",
+                Description = "Test test"
             };
-            _context.Products.Add(Products);
+            _context.Product.Add(Products);
             await _context.SaveChangesAsync();
 
             var result = await _sut.Delete(products_Id);
@@ -261,8 +261,8 @@ namespace OrangularTests.ProductsTests
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Products>(result);
-            Assert.Equal(products_Id, result.products_id);
+            Assert.IsType<Product>(result);
+            Assert.Equal(products_Id, result.Id);
 
             Assert.Empty(products);
         }

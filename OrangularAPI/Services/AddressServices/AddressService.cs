@@ -22,7 +22,7 @@ namespace OrangularAPI.Services.AddressServices
         public async Task<List<AddressResponse>> GetAll()
         {
             // Henter alle addresser fra database
-            List<Addresses> addresses = await _addressRepository.GetAll();
+            List<Address> address = await _addressRepository.GetAll();
 
             // addresses_id = 1,
             // users_id = 1,
@@ -30,40 +30,40 @@ namespace OrangularAPI.Services.AddressServices
             // zip_code = 2750
 
             // Retuner listen med addresses
-            return addresses == null ? null : addresses.Select(
+            return address == null ? null : address.Select(
             a => new AddressResponse
             {
-                AddressId = a.addresses_id,
-                Address = a.address,
-                ZipCode = a.zip_code,
+                AddressId = a.Id,
+                Address = a.AddressName,
+                ZipCode = a.ZipCode,
                 CityName = null,
                 User = null
             }).ToList();
         }
 
-        public async Task<AddressResponse> GetById(int addressesId)
+        public async Task<AddressResponse> GetById(int addressId)
         {
-            Addresses addresses = await _addressRepository.GetById(addressesId);
+            Address address = await _addressRepository.GetById(addressId);
 
-            return addresses == null ? null : new AddressResponse
+            return address == null ? null : new AddressResponse
             {
-                AddressId = addresses.addresses_id,
-                Address =  addresses.address,
-                ZipCode =  addresses.zip_code,
-                CityName = addresses.city_name,
+                AddressId = address.Id,
+                Address =  address.AddressName,
+                ZipCode =  address.ZipCode,
+                CityName = address.CityName,
                 User = null
             };
         }
 
-        public async Task<AddressResponse> Create(NewAddress input_address)
+        public async Task<AddressResponse> Create(NewAddress newAddress)
         {
-            Addresses address = new Addresses
+            Address address = new Address
             {
            
-                users_id = input_address.UserId,
-                address = input_address.Address,
-                zip_code = input_address.ZipCode,
-                city_name = input_address.CityName
+                UserId = newAddress.UserId,
+                AddressName = newAddress.Address,
+                ZipCode = newAddress.ZipCode,
+                CityName = newAddress.CityName
             };
 
 
@@ -71,9 +71,9 @@ namespace OrangularAPI.Services.AddressServices
 
             return address == null ? null : new AddressResponse
             {
-                AddressId =  address.addresses_id,
-                Address =  address.address,
-                ZipCode =  address.zip_code,
+                AddressId =  address.Id,
+                Address =  address.AddressName,
+                ZipCode =  address.ZipCode,
                 CityName = null,
                 User = null
             };
@@ -81,12 +81,12 @@ namespace OrangularAPI.Services.AddressServices
 
         public async Task<AddressResponse> Update(int input_address_id, UpdateAddress input_address)
         {
-            Addresses address = new Addresses
+            Address address = new Address
             {
-                users_id = input_address.userId,
-                address = input_address.Address,
-                zip_code = input_address.ZipCode,
-                city_name = input_address.CityName
+                UserId = input_address.UserId,
+                AddressName = input_address.Address,
+                ZipCode = input_address.ZipCode,
+                CityName = input_address.CityName
             };
 
             address = await _addressRepository.Update(input_address_id, address);
@@ -95,10 +95,10 @@ namespace OrangularAPI.Services.AddressServices
 
             return address == null ? null : new AddressResponse
             {
-                AddressId =  address.addresses_id,
-                Address =  address.address,
-                ZipCode =  address.zip_code,
-                CityName = address.city_name,
+                AddressId =  address.Id,
+                Address =  address.AddressName,
+                ZipCode =  address.ZipCode,
+                CityName = address.CityName,
                 User = null
             };
         }

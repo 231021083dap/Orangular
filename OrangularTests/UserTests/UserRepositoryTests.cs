@@ -33,19 +33,19 @@ namespace OrangularTests.UserTest
         {
             //Arrange
             await _context.Database.EnsureDeletedAsync();
-            _context.Users.Add(new Users
+            _context.User.Add(new User
             {
-                users_id = 1,
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.Admin
+                Id = 1,
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.Admin
             });
-            _context.Users.Add(new Users
+            _context.User.Add(new User
             {
-                users_id = 2,
-                email = "Test2@Mail.com",
-                password = "Passw0rd",
-                role = Role.User
+                Id = 2,
+                Email = "Test2@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User
             });
             await _context.SaveChangesAsync();
             //Act
@@ -53,7 +53,7 @@ namespace OrangularTests.UserTest
             //Assert
             Assert.NotNull(result);
             Assert.Equal(2, result.Count);
-            Assert.IsType<List<Users>>(result);
+            Assert.IsType<List<User>>(result);
         }
         [Fact]
         public async Task GetAll_ShouldReturnEmptyListOfUsers_WhenNoUsersExists()
@@ -66,7 +66,7 @@ namespace OrangularTests.UserTest
             //Assert
             Assert.NotNull(result);
             Assert.Empty(result);
-            Assert.IsType<List<Users>>(result);
+            Assert.IsType<List<User>>(result);
         }
         // -----------------------------------------------------------------------------------------------------------------------
         // GetById Tests
@@ -76,20 +76,20 @@ namespace OrangularTests.UserTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int userId = 1;
-            _context.Users.Add(new Users
+            _context.User.Add(new User
             {
-                users_id = userId,
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.Admin
+                Id = userId,
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.Admin
             });
             await _context.SaveChangesAsync();
             // Act
             var result = await _sut.GetById(userId);
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Users>(result);
-            Assert.Equal(userId, result.users_id);
+            Assert.IsType<User>(result);
+            Assert.Equal(userId, result.Id);
         }
         [Fact]
         public async Task GetById_ShouldReturnNull_IfUserDoesNotExist()
@@ -110,20 +110,20 @@ namespace OrangularTests.UserTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             string userEmail = "Test1@Mail.com";
-            _context.Users.Add(new Users
+            _context.User.Add(new User
             {
-                users_id = 1,
-                email = userEmail,
-                password = "Passw0rd",
-                role = Role.Admin
+                Id = 1,
+                Email = userEmail,
+                Password = "Passw0rd",
+                Role = Role.Admin
             });
             await _context.SaveChangesAsync();
             // Act
             var result = await _sut.GetByEmail(userEmail);
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Users>(result);
-            Assert.Equal(userEmail, result.email);
+            Assert.IsType<User>(result);
+            Assert.Equal(userEmail, result.Email);
         }
         [Fact]
         public async Task GetByEmail_ShouldReturnNull_IfEmailDoesNotExist()
@@ -144,75 +144,75 @@ namespace OrangularTests.UserTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int expectedId = 1;
-            Users user = new Users
+            User user = new User
             {
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.User
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User
             };
             // Act
             var result = await _sut.Create(user);
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Users>(result);
-            Assert.Equal(expectedId, result.users_id);
+            Assert.IsType<User>(result);
+            Assert.Equal(expectedId, result.Id);
         }
         [Fact]
         public async Task Create_ShouldFailToAddUser_WhenAddingUserWithExistingId()
         {
             // Arrange
             await _context.Database.EnsureDeletedAsync();
-            Users user = new Users
+            User user = new User
             {
-                users_id = 1,
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.User
+                Id = 1,
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User
             };
-            _context.Users.Add(user);
+            _context.User.Add(user);
             await _context.SaveChangesAsync();
             // Act
             Func<Task> action = async () => await _sut.Create(user);
             // Assert
             var ex = await Assert.ThrowsAsync<Exception>(action);
-            Assert.Contains("Nice try, userId " + user.users_id + " already Exists", ex.Message);
+            Assert.Contains("Nice try, userId " + user.Id + " already Exists", ex.Message);
         }
         [Fact]
         public async Task Create_ShouldFailToAddUser_WhenAddingUserWithExistingEmail()
         {
             // Arrange
             await _context.Database.EnsureDeletedAsync();
-            Users user1 = new Users
+            User user1 = new User
             {
-                users_id = 1,
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.User
+                Id = 1,
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User
             };
-            Users user2 = new Users
+            User user2 = new User
             {
-                users_id = 2,
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.User
+                Id = 2,
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User
             };
-            _context.Users.Add(user1);
+            _context.User.Add(user1);
             await _context.SaveChangesAsync();
             // Act
             Func<Task> action = async () => await _sut.Create(user2);
             // Assert
             var ex = await Assert.ThrowsAsync<Exception>(action);
-            Assert.Contains("Email " + user1.email + " is already taken", ex.Message);
+            Assert.Contains("Email " + user1.Email + " is already taken", ex.Message);
         }
         [Fact]
         public async Task Create_ShouldFailToAddUser_WhenPasswordAndOrEmailIsNull()
         {
             // Arrange
             await _context.Database.EnsureDeletedAsync();
-            Users user = new Users
+            User user = new User
             {
-                users_id = 1,
-                role = Role.User
+                Id = 1,
+                Role = Role.User
             };
             // Act
             Func<Task> action = async () => await _sut.Create(user);
@@ -228,31 +228,31 @@ namespace OrangularTests.UserTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int userId = 1;
-            Users user = new Users
+            User user = new User
             {
-                users_id = userId,
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.User
+                Id = userId,
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User
             };
-            Users userUpdate = new Users
+            User userUpdate = new User
             {
-                users_id = userId,
-                email = "est1@Mail.com",
-                password = "assw0rd",
-                role = Role.Admin
+                Id = userId,
+                Email = "est1@Mail.com",
+                Password = "assw0rd",
+                Role = Role.Admin
             };
-            _context.Users.Add(user);
+            _context.User.Add(user);
             await _context.SaveChangesAsync();
             // Act
             var result = await _sut.Update(userId, userUpdate);
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Users>(result);
-            Assert.Equal(userId, result.users_id);
-            Assert.Equal(userUpdate.email, result.email);
-            Assert.Equal(userUpdate.password, result.password);
-            Assert.Equal(userUpdate.role, result.role);
+            Assert.IsType<User>(result);
+            Assert.Equal(userId, result.Id);
+            Assert.Equal(userUpdate.Email, result.Email);
+            Assert.Equal(userUpdate.Password, result.Password);
+            Assert.Equal(userUpdate.Role, result.Role);
         }
         [Fact]
         public async Task Update_ShouldReturnNull_WhenUserDoesNotExist()
@@ -260,12 +260,12 @@ namespace OrangularTests.UserTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int userId = 1;
-            Users userUpdate = new Users
+            User userUpdate = new User
             {
-                users_id = userId,
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.User
+                Id = userId,
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User
             };
             // Act
             var result = await _sut.Update(userId, userUpdate);
@@ -278,35 +278,35 @@ namespace OrangularTests.UserTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int user1Id = 1;
-            Users user1 = new Users
+            User user1 = new User
             {
-                users_id = user1Id,
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.User
+                Id = user1Id,
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User
             };
-            Users user2 = new Users
+            User user2 = new User
             {
-                users_id = 2,
-                email = "Test2@Mail.com",
-                password = "Passw0rd",
-                role = Role.Admin
+                Id = 2,
+                Email = "Test2@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.Admin
             };
-            _context.Users.Add(user1); 
-            _context.Users.Add(user2);
+            _context.User.Add(user1); 
+            _context.User.Add(user2);
             await _context.SaveChangesAsync();
-            Users user1Update = new Users
+            User user1Update = new User
             {
-                users_id = user1Id,
-                email = "Test2@Mail.com",
-                password = "Passw0rd",
-                role = Role.User
+                Id = user1Id,
+                Email = "Test2@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User
             };
             // Act
             Func<Task> action = async () => await _sut.Update(user1Id, user1Update);
             // Assert
             var ex = await Assert.ThrowsAsync<Exception>(action);
-            Assert.Contains("Email " + user2.email + " is already taken", ex.Message);
+            Assert.Contains("Email " + user2.Email + " is already taken", ex.Message);
         }
         // -----------------------------------------------------------------------------------------------------------------------
         // Delete Tests
@@ -316,22 +316,22 @@ namespace OrangularTests.UserTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int userId = 1;
-            Users user = new Users
+            User user = new User
             {
-                users_id = userId,
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.User
+                Id = userId,
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User
             };
-            _context.Users.Add(user);
+            _context.User.Add(user);
             await _context.SaveChangesAsync();
             // Act
             var result = await _sut.Delete(userId);
             var users = await _sut.GetAll();
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Users>(result);
-            Assert.Equal(userId, result.users_id);
+            Assert.IsType<User>(result);
+            Assert.Equal(userId, result.Id);
             Assert.Empty(users);
         }
         [Fact]

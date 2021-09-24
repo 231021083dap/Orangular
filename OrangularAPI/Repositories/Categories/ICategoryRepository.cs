@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace OrangularAPI.Repositories.CategoriesRepository {
     public interface ICategoryRepository
     {
-        Task<List<Categories>> GetAll();
-        Task<Categories> GetById(int categoryID);
-        Task<Categories> Create(Categories category);
-        Task<Categories> Update(int categoryID, Categories category);
+        Task<List<Category>> GetAll();
+        Task<Category> GetById(int categoryID);
+        Task<Category> Create(Category category);
+        Task<Category> Update(int categoryID, Category category);
         Task<bool> Delete(int categoryID);
     }
 }

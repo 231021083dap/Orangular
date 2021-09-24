@@ -16,25 +16,25 @@ namespace OrangularAPI.Services.OrderItemServices
         }
         public async Task<List<OrderItemResponse>> GetAll()
         {
-            List<Order_Items> orderItems = await _orderItemRepository.GetAll();
+            List<OrderItem> orderItems = await _orderItemRepository.GetAll();
             return orderItems.Select(o => new OrderItemResponse
             {
-                OrderItemId         = o.order_items_id,
-                Price               = o.price,
-                Quantity            = o.quantity,
+                OrderItemId         = o.Id,
+                Price               = o.Price,
+                Quantity            = o.Quantity,
                 Order               = new OrderItemOrderListResponse
                 {
-                   OrderListId = o.order_list.order_lists_id,
-                   OrderDateTime = o.order_list.order_date_time
+                   OrderListId = o.OrderList.Id,
+                   OrderDateTime = o.OrderList.OrderDateTime
                 },
                 Product = new OrderItemProductResponse
                 {
-                    ProductId = o.product.products_id,
-                    BreedName = o.product.breed_name,
-                    Price = o.product.price,
-                    Weight = o.product.weight,
-                    Gender = o.product.gender,
-                    Description = o.product.description
+                    ProductId = o.Product.Id,
+                    BreedName = o.Product.BreedName,
+                    Price = o.Product.Price,
+                    Weight = o.Product.Weight,
+                    Gender = o.Product.Gender,
+                    Description = o.Product.Description
                 }
             }).ToList();
         }

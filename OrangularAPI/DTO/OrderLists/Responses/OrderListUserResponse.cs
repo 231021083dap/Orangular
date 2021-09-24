@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrangularAPI.DTO.OrderLists.Responses
 {
-    public class OrderList_UserResponse
+    public class OrderListUserResponse
     {
         public int UserId { get; set; }
         public string Email { get; set; }

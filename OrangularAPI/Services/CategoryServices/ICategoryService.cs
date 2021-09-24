@@ -10,10 +10,10 @@ namespace OrangularAPI.Services.CategoryServices
 {
     public interface ICategoryService
     {
-        Task<List<Categories>> GetAll();
-        Task<Categories> GetById(int categoryId);
-        Task<Categories> Greate(Categories category);
-        Task<Categories> Update(int categoryId, Categories category);
+        Task<List<Category>> GetAll();
+        Task<Category> GetById(int categoryId);
+        Task<Category> Greate(Category category);
+        Task<Category> Update(int categoryId, Category category);
         Task<bool> Delete(int categoryId);
     }
 }

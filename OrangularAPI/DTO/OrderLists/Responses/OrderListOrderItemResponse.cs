@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OrangularAPI.DTO.OrderLists.Responses
 {
-    public class OrderList_OrderItemResponse
+    public class OrderListOrderItemResponse
     {
 
         public int OrderItemId { get; set; }

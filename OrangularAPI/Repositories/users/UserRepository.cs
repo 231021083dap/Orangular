@@ -10,12 +10,12 @@ namespace OrangularAPI.Repositories.users
 {
    public interface IUserRepository
     {
-        Task<List<Users>> GetAll();
-        Task<Users> GetById(int userId);
-        Task<Users> GetByEmail(string email);
-        Task<Users> Create(Users user);
-        Task<Users> Update(int userId, Users user);
-        Task<Users> Delete(int userId);
+        Task<List<User>> GetAll();
+        Task<User> GetById(int userId);
+        Task<User> GetByEmail(string email);
+        Task<User> Create(User user);
+        Task<User> Update(int userId, User user);
+        Task<User> Delete(int userId);
     }
     public class UserRepository : IUserRepository
     {
@@ -25,55 +25,55 @@ namespace OrangularAPI.Repositories.users
         {
             _context = Context;
         }
-        public async Task<List<Users>> GetAll()
+        public async Task<List<User>> GetAll()
         {
-            return await _context.Users
-                .Include(a => a.addresses)
-                .Include(a => a.order_lists)
+            return await _context.User
+                .Include(a => a.Address)
+                .Include(a => a.OrderList)
                 .ToListAsync();
         }
-        public async Task<Users> GetById(int userId) // Mangler check hvis id ikke findes
+        public async Task<User> GetById(int userId) // Mangler check hvis id ikke findes
         {
-            return await _context.Users
-                .Include(a => a.addresses)
-                .Include(b => b.order_lists)
-                .FirstOrDefaultAsync(u => u.users_id == userId);
+            return await _context.User
+                .Include(a => a.Address)
+                .Include(b => b.OrderList)
+                .FirstOrDefaultAsync(u => u.Id == userId);
         }
-        public async Task<Users> GetByEmail(string email)
+        public async Task<User> GetByEmail(string email)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.email == email);
+            return await _context.User.FirstOrDefaultAsync(u => u.Email == email);
         }
-        public async Task<Users> Create(Users user)
+        public async Task<User> Create(User user)
         {
-            if (user.email != null && user.password != null)
+            if (user.Email != null && user.Password != null)
             {
-                if (_context.Users.Any(u => u.users_id == user.users_id)) throw new Exception("Nice try, userId " + user.users_id + " already Exists");
-                if (_context.Users.Any(u => u.email == user.email)) throw new Exception("Email " + user.email + " is already taken");
-                _context.Users.Add(user);
+                if (_context.User.Any(u => u.Id == user.Id)) throw new Exception("Nice try, userId " + user.Id + " already Exists");
+                if (_context.User.Any(u => u.Email == user.Email)) throw new Exception("Email " + user.Email + " is already taken");
+                _context.User.Add(user);
                 await _context.SaveChangesAsync();
                 return user;
             }
             throw new Exception("You must enter an email and a password to create a user");
         }
-        public async Task<Users> Update(int userId, Users user)
+        public async Task<User> Update(int userId, User user)
         {
-            Users updateUser = await _context.Users.FirstOrDefaultAsync(u => u.users_id == userId);
+            User updateUser = await _context.User.FirstOrDefaultAsync(u => u.Id == userId);
             if (updateUser != null)
             {
-                if (_context.Users.Any(u => u.users_id != userId && u.email == user.email)) throw new Exception("Email " + user.email + " is already taken");
-                if (user.email != null) updateUser.email = user.email;
-                if (user.password != null) updateUser.password = user.password;
-                if (user.role != 0) updateUser.role = user.role;
+                if (_context.User.Any(u => u.Id != userId && u.Email == user.Email)) throw new Exception("Email " + user.Email + " is already taken");
+                if (user.Email != null) updateUser.Email = user.Email;
+                if (user.Password != null) updateUser.Password = user.Password;
+                if (user.Role != 0) updateUser.Role = user.Role;
                 await _context.SaveChangesAsync();
             }
             return updateUser;
         }
-        public async Task<Users> Delete(int userId)
+        public async Task<User> Delete(int userId)
         {
-            Users deleteUser = await _context.Users.FirstOrDefaultAsync(u => u.users_id == userId);
+            User deleteUser = await _context.User.FirstOrDefaultAsync(u => u.Id == userId);
             if (deleteUser != null)
             {
-                _context.Users.Remove(deleteUser);
+                _context.User.Remove(deleteUser);
                 await _context.SaveChangesAsync();
             }
             return deleteUser;

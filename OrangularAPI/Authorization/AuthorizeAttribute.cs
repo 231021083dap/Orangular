@@ -26,7 +26,7 @@ namespace OrangularAPI.Authorization
 
             // authorization
             var user = (UserResponse)context.HttpContext.Items["User"];
-            if (user == null || (_roles.Any() && !_roles.Contains(user.role))) // Tjekker om null. Tjekker om brugeren har den nødvendige rolle.
+            if (user == null || (_roles.Any() && !_roles.Contains(user.Role))) // Tjekker om null. Tjekker om brugeren har den nødvendige rolle.
             {
                 // not logged in or role not authorized
                 context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };

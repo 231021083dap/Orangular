@@ -25,21 +25,21 @@ namespace OrangularTests.AddressesTest
             public async void GetAll_ShouldReturnListOfAddressesResponses_WhenAddressesExist()
             {
                 // Arrange
-                List<Addresses> Addresses = new List<Addresses>();
+                List<Address> Addresses = new List<Address>();
 
-                Addresses.Add(new Addresses
+                Addresses.Add(new Address
                 {
-                    addresses_id = 1,
-                    users_id = 1,
-                    address = "TEC Ballerup",
-                    zip_code = 2750
+                    Id = 1,
+                    UserId = 1,
+                    AddressName = "TEC Ballerup",
+                    ZipCode = 2750
                 });
-                Addresses.Add(new Addresses
+                Addresses.Add(new Address
                 {
-                    addresses_id = 2,
-                    users_id = 2,
-                    address = "Hjem Helsingør",
-                    zip_code = 3000
+                    Id = 2,
+                    UserId = 2,
+                    AddressName = "Hjem Helsingør",
+                    ZipCode = 3000
                 });
 
                 _addressesRepository
@@ -60,7 +60,7 @@ namespace OrangularTests.AddressesTest
             {
 
             // Arrange
-            List<Addresses> Addresses = new List<Addresses>();
+            List<Address> Addresses = new List<Address>();
 
             _addressesRepository
                 .Setup(a => a.GetAll())
@@ -83,12 +83,12 @@ namespace OrangularTests.AddressesTest
                 // Arrange
                 int search_id = 1;
 
-                Addresses address = new Addresses
+                Address address = new Address
                 {
-                    addresses_id = 1,
-                    users_id = 1,
-                    address = "TEC Ballerup",
-                    zip_code = 2750
+                    Id = 1,
+                    UserId = 1,
+                    AddressName = "TEC Ballerup",
+                    ZipCode = 2750
                 };
 
                 _addressesRepository
@@ -101,7 +101,7 @@ namespace OrangularTests.AddressesTest
                 // Assert
                 Assert.NotNull(result);
                 Assert.IsType<AddressResponse>(result);
-                Assert.Equal(address.addresses_id, result.AddressID);
+                Assert.Equal(address.Id, result.AddressId);
             }
 
             [Fact]
@@ -129,20 +129,20 @@ namespace OrangularTests.AddressesTest
                 // Arrange
                 int search_id = 1;
 
-                Addresses addressssss = new Addresses
+                Address addressssss = new Address
                 {
 
                 };
 
                 NewAddress newAddress = new NewAddress
                 {
-                    UserID = 1,
+                    UserId = 1,
                     Address = "TEC Ballerup",
                     ZipCode = 2750
                 };
 
                 _addressesRepository
-                    .Setup(a => a.Create(It.IsAny<Addresses>()))
+                    .Setup(a => a.Create(It.IsAny<Address>()))
                 .ReturnsAsync(addressssss);
 
                 // Act
@@ -164,24 +164,24 @@ namespace OrangularTests.AddressesTest
 
                 UpdateAddress updateAddress = new UpdateAddress
                 {
-                    userID = 2,
+                    UserId = 2,
                     Address = "Hjem Helsingør",
                     ZipCode = 3000,
                     CityName = "Helsingør"
                 };
 
-                Addresses address = new Addresses
+                Address address = new Address
                 {
-                    addresses_id = 1,
-                    users_id = 2,
-                    address = "Hjem Helsingør",
-                    zip_code = 3000,
-                    city_name = "Helsingør"
+                    Id = 1,
+                    UserId = 2,
+                    AddressName = "Hjem Helsingør",
+                    ZipCode = 3000,
+                    CityName = "Helsingør"
                 };
 
                 // Opstiller address service typen så den retunere 'address' instancen. 
                 _addressesRepository
-                    .Setup(lambda => lambda.Update(It.IsAny<int>(), It.IsAny<Addresses>()))
+                    .Setup(lambda => lambda.Update(It.IsAny<int>(), It.IsAny<Address>()))
                     .ReturnsAsync(address);
 
                 // Act - vi forventer en autherResponse
@@ -190,7 +190,7 @@ namespace OrangularTests.AddressesTest
                 // Assert
                 Assert.NotNull(result);
                 Assert.IsType<AddressResponse>(result);
-                Assert.Equal(search_id, result.AddressID);
+                Assert.Equal(search_id, result.AddressId);
                 Assert.Equal(updateAddress.Address, result.Address);
                 Assert.Equal(updateAddress.ZipCode, result.ZipCode);
             }
@@ -203,7 +203,7 @@ namespace OrangularTests.AddressesTest
 
                 UpdateAddress updateAddress = new UpdateAddress
                 {
-                    userID = 2,
+                    UserId = 2,
                     Address = "Hjem Helsingør",
                     ZipCode = 3000,
                     CityName = "Helsingør"
@@ -211,7 +211,7 @@ namespace OrangularTests.AddressesTest
 
             // Opstiller 
             _addressesRepository
-                .Setup(lambda => lambda.Update(It.IsAny<int>(), It.IsAny<Addresses>()))
+                .Setup(lambda => lambda.Update(It.IsAny<int>(), It.IsAny<Address>()))
                 .ReturnsAsync(() => null);
 
             // Act
@@ -229,13 +229,13 @@ namespace OrangularTests.AddressesTest
                 // Arrange
                 int search_id = 1;
 
-                Addresses address = new Addresses
+                Address address = new Address
                 {
-                    addresses_id = 1,
-                    users_id = 2,
-                    address = "Hjem Helsingør",
-                    zip_code = 3000,
-                    city_name = "Helsingør"
+                    Id = 1,
+                    UserId = 2,
+                    AddressName = "Hjem Helsingør",
+                    ZipCode = 3000,
+                    CityName = "Helsingør"
                 };
 
                 // Opstiller 

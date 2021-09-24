@@ -29,28 +29,28 @@ namespace OrangularTests.OrderItemsTest
         {
             // Arrange
             await _context.Database.EnsureDeletedAsync();
-            _context.Order_Items.Add(new Order_Items
+            _context.OrderItem.Add(new OrderItem
             { 
-                order_items_id = 1, 
-                price = 1,
-                quantity = 1,
-                order_list = new Order_Lists { },
-                product = new Products { }
+                Id = 1, 
+                Price = 1,
+                Quantity = 1,
+                OrderList = new OrderList { },
+                Product = new Product { }
             });
-            _context.Order_Items.Add(new Order_Items
+            _context.OrderItem.Add(new OrderItem
             {
-                order_items_id = 2,
-                price = 1,
-                quantity = 1,
-                order_list = new Order_Lists{},
-                product = new Products{}
+                Id = 2,
+                Price = 1,
+                Quantity = 1,
+                OrderList = new OrderList{},
+                Product = new Product{}
             });
             await _context.SaveChangesAsync();
             // Act
             var result = await _sut.GetAll();
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<List<Order_Items>>(result);
+            Assert.IsType<List<OrderItem>>(result);
             Assert.Equal(2, result.Count);
         }
         [Fact]
@@ -62,7 +62,7 @@ namespace OrangularTests.OrderItemsTest
             var result = await _sut.GetAll();
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<List<Order_Items>>(result);
+            Assert.IsType<List<OrderItem>>(result);
             Assert.Empty(result);
         }
         // -----------------------------------------------------------------------------------------------------------------------
@@ -73,21 +73,21 @@ namespace OrangularTests.OrderItemsTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int orderItemId = 1;
-            _context.Order_Items.Add(new Order_Items
+            _context.OrderItem.Add(new OrderItem
             {
-                order_items_id = orderItemId,
-                price = 1,
-                quantity = 1,
-                order_list = new Order_Lists { },
-                product = new Products { }
+                Id = orderItemId,
+                Price = 1,
+                Quantity = 1,
+                OrderList = new OrderList { },
+                Product = new Product { }
             });
             await _context.SaveChangesAsync();
             // Act
             var result = await _sut.GetById(orderItemId);
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Order_Items>(result);
-            Assert.Equal(orderItemId, result.order_items_id);
+            Assert.IsType<OrderItem>(result);
+            Assert.Equal(orderItemId, result.Id);
         }
         [Fact]
         public async Task GetById_ShouldReturnNull_IfOrderItemDoesNotExist()
@@ -108,37 +108,37 @@ namespace OrangularTests.OrderItemsTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int expectedId = 1;
-            Order_Items orderItem = new Order_Items
+            OrderItem orderItem = new OrderItem
             {
-                order_items_id = expectedId,
-                price = 1,
-                quantity = 1,
-                order_list = new Order_Lists{},
-                product = new Products{}
+                Id = expectedId,
+                Price = 1,
+                Quantity = 1,
+                OrderList = new OrderList{},
+                Product = new Product{}
             };
             // Act
             var result = await _sut.Create(orderItem);
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Order_Items>(result);
-            Assert.Equal(expectedId, result.order_items_id);
+            Assert.IsType<OrderItem>(result);
+            Assert.Equal(expectedId, result.Id);
         }
         [Fact]
         public async Task Create_ShouldFailToAddOrderItem_whenAddingOrderItemWithExistingId()
         {
             // Arrange
             await _context.Database.EnsureDeletedAsync();
-            Order_Items orderItem = new Order_Items
+            OrderItem orderItem = new OrderItem
             {
-                order_items_id = 1,
-                price = 1,
-                quantity = 1,
-                order_list = new Order_Lists
+                Id = 1,
+                Price = 1,
+                Quantity = 1,
+                OrderList = new OrderList
                 {},
-                product = new Products
+                Product = new Product
                 {}
             };
-            _context.Order_Items.Add(orderItem);
+            _context.OrderItem.Add(orderItem);
             await _context.SaveChangesAsync();
             // Act
             Func<Task> action = async () => await _sut.Create(orderItem);
@@ -154,34 +154,34 @@ namespace OrangularTests.OrderItemsTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int orderItemId = 1;
-            Order_Items orderItem = new Order_Items
+            OrderItem orderItem = new OrderItem
             {
-                order_items_id = orderItemId,
-                price = 1,
-                quantity = 1,
-                order_lists_id = 1,
-                products_id = 1
+                Id = orderItemId,
+                Price = 1,
+                Quantity = 1,
+                OrderListIdxxx = 1,
+                ProductId = 1
             };
-            _context.Order_Items.Add(orderItem);
+            _context.OrderItem.Add(orderItem);
             await _context.SaveChangesAsync();
-            Order_Items updateOrderItem = new Order_Items
+            OrderItem updateOrderItem = new OrderItem
             {
-                order_items_id = orderItemId,
-                price = 2,
-                quantity = 2,
-                order_lists_id = 2,
-                products_id = 2
+                Id = orderItemId,
+                Price = 2,
+                Quantity = 2,
+                OrderListIdxxx = 2,
+                ProductId = 2
             };
             // Act
             var result = await _sut.Update(orderItemId, updateOrderItem);
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Order_Items>(result);
-            Assert.Equal(orderItemId, result.order_items_id);
-            Assert.Equal(updateOrderItem.price, result.price);
-            Assert.Equal(updateOrderItem.quantity, result.quantity);
-            Assert.Equal(updateOrderItem.order_lists_id, result.order_lists_id);
-            Assert.Equal(updateOrderItem.products_id, result.products_id);
+            Assert.IsType<OrderItem>(result);
+            Assert.Equal(orderItemId, result.Id);
+            Assert.Equal(updateOrderItem.Price, result.Price);
+            Assert.Equal(updateOrderItem.Quantity, result.Quantity);
+            Assert.Equal(updateOrderItem.OrderListIdxxx, result.OrderListIdxxx);
+            Assert.Equal(updateOrderItem.ProductId, result.ProductId);
         }
         [Fact]
         public async Task Update_ShouldNotChangeValues_WhereNoValuesWasPut()
@@ -193,32 +193,32 @@ namespace OrangularTests.OrderItemsTest
             int orderItemQuantity = 1;
             int orderItemOrderListsId = 1;
             int orderItemProductsId = 1;
-            Order_Items orderItem = new Order_Items // En eksisterende orderItem i vores database
+            OrderItem orderItem = new OrderItem // En eksisterende orderItem i vores database
             {
-                order_items_id = orderItemId,
-                price = orderItemPrice,
-                quantity = orderItemQuantity,
-                order_lists_id = orderItemOrderListsId,
-                products_id = orderItemProductsId
+                Id = orderItemId,
+                Price = orderItemPrice,
+                Quantity = orderItemQuantity,
+                OrderListIdxxx = orderItemOrderListsId,
+                ProductId = orderItemProductsId
             };
-            _context.Order_Items.Add(orderItem);
+            _context.OrderItem.Add(orderItem);
             await _context.SaveChangesAsync();
-            Order_Items updateOrderItem = new Order_Items // Prøver at opdatere uden at skrive inputs
+            OrderItem updateOrderItem = new OrderItem // Prøver at opdatere uden at skrive inputs
             {
-                order_items_id = orderItemId
+                Id = orderItemId
                 // Når der ingen inputs er, laves et int til 0
             };
             // Act
             var result = await _sut.Update(orderItemId, updateOrderItem); 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<Order_Items>(result);
+            Assert.IsType<OrderItem>(result);
             // Et if statement tjkker om den ønskede int opdatering er 0, hvis det er tilfældet skippes opdateringen af int.
-            Assert.Equal(orderItemId, result.order_items_id);
-            Assert.Equal(orderItemPrice, result.price);
-            Assert.Equal(orderItem.quantity, result.quantity);
-            Assert.Equal(orderItem.order_lists_id, result.order_lists_id);
-            Assert.Equal(orderItem.products_id, result.products_id);
+            Assert.Equal(orderItemId, result.Id);
+            Assert.Equal(orderItemPrice, result.Price);
+            Assert.Equal(orderItem.Quantity, result.Quantity);
+            Assert.Equal(orderItem.OrderListIdxxx, result.OrderListIdxxx);
+            Assert.Equal(orderItem.ProductId, result.ProductId);
         }
         [Fact]
         public async Task Update_ShouldReturnNull_WhenOrderItemDoesNotExist()
@@ -226,7 +226,7 @@ namespace OrangularTests.OrderItemsTest
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             int orderItemId = 1;
-            Order_Items updateOrderItem = new Order_Items{};
+            OrderItem updateOrderItem = new OrderItem{};
             // Act
             var result = await _sut.Update(orderItemId, updateOrderItem);
             // Assert

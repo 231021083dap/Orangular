@@ -52,23 +52,23 @@ namespace OrangularTests.UserTest
         public async Task GetAll_ShouldReturnListOfUserResponses_WhenUsersExists()
         {
             // Arrange
-            List<Users> user = new();
-            user.Add(new Users
+            List<User> user = new();
+            user.Add(new User
             {
-                users_id = 1,
-                email = "Test1@Mail.com",
-                role = Role.User,
-                order_lists = new List<Order_Lists> { },
-                addresses = new List<Addresses> { }
+                Id = 1,
+                Email = "Test1@Mail.com",
+                Role = Role.User,
+                OrderList = new List<OrderList> { },
+                Address = new List<Address> { }
 
             });
-            user.Add(new Users
+            user.Add(new User
             {
-                users_id = 2,
-                email = "Test2@Mail.com",
-                role = Role.User,
-                order_lists = new List<Order_Lists> { },
-                addresses = new List<Addresses> { }
+                Id = 2,
+                Email = "Test2@Mail.com",
+                Role = Role.User,
+                OrderList = new List<OrderList> { },
+                Address = new List<Address> { }
             });
             _userRepository.Setup(u => u.GetAll()).ReturnsAsync(user);
             // Act
@@ -82,7 +82,7 @@ namespace OrangularTests.UserTest
         public async Task GetAll_ShouldReturnEmptyListOfUsers_WhenNoUsersExists()
         {
             // Arrange
-            List<Users> user = new();
+            List<User> user = new();
             _userRepository.Setup(a => a.GetAll()).ReturnsAsync(user);
             // Act
             var result = await _sut.GetAll();
@@ -98,11 +98,11 @@ namespace OrangularTests.UserTest
         {
             // Arrange
             int userId = 1;
-            Users user = new()
+            User user = new()
             {
-                users_id = userId,
-                email = "Test1@Mail.com",
-                role = Role.User
+                Id = userId,
+                Email = "Test1@Mail.com",
+                Role = Role.User
             };
             _userRepository.Setup(u => u.GetById(It.IsAny<int>())).ReturnsAsync(user);
             // Act
@@ -110,9 +110,9 @@ namespace OrangularTests.UserTest
             // Assert
             Assert.NotNull(result);
             Assert.IsType<UserResponse>(result);
-            Assert.Equal(user.users_id, result.userID);
-            Assert.Equal(user.email, result.email);
-            Assert.Equal(user.role, result.role);
+            Assert.Equal(user.Id, result.UserId);
+            Assert.Equal(user.Email, result.Email);
+            Assert.Equal(user.Role, result.Role);
         }
         [Fact]
         public async Task GetById_ShouldReturnNull_WhenUserDoesNotExist()
@@ -137,23 +137,23 @@ namespace OrangularTests.UserTest
                 Password = "Passw0rd"
             };
             int userId = 1;
-            Users user = new()// vi forventer at få tilbage
+            User user = new()// vi forventer at få tilbage
             {
-                users_id = userId,
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.User
+                Id = userId,
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User
             };
-            _userRepository.Setup(a => a.Create(It.IsAny<Users>())).ReturnsAsync(user);
+            _userRepository.Setup(a => a.Create(It.IsAny<User>())).ReturnsAsync(user);
             // Act
             var result = await _sut.Create(newUser);
             // Assert
             Assert.NotNull(result);
             Assert.IsType<UserResponse>(result);
-            Assert.Equal(userId, result.userID);
-            Assert.Equal(newUser.Email, result.email);
-            Assert.Equal(newUser.Password, result.password);
-            Assert.Equal(Role.User, result.role);
+            Assert.Equal(userId, result.UserId);
+            Assert.Equal(newUser.Email, result.Email);
+            Assert.Equal(newUser.Password, result.Password);
+            Assert.Equal(Role.User, result.Role);
         }
         [Fact]
         public async Task Create_ShouldReturnNull_WhenCreatedUserIsNull()
@@ -164,7 +164,7 @@ namespace OrangularTests.UserTest
                 Email = "Test1@Mail.com",
                 Password = "Passw0rd"
             };
-            _userRepository.Setup(u => u.Create(It.IsAny<Users>())).ReturnsAsync(() => null);
+            _userRepository.Setup(u => u.Create(It.IsAny<User>())).ReturnsAsync(() => null);
             // Act
             var result = await _sut.Create(newUser);
             // Assert
@@ -183,23 +183,23 @@ namespace OrangularTests.UserTest
                 Password = "Passw0rd",
                 Role = Role.User
             };
-            Users user = new() // sendes til repository
+            User user = new() // sendes til repository
             {
-                users_id = userId,
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.User
+                Id = userId,
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User
             };
-            _userRepository.Setup(u => u.Update(It.IsAny<int>(), It.IsAny<Users>())).ReturnsAsync(user);
+            _userRepository.Setup(u => u.Update(It.IsAny<int>(), It.IsAny<User>())).ReturnsAsync(user);
             // Act
             var result = await _sut.Update(userId, updateUser);
             // Assert
             Assert.NotNull(result);
             Assert.IsType<UserResponse>(result);
-            Assert.Equal(userId, result.userID);
-            Assert.Equal(updateUser.Email, result.email);
-            Assert.Equal(updateUser.Password, result.password);
-            Assert.Equal(updateUser.Role, result.role);
+            Assert.Equal(userId, result.UserId);
+            Assert.Equal(updateUser.Email, result.Email);
+            Assert.Equal(updateUser.Password, result.Password);
+            Assert.Equal(updateUser.Role, result.Role);
         }
         [Fact]
         public async Task Update_ShouldReturnNull_WhenUserDoesNotExist()
@@ -212,7 +212,7 @@ namespace OrangularTests.UserTest
                 Role = Role.User
             };
             int userId = 1;
-            _userRepository.Setup(u => u.Update(It.IsAny<int>(), It.IsAny<Users>())).ReturnsAsync(() => null);
+            _userRepository.Setup(u => u.Update(It.IsAny<int>(), It.IsAny<User>())).ReturnsAsync(() => null);
             // Act
             var result = await _sut.Update(userId, updateUser);
             // Assert
@@ -225,12 +225,12 @@ namespace OrangularTests.UserTest
         {
             // Arrange
             int userId = 1;
-            Users user = new()
+            User user = new()
             {
-                users_id = userId,
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.User,
+                Id = userId,
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User,
             };
             _userRepository.Setup(a => a.Delete(It.IsAny<int>())).ReturnsAsync(user);
             // Act
@@ -243,12 +243,12 @@ namespace OrangularTests.UserTest
         {
             // Arrange
             int userId = 1;
-            Users user = new()
+            User user = new()
             {
-                users_id = userId,
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.User,
+                Id = userId,
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User,
             };
             _userRepository.Setup(a => a.Delete(It.IsAny<int>())).ReturnsAsync(() => null);
             // Act
