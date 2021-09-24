@@ -59,7 +59,7 @@ namespace OrangularTests.OrderListsTest
         {
             // Arrange
             await _context.Database.EnsureDeletedAsync();
-
+            
             // Act
             var result = await _sut.GetAll();
 

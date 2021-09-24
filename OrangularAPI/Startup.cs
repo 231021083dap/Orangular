@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-
 using OrangularAPI.Database;
 using OrangularAPI.Repositories.AddressesRepository;
 using OrangularAPI.Repositories.users;
@@ -16,6 +15,8 @@ namespace Orangular
 {
     public class Startup
     {
+
+        private readonly string CORSRules = "CORSRules";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,20 +34,26 @@ namespace Orangular
             (o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
             // --- sql connect --- //
 
-
-            // --- Scopes (Service og Repository) --- //
-            // This is where we are pointing to concrete implementations
-            // when using these interfaces
-            
-            services.AddScoped<IAddressService, AddressService>();
-
-
             services.AddScoped<IUserService, UserService>();
-
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IAddressRepository, AddressRepository>(); 
-            // --- Scopes (Service og Repository) --- //
 
+            services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+
+            services.AddScoped<IOrderListService, OrderListService>();
+            services.AddScoped<IOrderListRepository, OrderListRepository>();
+
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+
+            services.AddScoped<IOrderItemService, OrderItemService>();
+            services.AddScoped<IOrderItemRepository, OrderItemRepository>();            
+            
+
+            // --- Scopes (Service og Repository) --- //
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Orangular", Version = "v1" });
@@ -77,6 +84,8 @@ namespace Orangular
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(CORSRules);
 
             app.UseEndpoints(endpoints =>
             {
