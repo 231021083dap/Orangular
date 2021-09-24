@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace OrangularAPI.DTO.OrderItems.Requests
 {
-    public class NewOrder_Items
+    public class NewOrderItem
     {
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [Range(1, int.MaxValue)]
-        public int order_lists_id { get; set; }
+        public int orderListID { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [Range(1, int.MaxValue)]
-        public int products_id { get; set; }
+        public int productID { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [Range(1, int.MaxValue)]
