@@ -31,13 +31,13 @@ namespace OrangularAPI.Services.AddressServices
 
             // Retuner listen med addresses
             return addresses == null ? null : addresses.Select(
-            a => new AddressesResponse
+            a => new AddressResponse
             {
-                addresses_id = a.addresses_id,
+                addressID = a.addresses_id,
                 address = a.address,
-                zip_code = a.zip_code,
-                city_name = null,
-                Users = null
+                zipCode = a.zip_code,
+                cityName = null,
+                users = null
             }).ToList();
         }
 
@@ -45,14 +45,13 @@ namespace OrangularAPI.Services.AddressServices
         {
             Addresses addresses = await _addressRepository.GetById(addressesId);
 
-            return addresses == null ? null : new AddressesResponse
+            return addresses == null ? null : new AddressResponse
             {
-                addresses_id =  addresses.addresses_id,
+                addressID=  addresses.addresses_id,
                 address =  addresses.address,
-                zip_code =  addresses.zip_code,
-                city_name = addresses.city_name,
-                Users = null
-
+                zipCode =  addresses.zip_code,
+                cityName = addresses.city_name,
+                users = null
             };
         }
 
@@ -61,22 +60,22 @@ namespace OrangularAPI.Services.AddressServices
             Addresses address = new Addresses
             {
            
-                users_id = input_address.users_id,
+                users_id = input_address.userID,
                 address = input_address.address,
-                zip_code = input_address.zip_code,
-                city_name = input_address.city_name
+                zip_code = input_address.zipCode,
+                city_name = input_address.cityName
             };
 
 
             address = await _addressRepository.Create(address);
 
-            return address == null ? null : new AddressesResponse
+            return address == null ? null : new AddressResponse
             {
-                addresses_id =  address.addresses_id,
+                addressID =  address.addresses_id,
                 address =  address.address,
-                zip_code =  address.zip_code,
-                city_name = null,
-                Users = null
+                zipCode =  address.zip_code,
+                cityName = null,
+                users = null
             };
         }
 

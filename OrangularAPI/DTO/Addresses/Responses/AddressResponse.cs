@@ -9,12 +9,12 @@ namespace OrangularAPI.DTO.Addresses.Responses
     {
         public int addressID { get; set; }
 
-        public string Address { get; set; }
+        public string address { get; set; }
 
         public int zipCode { get; set; }
 
         public string cityName { get; set; }
 
-        public AddressUserResponse user { get; set; }
+        public AddressUserResponse users { get; set; }
     }
 }
