@@ -10,9 +10,9 @@ namespace OrangularAPI.Services.UsersService
     {
        // Task<LoginResponse> Authenticate(LoginRequest login);
         Task<List<UserResponse>> GetAll();
-        Task<UsersResponse> GetById(int userId);
-        Task<UsersResponse> Create(NewUser newUser);
-        Task<UsersResponse> Update(int userId, UpdateUser updateUser);
+        Task<UserResponse> GetById(int userId);
+        Task<UserResponse> Create(NewUser newUser);
+        Task<UserResponse> Update(int userId, UpdateUser updateUser);
         Task<bool> Delete(int userId);
     }
 }

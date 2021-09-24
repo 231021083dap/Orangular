@@ -25,7 +25,7 @@ namespace OrangularAPI.Authorization
             if (allowAnonymous) return;
 
             // authorization
-            var user = (UsersResponse)context.HttpContext.Items["User"];
+            var user = (UserResponse)context.HttpContext.Items["User"];
             if (user == null || (_roles.Any() && !_roles.Contains(user.role))) // Tjekker om null. Tjekker om brugeren har den nødvendige rolle.
             {
                 // not logged in or role not authorized

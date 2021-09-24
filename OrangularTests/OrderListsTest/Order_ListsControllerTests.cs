@@ -24,22 +24,22 @@ namespace OrangularTests.OrderListsTest
         public async void GetAll_ShouldReturnStatusCode200_whenDataExists()
         {
             // Arrange
-            List<Order_ListsResponse> order_Lists = new();
-            order_Lists.Add(new Order_ListsResponse
+            List<OrderListResponse> order_Lists = new();
+            order_Lists.Add(new OrderListResponse
             {
-                order_lists_id = 1,
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                orderListID = 1,
+                orderDateTime = DateTime.Parse("2021-12-21 12:55:00")
 
             });
-            order_Lists.Add(new Order_ListsResponse
+            order_Lists.Add(new OrderListResponse
             {
-                order_lists_id = 2,
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                orderListID = 2,
+                orderDateTime = DateTime.Parse("2021-12-21 12:55:00")
 
             });
 
             _order_ListsService
-                .Setup(s => s.GetAllOrder_Lists())
+                .Setup(s => s.GetAll())
                 .ReturnsAsync(order_Lists);
 
 
@@ -57,10 +57,10 @@ namespace OrangularTests.OrderListsTest
         public async void GetAll_ShouldReturnStatusCode204_whenNoDataExists()
         {
             // Arrange
-            List<Order_ListsResponse> order_Listss = new();
+            List<OrderListResponse> order_Listss = new();
 
             _order_ListsService
-                .Setup(s => s.GetAllOrder_Lists())
+                .Setup(s => s.GetAll())
                 .ReturnsAsync(order_Listss);
 
             // Act
@@ -77,7 +77,7 @@ namespace OrangularTests.OrderListsTest
         {
             // Arrange
             _order_ListsService
-                .Setup(s => s.GetAllOrder_Lists())
+                .Setup(s => s.GetAll())
                 .ReturnsAsync(() => null);
 
             // Act
@@ -94,7 +94,7 @@ namespace OrangularTests.OrderListsTest
         {
             // Arrange
             _order_ListsService
-                .Setup(s => s.GetAllOrder_Lists())
+                .Setup(s => s.GetAll())
                 .ReturnsAsync(() => throw new Exception("This is an exception"));
 
             // Act
@@ -111,10 +111,10 @@ namespace OrangularTests.OrderListsTest
         {
             // Arrange
             int order_lists_id = 1;
-            Order_ListsResponse order_Lists = new Order_ListsResponse
+            OrderListResponse order_Lists = new OrderListResponse
             {
-                order_lists_id = order_lists_id,
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                orderListID = order_lists_id,
+                orderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
             _order_ListsService
@@ -167,19 +167,19 @@ namespace OrangularTests.OrderListsTest
         {
             // Arrange
             int order_lists_id = 1;
-            NewOrder_Lists NewOrder_Lists = new NewOrder_Lists
+            NewOrderList NewOrder_Lists = new NewOrderList
             {
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                orderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
-            Order_ListsResponse order_Lists = new Order_ListsResponse
+            OrderListResponse order_Lists = new OrderListResponse
             {
-                order_lists_id = order_lists_id,
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                orderListID = order_lists_id,
+                orderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
             _order_ListsService
-                .Setup(s => s.Create(It.IsAny<NewOrder_Lists>()))
+                .Setup(s => s.Create(It.IsAny<NewOrderList>()))
                 .ReturnsAsync(order_Lists);
 
             // Act
@@ -194,13 +194,13 @@ namespace OrangularTests.OrderListsTest
         public async void Create_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
             // Arrange
-            NewOrder_Lists NewOrder_Lists = new NewOrder_Lists
+            NewOrderList NewOrder_Lists = new NewOrderList
             {
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                orderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
             _order_ListsService
-                .Setup(s => s.Create(It.IsAny<NewOrder_Lists>()))
+                .Setup(s => s.Create(It.IsAny<NewOrderList>()))
                 .ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act
@@ -216,19 +216,19 @@ namespace OrangularTests.OrderListsTest
         {
             // Arrange
             int order_lists_id = 1;
-            UpdateOrder_Lists updateorder_Lists = new UpdateOrder_Lists
+            UpdateOrderList updateorder_Lists = new UpdateOrderList
             {
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                orderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
-            Order_ListsResponse order_Lists = new Order_ListsResponse
+            OrderListResponse order_Lists = new OrderListResponse
             {
-                order_lists_id = order_lists_id,
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                orderListID = order_lists_id,
+                orderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
             _order_ListsService
-                .Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateOrder_Lists>()))
+                .Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateOrderList>()))
                 .ReturnsAsync(order_Lists);
 
             // Act
@@ -244,13 +244,13 @@ namespace OrangularTests.OrderListsTest
         {
             // Arrange
             int order_lists_id = 1;
-            UpdateOrder_Lists updateorder_Lists = new UpdateOrder_Lists
+            UpdateOrderList updateorder_Lists = new UpdateOrderList
             {
-                order_date_time = DateTime.Parse("2021-12-21 12:55:00")
+                orderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
             _order_ListsService
-                .Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateOrder_Lists>()))
+                .Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateOrderList>()))
                 .ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act

@@ -5,9 +5,9 @@ using Xunit;
 using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Products.Requests;
 using OrangularAPI.DTO.Products.Responses;
-using OrangularAPI.Repositories.products;
 using OrangularAPI.Services;
-using OrangularAPI.Services.ProductService;
+using OrangularAPI.Services.ProductServices;
+using OrangularAPI.Repositories.ProductsRepository;
 // Orangular
 
 namespace OrangularTests.ProductsTests
@@ -16,7 +16,7 @@ namespace OrangularTests.ProductsTests
     {
 
         private readonly ProductService _sut;
-        private readonly Mock<IProductsRepository> _productsRepository = new();
+        private readonly Mock<IProductRepository> _productsRepository = new();
 
         public ProductserviceTests()
         {
@@ -57,7 +57,7 @@ namespace OrangularTests.ProductsTests
             // Assert
             Assert.NotNull(result);
             Assert.Equal(2, result.Count);
-            Assert.IsType<List<ProductsResponse>>(result);
+            Assert.IsType<List<ProductResponse>>(result);
         }
 
         [Fact]
@@ -76,7 +76,7 @@ namespace OrangularTests.ProductsTests
             // Assert
             Assert.NotNull(result);
             Assert.Empty(result);
-            Assert.IsType<List<ProductsResponse>>(result);
+            Assert.IsType<List<ProductResponse>>(result);
         }
 
         [Fact]
@@ -104,9 +104,9 @@ namespace OrangularTests.ProductsTests
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<ProductsResponse>(result);
-            Assert.Equal(Products.products_id, result.products_id);
-            Assert.Equal(Products.breed_name, result.breed_name);
+            Assert.IsType<ProductResponse>(result);
+            Assert.Equal(Products.products_id, result.productID);
+            Assert.Equal(Products.breed_name, result.breedName);
             Assert.Equal(Products.price, result.price);
             Assert.Equal(Products.weight, result.weight);
             Assert.Equal(Products.gender, result.gender);
@@ -135,9 +135,9 @@ namespace OrangularTests.ProductsTests
         public async void Create_ShouldReturnProductsResponse_WhenCreateIsSuccess()
         {
             // Arrange
-            NewProducts newProducts = new NewProducts
+            NewProduct newProduct = new NewProduct
             {
-                breed_name = "Cane Corso",
+                breedName = "Cane Corso",
                 price = 3000,
                 weight = 30000,
                 gender = "Male",
@@ -146,7 +146,7 @@ namespace OrangularTests.ProductsTests
 
             int products_Id = 1;
 
-            Products Products = new Products
+            Products Products = new()
             {
                 products_id = products_Id,
                 breed_name = "Beetle",
@@ -161,13 +161,13 @@ namespace OrangularTests.ProductsTests
                 .ReturnsAsync(Products);
 
             // Act
-            var result = await _sut.Create(newProducts);
+            var result = await _sut.Create(newProduct);
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<ProductsResponse>(result);
-            Assert.Equal(Products.products_id, result.products_id);
-            Assert.Equal(Products.breed_name, result.breed_name);
+            Assert.IsType<ProductResponse>(result);
+            Assert.Equal(Products.products_id, result.productID);
+            Assert.Equal(Products.breed_name, result.breedName);
             Assert.Equal(Products.price, result.price);
             Assert.Equal(Products.weight, result.weight);
             Assert.Equal(Products.gender, result.gender);
@@ -178,9 +178,9 @@ namespace OrangularTests.ProductsTests
         public async void Update_ShouldReturnUpdatedProductsResponse_WhenUpdateIsSuccess()
         {
             // Arrange
-            UpdateProducts updateProducts = new UpdateProducts
+            UpdateProduct updateProduct = new UpdateProduct
             {
-                breed_name = "Cane Corso",
+                breedName = "Cane Corso",
                 price = 3000,
                 weight = 30000,
                 gender = "Male",
@@ -189,17 +189,17 @@ namespace OrangularTests.ProductsTests
 
             int products_Id = 1;
 
-            ProductsResponse ProductsResponse = new ProductsResponse
+            ProductResponse ProductResponse = new ProductResponse
             {
-                products_id = products_Id,
-                breed_name = "Cane Corso",
+                productID = products_Id,
+                breedName = "Cane Corso",
                 price = 3000,
                 weight = 30000,
                 gender = "Male",
                 description = "Test test"
             };
 
-            Products Products = new Products
+            Products Products = new()
             {
                 products_id = products_Id,
                 breed_name = "Cane Corso",
@@ -214,13 +214,13 @@ namespace OrangularTests.ProductsTests
                 .ReturnsAsync(Products);
 
             // Act
-            var result = await _sut.Update(products_Id, updateProducts);
+            var result = await _sut.Update(products_Id, updateProduct);
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<ProductsResponse>(result);
-            Assert.Equal(Products.products_id, result.products_id);
-            Assert.Equal(Products.breed_name, result.breed_name);
+            Assert.IsType<ProductResponse>(result);
+            Assert.Equal(Products.products_id, result.productID);
+            Assert.Equal(Products.breed_name, result.breedName);
             Assert.Equal(Products.price, result.price);
             Assert.Equal(Products.weight, result.weight);
             Assert.Equal(Products.gender, result.gender);
@@ -231,9 +231,9 @@ namespace OrangularTests.ProductsTests
         public async void Update_ShouldReturnNull_WhenProductsDoesNotExist()
         {
             // Arrange
-            UpdateProducts updateProducts = new UpdateProducts
+            UpdateProduct updateProducts = new UpdateProduct
             {
-                breed_name = "Cane Corso",
+                breedName = "Cane Corso",
                 price = 3000,
                 weight = 30000,
                 gender = "Male",
@@ -259,7 +259,7 @@ namespace OrangularTests.ProductsTests
             // Arrange
             int products_Id = 1;
 
-            Products Products = new Products
+            Products Products = new()
             {
                 products_id = products_Id,
                 breed_name = "Cane Corso",

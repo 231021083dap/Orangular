@@ -28,7 +28,7 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                List<Order_ListResponse> Order_Lists = await _order_ListsService.GetAll();
+                List<OrderListResponse> Order_Lists = await _orderListService.GetAll();
 
                 if (Order_Lists == null)
                 {

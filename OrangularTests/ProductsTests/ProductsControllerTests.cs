@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using Xunit;
 using Moq;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using OrangularAPI.Services.ProductService;
+using OrangularAPI.Services.ProductServices;
 
 namespace OrangularTests.ProductsTests
 {
@@ -25,20 +25,20 @@ namespace OrangularTests.ProductsTests
         public async void GetAll_ShouldReturnStatusCode200_whenDataExists()
         {
             // Arrange
-            List<ProductsResponse> products = new();
-            products.Add(new ProductsResponse
+            List<ProductResponse> products = new();
+            products.Add(new ProductResponse
             {
-                products_id = 1,
-                breed_name = "Cane Corso",
+                productID = 1,
+                breedName = "Cane Corso",
                 price = 3000,
                 weight = 30000,
                 gender = "Male",
                 description = "Test test"
             });
-            products.Add(new ProductsResponse
+            products.Add(new ProductResponse
             {
-                products_id = 2,
-                breed_name = "Beetle",
+                productID = 2,
+                breedName = "Beetle",
                 price = 1000,
                 weight = 10000,
                 gender = "Male",
@@ -64,7 +64,7 @@ namespace OrangularTests.ProductsTests
         public async void GetAll_ShouldReturnStatusCode204_whenNoDataExists()
         {
             // Arrange
-            List<ProductsResponse> Productss = new();
+            List<ProductResponse> Productss = new();
 
             _productsService
                 .Setup(s => s.GetAll())
@@ -118,10 +118,10 @@ namespace OrangularTests.ProductsTests
         {
             // Arrange
             int products_Id = 1;
-            ProductsResponse products = new ProductsResponse
+            ProductResponse products = new ProductResponse
             {
-                products_id = products_Id,
-                breed_name = "Cane Corso",
+                productID = products_Id,
+                breedName = "Cane Corso",
                 price = 3000,
                 weight = 30000,
                 gender = "Male",
@@ -178,19 +178,19 @@ namespace OrangularTests.ProductsTests
         {
             // Arrange
             int products_id = 1;
-            NewProducts newProducts = new NewProducts
+            NewProduct newProducts = new NewProduct
             {
-                breed_name = "Cane Corso",
+                breedName = "Cane Corso",
                 price = 3000,
                 weight = 30000,
                 gender = "Male",
                 description = "Test test"
             };
 
-            ProductsResponse products = new ProductsResponse
+            ProductResponse products = new ProductResponse
             {
-                products_id = products_id,
-                breed_name = "Beetle",
+                productID = products_id,
+                breedName = "Beetle",
                 price = 1000,
                 weight = 10000,
                 gender = "Male",
@@ -198,7 +198,7 @@ namespace OrangularTests.ProductsTests
             };
 
             _productsService
-                .Setup(s => s.Create(It.IsAny<NewProducts>()))
+                .Setup(s => s.Create(It.IsAny<NewProduct>()))
                 .ReturnsAsync(products);
 
             // Act
@@ -213,9 +213,9 @@ namespace OrangularTests.ProductsTests
         public async void Create_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
             // Arrange
-            NewProducts NewProducts = new NewProducts
+            NewProduct NewProducts = new NewProduct
             {
-                breed_name = "Beetle",
+                breedName = "Beetle",
                 price = 1000,
                 weight = 10000,
                 gender = "Male",
@@ -223,7 +223,7 @@ namespace OrangularTests.ProductsTests
             };
 
             _productsService
-                .Setup(s => s.Create(It.IsAny<NewProducts>()))
+                .Setup(s => s.Create(It.IsAny<NewProduct>()))
                 .ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act
@@ -239,19 +239,19 @@ namespace OrangularTests.ProductsTests
         {
             // Arrange
             int products_id = 1;
-            UpdateProducts updateProducts = new UpdateProducts
+            UpdateProduct updateProducts = new UpdateProduct
             {
-                breed_name = "Beetle",
+                breedName = "Beetle",
                 price = 1000,
                 weight = 10000,
                 gender = "Male",
                 description = "Test test"
             };
 
-            ProductsResponse products = new ProductsResponse
+            ProductResponse products = new ProductResponse
             {
-                products_id = products_id,
-                breed_name = "Beetle",
+                productID = products_id,
+                breedName = "Beetle",
                 price = 1000,
                 weight = 10000,
                 gender = "Male",
@@ -259,7 +259,7 @@ namespace OrangularTests.ProductsTests
             };
 
             _productsService
-                .Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateProducts>()))
+                .Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateProduct>()))
                 .ReturnsAsync(products);
 
             // Act
@@ -275,9 +275,9 @@ namespace OrangularTests.ProductsTests
         {
             // Arrange
             int products_id = 1;
-            UpdateProducts updateProducts = new UpdateProducts
+            UpdateProduct updateProducts = new UpdateProduct
             {
-                breed_name = "Beetle",
+                breedName = "Beetle",
                 price = 1000,
                 weight = 10000,
                 gender = "Male",
@@ -285,7 +285,7 @@ namespace OrangularTests.ProductsTests
             };
 
             _productsService
-                .Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateProducts>()))
+                .Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateProduct>()))
                 .ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act

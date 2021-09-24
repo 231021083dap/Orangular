@@ -7,6 +7,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 using OrangularAPI.Database;
+using OrangularAPI.Repositories.AddressesRepository;
+using OrangularAPI.Repositories.users;
 using OrangularAPI.Services.AddressServices;
 using OrangularAPI.Services.UsersService;
 
@@ -42,7 +44,7 @@ namespace Orangular
             services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IAddressesRepository, AddressesRepository>(); 
+            services.AddScoped<IAddressRepository, AddressRepository>(); 
             // --- Scopes (Service og Repository) --- //
 
             services.AddSwaggerGen(c =>

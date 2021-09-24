@@ -35,62 +35,62 @@ namespace OrangularAPI.Services.UsersService
         //    }
         //    return null;
         //}
-        private UsersResponse userResponse(Users user) // userResponse bliver brugt til GetById, Create & Update
+        private UserResponse userResponse(Users user) // userResponse bliver brugt til GetById, Create & Update
         {
-            return user == null ? null : new UsersResponse
+            return user == null ? null : new UserResponse
             {
-                users_id = user.users_id,
+                userID = user.users_id,
                 email = user.email,
                 password = user.password,
                 role = user.role
             };
         }
-        public async Task<List<UsersResponse>> GetAll()
+        public async Task<List<UserResponse>> GetAll()
         {
             List<Users> users = await _userRepository.GetAll();
-            return users.Select(u => new UsersResponse
+            return users.Select(u => new UserResponse
             {
-                users_id = u.users_id,
+                userID = u.users_id,
                 email = u.email,
                 password = u.password, // Fjernes hvis password ikke skal vises.
                 role = u.role,
-                Order_Lists = u.order_lists.Select(o => new UsersOrder_ListsResponse
+                Order_Lists = u.order_lists.Select(o => new UserOrderListResponse
                 {
-                    order_lists_id = o.order_lists_id,
-                    order_date_time = o.order_date_time
+                    orderListID = o.order_lists_id,
+                    orderDateTime = o.order_date_time
                 }).ToList(),
-                Addresses = u.addresses.Select(a => new UsersAddressesResponse
+                Addresses = u.addresses.Select(a => new UserAddressResponse
                 {
-                    addresses_id = a.addresses_id,
+                    addressID = a.addresses_id,
                     address = a.address,
-                    zip_code = a.zip_code,
-                    city_name = a.city_name
+                    zipCode = a.zip_code,
+                    cityName = a.city_name
                 }).ToList()
             }).ToList();
         }
-        public async Task<UsersResponse> GetById(int userId)
+        public async Task<UserResponse> GetById(int userId)
         {
             Users user = await _userRepository.GetById(userId);
             return userResponse(user);
         }
-        public async Task<UsersResponse> Create(NewUser newUser)
+        public async Task<UserResponse> Create(NewUser newUser)
         {
             Users user = new Users
             {
-                email = newUser.Email,
-                password = newUser.Password,
+                email = newUser.email,
+                password = newUser.password,
                 role = Role.User // All users created through Register has the role of user
             };
             user = await _userRepository.Create(user);
             return userResponse(user);
         }
-        public async Task<UsersResponse> Update(int userId, UpdateUser updateUser)
+        public async Task<UserResponse> Update(int userId, UpdateUser updateUser)
         {
             Users user = new Users
             {
-                email = updateUser.Email,
-                password = updateUser.Password,
-                role = updateUser.Role
+                email = updateUser.email,
+                password = updateUser.password,
+                role = updateUser.role
             };
             user = await _userRepository.Update(userId, user);
             return userResponse(user);

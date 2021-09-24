@@ -15,7 +15,7 @@ namespace OrangularAPI.DTO.Users.Responses
 
         public List<UserOrderListResponse> Order_Lists { get; set; } = new();
 
-        public List<UsersAddressResponse> Addresses { get; set; } = new();
+        public List<UserAddressResponse> Addresses { get; set; } = new();
 
 
     }

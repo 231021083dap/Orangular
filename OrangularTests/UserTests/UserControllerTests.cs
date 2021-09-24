@@ -27,16 +27,16 @@ namespace OrangularTests.UserTests
         public async void GetAll_ShouldReturnStatusCode200_WhenDataExists()
         {
             // Arrange
-            List<UsersResponse> user = new();
-            user.Add(new UsersResponse
+            List<UserResponse> user = new();
+            user.Add(new UserResponse
             {
-                users_id = 1,
+                userID = 1,
                 email = "Test1@Mail.com",
                 role = Role.User
             });
-            user.Add(new UsersResponse
+            user.Add(new UserResponse
             {
-                users_id = 1,
+                userID = 1,
                 email = "Test1@Mail.com",
                 role = Role.User,
             });
@@ -51,7 +51,7 @@ namespace OrangularTests.UserTests
         public async void GetAll_ShouldReturnStatusCode204_WhenNoDataExists()
         {
             // Arrange
-            List<UsersResponse> user = new();
+            List<UserResponse> user = new();
             _userService.Setup(u => u.GetAll()).ReturnsAsync(user);
             // Act
             var result = await _sut.GetAll();
@@ -63,7 +63,7 @@ namespace OrangularTests.UserTests
         public async void GetAll_ShouldReturnStatusCode500_WhenNullIsReturnedFromService()
         {
             // Arrange
-            List<UsersResponse> user = new();
+            List<UserResponse> user = new();
             _userService.Setup(u => u.GetAll()).ReturnsAsync(() => null);
             // Act
             var result = await _sut.GetAll();
@@ -75,7 +75,7 @@ namespace OrangularTests.UserTests
         public async void GetAll_ShouldReturnStatusCode500_WhenExceptionIsReturnedFromService()
         { 
             // Arrange
-            List<UsersResponse> user = new();
+            List<UserResponse> user = new();
             _userService.Setup(s => s.GetAll()).ReturnsAsync(() => throw new Exception("This is an Exception"));
             // Act
             var result = await _sut.GetAll();
@@ -90,7 +90,7 @@ namespace OrangularTests.UserTests
         {
             // Arrange
             int userId = 1;
-            UsersResponse user = new UsersResponse {};
+            UserResponse user = new UserResponse {};
             _userService.Setup(s => s.GetById(It.IsAny<int>())).ReturnsAsync(user);
             // Act
             var result = await _sut.GetById(userId);
@@ -127,19 +127,19 @@ namespace OrangularTests.UserTests
         public async void Create_ShouldReturnStatusCode200_WhenUserWasCreated()
         {
             // Arrange
-            NewUser newUser = new NewUser
+            NewUser newUser = new()
             {
-                Email = "Test1@Mail.com",
-                Password = "Passw0rd"
+                email = "Test1@Mail.com",
+                password = "Passw0rd"
             };
-            UsersResponse userResponse = new UsersResponse
+            UserResponse userResponse = new UserResponse
             {
-                users_id = 1,
+                userID = 1,
                 email = "Test1@Mail.com",
                 password = "Passw0rd",
                 role = Role.User,
-                Order_Lists = new List<UsersOrder_ListsResponse>(),
-                Addresses = new List<UsersAddressesResponse>()
+                Order_Lists = new List<UserOrderListResponse>(),
+                Addresses = new List<UserAddressResponse>()
             };
             _userService.Setup(s => s.Create(It.IsAny<NewUser>())).ReturnsAsync(userResponse) ;
             // Act
@@ -152,10 +152,10 @@ namespace OrangularTests.UserTests
         public async void Create_ShouldReturnStatusCode500_ExceptionIsRaised()
         {
             // Arrange
-            NewUser newUser = new NewUser
+            NewUser newUser = new()
             {
-                Email = "Test1@Mail.com",
-                Password = "Passw0rd"
+                email = "Test1@Mail.com",
+                password = "Passw0rd"
             };
             _userService.Setup(s => s.Create(It.IsAny<NewUser>())).ReturnsAsync(() => throw new Exception("This is an exception"));
             // Act
@@ -171,10 +171,10 @@ namespace OrangularTests.UserTests
         {
             // Arrange
             int userId = 1;
-            UpdateUser updateUser = new UpdateUser
+            UpdateUser updateUser = new()
             {
             };
-            UsersResponse userResponse = new UsersResponse
+            UserResponse userResponse = new()
             {
             };
             _userService.Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateUser>())).ReturnsAsync(userResponse);
@@ -189,7 +189,7 @@ namespace OrangularTests.UserTests
         {
             // Arrange
             int userId = 1;
-            UpdateUser updateUser = new UpdateUser{};
+            UpdateUser updateUser = new(){};
             _userService.Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateUser>())).ReturnsAsync(() => throw new Exception("This is an exception"));
             // Act
             var result = await _sut.Update(userId, updateUser);

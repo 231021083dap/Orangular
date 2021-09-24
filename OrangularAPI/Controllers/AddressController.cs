@@ -37,9 +37,9 @@ namespace OrangularAPI.Controllers
                     return Problem(problem);
                 }
 
-                if (Addresses.Count == 0) return NoContent();
+                if (Address.Count == 0) return NoContent();
 
-                return Ok(Addresses);
+                return Ok(Address);
 
             }
             catch (Exception ex)

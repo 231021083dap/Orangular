@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OrangularAPI.DTO.Users.Responses
 {
-    public class UsersAddressResponse
+    public class UserAddressResponse
     {
         public int addressID { get; set; }
 

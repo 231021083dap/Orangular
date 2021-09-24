@@ -9,10 +9,10 @@ namespace OrangularAPI.Services.ProductServices
 {
     public interface IProductService
     {
-        Task<List<ProductsResponse>> GetAll();
-        Task<ProductsResponse> GetById(int products_id);
-        Task<ProductsResponse> Create(NewProducts newProducts);
-        Task<ProductsResponse> Update(int products_id, UpdateProducts updateProducts);
+        Task<List<ProductResponse>> GetAll();
+        Task<ProductResponse> GetById(int products_id);
+        Task<ProductResponse> Create(NewProduct newProducts);
+        Task<ProductResponse> Update(int products_id, UpdateProduct updateProduct);
         Task<bool> Delete(int products_id);
 
     }

@@ -76,7 +76,7 @@ namespace OrangularTests.UserTest
             // Assert
             Assert.NotNull(result);
             Assert.Equal(2, result.Count);
-            Assert.IsType<List<UsersResponse>>(result);
+            Assert.IsType<List<UserResponse>>(result);
         }
         [Fact]
         public async Task GetAll_ShouldReturnEmptyListOfUsers_WhenNoUsersExists()
@@ -89,7 +89,7 @@ namespace OrangularTests.UserTest
             // Assert
             Assert.NotNull(result);
             Assert.Empty(result);
-            Assert.IsType<List<UsersResponse>>(result);
+            Assert.IsType<List<UserResponse>>(result);
         }
         // -----------------------------------------------------------------------------------------------------------------------
         // GetById Tests
@@ -98,7 +98,7 @@ namespace OrangularTests.UserTest
         {
             // Arrange
             int userId = 1;
-            Users user = new Users
+            Users user = new()
             {
                 users_id = userId,
                 email = "Test1@Mail.com",
@@ -109,8 +109,8 @@ namespace OrangularTests.UserTest
             var result = await _sut.GetById(userId);
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<UsersResponse>(result);
-            Assert.Equal(user.users_id, result.users_id);
+            Assert.IsType<UserResponse>(result);
+            Assert.Equal(user.users_id, result.userID);
             Assert.Equal(user.email, result.email);
             Assert.Equal(user.role, result.role);
         }
@@ -131,13 +131,13 @@ namespace OrangularTests.UserTest
         public async Task Create_ShouldReturnUserResponse_WhenCreateIsSuccess()
         {
             // Arrange
-            NewUser newUser = new NewUser // vi sender ind
+            NewUser newUser = new() // vi sender ind
             {
-                Email = "Test1@Mail.com",
-                Password = "Passw0rd"
+                email = "Test1@Mail.com",
+                password = "Passw0rd"
             };
             int userId = 1;
-            Users user = new Users // vi forventer at få tilbage
+            Users user = new()// vi forventer at få tilbage
             {
                 users_id = userId,
                 email = "Test1@Mail.com",
@@ -149,20 +149,20 @@ namespace OrangularTests.UserTest
             var result = await _sut.Create(newUser);
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<UsersResponse>(result);
-            Assert.Equal(userId, result.users_id);
-            Assert.Equal(newUser.Email, result.email);
-            Assert.Equal(newUser.Password, result.password);
+            Assert.IsType<UserResponse>(result);
+            Assert.Equal(userId, result.userID);
+            Assert.Equal(newUser.email, result.email);
+            Assert.Equal(newUser.password, result.password);
             Assert.Equal(Role.User, result.role);
         }
         [Fact]
         public async Task Create_ShouldReturnNull_WhenCreatedUserIsNull()
         {
             // Arrange
-            NewUser newUser = new NewUser
+            NewUser newUser = new()
             {
-                Email = "Test1@Mail.com",
-                Password = "Passw0rd"
+                email = "Test1@Mail.com",
+                password = "Passw0rd"
             };
             _userRepository.Setup(u => u.Create(It.IsAny<Users>())).ReturnsAsync(() => null);
             // Act
@@ -177,13 +177,13 @@ namespace OrangularTests.UserTest
         {
             // Arrange
             int userId = 1;
-            UpdateUser updateUser = new UpdateUser // sendes til update metoden
+            UpdateUser updateUser = new() // sendes til update metoden
             {
-                Email = "Test1@Mail.com",
-                Password = "Passw0rd",
-                Role = Role.User
+                email = "Test1@Mail.com",
+                password = "Passw0rd",
+                role = Role.User
             };
-            Users user = new Users // sendes til repository
+            Users user = new() // sendes til repository
             {
                 users_id = userId,
                 email = "Test1@Mail.com",
@@ -195,21 +195,21 @@ namespace OrangularTests.UserTest
             var result = await _sut.Update(userId, updateUser);
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<UsersResponse>(result);
-            Assert.Equal(userId, result.users_id);
-            Assert.Equal(updateUser.Email, result.email);
-            Assert.Equal(updateUser.Password, result.password);
-            Assert.Equal(updateUser.Role, result.role);
+            Assert.IsType<UserResponse>(result);
+            Assert.Equal(userId, result.userID);
+            Assert.Equal(updateUser.email, result.email);
+            Assert.Equal(updateUser.password, result.password);
+            Assert.Equal(updateUser.role, result.role);
         }
         [Fact]
         public async Task Update_ShouldReturnNull_WhenUserDoesNotExist()
         {
             // Arrange
-            UpdateUser updateUser = new UpdateUser
+            UpdateUser updateUser = new()
             {
-                Email = "Test1@Mail.com",
-                Password = "Passw0rd",
-                Role = Role.User
+                email = "Test1@Mail.com",
+                password = "Passw0rd",
+                role = Role.User
             };
             int userId = 1;
             _userRepository.Setup(u => u.Update(It.IsAny<int>(), It.IsAny<Users>())).ReturnsAsync(() => null);
@@ -225,7 +225,7 @@ namespace OrangularTests.UserTest
         {
             // Arrange
             int userId = 1;
-            Users user = new Users
+            Users user = new()
             {
                 users_id = userId,
                 email = "Test1@Mail.com",
@@ -243,7 +243,7 @@ namespace OrangularTests.UserTest
         {
             // Arrange
             int userId = 1;
-            Users user = new Users
+            Users user = new()
             {
                 users_id = userId,
                 email = "Test1@Mail.com",
