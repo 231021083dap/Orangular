@@ -11,6 +11,6 @@ namespace OrangularAPI.Repositories.CategoriesRepository {
         Task<Category> GetById(int categoryID);
         Task<Category> Create(Category category);
         Task<Category> Update(int categoryID, Category category);
-        Task<bool> Delete(int categoryID);
+        Task<Category> Delete(int categoryID);
     }
 }

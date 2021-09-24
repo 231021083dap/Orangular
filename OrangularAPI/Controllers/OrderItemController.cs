@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Orangular.DTO.Order_Items.Requests;
-using Orangular.DTO.Order_Items.Responses;
-using Orangular.Services.order_items;
+using OrangularAPI.DTO.OrderItems.Requests;
+using OrangularAPI.DTO.OrderItems.Responses;
+using OrangularAPI.Services.OrderItemServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,7 @@ namespace Orangular.Controllers
         {
             try
             {
-                List<Order_ItemsResponse> orderItem = await _orderItemService.GetAll();
+                List<OrderItemResponse> orderItem = await _orderItemService.GetAll();
 
                 if (orderItem == null) return Problem("Got nothing... Unexpected book problem");
                 if (orderItem.Count == 0) return NoContent();
@@ -48,7 +48,7 @@ namespace Orangular.Controllers
         {
             try
             {
-                Order_ItemsResponse orderItem = await _orderItemService.GetById(orderItemId);
+                OrderItemResponse orderItem = await _orderItemService.GetById(orderItemId);
                 if (orderItem == null) return NotFound();
                 return Ok(orderItem);
             }
@@ -61,11 +61,11 @@ namespace Orangular.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create([FromBody] NewOrder_Items newOrderItem)
+        public async Task<IActionResult> Create([FromBody] NewOrderItem newOrderItem)
         {
             try
             {
-                Order_ItemsResponse OrderItem = await _orderItemService.Create(newOrderItem);
+                OrderItemResponse OrderItem = await _orderItemService.Create(newOrderItem);
                 if (OrderItem == null) return Problem("Returned null, orderItem was not created");
                 return Ok(OrderItem);
             }
@@ -79,11 +79,11 @@ namespace Orangular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Update(
-            [FromRoute] int orderItemId, [FromBody] UpdateOrder_Items updateOrder_Items)
+            [FromRoute] int orderItemId, [FromBody] UpdateOrderItem updateOrder_Items)
         {
             try
             {
-                Order_ItemsResponse orderItem = await _orderItemService.Update(orderItemId, updateOrder_Items);
+                OrderItemResponse orderItem = await _orderItemService.Update(orderItemId, updateOrder_Items);
                 if (orderItem == null) return Problem("Returned null, orderItem was not updated");
                 return Ok(orderItem);
             }
