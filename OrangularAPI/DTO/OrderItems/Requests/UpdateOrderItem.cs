@@ -11,11 +11,11 @@ namespace OrangularAPI.DTO.OrderItems.Requests
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [Range(1, int.MaxValue)]
-        public int OrderlistID { get; set; }
+        public int OrderlistId { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [Range(1, int.MaxValue)]
-        public int ProductID { get; set; }
+        public int ProductId { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [Range(1, int.MaxValue)]

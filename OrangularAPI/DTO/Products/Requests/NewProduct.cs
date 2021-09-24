@@ -11,7 +11,7 @@ namespace OrangularAPI.DTO.Products.Requests
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [Range(1, int.MaxValue)]
-        public int CategoryID { get; set; }
+        public int CategoryId { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [StringLength(255, ErrorMessage = "Max string length is 255")]

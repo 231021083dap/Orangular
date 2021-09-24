@@ -136,9 +136,9 @@ namespace OrangularTests.AddressesTest
 
                 NewAddress newAddress = new NewAddress
                 {
-                    userID = 1,
-                    address = "TEC Ballerup",
-                    zipCode = 2750
+                    UserID = 1,
+                    Address = "TEC Ballerup",
+                    ZipCode = 2750
                 };
 
                 _addressesRepository
@@ -165,9 +165,9 @@ namespace OrangularTests.AddressesTest
                 UpdateAddress updateAddress = new UpdateAddress
                 {
                     userID = 2,
-                    address = "Hjem Helsingør",
-                    zipCode = 3000,
-                    cityName = "Helsingør"
+                    Address = "Hjem Helsingør",
+                    ZipCode = 3000,
+                    CityName = "Helsingør"
                 };
 
                 Addresses address = new Addresses
@@ -191,8 +191,8 @@ namespace OrangularTests.AddressesTest
                 Assert.NotNull(result);
                 Assert.IsType<AddressResponse>(result);
                 Assert.Equal(search_id, result.AddressID);
-                Assert.Equal(updateAddress.address, result.Address);
-                Assert.Equal(updateAddress.zipCode, result.ZipCode);
+                Assert.Equal(updateAddress.Address, result.Address);
+                Assert.Equal(updateAddress.ZipCode, result.ZipCode);
             }
 
             [Fact]
@@ -204,9 +204,9 @@ namespace OrangularTests.AddressesTest
                 UpdateAddress updateAddress = new UpdateAddress
                 {
                     userID = 2,
-                    address = "Hjem Helsingør",
-                    zipCode = 3000,
-                    cityName = "Helsingør"
+                    Address = "Hjem Helsingør",
+                    ZipCode = 3000,
+                    CityName = "Helsingør"
                 };
 
             // Opstiller 

@@ -171,10 +171,10 @@ namespace OrangularTests.AddressesTest
             // Arrange
             NewAddress newAddress = new NewAddress
             {
-                userID = 1,
-                address = "Vinkelvej",
-                zipCode = 2800,
-                cityName = "Lyngby"
+                UserID = 1,
+                Address = "Vinkelvej",
+                ZipCode = 2800,
+                CityName = "Lyngby"
             };
 
             AddressResponse addressResponse = new AddressResponse
@@ -202,10 +202,10 @@ namespace OrangularTests.AddressesTest
             // Arrange
             NewAddress newAddress = new NewAddress
             {
-                userID = 1,
-                address = "Vinkelvej",
-                zipCode = 2800,
-                cityName = "Lyngby"
+                UserID = 1,
+                Address = "Vinkelvej",
+                ZipCode = 2800,
+                CityName = "Lyngby"
             };
 
             _addressService.Setup(s => s.Create(It.IsAny<NewAddress>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));
@@ -226,9 +226,9 @@ namespace OrangularTests.AddressesTest
             UpdateAddress updateAddress = new UpdateAddress
             {
                 userID = 1,
-                address = "Vinkelvej",
-                zipCode = 2800,
-                cityName = "Lyngby"
+                Address = "Vinkelvej",
+                ZipCode = 2800,
+                CityName = "Lyngby"
             };
 
             AddressResponse addressResponse = new AddressResponse
@@ -258,9 +258,9 @@ namespace OrangularTests.AddressesTest
             UpdateAddress updateAddress = new UpdateAddress
             {
                 userID = 1,
-                address = "Vinkelvej",
-                zipCode = 2800,
-                cityName = "Lyngby"
+                Address = "Vinkelvej",
+                ZipCode = 2800,
+                CityName = "Lyngby"
             };
 
             _addressService.Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateAddress>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));

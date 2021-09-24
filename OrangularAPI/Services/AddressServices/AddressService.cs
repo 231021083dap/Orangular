@@ -60,10 +60,10 @@ namespace OrangularAPI.Services.AddressServices
             Addresses address = new Addresses
             {
            
-                users_id = input_address.userID,
-                address = input_address.address,
-                zip_code = input_address.zipCode,
-                city_name = input_address.cityName
+                users_id = input_address.UserID,
+                address = input_address.Address,
+                zip_code = input_address.ZipCode,
+                city_name = input_address.CityName
             };
 
 
@@ -84,9 +84,9 @@ namespace OrangularAPI.Services.AddressServices
             Addresses address = new Addresses
             {
                 users_id = input_address.userID,
-                address = input_address.address,
-                zip_code = input_address.zipCode,
-                city_name = input_address.cityName
+                address = input_address.Address,
+                zip_code = input_address.ZipCode,
+                city_name = input_address.CityName
             };
 
             address = await _addressRepository.Update(input_address_id, address);
