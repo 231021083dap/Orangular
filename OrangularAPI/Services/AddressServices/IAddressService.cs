@@ -12,9 +12,9 @@ namespace OrangularAPI.Services.AddressServices
     public interface IAddressService
     {
         Task<List<AddressResponse>> GetAll();
-        Task<AddressResponse> GetById(int addressID);
+        Task<AddressResponse> GetById(int addressId);
         Task<AddressResponse> Create(NewAddress address);
-        Task<AddressResponse> Update(int addressesID, UpdateAddress address);
-        Task<Boolean> Delete(int addressID);
+        Task<AddressResponse> Update(int addressId, UpdateAddress address);
+        Task<Boolean> Delete(int addressId);
     }
 }

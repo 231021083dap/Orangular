@@ -15,6 +15,6 @@ namespace OrangularAPI.DTO.OrderItems.Responses
 
         public OrderItemProductResponse Product { get; set; }
 
-        public OrderItem_OrderListResponse Order { get; set; }
+        public OrderItemOrderListResponse Order { get; set; }
     }
 }

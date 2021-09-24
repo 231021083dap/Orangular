@@ -10,38 +10,38 @@ namespace OrangularAPI.Services.OrderListServices
 {
     public class OrderListService : IOrderListService
     {
-        private readonly IOrderListRepository _order_ListsRepository;
+        private readonly IOrderListRepository _orderListRepository;
 
-        public OrderListService(IOrderListRepository order_ListsRepository)
+        public OrderListService(IOrderListRepository orderListRepository)
         {
-            _order_ListsRepository = order_ListsRepository;
+            _orderListRepository = orderListRepository;
         }
         public async Task<OrderListResponse> Create(NewOrderList newOrder_Lists)
         {
             Order_Lists order_Lists = new Order_Lists
             {
-                users_id = newOrder_Lists.UserID,
+                users_id = newOrder_Lists.UserId,
                 order_date_time = newOrder_Lists.OrderDateTime
 
             };
 
-            order_Lists = await _order_ListsRepository.Create(order_Lists);
+            order_Lists = await _orderListRepository.Create(order_Lists);
 
             return order_Lists == null ? null : new OrderListResponse
             {
-                orderListID = order_Lists.order_lists_id,
-                orderDateTime = order_Lists.order_date_time
+                OrderListId = order_Lists.order_lists_id,
+                OrderDateTime = order_Lists.order_date_time
 
             };
         }
         public async Task<List<OrderListResponse>> GetAll()
         {
-            List<Order_Lists> order_Lists = await _order_ListsRepository.GetAll();
+            List<Order_Lists> order_Lists = await _orderListRepository.GetAll();
 
             return order_Lists.Select(a => new OrderListResponse
             {
-                orderListID = a.order_lists_id,
-                orderDateTime = a.order_date_time,
+                OrderListId = a.order_lists_id,
+                OrderDateTime = a.order_date_time,
 
 
                 //    Books = a.Books.Select(b => new AuthorBookResponse
@@ -54,11 +54,11 @@ namespace OrangularAPI.Services.OrderListServices
         }
         public async Task<OrderListResponse> GetById(int order_lists_id)
         {
-            Order_Lists order_Lists = await _order_ListsRepository.GetById(order_lists_id);
+            Order_Lists order_Lists = await _orderListRepository.GetById(order_lists_id);
             return order_Lists == null ? null : new OrderListResponse
             {
-                orderListID = order_Lists.order_lists_id,
-                orderDateTime = order_Lists.order_date_time
+                OrderListId = order_Lists.order_lists_id,
+                OrderDateTime = order_Lists.order_date_time
 
             };
         }
@@ -68,22 +68,22 @@ namespace OrangularAPI.Services.OrderListServices
             Order_Lists order_Lists = new Order_Lists
             {
                 order_date_time = updateOrder_Lists.OrderDateTime,
-                users_id = updateOrder_Lists.UserID,
+                users_id = updateOrder_Lists.UserId,
 
             };
 
-            order_Lists = await _order_ListsRepository.Update(order_lists_id, order_Lists);
+            order_Lists = await _orderListRepository.Update(order_lists_id, order_Lists);
 
             return order_Lists == null ? null : new OrderListResponse
             {
-                orderListID = order_lists_id,
-                orderDateTime = order_Lists.order_date_time
+                OrderListId = order_lists_id,
+                OrderDateTime = order_Lists.order_date_time
 
             };
         }
         public async Task<bool> Delete(int order_lists_id)
         {
-            var result = await _order_ListsRepository.Delete(order_lists_id);
+            var result = await _orderListRepository.Delete(order_lists_id);
             return (result != null);
         }
 

@@ -29,17 +29,17 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                List<AddressResponse> Address = await _addressService.GetAll();
+                List<AddressResponse> address = await _addressService.GetAll();
 
-                if (Address == null)
+                if (address == null)
                 {
                     string problem = "Got no data, not even an empty list, this is unexpected";
                     return Problem(problem);
                 }
 
-                if (Address.Count == 0) return NoContent();
+                if (address.Count == 0) return NoContent();
 
-                return Ok(Address);
+                return Ok(address);
 
             }
             catch (Exception ex)
@@ -54,11 +54,11 @@ namespace OrangularAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetById([FromRoute] int address_id)
+        public async Task<IActionResult> GetById([FromRoute] int addressId)
         {
             try
             {
-                AddressResponse address = await _addressService.GetById(address_id);
+                AddressResponse address = await _addressService.GetById(addressId);
 
                 if (address == null)
                 {
@@ -102,18 +102,18 @@ namespace OrangularAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update([FromRoute] int addresses_id, [FromBody] UpdateAddress updateAddress)
+        public async Task<IActionResult> Update([FromRoute] int addressId, [FromBody] UpdateAddress updateAddress)
         {
             try
             {
-                AddressResponse address_response = await _addressService.Update(addresses_id, updateAddress);
+                AddressResponse addressResponse = await _addressService.Update(addressId, updateAddress);
 
-                if (address_response == null)
+                if (addressResponse == null)
                 {
                     return Problem("Address was not updated, something went wrong");
                 }
 
-                return Ok(address_response);
+                return Ok(addressResponse);
             }
             catch (Exception ex)
             {

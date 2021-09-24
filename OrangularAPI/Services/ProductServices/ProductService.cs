@@ -12,50 +12,50 @@ namespace OrangularAPI.Services.ProductServices
 
     public class ProductService : IProductService
     {
-        private readonly IProductRepository _productsRepository;
+        private readonly IProductRepository _productRepository;
 
-        public ProductService(IProductRepository productsRepository)
+        public ProductService(IProductRepository productRepository)
         {
-            _productsRepository = productsRepository;
+            _productRepository = productRepository;
         }
 
-        public async Task<ProductResponse> Create(NewProduct newProducts)
+        public async Task<ProductResponse> Create(NewProduct newProduct)
         {
-            Products products = new Products
+            Products product = new Products
             {
-                breed_name = newProducts.BreedName,
-                price = newProducts.Price,
-                weight = newProducts.Weight,
-                gender = newProducts.Gender,
-                description = newProducts.Description
+                breed_name = newProduct.BreedName,
+                price = newProduct.Price,
+                weight = newProduct.Weight,
+                gender = newProduct.Gender,
+                description = newProduct.Description
             };
 
-            products = await _productsRepository.Create(products);
+            product = await _productRepository.Create(product);
 
-            return products == null ? null : new ProductResponse
+            return product == null ? null : new ProductResponse
             {
-                ProductID = products.products_id,
-                BreedName = products.breed_name,
-                Price = products.price,
-                Weight = products.weight,
-                Gender = products.gender,
-                Description = products.description
+                ProductId = product.products_id,
+                BreedName = product.breed_name,
+                Price = product.price,
+                Weight = product.weight,
+                Gender = product.gender,
+                Description = product.description
             };
         }
 
         public async Task<bool> Delete(int products_id)
         {
-            var result = await _productsRepository.Delete(products_id);
+            var result = await _productRepository.Delete(products_id);
             return (result != null);
         }
 
         public async Task<List<ProductResponse>> GetAll()
         {
-            List<Products> products = await _productsRepository.GetAll();
+            List<Products> products = await _productRepository.GetAll();
 
             return products.Select(a => new ProductResponse
             {
-                ProductID = a.products_id,
+                ProductId = a.products_id,
                 BreedName = a.breed_name,
                 Price = a.price,
                 Weight = a.weight,
@@ -73,12 +73,12 @@ namespace OrangularAPI.Services.ProductServices
 
         public async Task<ProductResponse> GetById(int products_id)
         {
-            Products products = await _productsRepository.GetById(products_id);
-            return products == null ? null : new ProductResponse
+            Products entityProduct = await _productRepository.GetById(products_id);
+            return entityProduct == null ? null : new ProductResponse
             {
-                ProductID = products.products_id,
-                BreedName = products.breed_name,
-                Price = products.price,
+                ProductId = entityProduct.products_id,
+                BreedName = entityProduct.breed_name,
+                Price = entityProduct.price,
                 Weight = products.weight,
                 Gender = products.gender,
                 Description = products.description,

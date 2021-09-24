@@ -33,7 +33,7 @@ namespace OrangularAPI.Services.AddressServices
             return addresses == null ? null : addresses.Select(
             a => new AddressResponse
             {
-                AddressID = a.addresses_id,
+                AddressId = a.addresses_id,
                 Address = a.address,
                 ZipCode = a.zip_code,
                 CityName = null,
@@ -47,7 +47,7 @@ namespace OrangularAPI.Services.AddressServices
 
             return addresses == null ? null : new AddressResponse
             {
-                AddressID=  addresses.addresses_id,
+                AddressId = addresses.addresses_id,
                 Address =  addresses.address,
                 ZipCode =  addresses.zip_code,
                 CityName = addresses.city_name,
@@ -60,7 +60,7 @@ namespace OrangularAPI.Services.AddressServices
             Addresses address = new Addresses
             {
            
-                users_id = input_address.UserID,
+                users_id = input_address.UserId,
                 address = input_address.Address,
                 zip_code = input_address.ZipCode,
                 city_name = input_address.CityName
@@ -71,7 +71,7 @@ namespace OrangularAPI.Services.AddressServices
 
             return address == null ? null : new AddressResponse
             {
-                AddressID =  address.addresses_id,
+                AddressId =  address.addresses_id,
                 Address =  address.address,
                 ZipCode =  address.zip_code,
                 CityName = null,
@@ -83,7 +83,7 @@ namespace OrangularAPI.Services.AddressServices
         {
             Addresses address = new Addresses
             {
-                users_id = input_address.userID,
+                users_id = input_address.userId,
                 address = input_address.Address,
                 zip_code = input_address.ZipCode,
                 city_name = input_address.CityName
@@ -95,7 +95,7 @@ namespace OrangularAPI.Services.AddressServices
 
             return address == null ? null : new AddressResponse
             {
-                AddressID =  address.addresses_id,
+                AddressId =  address.addresses_id,
                 Address =  address.address,
                 ZipCode =  address.zip_code,
                 CityName = address.city_name,
