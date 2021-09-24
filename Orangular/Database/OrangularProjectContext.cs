@@ -6,7 +6,7 @@ using Orangular.Database.Entities;
 using Microsoft.EntityFrameworkCore;
 using Orangular.Helpers;
 
-namespace Orangular.Database.Entities
+namespace Orangular.Database
 {
     public class OrangularProjectContext : DbContext
     {
@@ -15,8 +15,8 @@ namespace Orangular.Database.Entities
 
         // ----- Alle entities ----- Victor //
         // Opretter tabeller
-        public DbSet<Users> Users { get; set; }
-        public DbSet<Order_Lists> Order_Lists { get; set; }
+        public DbSet<Users> Users { get; set; } // DbSet fortæller navnet på databasen User
+        public DbSet<Order_Lists> Order_Lists { get; set; } // Order_list
         public DbSet<Order_Items> Order_Items { get; set; }
         public DbSet<Categories> Categories { get; set; }
         public DbSet<Products> Products { get; set; }

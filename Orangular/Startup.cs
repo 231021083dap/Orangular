@@ -13,11 +13,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-// -- tilføjet af Victor -- //
+// -- tilfï¿½jet af Victor -- //
 using Orangular.Database.Entities;
+
 using Orangular.Services.categories;
 using Orangular.Repositories.categories;
-// -- tilføjet af Victor -- //
+using Orangular.Database;
+using Orangular.Services.addresses;
+using Orangular.Repositories.addresses;
+using Orangular.Services.users;
+using Orangular.Repositories.users;
+// -- tilfï¿½jet af Victor -- //
+
+using Orangular.Services.users;
+using Orangular.Repositories.users;
+using Orangular.Repositories.order_items;
+using Orangular.Services.order_items;
+using Orangular.Repositories.order_lists;
+using Orangular.Services.Order_List;
+using Orangular.Services.products;
+using Orangular.Services;
+using Orangular.Repositories.products;
+using Orangular.Repositories;
+// -- tilfï¿½jet af Victor -- //
+
 
 namespace Orangular
 {
@@ -29,34 +48,45 @@ namespace Orangular
         {
             Configuration = configuration;
         }
-        // HI
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
-            {
-                options.AddPolicy(name: CORSRules,
-                    builder =>
-                    {
-                        builder.WithOrigins("http://localhost:4200")
-                            .AllowAnyHeader()
-                            .AllowAnyMethod();
-                    });
-            });
-            // -- tilføjet af Victor -- //
-            // Forbinder sql serverenw
-            services.AddDbContext<OrangularProjectContext>(
-                o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
-            // -- tilføjet af Victor -- //
-
+            // -- tilfï¿½jet af Victor -- //
+            // Forbinder sql serveren
             services.AddControllers();
+            services.AddDbContext<OrangularProjectContext>(o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            // -- tilfï¿½jet af Victor -- //
+
             //Addedd by Muhmen
             //These two lines refering to Service, and Repository files and Interfaces
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
 
+            // ---- Victor --- //
+            services.AddScoped<IAddressesService, AddressesService>();
+            services.AddScoped<IAddressesRepository, AddressesRepository>();
+            // ---- Victor --- //
+
+            // -- tilfï¿½jet af Victor -- //
+            // TilfÃ¸jer scope til OrderLists services & repository
+            services.AddScoped<IProductsService, ProductsService>();
+            services.AddScoped<IProductsRepository, ProductsRepository>();
+
+            // TilfÃ¸jer scope til OrderLists services & repository
+            services.AddScoped<IOrder_ListsService, Order_ListsService>();
+            services.AddScoped<IOrder_ListsRepository, Order_ListsRepository>();
+
+            // TilfÃ¸jer scope til OrderItems services & repository
+            services.AddScoped<IOrderItemService, OrderItemService>();
+            services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+
+            // TilfÃ¸jer scope til User services & repository
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+           
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Orangular", Version = "v1" });
