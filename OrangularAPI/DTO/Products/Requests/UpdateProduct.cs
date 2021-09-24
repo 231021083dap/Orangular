@@ -11,25 +11,25 @@ namespace OrangularAPI.DTO.Products.Requests
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [Range(1, int.MaxValue)]
-        public int category { get; set; }
+        public int Category { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [StringLength(255, ErrorMessage = "Max string length is 255")]
         [MinLength(1, ErrorMessage = "Min string length is 1")]
-        public string breedName { get; set; }
+        public string BreedName { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [Range(1, int.MaxValue)]
-        public int price { get; set; }
+        public int Price { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [Required]
         [Range(1, int.MaxValue)]
-        public int weight { get; set; }
+        public int Weight { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [StringLength(255, ErrorMessage = "Max string length is 255")]
-        public string gender { get; set; }
+        public string Gender { get; set; }
         // -----------------------------------------------------------------------------------------------------------------------
         [StringLength(255, ErrorMessage = "Max string length is 255")]
-        public string description { get; set; }
+        public string Description { get; set; }
     }
 }

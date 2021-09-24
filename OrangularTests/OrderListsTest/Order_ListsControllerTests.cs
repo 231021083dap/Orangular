@@ -169,7 +169,7 @@ namespace OrangularTests.OrderListsTest
             int order_lists_id = 1;
             NewOrderList NewOrder_Lists = new NewOrderList
             {
-                orderDateTime = DateTime.Parse("2021-12-21 12:55:00")
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
             OrderListResponse order_Lists = new OrderListResponse
@@ -196,7 +196,7 @@ namespace OrangularTests.OrderListsTest
             // Arrange
             NewOrderList NewOrder_Lists = new NewOrderList
             {
-                orderDateTime = DateTime.Parse("2021-12-21 12:55:00")
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
             _order_ListsService
@@ -218,7 +218,7 @@ namespace OrangularTests.OrderListsTest
             int order_lists_id = 1;
             UpdateOrderList updateorder_Lists = new UpdateOrderList
             {
-                orderDateTime = DateTime.Parse("2021-12-21 12:55:00")
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
             OrderListResponse order_Lists = new OrderListResponse
@@ -246,7 +246,7 @@ namespace OrangularTests.OrderListsTest
             int order_lists_id = 1;
             UpdateOrderList updateorder_Lists = new UpdateOrderList
             {
-                orderDateTime = DateTime.Parse("2021-12-21 12:55:00")
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
             _order_ListsService

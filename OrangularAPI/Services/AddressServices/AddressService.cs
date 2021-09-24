@@ -33,11 +33,11 @@ namespace OrangularAPI.Services.AddressServices
             return addresses == null ? null : addresses.Select(
             a => new AddressResponse
             {
-                addressID = a.addresses_id,
-                address = a.address,
-                zipCode = a.zip_code,
-                cityName = null,
-                users = null
+                AddressID = a.addresses_id,
+                Address = a.address,
+                ZipCode = a.zip_code,
+                CityName = null,
+                User = null
             }).ToList();
         }
 
@@ -47,11 +47,11 @@ namespace OrangularAPI.Services.AddressServices
 
             return addresses == null ? null : new AddressResponse
             {
-                addressID=  addresses.addresses_id,
-                address =  addresses.address,
-                zipCode =  addresses.zip_code,
-                cityName = addresses.city_name,
-                users = null
+                AddressID=  addresses.addresses_id,
+                Address =  addresses.address,
+                ZipCode =  addresses.zip_code,
+                CityName = addresses.city_name,
+                User = null
             };
         }
 
@@ -71,11 +71,11 @@ namespace OrangularAPI.Services.AddressServices
 
             return address == null ? null : new AddressResponse
             {
-                addressID =  address.addresses_id,
-                address =  address.address,
-                zipCode =  address.zip_code,
-                cityName = null,
-                users = null
+                AddressID =  address.addresses_id,
+                Address =  address.address,
+                ZipCode =  address.zip_code,
+                CityName = null,
+                User = null
             };
         }
 
@@ -95,11 +95,11 @@ namespace OrangularAPI.Services.AddressServices
 
             return address == null ? null : new AddressResponse
             {
-                addressID =  address.addresses_id,
-                address =  address.address,
-                zipCode =  address.zip_code,
-                cityName = address.city_name,
-                users = null
+                AddressID =  address.addresses_id,
+                Address =  address.address,
+                ZipCode =  address.zip_code,
+                CityName = address.city_name,
+                User = null
             };
         }
 

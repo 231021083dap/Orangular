@@ -133,8 +133,8 @@ namespace OrangularTests.UserTest
             // Arrange
             NewUser newUser = new() // vi sender ind
             {
-                email = "Test1@Mail.com",
-                password = "Passw0rd"
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd"
             };
             int userId = 1;
             Users user = new()// vi forventer at få tilbage
@@ -151,8 +151,8 @@ namespace OrangularTests.UserTest
             Assert.NotNull(result);
             Assert.IsType<UserResponse>(result);
             Assert.Equal(userId, result.userID);
-            Assert.Equal(newUser.email, result.email);
-            Assert.Equal(newUser.password, result.password);
+            Assert.Equal(newUser.Email, result.email);
+            Assert.Equal(newUser.Password, result.password);
             Assert.Equal(Role.User, result.role);
         }
         [Fact]
@@ -161,8 +161,8 @@ namespace OrangularTests.UserTest
             // Arrange
             NewUser newUser = new()
             {
-                email = "Test1@Mail.com",
-                password = "Passw0rd"
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd"
             };
             _userRepository.Setup(u => u.Create(It.IsAny<Users>())).ReturnsAsync(() => null);
             // Act
@@ -179,9 +179,9 @@ namespace OrangularTests.UserTest
             int userId = 1;
             UpdateUser updateUser = new() // sendes til update metoden
             {
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.User
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User
             };
             Users user = new() // sendes til repository
             {
@@ -197,9 +197,9 @@ namespace OrangularTests.UserTest
             Assert.NotNull(result);
             Assert.IsType<UserResponse>(result);
             Assert.Equal(userId, result.userID);
-            Assert.Equal(updateUser.email, result.email);
-            Assert.Equal(updateUser.password, result.password);
-            Assert.Equal(updateUser.role, result.role);
+            Assert.Equal(updateUser.Email, result.email);
+            Assert.Equal(updateUser.Password, result.password);
+            Assert.Equal(updateUser.Role, result.role);
         }
         [Fact]
         public async Task Update_ShouldReturnNull_WhenUserDoesNotExist()
@@ -207,9 +207,9 @@ namespace OrangularTests.UserTest
             // Arrange
             UpdateUser updateUser = new()
             {
-                email = "Test1@Mail.com",
-                password = "Passw0rd",
-                role = Role.User
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd",
+                Role = Role.User
             };
             int userId = 1;
             _userRepository.Setup(u => u.Update(It.IsAny<int>(), It.IsAny<Users>())).ReturnsAsync(() => null);

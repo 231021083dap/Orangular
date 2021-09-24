@@ -129,8 +129,8 @@ namespace OrangularTests.UserTests
             // Arrange
             NewUser newUser = new()
             {
-                email = "Test1@Mail.com",
-                password = "Passw0rd"
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd"
             };
             UserResponse userResponse = new UserResponse
             {
@@ -154,8 +154,8 @@ namespace OrangularTests.UserTests
             // Arrange
             NewUser newUser = new()
             {
-                email = "Test1@Mail.com",
-                password = "Passw0rd"
+                Email = "Test1@Mail.com",
+                Password = "Passw0rd"
             };
             _userService.Setup(s => s.Create(It.IsAny<NewUser>())).ReturnsAsync(() => throw new Exception("This is an exception"));
             // Act

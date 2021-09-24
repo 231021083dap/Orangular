@@ -23,23 +23,23 @@ namespace OrangularAPI.Services.ProductServices
         {
             Products products = new Products
             {
-                breed_name = newProducts.breedName,
-                price = newProducts.price,
-                weight = newProducts.weight,
-                gender = newProducts.gender,
-                description = newProducts.description
+                breed_name = newProducts.BreedName,
+                price = newProducts.Price,
+                weight = newProducts.Weight,
+                gender = newProducts.Gender,
+                description = newProducts.Description
             };
 
             products = await _productsRepository.Create(products);
 
             return products == null ? null : new ProductResponse
             {
-                productID = products.products_id,
-                breedName = products.breed_name,
-                price = products.price,
-                weight = products.weight,
-                gender = products.gender,
-                description = products.description
+                ProductID = products.products_id,
+                BreedName = products.breed_name,
+                Price = products.price,
+                Weight = products.weight,
+                Gender = products.gender,
+                Description = products.description
             };
         }
 
@@ -55,12 +55,12 @@ namespace OrangularAPI.Services.ProductServices
 
             return products.Select(a => new ProductResponse
             {
-                productID = a.products_id,
-                breedName = a.breed_name,
-                price = a.price,
-                weight = a.weight,
-                gender = a.gender,
-                description = a.description
+                ProductID = a.products_id,
+                BreedName = a.breed_name,
+                Price = a.price,
+                Weight = a.weight,
+                Gender = a.gender,
+                Description = a.description
 
                 //    Books = a.Books.Select(b => new AuthorBookResponse
                 //    {
@@ -76,12 +76,12 @@ namespace OrangularAPI.Services.ProductServices
             Products products = await _productsRepository.GetById(products_id);
             return products == null ? null : new ProductResponse
             {
-                productID = products.products_id,
-                breedName = products.breed_name,
-                price = products.price,
-                weight = products.weight,
-                gender = products.gender,
-                description = products.description,
+                ProductID = products.products_id,
+                BreedName = products.breed_name,
+                Price = products.price,
+                Weight = products.weight,
+                Gender = products.gender,
+                Description = products.description,
                 //Books = author.Books.Select(b => new AuthorBookResponse
                 //{
                 //    Id = b.Id,
@@ -95,23 +95,23 @@ namespace OrangularAPI.Services.ProductServices
         {
             Products products = new Products
             {
-                breed_name = updateProducts.breedName,
-                price = updateProducts.price,
-                weight = updateProducts.weight,
-                gender = updateProducts.gender,
-                description = updateProducts.description,
+                breed_name = updateProducts.BreedName,
+                price = updateProducts.Price,
+                weight = updateProducts.Weight,
+                gender = updateProducts.Gender,
+                description = updateProducts.Description,
             };
 
             products = await _productsRepository.Update(products_id, products);
 
             return products == null ? null : new ProductResponse
             {
-                productID = products_id,
-                breedName = products.breed_name,
-                price = products.price,
-                weight = products.weight,
-                gender = products.gender,
-                description = products.description
+                ProductID = products_id,
+                BreedName = products.breed_name,
+                Price = products.price,
+                Weight = products.weight,
+                Gender = products.gender,
+                Description = products.description
             };
         }
     }

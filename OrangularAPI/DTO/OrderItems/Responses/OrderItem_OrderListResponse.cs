@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace OrangularAPI.DTO.OrderItems.Responses
 {
-    public class OrderItem_OrderListResponse
+    public class OrderItemOrderListResponse
     {
-        public int orderListID { get; set; }
+        public int OrderListID { get; set; }
 
-        public DateTime orderDateTime { get; set; }
+        public DateTime OrderDateTime { get; set; }
 
     }
 }

@@ -20,8 +20,8 @@ namespace OrangularAPI.Services.OrderListServices
         {
             Order_Lists order_Lists = new Order_Lists
             {
-                users_id = newOrder_Lists.userID,
-                order_date_time = newOrder_Lists.orderDateTime
+                users_id = newOrder_Lists.UserID,
+                order_date_time = newOrder_Lists.OrderDateTime
 
             };
 
@@ -67,8 +67,8 @@ namespace OrangularAPI.Services.OrderListServices
         {
             Order_Lists order_Lists = new Order_Lists
             {
-                order_date_time = updateOrder_Lists.orderDateTime,
-                users_id = updateOrder_Lists.userID,
+                order_date_time = updateOrder_Lists.OrderDateTime,
+                users_id = updateOrder_Lists.UserID,
 
             };
 

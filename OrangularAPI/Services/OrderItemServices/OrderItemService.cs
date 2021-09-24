@@ -19,22 +19,22 @@ namespace OrangularAPI.Services.OrderItemServices
             List<Order_Items> orderItems = await _orderItemsRepository.GetAll();
             return orderItems.Select(o => new OrderItemResponse
             {
-                orderItemsID = o.order_items_id,
-                price = o.price,
-                quantity = o.quantity,
-                orders = new OrderItem_OrderListResponse
+                OrderItemID = o.order_items_id,
+                Price = o.price,
+                Quantity = o.quantity,
+                Order = new OrderItem_OrderListResponse
                 {
                    orderListID = o.order_list.order_lists_id,
                    orderDateTime = o.order_list.order_date_time
                 },
-                products = new OrderItemProductResponse
+                Product = new OrderItemProductResponse
                 {
-                    productID = o.product.products_id,
-                    breedName = o.product.breed_name,
-                    price = o.product.price,
-                    weight = o.product.weight,
-                    gender = o.product.gender,
-                    description = o.product.description
+                    ProductID = o.product.products_id,
+                    BreedName = o.product.breed_name,
+                    Price = o.product.price,
+                    Weight = o.product.weight,
+                    Gender = o.product.gender,
+                    Description = o.product.description
                 }
             }).ToList();
         }

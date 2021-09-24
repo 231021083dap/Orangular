@@ -10,10 +10,10 @@ namespace OrangularAPI.DTO.Login.Requests
     {
         [Required]
         [StringLength(255, ErrorMessage = "Email must be less than 255 chars")]
-        public string email { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [StringLength(255, ErrorMessage = "Password must be less than 255 chars")]
-        public string password { get; set; }
+        public string Password { get; set; }
     }
 }

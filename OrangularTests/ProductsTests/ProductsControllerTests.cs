@@ -28,21 +28,21 @@ namespace OrangularTests.ProductsTests
             List<ProductResponse> products = new();
             products.Add(new ProductResponse
             {
-                productID = 1,
-                breedName = "Cane Corso",
-                price = 3000,
-                weight = 30000,
-                gender = "Male",
-                description = "Test test"
+                ProductID = 1,
+                BreedName = "Cane Corso",
+                Price = 3000,
+                Weight = 30000,
+                Gender = "Male",
+                Description = "Test test"
             });
             products.Add(new ProductResponse
             {
-                productID = 2,
-                breedName = "Beetle",
-                price = 1000,
-                weight = 10000,
-                gender = "Male",
-                description = "Test test"
+                ProductID = 2,
+                BreedName = "Beetle",
+                Price = 1000,
+                Weight = 10000,
+                Gender = "Male",
+                Description = "Test test"
             });
 
             _productsService
@@ -120,12 +120,12 @@ namespace OrangularTests.ProductsTests
             int products_Id = 1;
             ProductResponse products = new ProductResponse
             {
-                productID = products_Id,
-                breedName = "Cane Corso",
-                price = 3000,
-                weight = 30000,
-                gender = "Male",
-                description = "Test test"
+                ProductID = products_Id,
+                BreedName = "Cane Corso",
+                Price = 3000,
+                Weight = 30000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             _productsService
@@ -180,21 +180,21 @@ namespace OrangularTests.ProductsTests
             int products_id = 1;
             NewProduct newProducts = new NewProduct
             {
-                breedName = "Cane Corso",
-                price = 3000,
-                weight = 30000,
-                gender = "Male",
-                description = "Test test"
+                BreedName = "Cane Corso",
+                Price = 3000,
+                Weight = 30000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             ProductResponse products = new ProductResponse
             {
-                productID = products_id,
-                breedName = "Beetle",
-                price = 1000,
-                weight = 10000,
-                gender = "Male",
-                description = "Test test"
+                ProductID = products_id,
+                BreedName = "Beetle",
+                Price = 1000,
+                Weight = 10000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             _productsService
@@ -215,11 +215,11 @@ namespace OrangularTests.ProductsTests
             // Arrange
             NewProduct NewProducts = new NewProduct
             {
-                breedName = "Beetle",
-                price = 1000,
-                weight = 10000,
-                gender = "Male",
-                description = "Test test"
+                BreedName = "Beetle",
+                Price = 1000,
+                Weight = 10000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             _productsService
@@ -241,21 +241,21 @@ namespace OrangularTests.ProductsTests
             int products_id = 1;
             UpdateProduct updateProducts = new UpdateProduct
             {
-                breedName = "Beetle",
-                price = 1000,
-                weight = 10000,
-                gender = "Male",
-                description = "Test test"
+                BreedName = "Beetle",
+                Price = 1000,
+                Weight = 10000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             ProductResponse products = new ProductResponse
             {
-                productID = products_id,
-                breedName = "Beetle",
-                price = 1000,
-                weight = 10000,
-                gender = "Male",
-                description = "Test test"
+                ProductID = products_id,
+                BreedName = "Beetle",
+                Price = 1000,
+                Weight = 10000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             _productsService
@@ -277,11 +277,11 @@ namespace OrangularTests.ProductsTests
             int products_id = 1;
             UpdateProduct updateProducts = new UpdateProduct
             {
-                breedName = "Beetle",
-                price = 1000,
-                weight = 10000,
-                gender = "Male",
-                description = "Test test"
+                BreedName = "Beetle",
+                Price = 1000,
+                Weight = 10000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             _productsService

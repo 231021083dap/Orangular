@@ -105,12 +105,12 @@ namespace OrangularTests.ProductsTests
             // Assert
             Assert.NotNull(result);
             Assert.IsType<ProductResponse>(result);
-            Assert.Equal(Products.products_id, result.productID);
-            Assert.Equal(Products.breed_name, result.breedName);
-            Assert.Equal(Products.price, result.price);
-            Assert.Equal(Products.weight, result.weight);
-            Assert.Equal(Products.gender, result.gender);
-            Assert.Equal(Products.description, result.description);
+            Assert.Equal(Products.products_id, result.ProductID);
+            Assert.Equal(Products.breed_name, result.BreedName);
+            Assert.Equal(Products.price, result.Price);
+            Assert.Equal(Products.weight, result.Weight);
+            Assert.Equal(Products.gender, result.Gender);
+            Assert.Equal(Products.description, result.Description);
 
         }
 
@@ -137,11 +137,11 @@ namespace OrangularTests.ProductsTests
             // Arrange
             NewProduct newProduct = new NewProduct
             {
-                breedName = "Cane Corso",
-                price = 3000,
-                weight = 30000,
-                gender = "Male",
-                description = "Test test"
+                BreedName = "Cane Corso",
+                Price = 3000,
+                Weight = 30000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             int products_Id = 1;
@@ -166,12 +166,12 @@ namespace OrangularTests.ProductsTests
             // Assert
             Assert.NotNull(result);
             Assert.IsType<ProductResponse>(result);
-            Assert.Equal(Products.products_id, result.productID);
-            Assert.Equal(Products.breed_name, result.breedName);
-            Assert.Equal(Products.price, result.price);
-            Assert.Equal(Products.weight, result.weight);
-            Assert.Equal(Products.gender, result.gender);
-            Assert.Equal(Products.description, result.description);
+            Assert.Equal(Products.products_id, result.ProductID);
+            Assert.Equal(Products.breed_name, result.BreedName);
+            Assert.Equal(Products.price, result.Price);
+            Assert.Equal(Products.weight, result.Weight);
+            Assert.Equal(Products.gender, result.Gender);
+            Assert.Equal(Products.description, result.Description);
         }
 
         [Fact]
@@ -180,23 +180,23 @@ namespace OrangularTests.ProductsTests
             // Arrange
             UpdateProduct updateProduct = new UpdateProduct
             {
-                breedName = "Cane Corso",
-                price = 3000,
-                weight = 30000,
-                gender = "Male",
-                description = "Test test"
+                BreedName = "Cane Corso",
+                Price = 3000,
+                Weight = 30000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             int products_Id = 1;
 
             ProductResponse ProductResponse = new ProductResponse
             {
-                productID = products_Id,
-                breedName = "Cane Corso",
-                price = 3000,
-                weight = 30000,
-                gender = "Male",
-                description = "Test test"
+                ProductID = products_Id,
+                BreedName = "Cane Corso",
+                Price = 3000,
+                Weight = 30000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             Products Products = new()
@@ -219,12 +219,12 @@ namespace OrangularTests.ProductsTests
             // Assert
             Assert.NotNull(result);
             Assert.IsType<ProductResponse>(result);
-            Assert.Equal(Products.products_id, result.productID);
-            Assert.Equal(Products.breed_name, result.breedName);
-            Assert.Equal(Products.price, result.price);
-            Assert.Equal(Products.weight, result.weight);
-            Assert.Equal(Products.gender, result.gender);
-            Assert.Equal(Products.description, result.description);
+            Assert.Equal(Products.products_id, result.ProductID);
+            Assert.Equal(Products.breed_name, result.BreedName);
+            Assert.Equal(Products.price, result.Price);
+            Assert.Equal(Products.weight, result.Weight);
+            Assert.Equal(Products.gender, result.Gender);
+            Assert.Equal(Products.description, result.Description);
         }
 
         [Fact]
@@ -233,11 +233,11 @@ namespace OrangularTests.ProductsTests
             // Arrange
             UpdateProduct updateProducts = new UpdateProduct
             {
-                breedName = "Cane Corso",
-                price = 3000,
-                weight = 30000,
-                gender = "Male",
-                description = "Test test"
+                BreedName = "Cane Corso",
+                Price = 3000,
+                Weight = 30000,
+                Gender = "Male",
+                Description = "Test test"
             };
 
             int products_Id = 1;

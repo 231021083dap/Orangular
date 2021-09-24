@@ -8,9 +8,9 @@ namespace OrangularAPI.DTO.OrderLists.Responses
 {
     public class OrderList_UserResponse
     {
-        public int users_id { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
-        public Role role { get; set; }
+        public int UserID { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public Role Role { get; set; }
     }
 }

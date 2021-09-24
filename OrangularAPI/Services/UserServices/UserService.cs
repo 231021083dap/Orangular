@@ -77,8 +77,8 @@ namespace OrangularAPI.Services.UsersService
         {
             Users user = new Users
             {
-                email = newUser.email,
-                password = newUser.password,
+                email = newUser.Email,
+                password = newUser.Password,
                 role = Role.User // All users created through Register has the role of user
             };
             user = await _userRepository.Create(user);
@@ -88,9 +88,9 @@ namespace OrangularAPI.Services.UsersService
         {
             Users user = new Users
             {
-                email = updateUser.email,
-                password = updateUser.password,
-                role = updateUser.role
+                email = updateUser.Email,
+                password = updateUser.Password,
+                role = updateUser.Role
             };
             user = await _userRepository.Update(userId, user);
             return userResponse(user);
