@@ -7,7 +7,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 
 const routes: Routes = [
-  {path: 'categories', component: CategoryPageComponent},
+  {path: 'Category', component: CategoryPageComponent},
   {path: 'search', component: SearchPageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'basket', component: BasketPageComponent},

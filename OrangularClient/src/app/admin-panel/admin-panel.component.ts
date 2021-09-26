@@ -8,14 +8,14 @@ import { CategoryService } from '../category.service';
 })
 export class AdminPanelComponent implements OnInit {
 
-  //declaring a empty array named categories
-  categories: Category[] = []; 
+  //declaring a empty array named Category
+  Category: Category[] = []; 
 
   constructor(private categoryService:CategoryService) { }
 
   ngOnInit(): void {
-    this.categoryService.getCategories()
-    .subscribe(c => this.categories = c);
+    this.categoryService.getCategory()
+    .subscribe(c => this.Category = c);
   }
 
 }

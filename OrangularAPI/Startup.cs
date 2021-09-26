@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using OrangularAPI.Database;
 using OrangularAPI.Repositories.AddressesRepository;
-using OrangularAPI.Repositories.CategoriesRepository;
+using OrangularAPI.Repositories.CategoryRepository;
 using OrangularAPI.Repositories.OrderItemsRepository;
 using OrangularAPI.Repositories.OrderListsRepository;
 using OrangularAPI.Repositories.ProductsRepository;

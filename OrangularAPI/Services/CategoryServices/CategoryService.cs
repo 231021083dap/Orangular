@@ -1,12 +1,12 @@
 ﻿//using Orangular.Database.Entities;
 //using Orangular.DTO.Category.Requests;
 //using Orangular.DTO.Category.Responses;
-//using Orangular.Repositories.categories;
+//using Orangular.Repositories.Category;
 //using OrangularAPI.Database.Entities;
-//using OrangularAPI.DTO.Categories.Requests;
-//using OrangularAPI.DTO.Categories.Responses;
+//using OrangularAPI.DTO.Category.Requests;
+//using OrangularAPI.DTO.Category.Responses;
 
-//using OrangularAPI.Repositories.CategoriesRepository;
+//using OrangularAPI.Repositories.CategoryRepository;
 //using System;
 //using System.Collections.Generic;
 //using System.Linq;
@@ -17,10 +17,10 @@
 //   public interface ICategoryService
 //    {
 //        Task<List<CategoryResponse>> getAll();
-//        Task<CategoryResponse> getById(int categoriesId);
-//        Task<CategoryResponse> create(NewCategory newCategories);
-//        Task<CategoryResponse> update(int categoriesId, UpdateCategory updateCategories);
-//        Task<bool> delete(int categoriesId);
+//        Task<CategoryResponse> getById(int CategoryId);
+//        Task<CategoryResponse> create(NewCategory newCategory);
+//        Task<CategoryResponse> update(int CategoryId, UpdateCategory updateCategory);
+//        Task<bool> delete(int CategoryId);
 //    }
 
 //    // -----  ----- Muhmen P.//
@@ -37,33 +37,33 @@
 //        {
 //            //Category category = new Category
 //            //{
-//            //    category_name = newCategory.category_name
+//            //    CategoryName = newCategory.CategoryName
 //            //};
 
 //            //category = await _categoryRepository.create(category);
 
 //            //return category == null ? null : new CategoryResponse
 //            //{
-//            //categories_id = category.categories_id,
-//            // category_name = category.category_name
+//            //Id = category.Id,
+//            // CategoryName = category.CategoryName
 
 //            //};
 //        }
 
-//        public async Task<bool> delete(int categoriesId)
+//        public async Task<bool> delete(int CategoryId)
 //        {
-//            var result = await _categoryRepository.delete(categoriesId);
+//            var result = await _categoryRepository.delete(CategoryId);
 //            return true;
 //        }
 
 //        public async Task<List<CategoryResponse>> getAll()
 //        {
-//            //List<Category> categories = await _categoryRepository.getAll();
-//            //return categories.Select(c => new CategoryResponse
+//            //List<Category> Category = await _categoryRepository.getAll();
+//            //return Category.Select(c => new CategoryResponse
 //            //{
-//            //    categories_id = c.categories_id,
-//            //    category_name = c.category_name,
-//            //    products = c.products.Select(p => new CategoriesProductsResponse
+//            //    Id = c.Id,
+//            //    CategoryName = c.CategoryName,
+//            //    products = c.products.Select(p => new CategoryProductsResponse
 //            //    {
 //            //        ProductId = p.ProductId,
 //            //        breed_name = p.breed_name,
@@ -77,28 +77,28 @@
 //            //}).ToList();
 //        }
 
-//        public async Task<CategoryResponse> getById(int categoriesId)
+//        public async Task<CategoryResponse> getById(int CategoryId)
 //        {
-//            //Category categories = await _categoryRepository.getById(categoriesId);
-//            //return categories == null ? null : new CategoryResponse
+//            //Category Category = await _categoryRepository.getById(CategoryId);
+//            //return Category == null ? null : new CategoryResponse
 //            //{
-//            //    categories_id = categories.categories_id,
-//            //    category_name = categories.category_name
+//            //    Id = Category.Id,
+//            //    CategoryName = Category.CategoryName
 //            //};
 //        }
 
-//        public async Task<CategoryResponse> update(int categoriesId, UpdateCategory updateCategories)
+//        public async Task<CategoryResponse> update(int CategoryId, UpdateCategory updateCategory)
 //        {
-//        //   Category categories = new Category
+//        //   Category Category = new Category
 //        //   {
-//        //       category_name = updateCategories.category_name
+//        //       CategoryName = updateCategory.CategoryName
 //        //   };
 
-//        //   categories = await _categoryRepository.update(categoriesId, categories);
+//        //   Category = await _categoryRepository.update(CategoryId, Category);
 
-//        //    return categories == null ? null : new CategoryResponse { 
-//        //        categories_id = categories.categories_id, 
-//        //        category_name = categories.category_name 
+//        //    return Category == null ? null : new CategoryResponse { 
+//        //        Id = Category.Id, 
+//        //        CategoryName = Category.CategoryName 
 //        //    };
 //        //}
 

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Repositories.CategoriesRepository
+namespace OrangularAPI.Repositories.CategoryRepository
 {
 
     public class CategoryRepository : ICategoryRepository
@@ -33,7 +33,7 @@ namespace OrangularAPI.Repositories.CategoriesRepository
 
         public async Task<List<Category>> GetAll()
         {
-            //returning all categories includes products
+            //returning all Category includes products
             return await _context.Category
                 .Include(p => p.Product).ToListAsync();
         }
@@ -69,16 +69,16 @@ namespace OrangularAPI.Repositories.CategoriesRepository
 
 
 
-        public async Task<Category> Update(int categoryId, Category categories)
+        public async Task<Category> Update(int categoryId, Category Category)
         {
-            Category updateCategories = await _context.Category.FirstOrDefaultAsync(c => c.Id == categoryId);
-            if (updateCategories != null)
+            Category updateCategory = await _context.Category.FirstOrDefaultAsync(c => c.Id == categoryId);
+            if (updateCategory != null)
             {
-                updateCategories.CategoryName = categories.CategoryName;
+                updateCategory.CategoryName = Category.CategoryName;
                 await _context.SaveChangesAsync();
             }
 
-            return updateCategories;
+            return updateCategory;
         }
 
 

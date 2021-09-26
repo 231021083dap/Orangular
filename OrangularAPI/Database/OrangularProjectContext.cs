@@ -63,13 +63,13 @@ namespace OrangularAPI.Database
             //// --- Order_Lists Foreign keys opførsel --- //
 
 
-            //// --- Categories Foreign keys opførsel --- //
+            //// --- Category Foreign keys opførsel --- //
             //// On delete restrict
             //modelBuilder.Entity<Product>()
             //    .HasOne(lambda => lambda.Category)
             //    .WithMany(lambda => lambda.Product)
             //    .OnDelete(DeleteBehavior.Restrict);
-            //// --- Categories Foreign keys opførsel --- //
+            //// --- Category Foreign keys opførsel --- //
 
             //// --- Products Foreign keys opførsel --- //
             //// On delete restrict
@@ -137,7 +137,7 @@ namespace OrangularAPI.Database
                 ProductId = 1       // reference til produktet (hunden)
             });
 
-            // Categories
+            // Category
             modelBuilder.Entity<Category>().HasData(
             new Category
             {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Repositories.CategoriesRepository {
+namespace OrangularAPI.Repositories.CategoryRepository {
     public interface ICategoryRepository
     {
         Task<List<Category>> GetAll();

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using OrangularAPI.DTO.Categories.Responses;
+using OrangularAPI.DTO.Category.Responses;
 using OrangularAPI.Services.CategoryServices;
 using System;
 using System.Collections.Generic;
@@ -11,12 +11,12 @@ namespace Orangular.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoriesController : ControllerBase
+    public class CategoryController : ControllerBase
     {
 
         private readonly ICategoryService _categoryService;
 
-        public CategoriesController(ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
         }
@@ -29,18 +29,18 @@ namespace Orangular.Controllers
         //{
         //    //try
         //    //{
-        //    //    List<CategoryResponse> categoriesResponses =
+        //    //    List<CategoryResponse> CategoryResponses =
         //    //        await _categoryService.GetAll();
 
-        //    //    if (categoriesResponses == null)
+        //    //    if (CategoryResponses == null)
         //    //    {
         //    //        return Problem("Nothing...");
         //    //    }
-        //    //    if (categoriesResponses.Count == 0)
+        //    //    if (CategoryResponses.Count == 0)
         //    //    {
         //    //        return NoContent();
         //    //    }
-        //    //    return Ok(categoriesResponses);
+        //    //    return Ok(CategoryResponses);
         //    //}
         //    //catch (Exception exp)
         //    //{
@@ -51,25 +51,25 @@ namespace Orangular.Controllers
         //}
 
 
-        //[HttpGet("{categories_id}")]
+        //[HttpGet("{Id}")]
         //[ProducesResponseType(StatusCodes.Status200OK)]
         //[ProducesResponseType(StatusCodes.Status204NoContent)]
         //[ProducesResponseType(StatusCodes.Status404NotFound)]
         //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<IActionResult> getById([FromRoute] int categories_id)
+        //public async Task<IActionResult> getById([FromRoute] int Id)
         //{
 
 
         //    try
         //    {
-        //        CategoriesResponse categoriesResponse =
-        //            await _categoryService.getById(categories_id);
+        //        CategoryResponse CategoryResponse =
+        //            await _categoryService.getById(Id);
 
-        //        if (categoriesResponse == null)
+        //        if (CategoryResponse == null)
         //        {
         //            return Problem("Nothing...");
         //        }
-        //        return Ok(categoriesResponse);
+        //        return Ok(CategoryResponse);
         //    }
         //    catch (Exception exp)
         //    {
@@ -86,20 +86,20 @@ namespace Orangular.Controllers
         //[ProducesResponseType(StatusCodes.Status204NoContent)]
         //[ProducesResponseType(StatusCodes.Status400BadRequest)]
         //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<IActionResult> create([FromBody] NewCategories newCategories)
+        //public async Task<IActionResult> create([FromBody] NewCategory newCategory)
         //{
 
 
         //    try
         //    {
-        //        CategoriesResponse categoriesResponse = 
-        //            await _categoryService.create(newCategories);
+        //        CategoryResponse CategoryResponse = 
+        //            await _categoryService.create(newCategory);
 
-        //        if (categoriesResponse == null)
+        //        if (CategoryResponse == null)
         //        {
         //            return Problem("Nothing...");
         //        }
-        //        return Ok(categoriesResponse);
+        //        return Ok(CategoryResponse);
         //    }
         //    catch (Exception exp)
         //    {
@@ -111,27 +111,27 @@ namespace Orangular.Controllers
 
         //}
 
-        //[HttpPut("{categories_id}")]
+        //[HttpPut("{Id}")]
         //[ProducesResponseType(StatusCodes.Status200OK)]
         //[ProducesResponseType(StatusCodes.Status400BadRequest)]
         //[ProducesResponseType(StatusCodes.Status204NoContent)]
         //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<IActionResult> update([FromRoute] int categories_id, 
-        //[FromBody] UpdateCategories updateCategories)
+        //public async Task<IActionResult> update([FromRoute] int Id, 
+        //[FromBody] UpdateCategory updateCategory)
         //{
 
 
         //    try
         //    {
-        //        CategoriesResponse categoriesResponse =
-        //            await _categoryService.update(categories_id, updateCategories);
+        //        CategoryResponse CategoryResponse =
+        //            await _categoryService.update(Id, updateCategory);
 
-        //        if (categoriesResponse == null)
+        //        if (CategoryResponse == null)
         //        {
         //            return Problem("Nothing...");
         //        }
 
-        //        return Ok(categoriesResponse);
+        //        return Ok(CategoryResponse);
         //    }
         //    catch (Exception exp)
         //    {
@@ -144,17 +144,17 @@ namespace Orangular.Controllers
         //}
 
 
-        //[HttpDelete("{categories_id}")]
+        //[HttpDelete("{Id}")]
         //[ProducesResponseType(StatusCodes.Status200OK)]
         //[ProducesResponseType(StatusCodes.Status400BadRequest)]
         //[ProducesResponseType(StatusCodes.Status204NoContent)]
         //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<IActionResult> delete([FromRoute] int categories_id)
+        //public async Task<IActionResult> delete([FromRoute] int Id)
         //{
 
         //    try
         //    {
-        //        bool result = await _categoryService.delete(categories_id);
+        //        bool result = await _categoryService.delete(Id);
 
         //        if (!result)
         //        {

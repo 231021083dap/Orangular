@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.DTO.Categories.Requests
+namespace OrangularAPI.DTO.Category.Requests
 {
     public class NewCategory
     {
