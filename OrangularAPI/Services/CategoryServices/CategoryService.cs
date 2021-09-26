@@ -65,7 +65,7 @@
 //            //    category_name = c.category_name,
 //            //    products = c.products.Select(p => new CategoriesProductsResponse
 //            //    {
-//            //        products_id = p.products_id,
+//            //        ProductId = p.ProductId,
 //            //        breed_name = p.breed_name,
 //            //        price = p.price,
 //            //        weight = p.weight,

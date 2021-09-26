@@ -82,11 +82,11 @@ namespace OrangularTests.ProductsTests
         public async void GetById_ShouldReturnAnProductsResponse_WhenProductsExists()
         {
             // Arrange
-            int products_Id = 1;
+            int ProductId = 1;
 
             Product Products = new Product
             {
-                Id = products_Id,
+                Id = ProductId,
                 BreedName = "Beetle",
                 Price = 1000,
                 Weight = 10000,
@@ -99,7 +99,7 @@ namespace OrangularTests.ProductsTests
                 .ReturnsAsync(Products);
 
             // Act
-            var result = await _sut.GetById(products_Id);
+            var result = await _sut.GetById(ProductId);
 
             // Assert
             Assert.NotNull(result);
@@ -117,14 +117,14 @@ namespace OrangularTests.ProductsTests
         public async void GetById_ShouldReturnNull_WhenProductsDoesNotExist()
         {
             // Arrange
-            int products_Id = 1;
+            int ProductId = 1;
 
             _productsRepository
                 .Setup(a => a.GetById(It.IsAny<int>()))
                 .ReturnsAsync(() => null);
 
             // Act
-            var result = await _sut.GetById(products_Id);
+            var result = await _sut.GetById(ProductId);
 
             // Assert
             Assert.Null(result);
@@ -143,11 +143,11 @@ namespace OrangularTests.ProductsTests
                 Description = "Test test"
             };
 
-            int products_Id = 1;
+            int ProductId = 1;
 
             Product Products = new()
             {
-                Id = products_Id,
+                Id = ProductId,
                 BreedName = "Beetle",
                 Price = 1000,
                 Weight = 10000,
@@ -186,11 +186,11 @@ namespace OrangularTests.ProductsTests
                 Description = "Test test"
             };
 
-            int products_Id = 1;
+            int ProductId = 1;
 
             ProductResponse ProductResponse = new ProductResponse
             {
-                ProductId = products_Id,
+                ProductId = ProductId,
                 BreedName = "Cane Corso",
                 Price = 3000,
                 Weight = 30000,
@@ -200,7 +200,7 @@ namespace OrangularTests.ProductsTests
 
             Product Products = new()
             {
-                Id = products_Id,
+                Id = ProductId,
                 BreedName = "Cane Corso",
                 Price = 3000,
                 Weight = 30000,
@@ -213,7 +213,7 @@ namespace OrangularTests.ProductsTests
                 .ReturnsAsync(Products);
 
             // Act
-            var result = await _sut.Update(products_Id, updateProduct);
+            var result = await _sut.Update(ProductId, updateProduct);
 
             // Assert
             Assert.NotNull(result);
@@ -239,14 +239,14 @@ namespace OrangularTests.ProductsTests
                 Description = "Test test"
             };
 
-            int products_Id = 1;
+            int ProductId = 1;
 
             _productsRepository
                 .Setup(a => a.Update(It.IsAny<int>(), It.IsAny<Product>()))
                 .ReturnsAsync(() => null);
 
             // Act
-            var result = await _sut.Update(products_Id, updateProducts);
+            var result = await _sut.Update(ProductId, updateProducts);
 
             // Assert
             Assert.Null(result);
@@ -256,11 +256,11 @@ namespace OrangularTests.ProductsTests
         public async void Delete_ShouldReturnTrue_WhenDeleteIsSuccess()
         {
             // Arrange
-            int products_Id = 1;
+            int ProductId = 1;
 
             Product Products = new()
             {
-                Id = products_Id,
+                Id = ProductId,
                 BreedName = "Cane Corso",
                 Price = 3000,
                 Weight = 30000,
@@ -273,7 +273,7 @@ namespace OrangularTests.ProductsTests
                 .ReturnsAsync(Products);
 
             // Act
-            var result = await _sut.Delete(products_Id);
+            var result = await _sut.Delete(ProductId);
 
             // Assert
             Assert.True(result);

@@ -7,9 +7,9 @@ namespace OrangularAPI.Repositories.ProductsRepository
     public interface IProductRepository
     {
         Task<List<Product>> GetAll();
-        Task<Product> GetById(int products_id);
+        Task<Product> GetById(int ProductId);
         Task<Product> Create(Product products);
-        Task<Product> Update(int products_id, Product products);
-        Task<Product> Delete(int products_id);
+        Task<Product> Update(int ProductId, Product products);
+        Task<Product> Delete(int ProductId);
     }
 }

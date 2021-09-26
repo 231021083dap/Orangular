@@ -22,9 +22,9 @@ namespace OrangularAPI.Repositories.OrderListsRepository
             return order_Lists;
         }
 
-        public async Task<OrderList> Delete(int order_lists_id)
+        public async Task<OrderList> Delete(int OrderListId)
         {
-            OrderList order_Lists = await _context.OrderList.FirstOrDefaultAsync(a => a.Id == order_lists_id);
+            OrderList order_Lists = await _context.OrderList.FirstOrDefaultAsync(a => a.Id == OrderListId);
             if (order_Lists != null)
             {
                 _context.OrderList.Remove(order_Lists);
@@ -39,14 +39,14 @@ namespace OrangularAPI.Repositories.OrderListsRepository
               .ToListAsync();
         }
 
-        public async Task<OrderList> GetById(int order_lists_id)
+        public async Task<OrderList> GetById(int OrderListId)
         {
-            return await _context.OrderList.FirstOrDefaultAsync(a => a.Id == order_lists_id);
+            return await _context.OrderList.FirstOrDefaultAsync(a => a.Id == OrderListId);
         }
 
-        public async Task<OrderList> Update(int order_lists_id, OrderList order_Lists)
+        public async Task<OrderList> Update(int OrderListId, OrderList order_Lists)
         {
-            OrderList updateOrder_Lists = await _context.OrderList.FirstOrDefaultAsync(a => a.Id == order_lists_id);
+            OrderList updateOrder_Lists = await _context.OrderList.FirstOrDefaultAsync(a => a.Id == OrderListId);
             if (updateOrder_Lists != null)
             {
                 updateOrder_Lists.User = order_Lists.User;

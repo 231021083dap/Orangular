@@ -33,14 +33,14 @@
 //                List<Order_Lists> order_Lists = new();
 //                order_Lists.Add(new Order_Lists
 //                {
-//                    order_lists_id = 1,
+//                    OrderListId = 1,
 //                    order_date_time = DateTime.Parse("2021-12-21 12:55:00")
 
 //                });
 
 //                order_Lists.Add(new Order_Lists
 //                {
-//                    order_lists_id = 2,
+//                    OrderListId = 2,
 //                    order_date_time = DateTime.Parse("2021-12-23 12:55:00")
 //                });
 
@@ -80,11 +80,11 @@
 //            public async void GetById_ShouldReturnAnOrder_ListsResponse_WhenOrder_ListsExists()
 //            {
 //                // Arrange
-//                int order_lists_id = 1;
+//                int OrderListId = 1;
 
 //                Order_Lists Order_Lists = new Order_Lists
 //                {
-//                    order_lists_id = order_lists_id,
+//                    OrderListId = OrderListId,
 //                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
 //                };
 
@@ -93,12 +93,12 @@
 //                    .ReturnsAsync(Order_Lists);
 
 //                // Act
-//                var result = await _sut.GetById(order_lists_id);
+//                var result = await _sut.GetById(OrderListId);
 
 //                // Assert
 //                Assert.NotNull(result);
 //                Assert.IsType<Order_ListsResponse>(result);
-//                Assert.Equal(Order_Lists.order_lists_id, result.order_lists_id);
+//                Assert.Equal(Order_Lists.OrderListId, result.OrderListId);
 //                Assert.Equal(Order_Lists.order_date_time, result.order_date_time);
 
 
@@ -108,14 +108,14 @@
 //            public async void GetById_ShouldReturnNull_WhenOrder_ListsDoesNotExist()
 //            {
 //                // Arrange
-//                int order_lists_id = 1;
+//                int OrderListId = 1;
 
 //                _order_ListsRepository
 //                    .Setup(a => a.GetById(It.IsAny<int>()))
 //                    .ReturnsAsync(() => null);
 
 //                // Act
-//                var result = await _sut.GetById(order_lists_id);
+//                var result = await _sut.GetById(OrderListId);
 
 //                // Assert
 //                Assert.Null(result);
@@ -130,11 +130,11 @@
 //                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
 //                };
 
-//                int order_lists_id = 1;
+//                int OrderListId = 1;
 
 //                Order_Lists Order_Lists = new Order_Lists
 //                {
-//                    order_lists_id = order_lists_id,
+//                    OrderListId = OrderListId,
 //                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
 //                };
 
@@ -148,7 +148,7 @@
 //                // Assert
 //                Assert.NotNull(result);
 //                Assert.IsType<Order_ListsResponse>(result);
-//                Assert.Equal(Order_Lists.order_lists_id, result.order_lists_id);
+//                Assert.Equal(Order_Lists.OrderListId, result.OrderListId);
 //                Assert.Equal(Order_Lists.order_date_time, result.order_date_time);
 
 //            }
@@ -162,17 +162,17 @@
 //                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
 //                };
 
-//                int order_lists_id = 1;
+//                int OrderListId = 1;
 
 //                Order_ListsResponse Order_ListsResponse = new Order_ListsResponse
 //                {
-//                    order_lists_id = order_lists_id,
+//                    OrderListId = OrderListId,
 //                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
 //                };
 
 //                Order_Lists Order_Lists = new Order_Lists
 //                {
-//                    order_lists_id = order_lists_id,
+//                    OrderListId = OrderListId,
 //                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
 //                };
 
@@ -181,12 +181,12 @@
 //                    .ReturnsAsync(Order_Lists);
 
 //                // Act
-//                var result = await _sut.Update(order_lists_id, updateOrder_Lists);
+//                var result = await _sut.Update(OrderListId, updateOrder_Lists);
 
 //                // Assert
 //                Assert.NotNull(result);
 //                Assert.IsType<Order_ListsResponse>(result);
-//                Assert.Equal(Order_Lists.order_lists_id, result.order_lists_id);
+//                Assert.Equal(Order_Lists.OrderListId, result.OrderListId);
 //                Assert.Equal(Order_Lists.order_date_time, result.order_date_time);
 
 //            }
@@ -200,14 +200,14 @@
 //                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
 //                };
 
-//                int order_lists_id = 1;
+//                int OrderListId = 1;
 
 //                _order_ListsRepository
 //                    .Setup(a => a.Update(It.IsAny<int>(), It.IsAny<Order_Lists>()))
 //                    .ReturnsAsync(() => null);
 
 //                // Act
-//                var result = await _sut.Update(order_lists_id, updateOrder_Lists);
+//                var result = await _sut.Update(OrderListId, updateOrder_Lists);
 
 //                // Assert
 //                Assert.Null(result);
@@ -217,11 +217,11 @@
 //            public async void Delete_ShouldReturnTrue_WhenDeleteIsSuccess()
 //            {
 //                // Arrange
-//                int order_lists_id = 1;
+//                int OrderListId = 1;
 
 //                Order_Lists Order_Lists = new Order_Lists
 //                {
-//                    order_lists_id = order_lists_id,
+//                    OrderListId = OrderListId,
 //                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
 //                };
 
@@ -230,7 +230,7 @@
 //                    .ReturnsAsync(Order_Lists);
 
 //                // Act
-//                var result = await _sut.Delete(order_lists_id);
+//                var result = await _sut.Delete(OrderListId);
 
 //                // Assert
 //                Assert.True(result);

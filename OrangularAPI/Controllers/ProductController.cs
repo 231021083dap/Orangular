@@ -50,16 +50,16 @@ namespace OrangularAPI.Controllers
             }
         }
 
-        [HttpGet("{products_id}")]
+        [HttpGet("{ProductId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetById([FromRoute] int products_id)
+        public async Task<IActionResult> GetById([FromRoute] int ProductId)
         {
             try
             {
-                ProductResponse Products = await _productService.GetById(products_id);
+                ProductResponse Products = await _productService.GetById(ProductId);
 
                 if (Products == null)
                 {
@@ -97,15 +97,15 @@ namespace OrangularAPI.Controllers
             }
         }
 
-        [HttpPut("{products_id}")]
+        [HttpPut("{ProductId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update([FromRoute] int products_id, [FromBody] UpdateProduct updateProduct)
+        public async Task<IActionResult> Update([FromRoute] int ProductId, [FromBody] UpdateProduct updateProduct)
         {
             try
             {
-                ProductResponse Products = await _productService.Update(products_id, updateProduct);
+                ProductResponse Products = await _productService.Update(ProductId, updateProduct);
 
                 if (Products == null)
                 {
@@ -120,15 +120,15 @@ namespace OrangularAPI.Controllers
             }
         }
 
-        [HttpDelete("{products_id}")]
+        [HttpDelete("{ProductId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Delete([FromRoute] int products_id)
+        public async Task<IActionResult> Delete([FromRoute] int ProductId)
         {
             try
             {
-                bool result = await _productService.Delete(products_id);
+                bool result = await _productService.Delete(ProductId);
 
                 if (!result)
                 {

@@ -24,9 +24,9 @@ namespace OrangularAPI.Repositories.ProductsRepository
         }
 
 
-        public async Task<Product> Delete(int products_id)
+        public async Task<Product> Delete(int ProductId)
         {
-            Product products = await _context.Product.FirstOrDefaultAsync(a => a.Id == products_id);
+            Product products = await _context.Product.FirstOrDefaultAsync(a => a.Id == ProductId);
             if (products != null)
             {
                 _context.Product.Remove(products);
@@ -42,14 +42,14 @@ namespace OrangularAPI.Repositories.ProductsRepository
                 .ToListAsync();
         }
 
-        public async Task<Product> GetById(int products_id)
+        public async Task<Product> GetById(int ProductId)
         {
-            return await _context.Product.FirstOrDefaultAsync(a => a.Id == products_id);
+            return await _context.Product.FirstOrDefaultAsync(a => a.Id == ProductId);
        }
 
-        public async Task<Product> Update(int products_id, Product products)
+        public async Task<Product> Update(int ProductId, Product products)
         {
-            Product updateProducts = await _context.Product.FirstOrDefaultAsync(a => a.Id == products_id);
+            Product updateProducts = await _context.Product.FirstOrDefaultAsync(a => a.Id == ProductId);
             if (updateProducts != null)
             {
                 updateProducts.BreedName = products.BreedName;

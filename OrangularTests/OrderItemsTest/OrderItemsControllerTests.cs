@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Moq;
 using Orangular.Controllers;
-using Orangular.DTO.Order_Items.Requests;
-using Orangular.DTO.Order_Items.Responses;
-using Orangular.Services.order_items;
+using OrangularAPI.DTO.OrderItems.Requests;
+using OrangularAPI.DTO.OrderItems.Responses;
+using OrangularAPI.Services.OrderItemServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace OrangularTests.OrderItemsTest
         private readonly Mock<IOrderItemService> _orderItemService = new();
         public OrderItemsControllerTests()
         {
-            _sut = new Order_ItemsController(_orderItemService.Object);
+            _sut = new OrderItemController(_orderItemService.Object);
         }
         // -----------------------------------------------------------------------------------------------------------------------
         // GetAll Tests
@@ -27,14 +27,14 @@ namespace OrangularTests.OrderItemsTest
         public async void GetAll_ShouldReturnStatusCode200_WhenDataExists()
         {
             // arrange
-            List<Order_ItemsResponse> orderItem = new();
-            orderItem.Add(new Order_ItemsResponse
+            List<OrderItemResponse> orderItem = new();
+            orderItem.Add(new OrderItemResponse
             {
-                order_items_id = 1,
-                price = 1, 
-                quantity = 1,
-                Order_Lists = new Order_ItemsOrder_ListsResponse { },
-                Products = new Order_ItemsProductsResponse { }
+                OrderItemId = 1,
+                Price = 1, 
+                Quantity = 1,
+                OrderItemOrderListResponse = new OrderItemOrderListResponse { },
+                OrderItemProductResponse = new OrderItemProductResponse { }
             });
             _orderItemService.Setup(s => s.GetAll()).ReturnsAsync(orderItem);
             // act
@@ -47,7 +47,7 @@ namespace OrangularTests.OrderItemsTest
         public async void GetAll_ShouldReturnStatusCode204_WhenNoDataExists()
         {
             // Arrange 
-            List<Order_ItemsResponse> orderItem = new();
+            List<OrderItemResponse> orderItem = new();
             _orderItemService.Setup(s => s.GetAll()).ReturnsAsync(orderItem);
 
             // Act
@@ -61,7 +61,7 @@ namespace OrangularTests.OrderItemsTest
         public async void GetAll_ShouldReturnStatusCode500_WhenNullIsReturnedFromService()
         {
             // Arrange 
-            List<Order_ItemsResponse> book = new();
+            List<OrderItemResponse> book = new();
             _orderItemService.Setup(s => s.GetAll()).ReturnsAsync(() => null);
 
             // Act
@@ -78,10 +78,10 @@ namespace OrangularTests.OrderItemsTest
         {
             // Arrange
             int orderItemId = 1;
-            Order_ItemsResponse orderItem = new Order_ItemsResponse
+            OrderItemResponse orderItem = new OrderItemResponse
             {
-                Order_Lists = new Order_ItemsOrder_ListsResponse{},
-                Products = new Order_ItemsProductsResponse { }
+                OrderItemOrderListResponse = new OrderItemOrderListResponse{},
+                OrderItemProductResponse = new OrderItemProductResponse { }
             };
             _orderItemService.Setup(s => s.GetById(It.IsAny<int>())).ReturnsAsync(orderItem);
             // Act
@@ -119,26 +119,26 @@ namespace OrangularTests.OrderItemsTest
         public async void Create_ShouldReturnStatusCode200_WhenDataIsCreated()
         {
             // Arrange
-            NewOrder_Items newOrderItem = new NewOrder_Items
+            NewOrderItem newOrderItem = new NewOrderItem
             {
-                price = 1 ,
-                quantity = 1,
-                order_lists_id = 1,
-                products_id = 1 
+                Price = 1 ,
+                Quantity = 1,
+                OrderListId = 1,
+                ProductId = 1 
             };
-            Order_ItemsResponse orderItem = new Order_ItemsResponse
+            OrderItemResponse orderItem = new OrderItemResponse
             {
-                order_items_id = 1,
-                price = 1,
-                quantity = 1,
-                Order_Lists = new Order_ItemsOrder_ListsResponse
+                OrderItemId = 1,
+                Price = 1,
+                Quantity = 1,
+                OrderItemOrderListResponse = new OrderItemOrderListResponse
                 {
                 },
-                Products = new Order_ItemsProductsResponse
+                OrderItemProductResponse = new OrderItemProductResponse
                 {
                 }
             };
-            _orderItemService.Setup(s => s.Create(It.IsAny<NewOrder_Items>())).ReturnsAsync(orderItem);
+            _orderItemService.Setup(s => s.Create(It.IsAny<NewOrderItem>())).ReturnsAsync(orderItem);
             // Act
             var result = await _sut.Create(newOrderItem);
             // Assert
@@ -149,14 +149,14 @@ namespace OrangularTests.OrderItemsTest
         public async void Create_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
             // Arrange
-            NewOrder_Items newOrderItem = new NewOrder_Items
+            NewOrderItem newOrderItem = new NewOrderItem
             {
-                price = 1,
-                quantity = 1,
-                order_lists_id = 1,
-                products_id = 1
+                Price = 1,
+                Quantity = 1,
+                OrderListId = 1,
+                ProductId = 1
             };
-            _orderItemService.Setup(s => s.Create(It.IsAny<NewOrder_Items>())).ReturnsAsync(() => throw new Exception("This is an exception :)"));
+            _orderItemService.Setup(s => s.Create(It.IsAny<NewOrderItem>())).ReturnsAsync(() => throw new Exception("This is an exception :)"));
             // Act
             var result = await _sut.Create(newOrderItem);
             // Assert
@@ -170,15 +170,15 @@ namespace OrangularTests.OrderItemsTest
         {
             // Arrange
             int orderItemId = 1;
-            UpdateOrder_Items updateOrderItem = new UpdateOrder_Items
+            UpdateOrderItem updateOrderItem = new UpdateOrderItem
             {
             };
-            Order_ItemsResponse orderItem = new Order_ItemsResponse
+            OrderItemResponse orderItem = new OrderItemResponse
             {
-                Order_Lists = new Order_ItemsOrder_ListsResponse{},
-                Products = new Order_ItemsProductsResponse{}
+                OrderItemOrderListResponse = new OrderItemOrderListResponse{},
+                OrderItemProductResponse = new OrderItemProductResponse{}
             };
-            _orderItemService.Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateOrder_Items>())).ReturnsAsync(orderItem);
+            _orderItemService.Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateOrderItem>())).ReturnsAsync(orderItem);
             // Acts
             var result = await _sut.Update(orderItemId, updateOrderItem);
             // Assert
@@ -190,15 +190,15 @@ namespace OrangularTests.OrderItemsTest
         {
             // Arrange
             int orderItemId = 1;
-            UpdateOrder_Items updateOrderItem = new UpdateOrder_Items
+            UpdateOrderItem updateOrderItem = new UpdateOrderItem
             {
             };
-            Order_ItemsResponse orderItem = new Order_ItemsResponse
+            OrderItemResponse orderItem = new OrderItemResponse
             {
-                Order_Lists = new Order_ItemsOrder_ListsResponse { },
-                Products = new Order_ItemsProductsResponse { }
+                OrderItemOrderListResponse = new OrderItemOrderListResponse { },
+                OrderItemProductResponse = new OrderItemProductResponse { }
             };
-            _orderItemService.Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateOrder_Items>())).ReturnsAsync(() => throw new Exception("This is an exception :)"));
+            _orderItemService.Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateOrderItem>())).ReturnsAsync(() => throw new Exception("This is an exception :)"));
             // Acts
             var result = await _sut.Update(orderItemId, updateOrderItem);
             // Assert

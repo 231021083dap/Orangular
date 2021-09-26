@@ -117,10 +117,10 @@ namespace OrangularTests.OrderListsTest
         public async void GetById_ShouldReturnStatusCode200_WhenDataExists()
         {
             // Arrange
-            int order_lists_id = 1;
+            int OrderListId = 1;
             OrderListResponse order_Lists = new OrderListResponse
             {
-                OrderListId = order_lists_id,
+                OrderListId = OrderListId,
                 OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
@@ -129,7 +129,7 @@ namespace OrangularTests.OrderListsTest
                 .ReturnsAsync(order_Lists);
 
             // Act
-            var result = await _sut.GetById(order_lists_id);
+            var result = await _sut.GetById(OrderListId);
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
@@ -140,13 +140,13 @@ namespace OrangularTests.OrderListsTest
         public async void GetById_ShouldReturnStatusCode404_Whenorder_ListsDoesNotExist()
         {
             // Arrange
-            int order_lists_id = 1;
+            int OrderListId = 1;
 
             _orderListService
                 .Setup(s => s.GetById(It.IsAny<int>()))
                 .ReturnsAsync(() => null);
             // Act
-            var result = await _sut.GetById(order_lists_id);
+            var result = await _sut.GetById(OrderListId);
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
@@ -173,7 +173,7 @@ namespace OrangularTests.OrderListsTest
         public async void Create_ShouldReturnStatusCode200_WhenDataIsCreated()
         {
             // Arrange
-            int order_lists_id = 1;
+            int OrderListId = 1;
             NewOrderList NewOrder_Lists = new NewOrderList
             {
                 OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
@@ -181,7 +181,7 @@ namespace OrangularTests.OrderListsTest
 
             OrderListResponse order_Lists = new OrderListResponse
             {
-                OrderListId = order_lists_id,
+                OrderListId = OrderListId,
                 OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
@@ -222,7 +222,7 @@ namespace OrangularTests.OrderListsTest
         public async void Update_ShouldReturnStatusCode200_WhenDataIsSaved()
         {
             // Arrange
-            int order_lists_id = 1;
+            int OrderListId = 1;
             UpdateOrderList updateorder_Lists = new UpdateOrderList
             {
                 OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
@@ -230,7 +230,7 @@ namespace OrangularTests.OrderListsTest
 
             OrderListResponse order_Lists = new OrderListResponse
             {
-                OrderListId = order_lists_id,
+                OrderListId = OrderListId,
                 OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
             };
 
@@ -239,7 +239,7 @@ namespace OrangularTests.OrderListsTest
                 .ReturnsAsync(order_Lists);
 
             // Act
-            var result = await _sut.Update(order_lists_id, updateorder_Lists);
+            var result = await _sut.Update(OrderListId, updateorder_Lists);
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
@@ -250,7 +250,7 @@ namespace OrangularTests.OrderListsTest
         public async void Update_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
             // Arrange
-            int order_lists_id = 1;
+            int OrderListId = 1;
             UpdateOrderList updateorder_Lists = new UpdateOrderList
             {
                 OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
@@ -261,7 +261,7 @@ namespace OrangularTests.OrderListsTest
                 .ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act
-            var result = await _sut.Update(order_lists_id, updateorder_Lists);
+            var result = await _sut.Update(OrderListId, updateorder_Lists);
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
@@ -272,14 +272,14 @@ namespace OrangularTests.OrderListsTest
         public async void Delete_ShouldReturnStatusCode204_Whenorder_ListsIsDeleted()
         {
             // Arrange
-            int order_lists_id = 1;
+            int OrderListId = 1;
 
             _orderListService
                 .Setup(s => s.Delete(It.IsAny<int>()))
                 .ReturnsAsync(true);
 
             // Act
-            var result = await _sut.Delete(order_lists_id);
+            var result = await _sut.Delete(OrderListId);
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
@@ -290,14 +290,14 @@ namespace OrangularTests.OrderListsTest
         public async void Delete_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
             // Arrange
-            int order_lists_id = 1;
+            int OrderListId = 1;
 
             _orderListService
                 .Setup(s => s.Delete(It.IsAny<int>()))
                 .ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act
-            var result = await _sut.Delete(order_lists_id);
+            var result = await _sut.Delete(OrderListId);
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;

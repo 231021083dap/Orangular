@@ -79,11 +79,11 @@ namespace Orangular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Update(
-            [FromRoute] int orderItemId, [FromBody] UpdateOrderItem updateOrder_Items)
+            [FromRoute] int orderItemId, [FromBody] UpdateOrderItem UpdateOrderItem)
         {
             try
             {
-                OrderItemResponse orderItem = await _orderItemService.Update(orderItemId, updateOrder_Items);
+                OrderItemResponse orderItem = await _orderItemService.Update(orderItemId, UpdateOrderItem);
                 if (orderItem == null) return Problem("Returned null, orderItem was not updated");
                 return Ok(orderItem);
             }

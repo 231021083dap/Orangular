@@ -117,10 +117,10 @@ namespace OrangularTests.ProductsTests
         public async void GetById_ShouldReturnStatusCode200_WhenDataExists()
         {
             // Arrange
-            int products_Id = 1;
+            int ProductId = 1;
             ProductResponse products = new ProductResponse
             {
-                ProductId = products_Id,
+                ProductId = ProductId,
                 BreedName = "Cane Corso",
                 Price = 3000,
                 Weight = 30000,
@@ -133,7 +133,7 @@ namespace OrangularTests.ProductsTests
                 .ReturnsAsync(products);
 
             // Act
-            var result = await _sut.GetById(products_Id);
+            var result = await _sut.GetById(ProductId);
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
@@ -144,13 +144,13 @@ namespace OrangularTests.ProductsTests
         public async void GetById_ShouldReturnStatusCode404_WhenProductsDoesNotExist()
         {
             // Arrange
-            int products_id = 1;
+            int ProductId = 1;
 
             _productsService
                 .Setup(s => s.GetById(It.IsAny<int>()))
                 .ReturnsAsync(() => null);
             // Act
-            var result = await _sut.GetById(products_id);
+            var result = await _sut.GetById(ProductId);
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
@@ -177,7 +177,7 @@ namespace OrangularTests.ProductsTests
         public async void Create_ShouldReturnStatusCode200_WhenDataIsCreated()
         {
             // Arrange
-            int products_id = 1;
+            int ProductId = 1;
             NewProduct newProducts = new NewProduct
             {
                 BreedName = "Cane Corso",
@@ -189,7 +189,7 @@ namespace OrangularTests.ProductsTests
 
             ProductResponse products = new ProductResponse
             {
-                ProductId = products_id,
+                ProductId = ProductId,
                 BreedName = "Beetle",
                 Price = 1000,
                 Weight = 10000,
@@ -238,7 +238,7 @@ namespace OrangularTests.ProductsTests
         public async void Update_ShouldReturnStatusCode200_WhenDataIsSaved()
         {
             // Arrange
-            int products_id = 1;
+            int ProductId = 1;
             UpdateProduct updateProducts = new UpdateProduct
             {
                 BreedName = "Beetle",
@@ -250,7 +250,7 @@ namespace OrangularTests.ProductsTests
 
             ProductResponse products = new ProductResponse
             {
-                ProductId = products_id,
+                ProductId = ProductId,
                 BreedName = "Beetle",
                 Price = 1000,
                 Weight = 10000,
@@ -263,7 +263,7 @@ namespace OrangularTests.ProductsTests
                 .ReturnsAsync(products);
 
             // Act
-            var result = await _sut.Update(products_id, updateProducts);
+            var result = await _sut.Update(ProductId, updateProducts);
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
@@ -274,7 +274,7 @@ namespace OrangularTests.ProductsTests
         public async void Update_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
             // Arrange
-            int products_id = 1;
+            int ProductId = 1;
             UpdateProduct updateProducts = new UpdateProduct
             {
                 BreedName = "Beetle",
@@ -289,7 +289,7 @@ namespace OrangularTests.ProductsTests
                 .ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act
-            var result = await _sut.Update(products_id, updateProducts);
+            var result = await _sut.Update(ProductId, updateProducts);
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
@@ -300,14 +300,14 @@ namespace OrangularTests.ProductsTests
         public async void Delete_ShouldReturnStatusCode204_WhenProductsIsDeleted()
         {
             // Arrange
-            int products_id = 1;
+            int ProductId = 1;
 
             _productsService
                 .Setup(s => s.Delete(It.IsAny<int>()))
                 .ReturnsAsync(true);
 
             // Act
-            var result = await _sut.Delete(products_id);
+            var result = await _sut.Delete(ProductId);
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
@@ -318,14 +318,14 @@ namespace OrangularTests.ProductsTests
         public async void Delete_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
             // Arrange
-            int products_id = 1;
+            int ProductId = 1;
 
             _productsService
                 .Setup(s => s.Delete(It.IsAny<int>()))
                 .ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act
-            var result = await _sut.Delete(products_id);
+            var result = await _sut.Delete(ProductId);
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
