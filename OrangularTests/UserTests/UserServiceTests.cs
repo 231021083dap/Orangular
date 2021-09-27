@@ -7,7 +7,7 @@ using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.Login.Requests;
 using OrangularAPI.DTO.Users.Responses;
 using OrangularAPI.Helpers;
-using OrangularAPI.Repositories.users;
+using OrangularAPI.Repositories.Users;
 using OrangularAPI.Services.UsersService;
 // Orangular
 
@@ -141,7 +141,6 @@ namespace OrangularTests.UserTest
             {
                 Id = userId,
                 Email = "Test1@Mail.com",
-                Password = "Passw0rd",
                 Role = Role.User
             };
             _userRepository.Setup(a => a.Create(It.IsAny<User>())).ReturnsAsync(user);
@@ -152,7 +151,6 @@ namespace OrangularTests.UserTest
             Assert.IsType<UserResponse>(result);
             Assert.Equal(userId, result.UserId);
             Assert.Equal(newUser.Email, result.Email);
-            Assert.Equal(newUser.Password, result.Password);
             Assert.Equal(Role.User, result.Role);
         }
         [Fact]
@@ -187,7 +185,6 @@ namespace OrangularTests.UserTest
             {
                 Id = userId,
                 Email = "Test1@Mail.com",
-                Password = "Passw0rd",
                 Role = Role.User
             };
             _userRepository.Setup(u => u.Update(It.IsAny<int>(), It.IsAny<User>())).ReturnsAsync(user);
@@ -198,7 +195,6 @@ namespace OrangularTests.UserTest
             Assert.IsType<UserResponse>(result);
             Assert.Equal(userId, result.UserId);
             Assert.Equal(updateUser.Email, result.Email);
-            Assert.Equal(updateUser.Password, result.Password);
             Assert.Equal(updateUser.Role, result.Role);
         }
         [Fact]

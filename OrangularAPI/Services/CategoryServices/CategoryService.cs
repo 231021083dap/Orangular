@@ -1,109 +1,96 @@
-﻿//using Orangular.Database.Entities;
-//using Orangular.DTO.Category.Requests;
-//using Orangular.DTO.Category.Responses;
-//using Orangular.Repositories.Category;
-//using OrangularAPI.Database.Entities;
-//using OrangularAPI.DTO.Category.Requests;
-//using OrangularAPI.DTO.Category.Responses;
+﻿using OrangularAPI.Database.Entities;
+using OrangularAPI.DTO.Category.Requests;
+using OrangularAPI.DTO.Category.Responses;
+using OrangularAPI.Repositories.CategoryRepository;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-//using OrangularAPI.Repositories.CategoryRepository;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
+namespace OrangularAPI.Services.CategoryServices
+{
+    public class CategoryService : ICategoryService
+    {
+        private readonly ICategoryRepository _categoryRepository;
 
-//namespace OrangularAPI.Services.CategoryServices
-//{
-//   public interface ICategoryService
-//    {
-//        Task<List<CategoryResponse>> getAll();
-//        Task<CategoryResponse> getById(int CategoryId);
-//        Task<CategoryResponse> create(NewCategory newCategory);
-//        Task<CategoryResponse> update(int CategoryId, UpdateCategory updateCategory);
-//        Task<bool> delete(int CategoryId);
-//    }
+        public CategoryService(ICategoryRepository categoryRepository)
+        {
+            _categoryRepository = categoryRepository;
+        }
 
-//    // -----  ----- Muhmen P.//
-//    public class CategoryService : ICategoryService
-//    {
-//        private readonly ICategoryRepository _categoryRepository;
+        public async Task<List<CategoryResponse>> GetAll()
+        {
+            List<Category> Category = await _categoryRepository.GetAll();
+            return Category.Select(c => new CategoryResponse
+            {
+                categoryID = c.Id,
+                categoryName = c.CategoryName,
+                products = c.Product.Select(p => new CategoryProductResponse
+                {
+                    productID = p.Id,
+                    breedName = p.BreedName,
+                    price = p.Price,
+                    weight = p.Weight,
+                    gender = p.Gender,
+                    description = p.Description
 
-//        public CategoryService(ICategoryRepository categoryRepository)
-//        {
-//            _categoryRepository = categoryRepository;
-//        }
+                }).ToList()
 
-//        public async Task<CategoryResponse> create(NewCategory newCategory)
-//        {
-//            //Category category = new Category
-//            //{
-//            //    CategoryName = newCategory.CategoryName
-//            //};
+            }).ToList();
+        }
+        public async Task<CategoryResponse> GetById(int CategoryId)
+        {
+            Category Category = await _categoryRepository.GetById(CategoryId);
+            return Category == null ? null : new CategoryResponse
+            {
+                categoryID = Category.Id,
+                categoryName = Category.CategoryName,
+                products = Category.Product.Select(p => new CategoryProductResponse
+                {
+                    productID = p.Id,
+                    breedName = p.BreedName,
+                    price = p.Price,
+                    weight = p.Weight,
+                    gender = p.Gender,
+                    description = p.Description
+                }).ToList()
+            };
+        }
+        public async Task<CategoryResponse> Create(NewCategory newCategory)
+        {
+            Category category = new Category
+            {
+                CategoryName = newCategory.categoryName
+            };
 
-//            //category = await _categoryRepository.create(category);
+            category = await _categoryRepository.Create(category);
 
-//            //return category == null ? null : new CategoryResponse
-//            //{
-//            //Id = category.Id,
-//            // CategoryName = category.CategoryName
+            return category == null ? null : new CategoryResponse
+            {
+                categoryID = category.Id,
+                categoryName = category.CategoryName
+            };
+        }
+        public async Task<CategoryResponse> Update(int CategoryId, UpdateCategory updateCategory)
+        {
+            Category Category = new Category
+            {
+                CategoryName = updateCategory.categoryName
+            };
 
-//            //};
-//        }
+            Category = await _categoryRepository.Update(CategoryId, Category);
 
-//        public async Task<bool> delete(int CategoryId)
-//        {
-//            var result = await _categoryRepository.delete(CategoryId);
-//            return true;
-//        }
-
-//        public async Task<List<CategoryResponse>> getAll()
-//        {
-//            //List<Category> Category = await _categoryRepository.getAll();
-//            //return Category.Select(c => new CategoryResponse
-//            //{
-//            //    Id = c.Id,
-//            //    CategoryName = c.CategoryName,
-//            //    products = c.products.Select(p => new CategoryProductsResponse
-//            //    {
-//            //        ProductId = p.ProductId,
-//            //        breed_name = p.breed_name,
-//            //        price = p.price,
-//            //        weight = p.weight,
-//            //        gender = p.gender,
-//            //        description = p.description
-
-//            //    }).ToList()
-
-//            //}).ToList();
-//        }
-
-//        public async Task<CategoryResponse> getById(int CategoryId)
-//        {
-//            //Category Category = await _categoryRepository.getById(CategoryId);
-//            //return Category == null ? null : new CategoryResponse
-//            //{
-//            //    Id = Category.Id,
-//            //    CategoryName = Category.CategoryName
-//            //};
-//        }
-
-//        public async Task<CategoryResponse> update(int CategoryId, UpdateCategory updateCategory)
-//        {
-//        //   Category Category = new Category
-//        //   {
-//        //       CategoryName = updateCategory.CategoryName
-//        //   };
-
-//        //   Category = await _categoryRepository.update(CategoryId, Category);
-
-//        //    return Category == null ? null : new CategoryResponse { 
-//        //        Id = Category.Id, 
-//        //        CategoryName = Category.CategoryName 
-//        //    };
-//        //}
-
-
-//    }
-//}
-
-//// ----- CRUD on category ----- Muhmen P.//
+            return Category == null ? null : new CategoryResponse
+            {
+                categoryID = Category.Id,
+                categoryName = Category.CategoryName
+            };
+        }
+        public async Task<bool> Delete(int CategoryId)
+        {
+            var result = await _categoryRepository.Delete(CategoryId);
+            if (result != null) return true;
+            else return false;
+        }
+    }
+}

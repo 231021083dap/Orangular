@@ -7,6 +7,7 @@ using OrangularAPI.Services.AddressServices;
 using OrangularAPI.DTO.Addresses.Requests;
 using OrangularAPI.DTO.Addresses.Responses;
 using OrangularAPI.Repositories.AddressesRepository;
+using OrangularAPI.Repositories.Users;
 
 namespace OrangularTests.AddressesTest
 {
@@ -14,10 +15,11 @@ namespace OrangularTests.AddressesTest
     {
         private readonly AddressService _sut;
         private readonly Mock<IAddressRepository> _addressesRepository = new();
+        private readonly Mock<IUserRepository> _userRepository = new();
 
         public AddressesServiceTests()
         {
-            _sut = new AddressService(_addressesRepository.Object);
+            _sut = new AddressService(_addressesRepository.Object, _userRepository.Object);
         }
 
         // ---- GetAll Tests ---- //
@@ -34,6 +36,7 @@ namespace OrangularTests.AddressesTest
                     ZipCode = 2750,
                     CityName = "Ballerup",
                     UserId = 1,
+                    User = new ()
                 });
                 Address.Add(new Address
                 {
@@ -41,7 +44,8 @@ namespace OrangularTests.AddressesTest
                     AddressName = "Hjem Helsingør",
                     ZipCode = 3000,
                     CityName = "Helsingør",
-                    UserId = 2
+                    UserId = 2,
+                    User = new()
                 });
 
                 _addressesRepository
@@ -136,14 +140,16 @@ namespace OrangularTests.AddressesTest
 
                 Address addressssss = new Address
                 {
-
+                    Id = 1, 
+                    User = new()
                 };
 
                 NewAddress newAddress = new NewAddress
                 {
                     UserId = 1,
                     Address = "TEC Ballerup",
-                    ZipCode = 2750
+                    ZipCode = 2750,
+                    CityName = "Ballerup"
                 };
 
                 _addressesRepository

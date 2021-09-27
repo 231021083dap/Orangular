@@ -1,7 +1,7 @@
 ﻿// Orangular
 using OrangularAPI.Database.Entities;
 using OrangularAPI.Helpers;
-using OrangularAPI.Repositories.users;
+using OrangularAPI.Repositories.Users;
 using OrangularAPI.Database;
 // Orangular
 using System.Collections.Generic;

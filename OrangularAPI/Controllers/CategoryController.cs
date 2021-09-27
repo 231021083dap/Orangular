@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OrangularAPI.DTO.Category.Requests;
 using OrangularAPI.DTO.Category.Responses;
 using OrangularAPI.Services.CategoryServices;
 using System;
@@ -13,166 +14,136 @@ namespace Orangular.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-
         private readonly ICategoryService _categoryService;
 
         public CategoryController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
         }
-        // ---------------------- Muhmen P.//
-        //[HttpGet]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status204NoContent)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<IActionResult> getAll()
-        //{
-        //    //try
-        //    //{
-        //    //    List<CategoryResponse> CategoryResponses =
-        //    //        await _categoryService.GetAll();
 
-        //    //    if (CategoryResponses == null)
-        //    //    {
-        //    //        return Problem("Nothing...");
-        //    //    }
-        //    //    if (CategoryResponses.Count == 0)
-        //    //    {
-        //    //        return NoContent();
-        //    //    }
-        //    //    return Ok(CategoryResponses);
-        //    //}
-        //    //catch (Exception exp)
-        //    //{
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetAll()
+        {
+            try
+            {
+                List<CategoryResponse> CategoryResponses =
+                    await _categoryService.GetAll();
 
-        //    //    return Problem(exp.Message);
-        //    //}
+                if (CategoryResponses == null)
+                {
+                    return Problem("Nothing...");
+                }
+                if (CategoryResponses.Count == 0)
+                {
+                    return NoContent();
+                }
+                return Ok(CategoryResponses);
+            }
+            catch (Exception exp)
+            {
+                return Problem(exp.Message);
+            }
+        }
+        [HttpGet("{Id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> getById([FromRoute] int Id)
+        {
+            try
+            {
+                CategoryResponse CategoryResponse =
+                    await _categoryService.GetById(Id);
 
-        //}
+                if (CategoryResponse == null)
+                {
+                    return Problem("Nothing...");
+                }
+                return Ok(CategoryResponse);
+            }
+            catch (Exception exp)
+            {
+                return Problem(exp.Message);
+            }
+        }
 
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> create([FromBody] NewCategory newCategory)
+        {
+            try
+            {
+                CategoryResponse CategoryResponse =
+                    await _categoryService.Create(newCategory);
 
-        //[HttpGet("{Id}")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status204NoContent)]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<IActionResult> getById([FromRoute] int Id)
-        //{
+                if (CategoryResponse == null)
+                {
+                    return Problem("Nothing...");
+                }
+                return Ok(CategoryResponse);
+            }
+            catch (Exception exp)
+            {
 
+                return Problem(exp.Message);
+            }
+        }
 
-        //    try
-        //    {
-        //        CategoryResponse CategoryResponse =
-        //            await _categoryService.getById(Id);
+        [HttpPut("{Id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Update([FromRoute] int Id,
+        [FromBody] UpdateCategory updateCategory)
+        {
+            try
+            {
+                CategoryResponse CategoryResponse =
+                    await _categoryService.Update(Id, updateCategory);
 
-        //        if (CategoryResponse == null)
-        //        {
-        //            return Problem("Nothing...");
-        //        }
-        //        return Ok(CategoryResponse);
-        //    }
-        //    catch (Exception exp)
-        //    {
+                if (CategoryResponse == null)
+                {
+                    return Problem("Nothing...");
+                }
 
-        //        return Problem(exp.Message);
-        //    }
+                return Ok(CategoryResponse);
+            }
+            catch (Exception exp)
+            {
 
+                return Problem(exp.Message);
+            }
+        }
+        [HttpDelete("{Id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> delete([FromRoute] int Id)
+        {
+            try
+            {
+                bool result = await _categoryService.Delete(Id);
 
-
-        //}
-
-        //[HttpPost]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status204NoContent)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<IActionResult> create([FromBody] NewCategory newCategory)
-        //{
-
-
-        //    try
-        //    {
-        //        CategoryResponse CategoryResponse = 
-        //            await _categoryService.create(newCategory);
-
-        //        if (CategoryResponse == null)
-        //        {
-        //            return Problem("Nothing...");
-        //        }
-        //        return Ok(CategoryResponse);
-        //    }
-        //    catch (Exception exp)
-        //    {
-
-        //        return Problem(exp.Message);
-        //    }
-
-
-
-        //}
-
-        //[HttpPut("{Id}")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(StatusCodes.Status204NoContent)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<IActionResult> update([FromRoute] int Id, 
-        //[FromBody] UpdateCategory updateCategory)
-        //{
-
-
-        //    try
-        //    {
-        //        CategoryResponse CategoryResponse =
-        //            await _categoryService.update(Id, updateCategory);
-
-        //        if (CategoryResponse == null)
-        //        {
-        //            return Problem("Nothing...");
-        //        }
-
-        //        return Ok(CategoryResponse);
-        //    }
-        //    catch (Exception exp)
-        //    {
-
-        //        return Problem(exp.Message);
-        //    }
-
-
-
-        //}
-
-
-        //[HttpDelete("{Id}")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(StatusCodes.Status204NoContent)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<IActionResult> delete([FromRoute] int Id)
-        //{
-
-        //    try
-        //    {
-        //        bool result = await _categoryService.delete(Id);
-
-        //        if (!result)
-        //        {
-        //            return Problem("Could not be deleted");
-        //        }
-
-        //        return NoContent();
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        return Problem(ex.Message);
-        //    }
-
-
-
-        //}
-        // ---------------------- Muhmen P.//
+                if (!result)
+                {
+                    return Problem("Could not be deleted");
+                }
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
+        }
     }
 }
 

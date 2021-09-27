@@ -11,7 +11,7 @@ using OrangularAPI.Repositories.CategoryRepository;
 using OrangularAPI.Repositories.OrderItemsRepository;
 using OrangularAPI.Repositories.OrderListsRepository;
 using OrangularAPI.Repositories.ProductsRepository;
-using OrangularAPI.Repositories.users;
+using OrangularAPI.Repositories.Users;
 using OrangularAPI.Services.AddressServices;
 using OrangularAPI.Services.CategoryServices;
 using OrangularAPI.Services.OrderItemServices;
@@ -51,7 +51,7 @@ namespace Orangular
             services.AddScoped<IOrderListService, OrderListService>();
             services.AddScoped<IOrderListRepository, OrderListRepository>();
 
-            //services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             services.AddScoped<IProductService, ProductService>();

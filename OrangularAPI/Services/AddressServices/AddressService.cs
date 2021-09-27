@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 using OrangularAPI.DTO.Addresses.Responses;
 using OrangularAPI.DTO.Addresses.Requests;
 using OrangularAPI.Repositories.AddressesRepository;
+using OrangularAPI.Repositories.Users;
 
 namespace OrangularAPI.Services.AddressServices
 {
     public class AddressService : IAddressService
     {
         private readonly IAddressRepository _addressRepository;
+        private readonly IUserRepository _userRepository;
 
-        public AddressService(IAddressRepository addressesRepository)
+        public AddressService(IAddressRepository addressesRepository, IUserRepository userRepository)
         {
             _addressRepository = addressesRepository;
+            _userRepository = userRepository;
         }
         
         // Retunere en liste med alle adresser
@@ -24,7 +27,6 @@ namespace OrangularAPI.Services.AddressServices
             // Henter alle addresser fra database
             List<Address> address = await _addressRepository.GetAll();
 
-
             // Retuner listen med addresses
             return address == null ? null : address.Select(
             a => new AddressResponse
@@ -32,8 +34,13 @@ namespace OrangularAPI.Services.AddressServices
                 AddressId = a.Id,
                 Address = a.AddressName,
                 ZipCode = a.ZipCode,
-                CityName = null,
-                AddressUserResponse = null
+                CityName = a.CityName,
+                AddressUserResponse = new AddressUserResponse
+                {
+                    UserId = a.User.Id,
+                    Email = a.User.Email,
+                    Role = a.User.Role
+                }
             }).ToList();
         }
 
@@ -55,23 +62,28 @@ namespace OrangularAPI.Services.AddressServices
         {
             Address address = new Address
             {
-           
-                // UserId = newAddress.UserId,
+                UserId = newAddress.UserId,
                 AddressName = newAddress.Address,
                 ZipCode = newAddress.ZipCode,
-                CityName = newAddress.CityName
+                CityName = newAddress.CityName,
+                
             };
 
-
             address = await _addressRepository.Create(address);
+            await _userRepository.GetById(address.UserId);
 
             return address == null ? null : new AddressResponse
             {
                 AddressId =  address.Id,
                 Address =  address.AddressName,
                 ZipCode =  address.ZipCode,
-                CityName = null,
-                AddressUserResponse = null
+                CityName = address.CityName,
+                AddressUserResponse = new AddressUserResponse
+                {
+                    UserId = address.User.Id,
+                    Email = address.User.Email,
+                    Role = address.User.Role
+                }
             };
         }
 
@@ -86,8 +98,6 @@ namespace OrangularAPI.Services.AddressServices
             };
 
             address = await _addressRepository.Update(input_address_id, address);
-
-
 
             return address == null ? null : new AddressResponse
             {
