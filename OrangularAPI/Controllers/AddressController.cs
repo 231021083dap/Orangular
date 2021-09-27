@@ -95,9 +95,8 @@ namespace OrangularAPI.Controllers
                 return Problem(ex.Message);
             }
         }
-
         // Update
-        [HttpPut("{updateAddress}")]
+        [HttpPut("{addressId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

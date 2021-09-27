@@ -44,7 +44,9 @@ namespace OrangularTests.ProductsTests
                 Price = 3000,
                 Weight = 30000,
                 Gender = "Male",
-                Description = "Test test"
+                Description = "Test test",
+                Category = new()
+                
             });
             _context.Product.Add(new Product
             {
@@ -53,7 +55,8 @@ namespace OrangularTests.ProductsTests
                 Price = 1000,
                 Weight = 10000,
                 Gender = "Male",
-                Description = "Test test"
+                Description = "Test test",
+                Category = new()
             });
             await _context.SaveChangesAsync();
             int expectedSize = 2;
@@ -95,7 +98,8 @@ namespace OrangularTests.ProductsTests
                 Price = 1000,
                 Weight = 10000,
                 Gender = "Male",
-                Description = "Test test"
+                Description = "Test test",
+                Category = new ()
             });
             await _context.SaveChangesAsync();
 
