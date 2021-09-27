@@ -1,0 +1,1 @@
+Repræsentere alle DTO'er
