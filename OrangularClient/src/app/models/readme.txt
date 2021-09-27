@@ -1,1 +1,1 @@
-Repræsentere alle DTO'er
+Repræsentere alle DTO'erss
