@@ -1,9 +1,7 @@
-﻿// Orangular
-using OrangularAPI.Helpers;
+﻿using OrangularAPI.Helpers;
 using OrangularAPI.Controllers;
 using OrangularAPI.DTO.Login.Requests;
 using OrangularAPI.DTO.Users.Responses;
-// Orangular
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Moq;
 using System;
@@ -11,7 +9,7 @@ using System.Collections.Generic;
 using Xunit;
 using OrangularAPI.Services.UsersService;
 
-namespace OrangularTests.UserTests
+namespace OrangularTests.UserTest
 {
     public class UserControllerTests
     {

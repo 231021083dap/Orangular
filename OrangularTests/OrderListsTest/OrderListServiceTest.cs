@@ -14,227 +14,223 @@ using Xunit;
 namespace OrangularTests.OrderListsTest
 {
 
-    public class OrderListServiceTest
+
+    public class Order_ListserviceTests
     {
-        public class Order_ListserviceTests
+
+        private readonly OrderListService _sut;
+        private readonly Mock<IOrderListRepository> _orderListsRepository = new();
+
+        public Order_ListserviceTests()
         {
-
-            private readonly OrderListService _sut;
-            private readonly Mock<IOrderListRepository> _orderListsRepository = new();
-
-            public Order_ListserviceTests()
+            _sut = new OrderListService(_orderListsRepository.Object);
+        }
+        [Fact]
+        public async void GetAll_ShouldReturnListOfOrderListResponses_WhenOrderListExist()
+        {
+            // Arrange
+            List<OrderList> orderList = new();
+            orderList.Add(new OrderList
             {
-                _sut = new OrderListService(_orderListsRepository.Object);
-            }
-            [Fact]
-            public async void GetAll_ShouldReturnListOfOrder_ListsResponses_WhenOrder_ListsExist()
+                Id = 1,
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
+
+            });
+
+            orderList.Add(new OrderList
             {
-                // Arrange
-                List<OrderList> order_Lists = new();
-                order_Lists.Add(new OrderList
-                {
-                    Id = 1,
-                    OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
+                Id = 2,
+                OrderDateTime = DateTime.Parse("2021-12-23 12:55:00")
+            });
 
-                });
+            _orderListsRepository
+                .Setup(a => a.GetAll())
+                .ReturnsAsync(orderList);
 
-                order_Lists.Add(new OrderList
-                {
-                    Id = 2,
-                    OrderDateTime = DateTime.Parse("2021-12-23 12:55:00")
-                });
+            // Act
+            var result = await _sut.GetAll();
 
-                _orderListsRepository
-                    .Setup(a => a.GetAll())
-                    .ReturnsAsync(order_Lists);
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Count);
+            Assert.IsType<List<OrderListResponse>>(result);
+        }
 
-                // Act
-                var result = await _sut.GetAll();
+        [Fact]
+        public async void GetAll_ShouldReturnEmptyListOfOrderListResponse_WhenNoOrderListExists()
+        {
+            // Arrange
+            List<OrderList> orderList = new();
 
-                // Assert
-                Assert.NotNull(result);
-                Assert.Equal(2, result.Count);
-                Assert.IsType<List<OrderListResponse>>(result);
-            }
+            _orderListsRepository
+                .Setup(a => a.GetAll())
+                .ReturnsAsync(orderList);
 
-            [Fact]
-            public async void GetAll_ShouldReturnEmptyListOfOrder_ListsResponses_WhenNoOrder_ListsExists()
+            // Act
+            var result = await _sut.GetAll();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Empty(result);
+            Assert.IsType<List<OrderListResponse>>(result);
+        }
+
+        [Fact]
+        public async void GetById_ShouldReturnAnOrderListResponse_WhenOrderListExists()
+        {
+            // Arrange
+            int orderListId = 1;
+
+            OrderList orderList = new OrderList
             {
-                // Arrange
-                List<OrderList> Order_Lists = new();
+                Id = orderListId,
+                OrderDateTime = DateTime.Parse("2020-12-21 12:57:00")
+            };
 
-                _orderListsRepository
-                    .Setup(a => a.GetAll())
-                    .ReturnsAsync(Order_Lists);
+            _orderListsRepository
+                .Setup(a => a.GetById(It.IsAny<int>()))
+                .ReturnsAsync(orderList);
 
-                // Act
-                var result = await _sut.GetAll();
+            // Act
+            var result = await _sut.GetById(orderListId);
 
-                // Assert
-                Assert.NotNull(result);
-                Assert.Empty(result);
-                Assert.IsType<List<OrderListResponse>>(result);
-            }
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<OrderListResponse>(result);
+            Assert.Equal(orderList.Id, result.OrderListId);
+            Assert.Equal(orderList.OrderDateTime, result.OrderDateTime);
+        }
 
-            [Fact]
-            public async void GetById_ShouldReturnAnOrder_ListsResponse_WhenOrder_ListsExists()
+        [Fact]
+        public async void GetById_ShouldReturnNull_WhenOrderListDoesNotExist()
+        {
+            // Arrange
+            int OrderListId = 1;
+
+            _orderListsRepository
+                .Setup(a => a.GetById(It.IsAny<int>()))
+                .ReturnsAsync(() => null);
+
+            // Act
+            var result = await _sut.GetById(OrderListId);
+
+            // Assert
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public async void Create_ShouldReturnOrderListResponse_WhenCreateIsSuccess()
+        {
+            // Arrange
+            NewOrderList newOrderList = new NewOrderList
             {
-                // Arrange
-                int OrderListId = 1;
+                OrderDateTime = DateTime.Parse("2020-12-21 12:57:00")
+            };
 
-                Order_Lists Order_Lists = new Order_Lists
-                {
-                    OrderListId = OrderListId,
-                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
-                };
+            int OrderListId = 1;
 
-                _order_ListsRepository
-                    .Setup(a => a.GetById(It.IsAny<int>()))
-                    .ReturnsAsync(Order_Lists);
-
-                // Act
-                var result = await _sut.GetById(OrderListId);
-
-                // Assert
-                Assert.NotNull(result);
-                Assert.IsType<Order_ListsResponse>(result);
-                Assert.Equal(Order_Lists.OrderListId, result.OrderListId);
-                Assert.Equal(Order_Lists.order_date_time, result.order_date_time);
-
-
-            }
-
-            [Fact]
-            public async void GetById_ShouldReturnNull_WhenOrder_ListsDoesNotExist()
+            OrderList orderList = new OrderList
             {
-                // Arrange
-                int OrderListId = 1;
+                Id = OrderListId,
+                OrderDateTime = DateTime.Parse("2020-12-21 12:57:00")
+            };
 
-                _order_ListsRepository
-                    .Setup(a => a.GetById(It.IsAny<int>()))
-                    .ReturnsAsync(() => null);
+            _orderListsRepository
+                .Setup(a => a.Create(It.IsAny<OrderList>()))
+                .ReturnsAsync(orderList);
 
-                // Act
-                var result = await _sut.GetById(OrderListId);
+            // Act
+            var result = await _sut.Create(newOrderList);
 
-                // Assert
-                Assert.Null(result);
-            }
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<OrderListResponse>(result);
+            Assert.Equal(orderList.Id, result.OrderListId);
+            Assert.Equal(orderList.OrderDateTime, result.OrderDateTime);
 
-            [Fact]
-            public async void Create_ShouldReturnOrder_ListsResponse_WhenCreateIsSuccess()
+        }
+
+        [Fact]
+        public async void Update_ShouldReturnUpdatedOrderListResponse_WhenUpdateIsSuccess()
+        {
+            // Arrange
+            UpdateOrderList updateOrderList = new UpdateOrderList
             {
-                // Arrange
-                NewOrder_Lists newOrder_Lists = new NewOrder_Lists
-                {
-                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
-                };
+                OrderDateTime = DateTime.Parse("2020-12-21 12:57:00")
+            };
 
-                int OrderListId = 1;
+            int OrderListId = 1;
 
-                Order_Lists Order_Lists = new Order_Lists
-                {
-                    OrderListId = OrderListId,
-                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
-                };
-
-                _order_ListsRepository
-                    .Setup(a => a.Create(It.IsAny<Order_Lists>()))
-                    .ReturnsAsync(Order_Lists);
-
-                // Act
-                var result = await _sut.Create(newOrder_Lists);
-
-                // Assert
-                Assert.NotNull(result);
-                Assert.IsType<Order_ListsResponse>(result);
-                Assert.Equal(Order_Lists.OrderListId, result.OrderListId);
-                Assert.Equal(Order_Lists.order_date_time, result.order_date_time);
-
-            }
-
-            [Fact]
-            public async void Update_ShouldReturnUpdatedOrder_ListsResponse_WhenUpdateIsSuccess()
+            OrderListResponse orderListResponse = new OrderListResponse
             {
-                // Arrange
-                UpdateOrder_Lists updateOrder_Lists = new UpdateOrder_Lists
-                {
-                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
-                };
+                OrderListId = OrderListId,
+                OrderDateTime = DateTime.Parse("2020-12-21 12:57:00")
+            };
 
-                int OrderListId = 1;
-
-                Order_ListsResponse Order_ListsResponse = new Order_ListsResponse
-                {
-                    OrderListId = OrderListId,
-                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
-                };
-
-                Order_Lists Order_Lists = new Order_Lists
-                {
-                    OrderListId = OrderListId,
-                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
-                };
-
-                _order_ListsRepository
-                    .Setup(a => a.Update(It.IsAny<int>(), It.IsAny<Order_Lists>()))
-                    .ReturnsAsync(Order_Lists);
-
-                // Act
-                var result = await _sut.Update(OrderListId, updateOrder_Lists);
-
-                // Assert
-                Assert.NotNull(result);
-                Assert.IsType<Order_ListsResponse>(result);
-                Assert.Equal(Order_Lists.OrderListId, result.OrderListId);
-                Assert.Equal(Order_Lists.order_date_time, result.order_date_time);
-
-            }
-
-            [Fact]
-            public async void Update_ShouldReturnNull_WhenOrder_ListsDoesNotExist()
+            OrderList orderList = new OrderList
             {
-                // Arrange
-                UpdateOrder_Lists updateOrder_Lists = new UpdateOrder_Lists
-                {
-                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
-                };
+                Id = OrderListId,
+                OrderDateTime = DateTime.Parse("2020-12-21 12:57:00")
+            };
 
-                int OrderListId = 1;
+            _orderListsRepository
+                .Setup(a => a.Update(It.IsAny<int>(), It.IsAny<OrderList>()))
+                .ReturnsAsync(orderList);
 
-                _order_ListsRepository
-                    .Setup(a => a.Update(It.IsAny<int>(), It.IsAny<Order_Lists>()))
-                    .ReturnsAsync(() => null);
+            // Act
+            var result = await _sut.Update(OrderListId, updateOrderList);
 
-                // Act
-                var result = await _sut.Update(OrderListId, updateOrder_Lists);
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<OrderListResponse>(result);
+            Assert.Equal(orderList.Id, result.OrderListId);
+            Assert.Equal(orderList.OrderDateTime, result.OrderDateTime);
+        }
 
-                // Assert
-                Assert.Null(result);
-            }
-
-            [Fact]
-            public async void Delete_ShouldReturnTrue_WhenDeleteIsSuccess()
+        [Fact]
+        public async void Update_ShouldReturnNull_WhenOrderListDoesNotExist()
+        {
+            // Arrange
+            UpdateOrderList updateOrderList = new UpdateOrderList
             {
-                // Arrange
-                int OrderListId = 1;
+                OrderDateTime = DateTime.Parse("2020-12-21 12:57:00")
+            };
 
-                Order_Lists Order_Lists = new Order_Lists
-                {
-                    OrderListId = OrderListId,
-                    order_date_time = DateTime.Parse("2020-12-21 12:57:00")
-                };
+            int OrderListId = 1;
 
-                _order_ListsRepository
-                    .Setup(a => a.Delete(It.IsAny<int>()))
-                    .ReturnsAsync(Order_Lists);
+            _orderListsRepository
+                .Setup(a => a.Update(It.IsAny<int>(), It.IsAny<OrderList>()))
+                .ReturnsAsync(() => null);
 
-                // Act
-                var result = await _sut.Delete(OrderListId);
+            // Act
+            var result = await _sut.Update(OrderListId, updateOrderList);
 
-                // Assert
-                Assert.True(result);
-            }
+            // Assert
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public async void Delete_ShouldReturnTrue_WhenDeleteIsSuccess()
+        {
+            // Arrange
+            int OrderListId = 1;
+
+            OrderList orderList = new OrderList
+            {
+                Id = OrderListId,
+                OrderDateTime = DateTime.Parse("2020-12-21 12:57:00")
+            };
+
+            _orderListsRepository
+                .Setup(a => a.Delete(It.IsAny<int>()))
+                .ReturnsAsync(orderList);
+
+            // Act
+            var result = await _sut.Delete(OrderListId);
+
+            // Assert
+            Assert.True(result);
         }
     }
+
 }
