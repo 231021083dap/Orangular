@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class CategoryService {
 
   //Storing the url(C# Swagger)
-  private apiUrl = 'https://localhost:5001/api/Category';
+  private apiUrl = 'https://localhost:5001/api/Categories';
 
   //adding http headers
   httpOptions = {
@@ -24,7 +24,7 @@ export class CategoryService {
   { }
 
 
-  getCategory(): Observable<Category[]>{
+  getCategories(): Observable<Category[]>{
     return this.http.get<Category[]>(this.apiUrl);
   }
 }
