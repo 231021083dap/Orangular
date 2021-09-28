@@ -38,6 +38,7 @@ namespace Orangular
 
             services.AddControllers().AddJsonOptions(x =>
             {
+                // serialize enums as strings in api responses (e.g. Role Admin instead of 1)
                 x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
             });
 
@@ -81,15 +82,6 @@ namespace Orangular
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Orangular v1"));
             }
-
-            // Not sure what this is. Victor
-            // skal implementeres Victor 
-            //services.AddControllers().AddJsonOptions(x =>
-            //{
-            //    // serialize enums as strings in api responses (e.g. Role)
-            //    x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-            //});
-
 
             app.UseHttpsRedirection();
 
