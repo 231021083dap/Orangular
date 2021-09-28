@@ -17,7 +17,9 @@
         <td>{{ productTest.weight }}</td>
         <td>{{ productTest.gender }}</td>
         <td>{{ productTest.description }}</td>
-        <td>{{ productTest.category }}</td>
+        for(var prop in productTest.category)
+        <td>{{ prop }}</td>
+
         <td></td>
     </tr>
 </table>
