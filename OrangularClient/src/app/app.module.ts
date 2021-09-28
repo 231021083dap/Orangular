@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './_navigation/header/header.component';
@@ -12,6 +13,7 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { BasketPageComponent } from './basket-page/basket-page.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { UserComponent } from './admin/user/user.component';
+import { ProductComponent } from './admin/product/product.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +26,14 @@ import { UserComponent } from './admin/user/user.component';
     RegistrationPageComponent,
     BasketPageComponent,
     ProductPageComponent,
-    UserComponent
+    UserComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
