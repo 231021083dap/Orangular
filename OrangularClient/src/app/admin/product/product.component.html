@@ -10,30 +10,14 @@
         <th>CategoryId</th>
         <th>CategoryName</th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>Vovse</td>
-        <td>25</td>
-        <td>20</td>
-        <td>Male</td>
-        <td>This is a nice dog</td>
-        <td>1</td>
-        <td>hund</td>
-    </tr>
     <tr *ngFor="let productTest of product">
         <td>{{ productTest.productId}}</td>
-        <td>Vovse</td>
-        <td>25</td>
-        <td>20</td>
-        <td>Male</td>
-        <td>This is a nice dog</td>
-        <td>1</td>
-        <td>hund</td>
+        <td>{{ productTest.breedName }}</td>
+        <td>{{ productTest.price }}</td>
+        <td>{{ productTest.weight }}</td>
+        <td>{{ productTest.gender }}</td>
+        <td>{{ productTest.description }}</td>
+        <td></td>
+        <td></td>
     </tr>
 </table>
-<br>
-<br> 
-<h1>Testing connection</h1>
-<div *ngFor="let productTest of product">
-<h2> {{ productTest.productId}} {{ productTest.breedName }} {{ productTest.price }} {{ productTest.weight }} {{ productTest.gender }} {{ productTest.description }}</h2>
-</div>
