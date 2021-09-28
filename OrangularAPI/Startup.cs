@@ -36,6 +36,20 @@ namespace Orangular
         public void ConfigureServices(IServiceCollection services)
         {
 
+            // --- Tilfojet af Victor --- //
+            // CORS - Cross-Origin Resource Sharing
+            // Tillader forspørgsler fra http://localhost:4200 og crossorigin https til http
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: CORSRules,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
+
             services.AddControllers().AddJsonOptions(x =>
             {
                 // serialize enums as strings in api responses (e.g. Role Admin instead of 1)
