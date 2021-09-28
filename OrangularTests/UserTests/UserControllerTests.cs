@@ -28,13 +28,13 @@ namespace OrangularTests.UserTest
             List<UserResponse> user = new();
             user.Add(new UserResponse
             {
-                UserId = 1,
+                Id = 1,
                 Email = "Test1@Mail.com",
                 Role = Role.User
             });
             user.Add(new UserResponse
             {
-                UserId = 1,
+                Id = 1,
                 Email = "Test1@Mail.com",
                 Role = Role.User,
             });
@@ -132,12 +132,12 @@ namespace OrangularTests.UserTest
             };
             UserResponse userResponse = new UserResponse
             {
-                UserId = 1,
+                Id = 1,
                 Email = "Test1@Mail.com",
                 Password = "Passw0rd",
                 Role = Role.User,
                 OrderList = new List<UserOrderListResponse>(),
-                Address = new List<UserAddressResponse>()
+                Addresses = new List<UserAddressResponse>()
             };
             _userService.Setup(s => s.Create(It.IsAny<NewUser>())).ReturnsAsync(userResponse) ;
             // Act

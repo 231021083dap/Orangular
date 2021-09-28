@@ -39,7 +39,7 @@ namespace OrangularAPI.Services.UsersService
         {
             return user == null ? null : new UserResponse
             {
-                UserId = user.Id,
+                Id = user.Id,
                 Email = user.Email,
                 Role = user.Role
             };
@@ -49,7 +49,7 @@ namespace OrangularAPI.Services.UsersService
             List<User> users = await _userRepository.GetAll();
             return users.Select(u => new UserResponse
             {
-                UserId = u.Id,
+                Id = u.Id,
                 Email = u.Email,
                 Role = u.Role,
                 OrderList = u.OrderList.Select(o => new UserOrderListResponse
@@ -57,7 +57,7 @@ namespace OrangularAPI.Services.UsersService
                     OrderListId = o.Id,
                     OrderDateTime = o.OrderDateTime
                 }).ToList(),
-                Address = u.Address.Select(a => new UserAddressResponse
+                Addresses = u.Address.Select(a => new UserAddressResponse
                 {
                     AddressId = a.Id,
                     Address = a.AddressName,

@@ -30,11 +30,11 @@ namespace OrangularTests.OrderItemsTest
             List<OrderItemResponse> orderItem = new();
             orderItem.Add(new OrderItemResponse
             {
-                OrderItemId = 1,
+                Id = 1,
                 Price = 1,
                 Quantity = 1,
-                OrderItemOrderListResponse = new OrderItemOrderListResponse { },
-                OrderItemProductResponse = new OrderItemProductResponse { }
+                OrderList = new OrderItemOrderListResponse { },
+                Products = new OrderItemProductResponse { }
             });
             _orderItemService.Setup(s => s.GetAll()).ReturnsAsync(orderItem);
             // act
@@ -80,8 +80,8 @@ namespace OrangularTests.OrderItemsTest
             int orderItemId = 1;
             OrderItemResponse orderItem = new OrderItemResponse
             {
-                OrderItemOrderListResponse = new OrderItemOrderListResponse { },
-                OrderItemProductResponse = new OrderItemProductResponse { }
+                OrderList = new OrderItemOrderListResponse { },
+                Products = new OrderItemProductResponse { }
             };
             _orderItemService.Setup(s => s.GetById(It.IsAny<int>())).ReturnsAsync(orderItem);
             // Act
@@ -128,13 +128,13 @@ namespace OrangularTests.OrderItemsTest
             };
             OrderItemResponse orderItem = new OrderItemResponse
             {
-                OrderItemId = 1,
+                Id = 1,
                 Price = 1,
                 Quantity = 1,
-                OrderItemOrderListResponse = new OrderItemOrderListResponse
+                OrderList = new OrderItemOrderListResponse
                 {
                 },
-                OrderItemProductResponse = new OrderItemProductResponse
+                Products = new OrderItemProductResponse
                 {
                 }
             };
@@ -175,8 +175,8 @@ namespace OrangularTests.OrderItemsTest
             };
             OrderItemResponse orderItem = new OrderItemResponse
             {
-                OrderItemOrderListResponse = new OrderItemOrderListResponse { },
-                OrderItemProductResponse = new OrderItemProductResponse { }
+                OrderList = new OrderItemOrderListResponse { },
+                Products = new OrderItemProductResponse { }
             };
             _orderItemService.Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateOrderItem>())).ReturnsAsync(orderItem);
             // Acts
@@ -195,8 +195,8 @@ namespace OrangularTests.OrderItemsTest
             };
             OrderItemResponse orderItem = new OrderItemResponse
             {
-                OrderItemOrderListResponse = new OrderItemOrderListResponse { },
-                OrderItemProductResponse = new OrderItemProductResponse { }
+                OrderList = new OrderItemOrderListResponse { },
+                Products = new OrderItemProductResponse { }
             };
             _orderItemService.Setup(s => s.Update(It.IsAny<int>(), It.IsAny<UpdateOrderItem>())).ReturnsAsync(() => throw new Exception("This is an exception :)"));
             // Acts

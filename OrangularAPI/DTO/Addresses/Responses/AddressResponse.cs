@@ -7,7 +7,7 @@ namespace OrangularAPI.DTO.Addresses.Responses
 {
     public class AddressResponse
     {
-        public int AddressId { get; set; }
+        public int Id { get; set; }
 
         public string Address { get; set; }
 
@@ -15,6 +15,6 @@ namespace OrangularAPI.DTO.Addresses.Responses
 
         public string CityName { get; set; }
 
-        public AddressUserResponse AddressUserResponse { get; set; }
+        public AddressUserResponse User { get; set; }
     }
 }

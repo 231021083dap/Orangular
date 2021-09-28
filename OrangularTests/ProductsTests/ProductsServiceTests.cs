@@ -110,7 +110,7 @@ namespace OrangularTests.ProductsTests
             // Assert
             Assert.NotNull(result);
             Assert.IsType<ProductResponse>(result);
-            Assert.Equal(Products.Id, result.ProductId);
+            Assert.Equal(Products.Id, result.Id);
             Assert.Equal(Products.BreedName, result.BreedName);
             Assert.Equal(Products.Price, result.Price);
             Assert.Equal(Products.Weight, result.Weight);
@@ -173,7 +173,7 @@ namespace OrangularTests.ProductsTests
             // Assert
             Assert.NotNull(result);
             Assert.IsType<ProductResponse>(result);
-            Assert.Equal(Products.Id, result.ProductId);
+            Assert.Equal(Products.Id, result.Id);
             Assert.Equal(Products.BreedName, result.BreedName);
             Assert.Equal(Products.Price, result.Price);
             Assert.Equal(Products.Weight, result.Weight);
@@ -198,7 +198,7 @@ namespace OrangularTests.ProductsTests
 
             ProductResponse ProductResponse = new ProductResponse
             {
-                ProductId = ProductId,
+                Id = ProductId,
                 BreedName = "Cane Corso",
                 Price = 3000,
                 Weight = 30000,
@@ -227,7 +227,7 @@ namespace OrangularTests.ProductsTests
             // Assert
             Assert.NotNull(result);
             Assert.IsType<ProductResponse>(result);
-            Assert.Equal(Products.Id, result.ProductId);
+            Assert.Equal(Products.Id, result.Id);
             Assert.Equal(Products.BreedName, result.BreedName);
             Assert.Equal(Products.Price, result.Price);
             Assert.Equal(Products.Weight, result.Weight);

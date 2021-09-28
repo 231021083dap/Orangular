@@ -32,14 +32,14 @@ namespace Orangular.Tests.CategoryTests
             List<CategoryResponse> CategoryResponses = new();
             CategoryResponses.Add(new CategoryResponse
             {
-                categoryID = 1,
-                categoryName = "hunde",
+                Id = 1,
+                CategoryName = "hunde",
             });
 
             CategoryResponses.Add(new CategoryResponse
             {
-                categoryID = 2,
-                categoryName = "Katte",
+                Id = 2,
+                CategoryName = "Katte",
             });
 
             _categoryService
@@ -108,8 +108,8 @@ namespace Orangular.Tests.CategoryTests
 
             CategoryResponse Category = new CategoryResponse
             {
-                categoryID = Id,
-                categoryName = "Katte"
+                Id = Id,
+                CategoryName = "Katte"
             };
 
             _categoryService
@@ -152,8 +152,8 @@ namespace Orangular.Tests.CategoryTests
 
             CategoryResponse Category = new CategoryResponse
             {
-                categoryID = Id,
-                categoryName = "Hunde"
+                Id = Id,
+                CategoryName = "Hunde"
             };
 
             _categoryService

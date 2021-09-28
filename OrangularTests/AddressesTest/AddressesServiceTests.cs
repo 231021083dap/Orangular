@@ -110,7 +110,7 @@ namespace OrangularTests.AddressesTest
                 // Assert
                 Assert.NotNull(result);
                 Assert.IsType<AddressResponse>(result);
-                Assert.Equal(address.Id, result.AddressId);
+                Assert.Equal(address.Id, result.Id);
             }
 
             [Fact]
@@ -201,7 +201,7 @@ namespace OrangularTests.AddressesTest
                 // Assert
                 Assert.NotNull(result);
                 Assert.IsType<AddressResponse>(result);
-                Assert.Equal(search_id, result.AddressId);
+                Assert.Equal(search_id, result.Id);
                 Assert.Equal(updateAddress.Address, result.Address);
                 Assert.Equal(updateAddress.ZipCode, result.ZipCode);
             }
