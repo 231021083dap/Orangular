@@ -19,7 +19,6 @@ export class UserService {
 
   // GET all users
   getAuthors(): Observable<User[]> {
-    return this.http.get<User[]>(this.endPoint);
+    return this.http.get<User[]>(this.endPoint, this.httpOptions);
   }
-
 }
