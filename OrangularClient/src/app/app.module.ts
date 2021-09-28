@@ -5,8 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './_navigation/header/header.component';
+import { FooterComponent } from './_navigation/footer/footer.component';
 import { CategoryPageComponent } from './category-page/category-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
