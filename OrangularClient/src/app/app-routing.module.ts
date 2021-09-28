@@ -15,7 +15,6 @@ const routes: Routes = [
   {path: 'product', component: ProductPageComponent},
   {path: 'basket', component: BasketPageComponent},
   {path: 'admin/user', component: UserComponent}
-  
 ];
 
 @NgModule({
