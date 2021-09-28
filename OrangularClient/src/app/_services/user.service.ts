@@ -6,6 +6,11 @@ import { User } from './_model/user.ts';
   providedIn: 'root'
 })
 export class UserService {
+  private endPoint = 'https://localhost:5001/api/User';
 
-  constructor() { }
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type':'application/json'})
+  }
+
+  constructor() {  }
 }
