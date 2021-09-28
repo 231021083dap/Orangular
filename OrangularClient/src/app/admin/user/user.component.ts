@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/_models/user';
 import { UserService } from '../../_services/user.service'
 
 @Component({
@@ -8,7 +9,7 @@ import { UserService } from '../../_services/user.service'
 })
 export class UserComponent implements OnInit {
 
-  public users : UserService[] = [];
+  public users : User[] = [];
   // public user 
 
   constructor(private userService: UserService) { }
@@ -18,7 +19,7 @@ export class UserComponent implements OnInit {
     .subscribe(u=> {
       console.log("Hello World from ngOninit")
       console.log(u)
-      
+      this.users = u
     })
   }
 }
