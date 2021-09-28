@@ -8,7 +8,7 @@ import { User } from '../_models/user.ts';
 export class UserService {
   private endPoint = 'https://localhost:5001/api/User';
 
-  httpOptions = {
+  private httpOptions = {
     headers: new HttpHeaders({'Content-Type':'application/json'})
   }
 
