@@ -29,7 +29,7 @@ namespace OrangularTests.AddressesTest
 
             addresses.Add(new AddressResponse
             {
-                AddressId = 1,
+                Id = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"
@@ -37,7 +37,7 @@ namespace OrangularTests.AddressesTest
 
             addresses.Add(new AddressResponse
             {
-                AddressId = 2,
+                Id = 2,
                 Address = "Kusør",
                 ZipCode = 1234,
                 CityName = "Kagerup"
@@ -101,7 +101,7 @@ namespace OrangularTests.AddressesTest
             // Arrange
             AddressResponse address = new AddressResponse
             {
-                AddressId = 1,
+                Id = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"
@@ -125,7 +125,7 @@ namespace OrangularTests.AddressesTest
             // Arrange
             AddressResponse address = new AddressResponse
             {
-                AddressId = 1,
+                Id = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"
@@ -148,7 +148,7 @@ namespace OrangularTests.AddressesTest
             // Arrange
             AddressResponse address = new AddressResponse
             {
-                AddressId = 1,
+                Id = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"
@@ -180,7 +180,7 @@ namespace OrangularTests.AddressesTest
 
             AddressResponse addressResponse = new AddressResponse
             {
-                AddressId = 1,
+                Id = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"
@@ -234,7 +234,7 @@ namespace OrangularTests.AddressesTest
 
             AddressResponse addressResponse = new AddressResponse
             {
-                AddressId = 1,
+                Id = 1,
                 Address = "Vinkelvej",
                 ZipCode = 2800,
                 CityName = "Lyngby"

@@ -33,7 +33,7 @@ namespace OrangularAPI.Services.OrderItemServices
             List<OrderItem> orderItems = await _orderItemRepository.GetAll();
             return orderItems.Select(o => new OrderItemResponse
             {
-                OrderItemId = o.Id,
+                Id = o.Id,
                 Price = o.Price,
                 Quantity = o.Quantity
                 //,OrderItemOrderListResponse = new OrderItemOrderListResponse
@@ -57,15 +57,15 @@ namespace OrangularAPI.Services.OrderItemServices
             OrderItem orderItem = await _orderItemRepository.GetById(orderItemsId);
             return orderItem == null ? null : new OrderItemResponse
             {
-                OrderItemId = orderItem.Id,
+                Id = orderItem.Id,
                 Price = orderItem.Price,
                 Quantity = orderItem.Quantity,
-                OrderItemOrderListResponse = new OrderItemOrderListResponse
+                OrderList = new OrderItemOrderListResponse
                 {
                     OrderListId = orderItem.OrderList.Id,
                     OrderDateTime = orderItem.OrderList.OrderDateTime
                 },
-                OrderItemProductResponse = new OrderItemProductResponse
+                Products = new OrderItemProductResponse
                 {
                     ProductId = orderItem.Product.Id,
                     BreedName = orderItem.Product.BreedName,
@@ -94,15 +94,15 @@ namespace OrangularAPI.Services.OrderItemServices
                 await _productRepository.GetById(orderItem.ProductId);
                 return new OrderItemResponse
                 {
-                    OrderItemId = orderItem.Id,
+                    Id = orderItem.Id,
                     Price = orderItem.Price,
                     Quantity = orderItem.Quantity,
-                    OrderItemOrderListResponse = new OrderItemOrderListResponse
+                    OrderList = new OrderItemOrderListResponse
                     {
                         OrderListId = orderItem.OrderList.Id,
                         OrderDateTime = orderItem.OrderList.OrderDateTime
                     },
-                    OrderItemProductResponse = new OrderItemProductResponse
+                    Products = new OrderItemProductResponse
                     {
                         ProductId = orderItem.Product.Id,
                         BreedName = orderItem.Product.BreedName,
@@ -131,15 +131,15 @@ namespace OrangularAPI.Services.OrderItemServices
                 await _productRepository.GetById(orderItem.ProductId);
                 return new OrderItemResponse
                 {
-                     OrderItemId = orderItem.Id,
+                     Id = orderItem.Id,
                     Price = orderItem.Price,
                     Quantity = orderItem.Quantity,
-                    OrderItemOrderListResponse = new OrderItemOrderListResponse
+                    OrderList = new OrderItemOrderListResponse
                     {
                         OrderListId = orderItem.OrderList.Id,
                         OrderDateTime = orderItem.OrderList.OrderDateTime
                     },
-                    OrderItemProductResponse = new OrderItemProductResponse
+                    Products = new OrderItemProductResponse
                     {
                         ProductId = orderItem.Product.Id,
                         BreedName = orderItem.Product.BreedName,

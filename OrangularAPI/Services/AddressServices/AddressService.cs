@@ -31,11 +31,11 @@ namespace OrangularAPI.Services.AddressServices
             return address == null ? null : address.Select(
             a => new AddressResponse
             {
-                AddressId = a.Id,
+                Id = a.Id,
                 Address = a.AddressName,
                 ZipCode = a.ZipCode,
                 CityName = a.CityName,
-                AddressUserResponse = new AddressUserResponse
+                User = new AddressUserResponse
                 {
                     UserId = a.User.Id,
                     Email = a.User.Email,
@@ -50,11 +50,11 @@ namespace OrangularAPI.Services.AddressServices
 
             return address == null ? null : new AddressResponse
             {
-                AddressId = address.Id,
+                Id = address.Id,
                 Address =  address.AddressName,
                 ZipCode =  address.ZipCode,
                 CityName = address.CityName,
-                AddressUserResponse = null
+                User = null
             };
         }
 
@@ -74,11 +74,11 @@ namespace OrangularAPI.Services.AddressServices
 
             return address == null ? null : new AddressResponse
             {
-                AddressId =  address.Id,
+                Id =  address.Id,
                 Address =  address.AddressName,
                 ZipCode =  address.ZipCode,
                 CityName = address.CityName,
-                AddressUserResponse = new AddressUserResponse
+                User = new AddressUserResponse
                 {
                     UserId = address.User.Id,
                     Email = address.User.Email,
@@ -101,11 +101,11 @@ namespace OrangularAPI.Services.AddressServices
 
             return address == null ? null : new AddressResponse
             {
-                AddressId =  address.Id,
+                Id =  address.Id,
                 Address =  address.AddressName,
                 ZipCode =  address.ZipCode,
                 CityName = address.CityName,
-                AddressUserResponse = null
+                User = null
             };
         }
 

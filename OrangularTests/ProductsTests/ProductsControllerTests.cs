@@ -28,7 +28,7 @@ namespace OrangularTests.ProductsTests
             List<ProductResponse> products = new();
             products.Add(new ProductResponse
             {
-                ProductId = 1,
+                Id = 1,
                 BreedName = "Cane Corso",
                 Price = 3000,
                 Weight = 30000,
@@ -37,7 +37,7 @@ namespace OrangularTests.ProductsTests
             });
             products.Add(new ProductResponse
             {
-                ProductId = 2,
+                Id = 2,
                 BreedName = "Beetle",
                 Price = 1000,
                 Weight = 10000,
@@ -120,7 +120,7 @@ namespace OrangularTests.ProductsTests
             int ProductId = 1;
             ProductResponse products = new ProductResponse
             {
-                ProductId = ProductId,
+                Id = ProductId,
                 BreedName = "Cane Corso",
                 Price = 3000,
                 Weight = 30000,
@@ -189,7 +189,7 @@ namespace OrangularTests.ProductsTests
 
             ProductResponse products = new ProductResponse
             {
-                ProductId = ProductId,
+                Id = ProductId,
                 BreedName = "Beetle",
                 Price = 1000,
                 Weight = 10000,
@@ -250,7 +250,7 @@ namespace OrangularTests.ProductsTests
 
             ProductResponse products = new ProductResponse
             {
-                ProductId = ProductId,
+                Id = ProductId,
                 BreedName = "Beetle",
                 Price = 1000,
                 Weight = 10000,
