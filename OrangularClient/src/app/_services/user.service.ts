@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 
 export class UserService {
-  private endPoint = 'https://localhost:5001/api/User';
+  private endPoint = 'http://localhost:5001/api/User';
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
