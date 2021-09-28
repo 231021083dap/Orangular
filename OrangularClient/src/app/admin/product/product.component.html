@@ -18,7 +18,8 @@
         <td>{{ productTest.gender }}</td>
         <td>{{ productTest.description }}</td>
         <td>{{ productTest.category }}</td>
-        *ngFor="let prop of productTest"
-        <td></td>
+        <td *ngFor="let prop of productTest.category" ></td>
+        <td>{{ prop.id }}</td>
+
     </tr>
 </table>
