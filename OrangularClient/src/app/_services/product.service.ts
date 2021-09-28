@@ -1,5 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Product } from '../_models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -10,5 +12,5 @@ export class ProductService {
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
   constructor(private http:HttpHeaders) { }
 
-  
+  getAllProduct(): Observable<Product>
 }
