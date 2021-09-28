@@ -59,7 +59,7 @@ namespace Orangular.Tests.CategoryTests
             await _context.SaveChangesAsync();
             var result = await _systemUnderTest.GetAll();
             Assert.NotNull(result);
-            //Assert.Equal(2, result.Count);
+            Assert.Equal(2, result.Count);
             Assert.IsType<List<Category>>(result);
         }
 

@@ -16,14 +16,14 @@ namespace OrangularTests.OrderListsTest
 {
 
 
-    public class Order_ListserviceTests
+    public class OrderListServiceTests
     {
 
         private readonly OrderListService _sut;
         private readonly Mock<IOrderListRepository> _orderListsRepository = new();
         private readonly Mock<IUserRepository> _userRepository = new();
 
-        public Order_ListserviceTests()
+        public OrderListServiceTests()
         {
             _sut = new OrderListService(_orderListsRepository.Object, _userRepository.Object);
         }

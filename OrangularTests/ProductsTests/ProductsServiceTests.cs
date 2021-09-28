@@ -12,14 +12,14 @@ using OrangularAPI.Repositories.CategoryRepository;
 
 namespace OrangularTests.ProductsTests
 {
-    public class ProductserviceTests
+    public class ProductServiceTests
     {
 
         private readonly ProductService _sut;
         private readonly Mock<IProductRepository> _productsRepository = new();
         private readonly Mock<ICategoryRepository> _categoryRepository = new();
 
-        public ProductserviceTests()
+        public ProductServiceTests()
         {
             _sut = new ProductService(_productsRepository.Object, _categoryRepository.Object);
         }
