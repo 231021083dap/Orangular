@@ -1,7 +1,7 @@
 import { Category } from "./category";
 export interface Product {
     productId:number,
-    breed:string, 
+    breedName:string, 
     price:number,
     weight:number, 
     gender:string, 
