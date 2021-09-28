@@ -11,14 +11,24 @@
         <th>CategoryName</th>
     </tr>
     <tr>
-        <th>1</th>
-        <th>Vovse</th>
-        <th>25</th>
-        <th>20</th>
-        <th>Male</th>
-        <th>This is a nice dog</th>
-        <th>1</th>
-        <th>hund</th>
+        <td>1</td>
+        <td>Vovse</td>
+        <td>25</td>
+        <td>20</td>
+        <td>Male</td>
+        <td>This is a nice dog</td>
+        <td>1</td>
+        <td>hund</td>
+    </tr>
+    <tr *ngFor="let productTest of product">
+        <td>{{ productTest.productId}}</td>
+        <td>Vovse</td>
+        <td>25</td>
+        <td>20</td>
+        <td>Male</td>
+        <td>This is a nice dog</td>
+        <td>1</td>
+        <td>hund</td>
     </tr>
 </table>
 <br>
