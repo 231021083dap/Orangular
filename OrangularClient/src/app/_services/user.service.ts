@@ -19,6 +19,7 @@ export class UserService {
 
   // GET all users
   getAll(): Observable<User[]> {
+    console.log("Hello world from service getAll");
     return this.http.get<User[]>(this.endPoint, this.httpOptions);
   }
 }
