@@ -13,4 +13,8 @@ export class UserService {
   }
 
   constructor(private http:HttpClient) {}
+
+  // GET
+
+  // POST 
 }
