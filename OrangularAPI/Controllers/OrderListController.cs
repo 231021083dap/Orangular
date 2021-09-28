@@ -28,20 +28,19 @@ namespace OrangularAPI.Controllers
         {
             try
             {
-                List<OrderListResponse> Order_Lists = await _orderListService.GetAll();
+                List<OrderListResponse> OrderList = await _orderListService.GetAll();
 
-                if (Order_Lists == null)
+                if (OrderList == null)
                 {
                     return Problem("Got no data, not even an empty list, this is unexpected");
                 }
 
-                if (Order_Lists.Count == 0)
+                if (OrderList.Count == 0)
                 {
                     return NoContent();
                 }
 
-                return Ok(Order_Lists);
-
+                return Ok(OrderList);
             }
             catch (Exception ex)
             {

@@ -3,6 +3,7 @@ using OrangularAPI.Database.Entities;
 using OrangularAPI.DTO.OrderLists.Requests;
 using OrangularAPI.DTO.OrderLists.Responses;
 using OrangularAPI.Repositories.OrderListsRepository;
+using OrangularAPI.Repositories.Users;
 using OrangularAPI.Services.OrderListServices;
 using System;
 using System.Collections.Generic;
@@ -20,10 +21,11 @@ namespace OrangularTests.OrderListsTest
 
         private readonly OrderListService _sut;
         private readonly Mock<IOrderListRepository> _orderListsRepository = new();
+        private readonly Mock<IUserRepository> _userRepository = new();
 
         public Order_ListserviceTests()
         {
-            _sut = new OrderListService(_orderListsRepository.Object);
+            _sut = new OrderListService(_orderListsRepository.Object, _userRepository.Object);
         }
         [Fact]
         public async void GetAll_ShouldReturnListOfOrderListResponses_WhenOrderListExist()
@@ -33,14 +35,17 @@ namespace OrangularTests.OrderListsTest
             orderList.Add(new OrderList
             {
                 Id = 1,
-                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00"),
+                User = new()
 
             });
 
             orderList.Add(new OrderList
             {
                 Id = 2,
-                OrderDateTime = DateTime.Parse("2021-12-23 12:55:00")
+                OrderDateTime = DateTime.Parse("2021-12-23 12:55:00"),
+                User = new()
+
             });
 
             _orderListsRepository

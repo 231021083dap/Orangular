@@ -52,7 +52,7 @@ namespace Orangular.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> getById([FromRoute] int Id)
+        public async Task<IActionResult> GetById([FromRoute] int Id)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace Orangular.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> create([FromBody] NewCategory newCategory)
+        public async Task<IActionResult> Create([FromBody] NewCategory newCategory)
         {
             try
             {
@@ -127,7 +127,7 @@ namespace Orangular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> delete([FromRoute] int Id)
+        public async Task<IActionResult> Delete([FromRoute] int Id)
         {
             try
             {
