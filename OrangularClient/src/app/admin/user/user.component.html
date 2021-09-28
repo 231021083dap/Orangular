@@ -1,1 +1,11 @@
 <p>user works!</p>
+
+<ul>
+    <!-- For loop -->
+    <li *ngFor="let user of users">
+        <!-- <button (click)="edit(author)">Ret</button>
+        <button (click)="delete(author)">Slet</button> -->
+        {{ user.userId }} {{ user.email }}
+    </li>
+    <!-- For loop -->
+</ul>
