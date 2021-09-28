@@ -8,5 +8,7 @@ export class ProductService {
 
   private apiUrl = 'https://localhost:5001/api/Product';
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
-  constructor() { }
+  constructor(private http:HttpHeaders) { }
+
+  
 }
