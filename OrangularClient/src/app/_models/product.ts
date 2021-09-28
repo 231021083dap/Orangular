@@ -1,4 +1,4 @@
-import { Category } from "../models";
+import { Category } from "./category";
 export interface Product {
     productId:number,
     breed:string, 
