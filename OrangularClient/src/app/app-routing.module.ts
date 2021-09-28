@@ -5,7 +5,9 @@ import { CategoryPageComponent } from './category-page/category-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
-import { AdminComponent } from '';
+import { AdminComponent } from './admin/user';
+
+
 const routes: Routes = [
   {path: 'categories', component: CategoryPageComponent},
   {path: 'search', component: SearchPageComponent},
