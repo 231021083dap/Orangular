@@ -18,6 +18,7 @@ using OrangularAPI.Services.OrderItemServices;
 using OrangularAPI.Services.OrderListServices;
 using OrangularAPI.Services.ProductServices;
 using OrangularAPI.Services.UsersService;
+using System.Text.Json.Serialization;
 
 namespace Orangular
 {
@@ -35,7 +36,10 @@ namespace Orangular
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(x =>
+            {
+                x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
 
             // --- sql connect --- //
             services.AddDbContext<OrangularProjectContext>
