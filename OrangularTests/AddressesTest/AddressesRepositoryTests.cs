@@ -150,7 +150,7 @@ namespace OrangularTests.AddressesTest
         // ---- GetById tests ---- //
 
         // ---- Create tests ---- //
-            // [Fact]
+             [Fact]
             public async Task Create_ShouldAddIdToAddress_WhenSavingToDatabase()
             {
                 // Arrange
@@ -160,7 +160,7 @@ namespace OrangularTests.AddressesTest
                 int expectedId = 1;
                 Address address = new Address
                 {
-                    Id = 2,
+                    Id = 1,
                     // UserId = 2,
                     AddressName = "Hjem Helsingør",
                     ZipCode = 3000
@@ -174,7 +174,7 @@ namespace OrangularTests.AddressesTest
                 Assert.IsType<Address>(result);
                 Assert.Equal(expectedId, result.Id);
             }
-            // [Fact]
+             [Fact]
             public async Task Create_ShouldFailToAddAddress_WhenAddingAddressWithExistingId()
             {
                 // Arrange

@@ -47,9 +47,8 @@ namespace OrangularAPI.Controllers
                 return Problem(ex.Message);
             }
         }
-
         // GetById
-        [HttpGet("{address_id}")]
+        [HttpGet("{addressId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -96,9 +95,8 @@ namespace OrangularAPI.Controllers
                 return Problem(ex.Message);
             }
         }
-
         // Update
-        [HttpPut("{addresses_id}")]
+        [HttpPut("{addressId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -122,19 +120,19 @@ namespace OrangularAPI.Controllers
         }
 
         // Delete
-        [HttpDelete("{address_id}")]
+        [HttpDelete("{addressId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Delete([FromRoute] int address_id)
+        public async Task<IActionResult> Delete([FromRoute] int addressId)
         {
             try
             {
-                bool result = await _addressService.Delete(address_id);
+                bool result = await _addressService.Delete(addressId);
 
                 if (!result)
                 {
-                    return Problem("Author was not deleted, something went wrong");
+                    return Problem("Address was not deleted, something went wrong");
                 }
 
                 return NoContent();

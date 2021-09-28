@@ -2,7 +2,7 @@
 using OrangularAPI.DTO.Login.Requests;
 using OrangularAPI.DTO.Users.Responses;
 using OrangularAPI.Helpers;
-using OrangularAPI.Repositories.users;
+using OrangularAPI.Repositories.Users;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,7 +41,6 @@ namespace OrangularAPI.Services.UsersService
             {
                 UserId = user.Id,
                 Email = user.Email,
-                Password = user.Password,
                 Role = user.Role
             };
         }
@@ -52,7 +51,6 @@ namespace OrangularAPI.Services.UsersService
             {
                 UserId = u.Id,
                 Email = u.Email,
-                Password = u.Password, // Fjernes hvis password ikke skal vises.
                 Role = u.Role,
                 OrderList = u.OrderList.Select(o => new UserOrderListResponse
                 {

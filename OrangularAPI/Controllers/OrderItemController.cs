@@ -12,10 +12,10 @@ namespace Orangular.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Order_ItemsController : ControllerBase
+    public class OrderItemController : ControllerBase
     {
         private readonly IOrderItemService _orderItemService;
-        public Order_ItemsController(IOrderItemService OrderItemService)
+        public OrderItemController(IOrderItemService OrderItemService)
         {
             _orderItemService = OrderItemService;
         }

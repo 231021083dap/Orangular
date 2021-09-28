@@ -16,45 +16,22 @@ namespace OrangularAPI.Repositories.CategoryRepository
 
         //linking to the database context. This files includes rules for the DB and will be called to manipulate data
         private readonly OrangularProjectContext _context;
-
-
-
-
         public CategoryRepository(OrangularProjectContext context)
         {
             _context = context;
         }
-
-
-
-
-
-
-
         public async Task<List<Category>> GetAll()
         {
             //returning all Category includes products
             return await _context.Category
                 .Include(p => p.Product).ToListAsync();
         }
-
-
-
-
-
-
         public async Task<Category> GetById(int categoryId)
         {
             return await _context.Category
+                .Include((p => p.Product))
                 .FirstOrDefaultAsync(c => c.Id == categoryId);
         }
-
-
-
-
-
-
-
         //Creating asyncs CRUD functions. 
         public async Task<Category> Create(Category category)
         {
@@ -62,13 +39,6 @@ namespace OrangularAPI.Repositories.CategoryRepository
             await _context.SaveChangesAsync();
             return category;
         }
-
-
-
-
-
-
-
         public async Task<Category> Update(int categoryId, Category Category)
         {
             Category updateCategory = await _context.Category.FirstOrDefaultAsync(c => c.Id == categoryId);
@@ -80,12 +50,6 @@ namespace OrangularAPI.Repositories.CategoryRepository
 
             return updateCategory;
         }
-
-
-
-
-
-
         public async Task<Category> Delete(int categoryId)
         {
             //Deleting, and before that check if null and then delete

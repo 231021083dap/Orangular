@@ -27,20 +27,23 @@ namespace OrangularTests.OrderListsTest
         }
 
         [Fact]
-        public async Task GetAll_ShouldReturnListOfOrder_Lists_WhenOrder_ListsExists()
+        public async Task GetAll_ShouldReturnListOfOrderList_WhenOrderListExists()
         {
             // Arrange
             await _context.Database.EnsureDeletedAsync();
             _context.OrderList.Add(new OrderList
             {
                 Id = 1,
-                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00"),
+                User = new()
 
             });
             _context.OrderList.Add(new OrderList
             {
                 Id = 2,
-                OrderDateTime = DateTime.Parse("2020-12-21 12:57:00")
+                OrderDateTime = DateTime.Parse("2020-12-21 12:57:00"),
+                User = new()
+
             });
             await _context.SaveChangesAsync();
             int expectedSize = 2;

@@ -15,7 +15,7 @@ namespace OrangularTests.OrderListsTest
     public class OrderListControllerTests
     {
         private readonly OrderListController _sut;
-        private readonly Mock<IOrderListService> _orderListService;
+        private readonly Mock<IOrderListService> _orderListService = new();
 
         public OrderListControllerTests()
         {
@@ -26,31 +26,24 @@ namespace OrangularTests.OrderListsTest
         public async void GetAll_ShouldReturnStatusCode200_whenDataExists()
         {
             // Arrange
-            List<OrderListResponse> OrderList = new();
-            OrderList.Add(new OrderListResponse
+            List<OrderListResponse> orderList = new();
+            orderList.Add(new OrderListResponse
             {
                 OrderListId = 1,
                 OrderDateTime = DateTime.Parse("2021-12-21 12:55:00"),
-                //Order
-                OrderListUserResponse = new OrderListUserResponse
-                {
-                    
-
-                }
+                OrderListUserResponse = new OrderListUserResponse {}
             });
-            OrderList.Add(new OrderListResponse
+            orderList.Add(new OrderListResponse
             {
                 OrderListId = 2,
-                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00")
+                OrderDateTime = DateTime.Parse("2021-12-21 12:55:00"),
+                OrderListUserResponse = new OrderListUserResponse { }
 
             });
 
             _orderListService
                 .Setup(s => s.GetAll())
-                .ReturnsAsync(OrderList);
-
-
-
+                .ReturnsAsync(orderList);
             // Act
             var result = await _sut.GetAll();
 

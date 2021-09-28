@@ -7,19 +7,21 @@ using OrangularAPI.DTO.Products.Requests;
 using OrangularAPI.DTO.Products.Responses;
 using OrangularAPI.Services.ProductServices;
 using OrangularAPI.Repositories.ProductsRepository;
+using OrangularAPI.Repositories.CategoryRepository;
 // Orangular
 
 namespace OrangularTests.ProductsTests
 {
-    public class ProductserviceTests
+    public class ProductServiceTests
     {
 
         private readonly ProductService _sut;
         private readonly Mock<IProductRepository> _productsRepository = new();
+        private readonly Mock<ICategoryRepository> _categoryRepository = new();
 
-        public ProductserviceTests()
+        public ProductServiceTests()
         {
-            _sut = new ProductService(_productsRepository.Object);
+            _sut = new ProductService(_productsRepository.Object, _categoryRepository.Object);
         }
         [Fact]
         public async void GetAll_ShouldReturnListOfProductsResponses_WhenProductsExist()
@@ -33,7 +35,8 @@ namespace OrangularTests.ProductsTests
                 Price = 3000,
                 Weight = 30000,
                 Gender = "Male",
-                Description = "Test test"
+                Description = "Test test",
+                Category = new()
             });
 
             Products.Add(new Product
@@ -43,7 +46,9 @@ namespace OrangularTests.ProductsTests
                 Price = 1000,
                 Weight = 10000,
                 Gender = "Male",
-                Description = "Test test"
+                Description = "Test test",
+                Category = new()
+
             });
 
             _productsRepository
@@ -91,7 +96,8 @@ namespace OrangularTests.ProductsTests
                 Price = 1000,
                 Weight = 10000,
                 Gender = "Male",
-                Description = "Test test"
+                Description = "Test test",
+                Category = new()
             };
 
             _productsRepository
@@ -152,7 +158,9 @@ namespace OrangularTests.ProductsTests
                 Price = 1000,
                 Weight = 10000,
                 Gender = "Male",
-                Description = "Test test"
+                Description = "Test test",
+                Category = new()
+                
             };
 
             _productsRepository
@@ -195,7 +203,7 @@ namespace OrangularTests.ProductsTests
                 Price = 3000,
                 Weight = 30000,
                 Gender = "Male",
-                Description = "Test test"
+                Description = "Test test",
             };
 
             Product Products = new()
@@ -205,7 +213,8 @@ namespace OrangularTests.ProductsTests
                 Price = 3000,
                 Weight = 30000,
                 Gender = "Male",
-                Description = "Test test"
+                Description = "Test test",
+                Category = new()
             };
 
             _productsRepository
@@ -236,7 +245,8 @@ namespace OrangularTests.ProductsTests
                 Price = 3000,
                 Weight = 30000,
                 Gender = "Male",
-                Description = "Test test"
+                Description = "Test test",
+                CategoryId = 1
             };
 
             int ProductId = 1;
