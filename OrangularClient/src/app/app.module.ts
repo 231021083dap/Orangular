@@ -1,12 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
 import { FormsModule } from '@angular/forms';
-
-
-=======
->>>>>>> 2b52267aa313599aac918da69251eb50125e023d
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './_navigation/header/header.component';
