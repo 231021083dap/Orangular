@@ -8,6 +8,9 @@ import { UserService } from '../../_services/user.service'
 })
 export class UserComponent implements OnInit {
 
+  public users : UserService[] = [];
+
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
