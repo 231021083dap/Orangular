@@ -13,6 +13,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { BasketPageComponent } from './basket-page/basket-page.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     LoginPageComponent,
     RegistrationPageComponent,
     BasketPageComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,
