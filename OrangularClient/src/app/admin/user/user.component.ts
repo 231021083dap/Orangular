@@ -17,5 +17,4 @@ export class UserComponent implements OnInit {
       // this.userService = x
     })
   }
-
 }
