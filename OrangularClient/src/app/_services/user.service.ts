@@ -4,9 +4,9 @@ import { User } from '../_models/user';
 import { Observable } from 'rxjs';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
 
 export class UserService {
   private endPoint = 'https://localhost:5001/api/User';
@@ -18,7 +18,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   // GET all users
-  getAuthors(): Observable<User[]> {
+  getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.endPoint, this.httpOptions);
   }
 }
