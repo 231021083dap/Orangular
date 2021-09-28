@@ -18,7 +18,8 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   // GET all users
-  getUsers(): Observable<User[]> {
+  getAll(): Observable<User[]> {
+    console.log("Hello world from service getAll");
     return this.http.get<User[]>(this.endPoint, this.httpOptions);
   }
 }
