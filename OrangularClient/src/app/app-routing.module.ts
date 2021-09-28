@@ -5,7 +5,7 @@ import { CategoryPageComponent } from './category-page/category-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
-import { AdminComponent } from './admin/user';
+import { AdminUserComponent } from './admin/user/user.component';
 
 
 const routes: Routes = [
@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {path: 'product', component: ProductPageComponent},
   {path: 'basket', component: BasketPageComponent},
-  {path: 'admin', component: AdminPanelComponent}
+  {path: 'admin/user', component: AdminUserComponent}
   
 ];
 
