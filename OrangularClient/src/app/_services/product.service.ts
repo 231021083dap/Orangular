@@ -12,5 +12,7 @@ export class ProductService {
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
   constructor(private http:HttpHeaders) { }
 
-  getAllProduct(): Observable<Product>
+  getAllProduct(): Observable<Product[]>{
+    return this.http.get<Product[]>(this.apiUrl);
+  }
 }
