@@ -6,5 +6,5 @@ export interface Product {
     weight:number, 
     gender:string, 
     description:string, 
-    category?: Category[]
+    productCategoryResponse?: Category[]
 }

@@ -1,5 +1,5 @@
 import {Product} from './product';
 export interface Category{
-    categoryId: number,
+    categoryID: number,
     categoryName: Category
 }
