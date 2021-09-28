@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from './_model/user.ts';
+import { User } from '../_models/user.ts';
 
 @Injectable({
   providedIn: 'root'
@@ -12,5 +12,5 @@ export class UserService {
     headers: new HttpHeaders({'Content-Type':'application/json'})
   }
 
-  constructor() {  }
+  constructor(private http:HttpClient) {}
 }
