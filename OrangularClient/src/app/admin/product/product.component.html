@@ -11,13 +11,13 @@
         <th>CategoryName</th>
     </tr>
     <tr *ngFor="let productTest of product">
-        <td>{{ productTest.productId}}</td>
+        <td>{{ productTest.id}}</td>
         <td>{{ productTest.breedName }}</td>
         <td>{{ productTest.price }}</td>
         <td>{{ productTest.weight }}</td>
         <td>{{ productTest.gender }}</td>
         <td>{{ productTest.description }}</td>
-        <td>{{ productTest.productCategoryResponse }}</td>
+        <td>{{ productTest.category }}</td>
         <td></td>
     </tr>
 </table>
