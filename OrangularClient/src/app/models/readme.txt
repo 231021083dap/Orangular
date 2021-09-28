@@ -1,0 +1,1 @@
+Repræsentere vores DTO'er
