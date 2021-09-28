@@ -6,6 +6,6 @@ export interface Product {
     weight:number, 
     gender:string, 
     description:string, 
-    categoryId: number,
-    categoryName: Category
+    categoryId?: number,
+    categoryName?: Category
 }
