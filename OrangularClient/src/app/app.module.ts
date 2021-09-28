@@ -14,6 +14,7 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { BasketPageComponent } from './basket-page/basket-page.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ProductPageComponent } from './product-page/product-page.component';
+import { UserComponent } from './admin/user/user.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProductPageComponent } from './product-page/product-page.component';
     RegistrationPageComponent,
     BasketPageComponent,
     AdminPanelComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
