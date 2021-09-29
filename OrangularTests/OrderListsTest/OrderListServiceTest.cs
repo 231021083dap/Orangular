@@ -102,7 +102,7 @@ namespace OrangularTests.OrderListsTest
             // Assert
             Assert.NotNull(result);
             Assert.IsType<OrderListResponse>(result);
-            Assert.Equal(orderList.Id, result.OrderListId);
+            Assert.Equal(orderList.Id, result.Id);
             Assert.Equal(orderList.OrderDateTime, result.OrderDateTime);
         }
 
@@ -150,7 +150,7 @@ namespace OrangularTests.OrderListsTest
             // Assert
             Assert.NotNull(result);
             Assert.IsType<OrderListResponse>(result);
-            Assert.Equal(orderList.Id, result.OrderListId);
+            Assert.Equal(orderList.Id, result.Id);
             Assert.Equal(orderList.OrderDateTime, result.OrderDateTime);
 
         }
@@ -168,7 +168,7 @@ namespace OrangularTests.OrderListsTest
 
             OrderListResponse orderListResponse = new OrderListResponse
             {
-                OrderListId = OrderListId,
+                Id = OrderListId,
                 OrderDateTime = DateTime.Parse("2020-12-21 12:57:00")
             };
 
@@ -188,7 +188,7 @@ namespace OrangularTests.OrderListsTest
             // Assert
             Assert.NotNull(result);
             Assert.IsType<OrderListResponse>(result);
-            Assert.Equal(orderList.Id, result.OrderListId);
+            Assert.Equal(orderList.Id, result.Id);
             Assert.Equal(orderList.OrderDateTime, result.OrderDateTime);
         }
 

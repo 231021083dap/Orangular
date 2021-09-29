@@ -23,7 +23,7 @@ namespace OrangularAPI.Repositories.Users
                 .Include(a => a.OrderList)
                 .ToListAsync();
         }
-        public async Task<User> GetById(int userId) // Mangler check hvis id ikke findes
+        public async Task<User> GetById(int userId) 
         {
             return await _context.User
                 .Include(a => a.Address)

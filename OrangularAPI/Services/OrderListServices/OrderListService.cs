@@ -25,9 +25,9 @@ namespace OrangularAPI.Services.OrderListServices
 
             return orderList.Select(a => new OrderListResponse
             {
-                OrderListId = a.Id,
+                Id = a.Id,
                 OrderDateTime = a.OrderDateTime,
-                OrderListUserResponse = new OrderListUserResponse
+                User = new OrderListUserResponse
                 {
                     UserId = a.User.Id,
                     Email = a.User.Email,
@@ -40,7 +40,7 @@ namespace OrangularAPI.Services.OrderListServices
             OrderList orderList = await _orderListRepository.GetById(orderListId);
             return orderList == null ? null : new OrderListResponse
             {
-                OrderListId = orderList.Id,
+                Id = orderList.Id,
                 OrderDateTime = orderList.OrderDateTime
 
             };
@@ -58,7 +58,7 @@ namespace OrangularAPI.Services.OrderListServices
 
             return orderList == null ? null : new OrderListResponse
             {
-                OrderListId = orderList.Id,
+                Id = orderList.Id,
                 OrderDateTime = orderList.OrderDateTime
 
             };
@@ -76,7 +76,7 @@ namespace OrangularAPI.Services.OrderListServices
 
             return orderList == null ? null : new OrderListResponse
             {
-                OrderListId = orderListId,
+                Id = orderListId,
                 OrderDateTime = orderList.OrderDateTime
             };
         }

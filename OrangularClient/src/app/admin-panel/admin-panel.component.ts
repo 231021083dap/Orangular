@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../models';
-import { CategoryService } from '../category.service';
+import { Category } from '../_models/category';
+import { CategoryService } from '../_services/category.service';
 @Component({
   selector: 'app-admin-panel',
   templateUrl: './admin-panel.component.html', 

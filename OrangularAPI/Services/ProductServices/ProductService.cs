@@ -25,13 +25,13 @@ namespace OrangularAPI.Services.ProductServices
             List<Product> product = await _productRepository.GetAll();
             return product.Select(a => new ProductResponse
             {
-                ProductId = a.Id,
+                Id = a.Id,
                 BreedName = a.BreedName,
                 Price = a.Price,
                 Weight = a.Weight,
                 Gender = a.Gender,
                 Description = a.Description,
-                ProductCategoryResponse = new ProductCategoryResponse
+                Category = new ProductCategoryResponse
                 {
                     Category = a.Category.Id,
                     CategoryName = a.Category.CategoryName
@@ -43,13 +43,13 @@ namespace OrangularAPI.Services.ProductServices
             Product product = await _productRepository.GetById(productId);
             return product == null ? null : new ProductResponse
             {
-                ProductId = product.Id,
+                Id = product.Id,
                 BreedName = product.BreedName,
                 Price = product.Price,
                 Weight = product.Weight,
                 Gender = product.Gender,
                 Description = product.Description,
-                ProductCategoryResponse = new ProductCategoryResponse
+                Category = new ProductCategoryResponse
                 {
                     Category = product.Category.Id,
                     CategoryName = product.Category.CategoryName
@@ -73,13 +73,13 @@ namespace OrangularAPI.Services.ProductServices
 
             return product == null ? null : new ProductResponse
             {
-                ProductId = product.Id,
+                Id = product.Id,
                 BreedName = product.BreedName,
                 Price = product.Price,
                 Weight = product.Weight,
                 Gender = product.Gender,
                 Description = product.Description,
-                ProductCategoryResponse = new ProductCategoryResponse
+                Category = new ProductCategoryResponse
                 {
                     Category = product.Category.Id,
                     CategoryName = product.Category.CategoryName
@@ -106,13 +106,13 @@ namespace OrangularAPI.Services.ProductServices
                 await _categoryRepository.GetById(product.CategoryId);
                 return product == null ? null : new ProductResponse
                 {
-                    ProductId = productId,
+                    Id = productId,
                     BreedName = product.BreedName,
                     Price = product.Price,
                     Weight = product.Weight,
                     Gender = product.Gender,
                     Description = product.Description,
-                    ProductCategoryResponse = new ProductCategoryResponse
+                    Category = new ProductCategoryResponse
                     {
                         Category = product.Category.Id,
                         CategoryName = product.Category.CategoryName

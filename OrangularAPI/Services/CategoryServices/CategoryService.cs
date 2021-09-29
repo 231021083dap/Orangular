@@ -23,9 +23,9 @@ namespace OrangularAPI.Services.CategoryServices
             List<Category> Category = await _categoryRepository.GetAll();
             return Category.Select(c => new CategoryResponse
             {
-                categoryID = c.Id,
-                categoryName = c.CategoryName,
-                products = c.Product.Select(p => new CategoryProductResponse
+                Id = c.Id,
+                CategoryName = c.CategoryName,
+                Products = c.Product.Select(p => new CategoryProductResponse
                 {
                     productID = p.Id,
                     breedName = p.BreedName,
@@ -43,9 +43,9 @@ namespace OrangularAPI.Services.CategoryServices
             Category Category = await _categoryRepository.GetById(CategoryId);
             return Category == null ? null : new CategoryResponse
             {
-                categoryID = Category.Id,
-                categoryName = Category.CategoryName,
-                products = Category.Product.Select(p => new CategoryProductResponse
+                Id = Category.Id,
+                CategoryName = Category.CategoryName,
+                Products = Category.Product.Select(p => new CategoryProductResponse
                 {
                     productID = p.Id,
                     breedName = p.BreedName,
@@ -67,8 +67,8 @@ namespace OrangularAPI.Services.CategoryServices
 
             return category == null ? null : new CategoryResponse
             {
-                categoryID = category.Id,
-                categoryName = category.CategoryName
+                Id = category.Id,
+                CategoryName = category.CategoryName
             };
         }
         public async Task<CategoryResponse> Update(int CategoryId, UpdateCategory updateCategory)
@@ -82,8 +82,8 @@ namespace OrangularAPI.Services.CategoryServices
 
             return Category == null ? null : new CategoryResponse
             {
-                categoryID = Category.Id,
-                categoryName = Category.CategoryName
+                Id = Category.Id,
+                CategoryName = Category.CategoryName
             };
         }
         public async Task<bool> Delete(int CategoryId)

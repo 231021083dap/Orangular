@@ -110,7 +110,7 @@ namespace OrangularTests.UserTest
             // Assert
             Assert.NotNull(result);
             Assert.IsType<UserResponse>(result);
-            Assert.Equal(user.Id, result.UserId);
+            Assert.Equal(user.Id, result.Id);
             Assert.Equal(user.Email, result.Email);
             Assert.Equal(user.Role, result.Role);
         }
@@ -149,7 +149,7 @@ namespace OrangularTests.UserTest
             // Assert
             Assert.NotNull(result);
             Assert.IsType<UserResponse>(result);
-            Assert.Equal(userId, result.UserId);
+            Assert.Equal(userId, result.Id);
             Assert.Equal(newUser.Email, result.Email);
             Assert.Equal(Role.User, result.Role);
         }
@@ -193,7 +193,7 @@ namespace OrangularTests.UserTest
             // Assert
             Assert.NotNull(result);
             Assert.IsType<UserResponse>(result);
-            Assert.Equal(userId, result.UserId);
+            Assert.Equal(userId, result.Id);
             Assert.Equal(updateUser.Email, result.Email);
             Assert.Equal(updateUser.Role, result.Role);
         }
