@@ -26,7 +26,7 @@ namespace Orangular.Tests.CategoryTests
         // arrange
         // act
         // assert
-
+        
         [Fact]
         public async void getAll_ShouldAReturnListOfCategoryResponse_WhenCategoryExist()
         {
@@ -93,8 +93,8 @@ namespace Orangular.Tests.CategoryTests
 
             Assert.NotNull(result);
             Assert.IsType<CategoryResponse>(result);
-            Assert.Equal(categoryId, result.categoryID);
-            Assert.Equal(Category.CategoryName, result.categoryName);
+            Assert.Equal(categoryId, result.Id);
+            Assert.Equal(Category.CategoryName, result.CategoryName);
 
 
         }
@@ -135,7 +135,7 @@ namespace Orangular.Tests.CategoryTests
 
             Assert.NotNull(result);
             Assert.IsType<CategoryResponse>(result);
-            Assert.Equal(categoryId, result.categoryID);
+            Assert.Equal(categoryId, result.Id);
             //Assert.Equal(newCategory.CategoryName, result.CategoryName);      
         }
         [Fact]
@@ -181,8 +181,8 @@ namespace Orangular.Tests.CategoryTests
             var result = await _systemUnderTest.Update(categoryId, updateCategory);
             Assert.NotNull(result);
             Assert.IsType<CategoryResponse>(result);
-            Assert.Equal(categoryId, result.categoryID);
-            Assert.Equal(updateCategory.categoryName, result.categoryName);
+            Assert.Equal(categoryId, result.Id);
+            Assert.Equal(updateCategory.categoryName, result.CategoryName);
 
 
 

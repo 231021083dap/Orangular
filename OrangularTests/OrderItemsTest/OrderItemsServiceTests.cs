@@ -132,9 +132,9 @@ namespace OrangularTests.OrderItemsTest
             // Assert
             Assert.NotNull(result);
             Assert.IsType<OrderItemResponse>(result);
-            Assert.Equal(orderItem.Id, result.OrderItemOrderListResponse.OrderListId);
+            Assert.Equal(orderItem.Id, result.OrderList.OrderListId);
             //Assert.Equal(orderItem.Id, result.OrderList.Id);
-            Assert.Equal(orderItem.ProductId, result.OrderItemProductResponse.ProductId);
+            Assert.Equal(orderItem.ProductId, result.Products.ProductId);
         }
         [Fact]
         public async Task GetById_ShouldReturnNull_WhenOrderItemDoesNotExist()
@@ -187,7 +187,7 @@ namespace OrangularTests.OrderItemsTest
             // Assert
             Assert.NotNull(result);
             Assert.IsType<OrderItemResponse>(result);
-            Assert.Equal(orderItemId, result.OrderItemId);
+            Assert.Equal(orderItemId, result.Id);
             Assert.Equal(newOrderItem.Price, result.Price);
             Assert.Equal(newOrderItem.Quantity, result.Quantity);
             //Assert.Equal(newOrderItem., result.OrderList.Id);
@@ -250,7 +250,7 @@ namespace OrangularTests.OrderItemsTest
             // Assert
             Assert.NotNull(result);
             Assert.IsType<OrderItemResponse>(result);
-            Assert.Equal(orderItemId, result.OrderItemId); 
+            Assert.Equal(orderItemId, result.Id); 
             Assert.Equal(updateOrderItem.Price, result.Price);
             Assert.Equal(updateOrderItem.Quantity, result.Quantity);
             //Assert.Equal(updateOrderItem.OrderlistId, result.OrderList.Id);

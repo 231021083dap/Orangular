@@ -1,0 +1,25 @@
+<p>product-admin works!</p>
+<table>
+    <tr>
+        <th>ProductId</th>
+        <th>Breed</th>
+        <th>Price</th>
+        <th>Weight</th>
+        <th>Gender</th>
+        <th>Description</th>
+        <th>CategoryId</th>
+        <th>CategoryName</th>
+    </tr>
+    <tr *ngFor="let productTest of product">
+        <td>{{ productTest.id}}</td>
+        <td>{{ productTest.breedName }}</td>
+        <td>{{ productTest.price }}</td>
+        <td>{{ productTest.weight }}</td>
+        <td>{{ productTest.gender }}</td>
+        <td>{{ productTest.description }}</td>
+        <td>{{ productTest.category }}</td>
+        
+        
+        
+    </tr>
+</table>
