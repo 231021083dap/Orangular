@@ -18,10 +18,10 @@
                 <a *ngIf="isAdmin == true" class="float-end me-1" (click)="openEditCategory(Category)">e</a> -->
             </div>
         </div>
-        <div *ngIf="isAdmin == true" >
+        <!-- <div *ngIf="isAdmin == true" >
             <input class="form-control mx-2 w-auto" id="Category-input" #CategoryPrice>
             <button class="mt-2 ms-2 btn btn-primary" (click)="addCategory(CategoryPrice.value)">Add Category</button>
-        </div>
+        </div> -->
 
     </div>
 <div class="products">
@@ -29,14 +29,14 @@
         <app-product-edit *ngIf="i == productEditIndex" [product]="product" (updateEvent)="editProduct($event, i)"
             (cancelEvent)=closeEditProduct()></app-product-edit>
         <div *ngIf="i !== productEditIndex">
-            <p>{{products.Category.CategoryName}}</p>
-            <p>{{products.BreedName}}</p>
-            <p>Price: {{Product.storage}}</p>
+            <p>{{Products.Category.CategoryName}}</p>
+            <p>{{Products.BreedName}}</p>
+            <p>Price: {{Products.Price}}</p>
             <p>Weight: {{Products.Weight}}</p>
             <p>Gender: {{Products.Gender}}</p>
             <p>Description: {{Products.Description}}</p>
             <button class="btn btn-primary me-1" (click)="AddBasket(product)">Buy</button>
-            <button class="btn btn-info me-1" routerLink="{{Products.Id}}">Details</button>
+            <button class="btn btn-info me-1" routerLink="{{products.Id}}">Details</button>
             <!-- <button *ngIf="isAdmin == true" class="btn btn-warning " (click)="openEditProduct(i)">Edit</button>
             <button *ngIf="isAdmin == true" class="btn btn-danger btn-sm position-absolute delete"
                 (click)="deleteProduct(product)">x</button>-->
