@@ -1,14 +1,23 @@
 <p>category works!</p>
 <table>
     <tr>
-        <th>ProductId</th>
-       
+        <th colspan="4">Category</th>
     </tr>
     <tr>
-        <td></td>
-       
-        
-        
-        
+        <th>CategoryId</th>
+        <th>CategoryName</th>
+        <th>Update</th>
+        <th>Delete</th>
+
+    </tr>
+    <tr *ngFor = "let cat of category">
+        <td>{{ cat.id}}</td>
+        <td>{{ cat.categoryName}}</td>
+        <td><button>Update</button></td>
+        <td><button>Delete</button></td>
+    </tr>
+    <tr>
+        <th colspan="2"><button>GetAll</button></th>
+        <th colspan="2"><button>Create</button></th>
     </tr>
 </table>
