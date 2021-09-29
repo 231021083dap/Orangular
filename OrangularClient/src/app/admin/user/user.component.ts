@@ -13,26 +13,27 @@ export class UserComponent implements OnInit {
   public users : User[] = [];
   public user : User = {}
   public id : number = 1; // bruges af getById
-  public newUser : User = {email: 'victor', password: 'passwr0123'}
-
+  public newUser : User = {};
+  public updateUser : User = {}
+  
 
   constructor(private userService: UserService) { }
 
-  ngOnInit(): void {
-    this.getAll();
-    // console.log(JSON.stringify(this.user))
-    this.userService.create(this.newUser)
-
+  ngOnInit(): void {    
+    // Opdatere getAll listen en gang i sekundet.
+    setInterval(()=> { this.getAll(false) }, 1000);
+    
+    // this.getAll(true)
+    // this.create(this.newUser)
   }
 
 
 
   // ---------------------- Get all users ---------------------- -->
-  getAll() : void {
-    this.userService.getAll()   
-    .subscribe(u=> {
-      console.log(u)
+  getAll(log : boolean) : void {    
+    this.userService.getAll().subscribe(u=> {
       this.users = u
+      if (log) console.log(u)
     })
   }
   // ---------------------- Get all users ---------------------- -->
@@ -53,19 +54,24 @@ export class UserComponent implements OnInit {
 
   // ---------------------- Create User ---------------------- -->
   create(user: User) : void {
-    
-    let x = {email: user.email, password: user.password}
-    console.log(x)
+    this.userService.create(user).subscribe(c => {this.newUser = c})
   }
   // ---------------------- Create User ---------------------- -->
 
 
 
+  // ---------------------- Update User ---------------------- -->
+  // update(user : User) : void {
+  //   this.userService.update(user).subscribe
+  // }
+  // ---------------------- Update User ---------------------- -->
+
+
+  
   // ---------------------- Delete User ---------------------- -->
   // ---------------------- Delete User ---------------------- -->
 
 
 
-  // ---------------------- Update User ---------------------- -->
-  // ---------------------- Update User ---------------------- -->
+
 }

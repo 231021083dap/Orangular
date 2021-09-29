@@ -23,11 +23,13 @@
 <table>
     <tr>
         <th>Id</th>
-        <th>email</th>
+        <th>Email</th>
+        <th>Role</th>
     </tr>
     <tr *ngFor="let user of users">
         <td>{{ user.id }}</td>
         <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
     </tr>
 </table>
 <!-- ---------------------- Get all users ---------------------- -->
@@ -39,17 +41,18 @@
 <form action="">
     <label for="id">id: </label>
     <input [(ngModel)]="id" id="id" name="id"><br><br>
-    <button (click)="getById(id)">Ret</button>
+    <button (click)="getById(id)">Submit</button><br><br>
 </form>
-
 <table>
     <tr>
-        <th >Id</th>
-        <th>email</th>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Role</th>
     </tr>
     <tr>
         <td>{{ user.id }}</td>
         <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
     </tr>
 </table>
 <!-- ---------------------- Get user by id ---------------------- -->
@@ -58,7 +61,25 @@
 <br>
 <!-- ---------------------- Create User ---------------------- -->
 <h3>Create user</h3>
-
+<form action="">
+    <label for="new_user_mail">Mail: </label>
+    <input [(ngModel)]="newUser.email" id="new_user_mail" name="Mail"><br><br>
+    <label for="new_user_password">Password: </label>
+    <input [(ngModel)]="newUser.password" id="new_user_password" name="Password"><br><br>
+    <button (click)="create(newUser)">Submit</button><br><br>
+</form>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Role</th>
+    </tr>
+    <tr>
+        <td>{{ newUser.id }}</td>
+        <td>{{ newUser.email }}</td>
+        <td>{{ newUser.role }}</td>
+    </tr>
+</table>
 <!-- ---------------------- Create User ---------------------- -->
 <br>
 <br>
