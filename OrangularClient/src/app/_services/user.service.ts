@@ -19,7 +19,6 @@ export class UserService {
 
   // GET all users
   getAll(): Observable<User[]> {
-    console.log("Hello world from service getAll");
     return this.http.get<User[]>(this.endPoint, this.httpOptions);
   }
 
@@ -28,5 +27,15 @@ export class UserService {
     return this.http.get<User>(`${this.endPoint}/${id}`, this.httpOptions, )
   }
 
-  // 
+  // POST https://localhost:5001/api/User/Create
+  create(user : User) : Observable<User> {
+
+    let x = {email: user.email, password: user.password}
+
+    return this.http.post<User>(
+      `${this.endPoint}/api/User/Create`, 
+      x, 
+      this.httpOptions
+    )
+  }
 }
