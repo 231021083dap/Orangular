@@ -1,38 +1,72 @@
-<p>user works!</p>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+</style>
 
 
-<!-- Get all users -->
-<ul>
-    <!-- For loop -->
-    <li *ngFor="let user of users">
-        <!-- <button (click)="edit(author)">Ret</button>
-        <button (click)="delete(author)">Slet</button> -->
-        {{ user.id }} {{ user.email }}
-    </li>
-    <!-- For loop -->
-</ul>
-<!-- <table>
+
+<!-- ---------------------- Get all users ---------------------- -->
+<h2>Get Users</h2>
+<table>
     <tr>
         <th>Id</th>
         <th>email</th>
     </tr>
     <tr *ngFor="let user of users">
-        <td>{{ user.UserId }}</td>
+        <td>{{ user.id }}</td>
         <td>{{ user.email }}</td>
     </tr>
+</table>
+<!-- ---------------------- Get all users ---------------------- -->
+<br>
+<br>
+<br>
+<!-- ---------------------- Get user by id ---------------------- -->
+<h3>Get user by id</h3>
+<form action="">
+    <label for="id">id: </label>
+    <input [(ngModel)]="id" id="id" name="id"><br><br>
+    <button (click)="getById(id)">Ret</button>
+</form>
 
-</table> -->
-
-
-<!-- Get user by id -->
-
-<!-- Create User -->
-
-<!-- Delete User -->
-
-<!-- Update User -->
-
-
-
-
-
+<table>
+    <tr>
+        <th >Id</th>
+        <th>email</th>
+    </tr>
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.email }}</td>
+    </tr>
+</table>
+<!-- ---------------------- Get user by id ---------------------- -->
+<br>
+<br>
+<br>
+<!-- ---------------------- Create User ---------------------- -->
+<h3>Create user</h3>
+<!-- ---------------------- Create User ---------------------- -->
+<br>
+<br>
+<br>
+<!-- ---------------------- Delete User ---------------------- -->
+<!-- ---------------------- Delete User ---------------------- -->
+<br>
+<br>
+<br>
+<!-- ---------------------- Update User ---------------------- -->
+<h3>Update user</h3>
+<!-- ---------------------- Update User ---------------------- -->

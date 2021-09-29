@@ -24,7 +24,9 @@ export class UserService {
   }
 
   // GET user by ID
-  
+  getById(id : number) : Observable<User> {
+    return this.http.get<User>(`${this.endPoint}/${id}`, this.httpOptions, )
+  }
 
   // 
 }

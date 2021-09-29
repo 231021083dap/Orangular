@@ -10,7 +10,8 @@ import { UserService } from '../../_services/user.service'
 export class UserComponent implements OnInit {
 
   public users : User[] = [];
-  // public user : User = {};
+  public user : User = {}
+  public id : number = 1; // bruges af getById
 
   constructor(private userService: UserService) { }
 
@@ -21,5 +22,13 @@ export class UserComponent implements OnInit {
       console.log(u)
       this.users = u
     })
+  }
+
+  getById(id : number) : void {
+    this.userService.getById(id).subscribe(
+      u=> {
+        this.user = u;
+      }
+    )
   }
 }
