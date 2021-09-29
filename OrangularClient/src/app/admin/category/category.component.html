@@ -1,4 +1,5 @@
 <p>category works!</p>
+
 <table>
     <tr>
         <th colspan="4">Category</th>
@@ -8,16 +9,16 @@
         <th>CategoryName</th>
         <th>Update</th>
         <th>Delete</th>
-
     </tr>
-    <tr *ngFor = "let cat of category">
+    <tr *ngFor = "let cat of categories">
+        
         <td>{{ cat.id}}</td>
         <td>{{ cat.categoryName}}</td>
         <td><button>Update</button></td>
         <td><button>Delete</button></td>
     </tr>
     <tr>
-        <th colspan="2"><button>GetAll</button></th>
-        <th colspan="2"><button>Create</button></th>
+        <th colspan="2"><button (click)="refreshPage()">Refresh</button></th>
+        <th colspan="2"><button>Create</button></th> 
     </tr>
 </table>

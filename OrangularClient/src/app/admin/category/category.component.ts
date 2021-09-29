@@ -9,11 +9,21 @@ import { CategoryService } from 'src/app/_services/category.service';
 })
 export class CategoryComponent implements OnInit {
 
-  category:Category[] = [];
-  constructor(private categoryService:CategoryService) { }
+  categories: Category[] = [];
+  category: Category = { id: 0, categoryName: ""}
+
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
-    this.categoryService.getAllCategory().subscribe(a => this.category = a);
+    this.getAllCategory();
+  }
+  //-----------------------------------------------------------------------------------------------------------
+  // Functions for category
+  refreshPage() {
+    window.location.reload();
+  }
+  getAllCategory(): void {
+    this.categoryService.getAllCategory().subscribe(a => this.categories = a);
   }
 
 }
