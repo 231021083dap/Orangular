@@ -26,7 +26,7 @@ namespace Orangular.Tests.CategoryTests
         // arrange
         // act
         // assert
-
+        
         [Fact]
         public async void getAll_ShouldAReturnListOfCategoryResponse_WhenCategoryExist()
         {
