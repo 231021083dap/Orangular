@@ -14,10 +14,7 @@ import { BasketPageComponent } from './basket-page/basket-page.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { UserComponent } from './admin/user/user.component';
 import { ProductComponent } from './admin/product/product.component';
-import { ProductDetailComponent } from './product-page/product-detail/product-detail.component';
-import { ProductEditComponent } from './product-page/product-edit/product-edit.component';
 import { CategoryComponent } from './admin/category/category.component';
-
 
 @NgModule({
   declarations: [
@@ -32,10 +29,7 @@ import { CategoryComponent } from './admin/category/category.component';
     ProductPageComponent,
     UserComponent,
     ProductComponent,
-    ProductDetailComponent,
-    ProductEditComponent,
     CategoryComponent
-
   ],
   imports: [
     BrowserModule,
