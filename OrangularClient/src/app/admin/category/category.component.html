@@ -1,6 +1,4 @@
-<p>category works!</p>
-
-<table>
+<table id="categoryTable">
     <tr>
         <th colspan="4">Category</th>
     </tr>
@@ -11,10 +9,10 @@
         <th>Delete</th>
     </tr>
     <tr *ngFor = "let cat of categories">
-        <td>{{ cat.id}}</td>
+        <td> {{ cat.id }} </td>
         <td><input [(ngModel)] = "cat.categoryName" ></td>
-        <td><button>Update</button></td>
-        <td><button>Delete</button></td>
+        <td ><button (click)="updateCategory(cat.id)">Update</button></td>
+        <td ><button (click)="deleteCategory(cat.id)">Delete</button></td>
     </tr>
     <tr>
         <td>Id</td> 
