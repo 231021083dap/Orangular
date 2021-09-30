@@ -16,6 +16,8 @@ import { UserComponent } from './admin/user/user.component';
 import { ProductComponent } from './admin/product/product.component';
 import { ProductDetailComponent } from './product-page/product-detail/product-detail.component';
 //import { ProductEditComponent } from './product-page/product-edit/product-edit.component';
+import { CategoryComponent } from './admin/category/category.component';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,11 @@ import { ProductDetailComponent } from './product-page/product-detail/product-de
     UserComponent,
     ProductComponent,
     ProductDetailComponent,
-    // ProductEditComponent
+    //ProductEditComponent
+    //ProductEditComponent,
+    CategoryComponent
+
+
   ],
   imports: [
     BrowserModule,
