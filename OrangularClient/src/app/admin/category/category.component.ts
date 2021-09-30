@@ -10,7 +10,7 @@ import { CategoryService } from 'src/app/_services/category.service';
 export class CategoryComponent implements OnInit {
 
   categories: Category[] = [];
-  category: Category = { id: 0, categoryName: ""}
+  category: Category = { id: 0, categoryName: "" }
 
   constructor(private categoryService: CategoryService) { }
 
@@ -24,6 +24,14 @@ export class CategoryComponent implements OnInit {
   }
   getAllCategory(): void {
     this.categoryService.getAllCategory().subscribe(a => this.categories = a);
+  }
+  createCategory(): void {
+    if (this.category.id = 0) {
+      this.categoryService.createCategory(this.category).subscribe(a => {
+        this.categories.push()
+        this.category = { id: 0, categoryName: "" }
+      });
+    }
   }
 
 }

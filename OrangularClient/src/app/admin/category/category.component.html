@@ -11,14 +11,14 @@
         <th>Delete</th>
     </tr>
     <tr *ngFor = "let cat of categories">
-        
         <td>{{ cat.id}}</td>
-        <td>{{ cat.categoryName}}</td>
+        <td><input [(ngModel)] = "cat.categoryName" ></td>
         <td><button>Update</button></td>
         <td><button>Delete</button></td>
     </tr>
     <tr>
-        <th colspan="2"><button (click)="refreshPage()">Refresh</button></th>
-        <th colspan="2"><button>Create</button></th> 
+        <td>Id</td> 
+        <td><input [(ngModel)] = "category.categoryName"></td> 
+        <th colspan="2"><button (click)="createCategory()">Create</button></th> 
     </tr>
 </table>
