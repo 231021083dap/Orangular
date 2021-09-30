@@ -5,8 +5,8 @@
     <li>
         <a routerLink="/">Home</a>
     </li>
-    <li>
-        <a routerLink="/categories">Categories</a>
+    <li *ngFor = "let cat of categories">
+        <a routerLink="/{{cat.categoryName}}">{{cat.categoryName}}</a>
     </li>
     <li>
         <a routerLink="product">Product</a>

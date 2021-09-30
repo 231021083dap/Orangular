@@ -11,14 +11,30 @@ export class CategoryComponent implements OnInit {
 
   categories: Category[] = [];
   category: Category = { id: 0, categoryName: "" };
+  
 
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.getAllCategory();
+    // this.test();
   }
   //-----------------------------------------------------------------------------------------------------------
   // Functions for category page
+// test(){
+//   var tableRef = document.getElementById('categoryButtonTable')?.getElementsByTagName('tbody')[0];
+//   var titleRow = tableRef!.insertRow(tableRef!.rows.length);
+//   var dataRow = tableRef!.insertRow(tableRef!.rows.length);
+
+//   var htmlContentTitle = "<th >CategoryId</th> <th colspan=2>CategoryName</th>";
+//   var htmlContentData = "<td >CategoryId</td> <td colspan=2>CategoryName</td>";
+
+
+//   titleRow.innerHTML = htmlContentTitle;
+//   dataRow.innerHTML = htmlContentData;
+ 
+// }
+
   refreshPage() {
     window.location.reload();
   }
@@ -51,5 +67,4 @@ export class CategoryComponent implements OnInit {
     this.categoryService.deleteCategory(this.category.id).subscribe();
     this.refreshPage();
   }
-
 }
