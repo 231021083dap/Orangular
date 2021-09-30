@@ -63,13 +63,13 @@ namespace OrangularAPI.Database
             //// --- Order_Lists Foreign keys opførsel --- //
 
 
-            //// --- Category Foreign keys opførsel --- //
-            //// On delete restrict
-            //modelBuilder.Entity<Product>()
-            //    .HasOne(lambda => lambda.Category)
-            //    .WithMany(lambda => lambda.Product)
-            //    .OnDelete(DeleteBehavior.Restrict);
-            //// --- Category Foreign keys opførsel --- //
+            // --- Category Foreign keys opførsel --- //
+            // On delete restrict
+            modelBuilder.Entity<Product>()
+                .HasOne(lambda => lambda.Category)
+                .WithMany(lambda => lambda.Product)
+                .OnDelete(DeleteBehavior.Restrict);
+            // --- Category Foreign keys opførsel --- //
 
             //// --- Products Foreign keys opførsel --- //
             //// On delete restrict
