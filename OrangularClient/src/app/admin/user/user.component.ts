@@ -13,26 +13,53 @@ export class UserComponent implements OnInit {
   public users : User[] = [];
   public user : User = {}
   public id : number = 1; // bruges af getById
-  public newUser : User = {email: 'victor', password: 'passwr0123'}
+  public newUser : User = {};
+
+  public updateUserId : number = 1;
+  public updateUser : User = {}
+  // {
+  //   email: "updated@updated",
+  //   password: "uptPassword",
+  //   "role": Role.User
+  // }
+  public deleteUserId : number = 1
 
 
   constructor(private userService: UserService) { }
 
-  ngOnInit(): void {
-    this.getAll();
-    // console.log(JSON.stringify(this.user))
-    this.userService.create(this.newUser)
+  ngOnInit(): void {    
+    // Opdatere getAll listen en gang i sekundet.
+    setInterval(()=> { this.getAll(false) }, 1000);
+    
+    // this.getAll(true)
+    // this.create(this.newUser)
+
+
+
+    // update
+    // component
+    // this.update(3,this.updateUser)
+    // service
+    // this.userService.update(3,this.updateUser).subscribe(
+    //   u => console.log(u)
+    // )
+
+    // delete
+    // service
+    // this.userService.delete(9).subscribe()
+    // component
+    
+
 
   }
 
 
 
   // ---------------------- Get all users ---------------------- -->
-  getAll() : void {
-    this.userService.getAll()   
-    .subscribe(u=> {
-      console.log(u)
+  getAll(log : boolean) : void {    
+    this.userService.getAll().subscribe(u=> {
       this.users = u
+      if (log) console.log(u)
     })
   }
   // ---------------------- Get all users ---------------------- -->
@@ -53,19 +80,29 @@ export class UserComponent implements OnInit {
 
   // ---------------------- Create User ---------------------- -->
   create(user: User) : void {
-    
-    let x = {email: user.email, password: user.password}
-    console.log(x)
+    this.userService.create(user).subscribe(c => {this.newUser = c})
   }
   // ---------------------- Create User ---------------------- -->
 
 
 
-  // ---------------------- Delete User ---------------------- -->
-  // ---------------------- Delete User ---------------------- -->
-
-
-
   // ---------------------- Update User ---------------------- -->
+  update(id : number, user : User) : void {
+    this.userService.update(id ,user).subscribe(u => {this.updateUser = u})
+  }
   // ---------------------- Update User ---------------------- -->
+
+
+  
+  // ---------------------- Delete User ---------------------- -->
+  delete(id : number) : void {
+    this.userService.delete(id).subscribe(
+      d => console.log(d)
+    )
+  }
+  // ---------------------- Delete User ---------------------- -->
+
+
+
+
 }
