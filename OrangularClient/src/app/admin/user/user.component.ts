@@ -14,8 +14,16 @@ export class UserComponent implements OnInit {
   public user : User = {}
   public id : number = 1; // bruges af getById
   public newUser : User = {};
+
+  public updateUserId : number = 1;
   public updateUser : User = {}
-  
+  // {
+  //   email: "updated@updated",
+  //   password: "uptPassword",
+  //   "role": Role.User
+  // }
+  public deleteUserId : number = 1
+
 
   constructor(private userService: UserService) { }
 
@@ -25,6 +33,24 @@ export class UserComponent implements OnInit {
     
     // this.getAll(true)
     // this.create(this.newUser)
+
+
+
+    // update
+    // component
+    // this.update(3,this.updateUser)
+    // service
+    // this.userService.update(3,this.updateUser).subscribe(
+    //   u => console.log(u)
+    // )
+
+    // delete
+    // service
+    // this.userService.delete(9).subscribe()
+    // component
+    
+
+
   }
 
 
@@ -61,14 +87,19 @@ export class UserComponent implements OnInit {
 
 
   // ---------------------- Update User ---------------------- -->
-  // update(user : User) : void {
-  //   this.userService.update(user).subscribe
-  // }
+  update(id : number, user : User) : void {
+    this.userService.update(id ,user).subscribe(u => {this.updateUser = u})
+  }
   // ---------------------- Update User ---------------------- -->
 
 
   
   // ---------------------- Delete User ---------------------- -->
+  delete(id : number) : void {
+    this.userService.delete(id).subscribe(
+      d => console.log(d)
+    )
+  }
   // ---------------------- Delete User ---------------------- -->
 
 

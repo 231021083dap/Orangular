@@ -84,11 +84,45 @@
 <br>
 <br>
 <br>
-<!-- ---------------------- Delete User ---------------------- -->
-<!-- ---------------------- Delete User ---------------------- -->
-<br>
-<br>
-<br>
 <!-- ---------------------- Update User ---------------------- -->
 <h3>Update user</h3>
+<form action="">
+    <label for="id">id: </label>
+    <input [(ngModel)]="updateUserId" id="id" name="id"><br><br>
+
+    <label for="update_user_mail">Mail: </label>
+    <input [(ngModel)]="updateUser.email" id="update_user_mail" name="Mail"><br><br>
+
+    <label for="update_user_password">Password: </label>
+    <input [(ngModel)]="updateUser.password" id="update_user_password" name="Password"><br><br>
+
+    <label for="update_user_role">Role: </label>
+    <input [(ngModel)]="updateUser.role" id="update_user_role" name="Role"><br><br>
+    <button (click)="update(updateUserId, updateUser)">Submit</button><br><br>
+</form>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Role</th>
+    </tr>
+    <tr>
+        <td>{{ updateUser.id }}</td>
+        <td>{{ updateUser.email }}</td>
+        <td>{{ updateUser.role }}</td>
+    </tr>
+</table>
 <!-- ---------------------- Update User ---------------------- -->
+<br>
+<br>
+<br>
+<!-- ---------------------- Delete User ---------------------- -->
+<h3>Delete user</h3>
+<label for="id">id: </label>
+<input [(ngModel)]="deleteUserId" id="id" name="id"><br><br>
+<button (click)="delete(deleteUserId)">Submit</button><br><br>
+<br>
+<br>
+<br>
+<!-- ---------------------- Delete User ---------------------- -->
+
