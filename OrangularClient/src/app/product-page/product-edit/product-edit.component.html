@@ -1,1 +1,53 @@
-<p>product-edit works!</p>
+<form [formGroup]="productForm" (ngSubmit)="submit()">
+    <div>
+      <label for="product-title">
+        breedName
+      </label>
+      <input class="form-control" id="product-title" #productbreedName type="text" value="" formControlName="title">
+    </div>
+    <div>
+      <label for="product-price">
+        price
+      </label>
+      <input class="form-control" id="product-price" #productprice type="number" value=product.price
+        formControlName="price">
+    </div>
+    <div>
+      <label for="product-weight">
+        weight
+      </label>
+      <input class="form-control" id="product-weight" #productweight type="number" value=product.weight
+        formControlName="weight">
+    </div>
+    <div>
+      <label for="product-gender">
+        gender
+      </label>
+      <input class="form-control" id="product-gender" #productgender type="text" value=product.gender
+        formControlName="gender">
+    </div>
+    <div>
+        <label for="product-description">
+          description
+        </label>
+        <input class="form-control" id="product-description" #productweight type="text" value=product.description
+          formControlName="description">
+      </div>
+    <div>
+      <div class="form-group">
+        <label for="product-categoryId">Category</label>
+        <select class="form-control" id="product-category-id" formControlName="categoryid">
+          <option *ngFor="let category of Category" value={{category.id}}>{{categoryName}}</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <label for="product-images">
+        Images
+      </label>
+      <input class="form-control" id="product-images" type="text" placeholder="image_of_character.jpg"
+        formControlName="images">
+    </div>
+    <button class="mt-2 btn btn-primary me-1" type="submit">Save</button>
+    <button class="mt-2 btn btn-danger" (click)="cancel()">Cancel</button>
+  </form>
