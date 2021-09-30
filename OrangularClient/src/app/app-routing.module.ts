@@ -7,11 +7,8 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { ProductComponent } from './admin/product/product.component';
 import { UserComponent } from './admin/user/user.component';
-<<<<<<< HEAD
-
-=======
 import { CategoryComponent } from './admin/category/category.component';
->>>>>>> 7685de9922687524938c5943de31ff39c6ff0e32
+
 
 const routes: Routes = [
   {path: 'categories', component: CategoryPageComponent},

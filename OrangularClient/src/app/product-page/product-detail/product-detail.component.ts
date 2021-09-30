@@ -44,7 +44,7 @@ export class ProductDetailComponent implements OnInit {
       product => {
         this.product = product;
         if (this.product == null) {
-          this.location.go("/products")
+          this.location.go("/product")
         }
       }
     )
