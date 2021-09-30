@@ -13,7 +13,7 @@ import { Output, EventEmitter } from '@angular/core';
 export class ProductEditComponent implements OnInit {
   
   //categories: Category[] = [];
-  
+
   @Input() product : Product
   @Output() updateEvent = new EventEmitter<boolean>();
   @Output() cancelEvent = new EventEmitter<boolean>();
