@@ -14,7 +14,11 @@ import { BasketPageComponent } from './basket-page/basket-page.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { UserComponent } from './admin/user/user.component';
 import { ProductComponent } from './admin/product/product.component';
+<<<<<<< HEAD
 import { CategoryComponent } from './admin/category/category.component';
+=======
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+>>>>>>> c80d4d7f0af2939cb7646a293995410547021010
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { CategoryComponent } from './admin/category/category.component';
     ProductPageComponent,
     UserComponent,
     ProductComponent,
+<<<<<<< HEAD
     CategoryComponent
+=======
+    ProfilePageComponent
+>>>>>>> c80d4d7f0af2939cb7646a293995410547021010
   ],
   imports: [
     BrowserModule,

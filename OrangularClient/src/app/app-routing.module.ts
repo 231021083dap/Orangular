@@ -8,6 +8,10 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { ProductComponent } from './admin/product/product.component';
 import { UserComponent } from './admin/user/user.component';
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+>>>>>>> c80d4d7f0af2939cb7646a293995410547021010
 
 =======
 import { CategoryComponent } from './admin/category/category.component';
@@ -17,6 +21,7 @@ const routes: Routes = [
   {path: 'categories', component: CategoryPageComponent},
   {path: 'search', component: SearchPageComponent},
   {path: 'login', component: LoginPageComponent},
+  {path: 'profile', component: ProfilePageComponent},
   {path: 'product', component: ProductPageComponent},
   {path: 'basket', component: BasketPageComponent},
   {path: 'admin/product', component: ProductComponent},
