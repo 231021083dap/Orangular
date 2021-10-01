@@ -13,7 +13,6 @@ export class HeaderComponent implements OnInit {
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
-    console.log("ge");
     this.getAllCategory();
     
   }

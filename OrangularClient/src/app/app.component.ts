@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Orangular-Client';
+  defaultImage: string = "assets/DefaultImage.jpg"
 }
