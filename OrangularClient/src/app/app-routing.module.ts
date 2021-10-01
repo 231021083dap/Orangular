@@ -7,15 +7,7 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { ProductComponent } from './admin/product/product.component';
 import { UserComponent } from './admin/user/user.component';
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 import { ProfilePageComponent } from './profile-page/profile-page.component';
->>>>>>> c80d4d7f0af2939cb7646a293995410547021010
-=======
->>>>>>> 0fbac8d49a5c9e64132c05dfe2d286d579d56b34
-
 import { CategoryComponent } from './admin/category/category.component';
 
 const routes: Routes = [
