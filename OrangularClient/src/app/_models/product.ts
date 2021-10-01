@@ -7,4 +7,6 @@ export interface Product {
     gender:string, 
     description:string, 
     category?: Category[]
+    images: string
+    
 }
