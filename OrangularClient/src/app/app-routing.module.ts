@@ -9,6 +9,7 @@ import { ProductComponent } from './admin/product/product.component';
 import { UserComponent } from './admin/user/user.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CategoryComponent } from './admin/category/category.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
   {path: 'categories', component: CategoryPageComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'basket', component: BasketPageComponent},
   {path: 'admin/product', component: ProductComponent},
   {path: 'admin/user', component: UserComponent},
-  {path: "admin/category", component: CategoryComponent}
+  {path: "admin/category", component: CategoryComponent},
+  {path: "", component: HomePageComponent}
 ];
 
 @NgModule({

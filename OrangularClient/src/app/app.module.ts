@@ -4,8 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './_navigation/header/header.component';
-import { FooterComponent } from './_navigation/footer/footer.component';
+import { HeaderComponent } from './_global/header/header.component';
+import { FooterComponent } from './_global/footer/footer.component';
 import { CategoryPageComponent } from './category-page/category-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -16,6 +16,8 @@ import { UserComponent } from './admin/user/user.component';
 import { ProductComponent } from './admin/product/product.component';
 import { CategoryComponent } from './admin/category/category.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { ProductPillComponent } from './_global/product-pill/product-pill.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     UserComponent,
     ProductComponent,
     CategoryComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    ProductPillComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
