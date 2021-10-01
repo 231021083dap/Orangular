@@ -7,12 +7,14 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { ProductComponent } from './admin/product/product.component';
 import { UserComponent } from './admin/user/user.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 
 const routes: Routes = [
   {path: 'categories', component: CategoryPageComponent},
   {path: 'search', component: SearchPageComponent},
   {path: 'login', component: LoginPageComponent},
+  {path: 'profile', component: ProfilePageComponent},
   {path: 'product', component: ProductPageComponent},
   {path: 'basket', component: BasketPageComponent},
   {path: 'admin/product', component: ProductComponent},
