@@ -10,6 +10,7 @@ import { UserComponent } from './admin/user/user.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CategoryComponent } from './admin/category/category.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { HomePageTempComponent } from './home-page-temp/home-page-temp.component';
 
 const routes: Routes = [
   {path: 'categories', component: CategoryPageComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'admin/product', component: ProductComponent},
   {path: 'admin/user', component: UserComponent},
   {path: "admin/category", component: CategoryComponent},
-  {path: "", component: HomePageComponent}
+  {path: "", component: HomePageComponent},
+  {path: "hometemp", component: HomePageTempComponent}
 ];
 
 @NgModule({

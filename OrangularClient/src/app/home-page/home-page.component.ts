@@ -10,45 +10,43 @@ import { ProductService } from '../_services/product.service'
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(private productPillGeneratorService: ProductPillGeneratorService, private productService: ProductService) { }
-  public product: Product[] = [];
+  constructor(
+    private productPillGeneratorService: ProductPillGeneratorService,
+    private productService: ProductService
+    ) { }
+
+  public allProducts: Product[] = [];
+  public sortedProducts: Product[] = [];
 
   ngOnInit(): void {
 
-    this.productService.getAllProduct().subscribe(a => { this.product = a
-      let thisImage = 'DefaultImage.jpg'
-      const parent = document.getElementById('products')
-      this.product.forEach(element => {
+
+    // Victor ---- //
+    // Problem
+    // Vi skal hente de tre sidste tilføjet produkter
+    
+    // Løsning
+    // 1) Hent alle objekter
+    this.productService.getAllProduct().subscribe(p => 
+      {
+        this.allProducts = p
+        // console.log(this.allProducts)
+      })
         
-        switch (element.id){
-          case 1:  thisImage = "Schaeferhund.jpg"; break;
-          case 2:  thisImage = "Corgi.jpg"; break;
-          case 3:  thisImage = "JackRussellTerrier.jpg"; break;
-          
+    // 2) Sorter uønskede objekter fra
 
-          default: thisImage = 'DefaultImage.jpg';
-        }
-       
-        const newChildDiv1 = document.createElement('div')
-        newChildDiv1.setAttribute('class', 'child-pill')
-        parent!.appendChild(newChildDiv1)
 
-        const newImg = document.createElement('img')
-        newImg.setAttribute('class', 'picture')
-        newImg.setAttribute('src', `./assets/${thisImage}`)
-        newImg.setAttribute('width', '200')
-        newImg.setAttribute('height', '200')
-        parent!.appendChild(newImg)
+    // 3) Skab en pille for hvert objekt
+    // Victor ---- //
+    
 
-        const newChildP1 = document.createElement('p')
-        newChildP1.innerHTML = "price : 2000"
-        const newChildP2 = document.createElement('p')
-        newChildP2.innerHTML = `name : ${element.breedName}`
 
-        newChildDiv1.appendChild(newChildP1)
-        newChildDiv1.appendChild(newChildP2)
-      });
-    });
+    
+  //  this.productPillGeneratorService.getProducts('getThreeNewestProducts', {});
+   this.productPillGeneratorService.getProducts('getCategory', {categoryName : 'dog'});
+  //  this.productPillGeneratorService.getProducts('_searchBreedNametest', {breedName: "Russel"});
+
+      
   }
 }
 
