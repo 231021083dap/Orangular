@@ -56,10 +56,8 @@ export class ProductPillGeneratorService {
     for (let i = 0; i < myObj.length; i++) {
       console.log(myObj[i].category.categoryName);
       if (myObj[i].category.categoryName == parameters.categoryName) {
-        console.log('Hello World');
         result.push(myObj[i])
       } 
-      
     }
     return result
     }
