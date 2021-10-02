@@ -22,7 +22,10 @@ export class HomePageComponent implements OnInit {
         
         switch (element.id){
           case 1:  thisImage = "Schaeferhund.jpg"; break;
-          case 3:  thisImage = "Corgi.jpg"; break;
+          case 2:  thisImage = "Corgi.jpg"; break;
+          case 3:  thisImage = "JackRussellTerrier.jpg"; break;
+          
+
           default: thisImage = 'DefaultImage.jpg';
         }
        
