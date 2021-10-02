@@ -7,7 +7,6 @@ import { ProductService } from '../_services/product.service'
 })
 export class ProductPillGeneratorService {
 
-
   constructor(private productService: ProductService) { }
   public product: Product[] = [];
 
@@ -15,11 +14,12 @@ export class ProductPillGeneratorService {
     // vars
     let paramters = JSON.parse(JSON.stringify(dynamicParameters))
     let modifyArray
+    let clearProductHTML = document.getElementById("products");
+    clearProductHTML?.remove();
 
     // eksternt metode kald til product.service
     // Henter alle produkter
-    this.productService.getAllProduct().subscribe(a => {
-      this.product = a
+    this.productService.getAllProduct().subscribe(a => { this.product = a
       // Ændrer produkt array efter vores ønske
       // F.eks. tager de tre nyeste produkter i database
       modifyArray = this._modifyProductArray(this.product, functionString, paramters);
@@ -41,7 +41,6 @@ export class ProductPillGeneratorService {
     return productArray
   }
   //------------------------------------------------------------------------------------------------------
-
   private _getCategory(productArray: Product[] = [], dynamicParameters: object): any {
     let parameters = JSON.parse(JSON.stringify(dynamicParameters))
     let myObj = JSON.parse(JSON.stringify(productArray))
@@ -49,12 +48,12 @@ export class ProductPillGeneratorService {
     let result: Product[] = []
     // console.log(myObj[0].category.categoryName)
     
-    console.log(myObj);
+    // console.log(myObj);
     console.log(parameters);
     
 
     for (let i = 0; i < myObj.length; i++) {
-      console.log(myObj[i].category.categoryName);
+      // console.log(myObj[i].category.categoryName);
       if (myObj[i].category.categoryName == parameters.categoryName) {
         result.push(myObj[i])
       } 
@@ -80,7 +79,12 @@ export class ProductPillGeneratorService {
 
   private _createPill(modifyArray: Product[] = []): void {
     let thisImage = 'DefaultImage.jpg'
-    const parent = document.getElementById('products')
+    
+    const body = document.getElementById('product-body')
+    const parent = document.createElement('div')
+    parent.setAttribute('id', 'products')
+    body?.appendChild(parent)
+
     modifyArray.forEach(element => {
 
       switch (element.id) {
@@ -89,7 +93,6 @@ export class ProductPillGeneratorService {
         case 3: thisImage = "JackRussellTerrier.jpg"; break;
         default: thisImage = 'DefaultImage.jpg';
       }
-
       const newChildDiv1 = document.createElement('div')
       newChildDiv1.setAttribute('class', 'child-pill')
       parent!.appendChild(newChildDiv1)
