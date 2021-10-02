@@ -44,7 +44,7 @@ namespace Orangular
                 options.AddPolicy(name: CORSRules,
                     builder =>
                     {
-                        builder.WithOrigins("http://10.61.0.4:4200", "http://10.61.0.83:4200, http://localhost:4200")
+                        builder.WithOrigins("http://localhost:4200")
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                     });
