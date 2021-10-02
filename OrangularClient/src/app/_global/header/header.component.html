@@ -5,12 +5,11 @@
     <li>
         <a routerLink="/">Home</a>
     </li>
+
     <li *ngFor = "let cat of categories">
-        <a routerLink="/{{cat.categoryName}}">{{cat.categoryName}}</a>
+        <a [routerLink]="['/category', cat.categoryName]"> {{cat.categoryName}}</a>
     </li>
-    <li>
-        <a routerLink="">Test</a>
-    </li>
+    <!-- //console.log("hello from getbyid " + `${this.endPoint}/${id}`); -->
     <li>
         <a routerLink="/search">Search</a>
     </li>
