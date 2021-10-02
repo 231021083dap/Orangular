@@ -13,7 +13,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HomePageTempComponent } from './home-page-temp/home-page-temp.component';
 
 const routes: Routes = [
-  {path: 'categories', component: CategoryPageComponent},
+  {path: 'category/:breedName', component: CategoryPageComponent},
   {path: 'search', component: SearchPageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'profile', component: ProfilePageComponent},
