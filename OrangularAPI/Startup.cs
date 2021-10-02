@@ -38,13 +38,13 @@ namespace Orangular
 
             // --- Tilfojet af Victor --- //
             // CORS - Cross-Origin Resource Sharing
-            // Tillader forspørgsler fra http://localhost:4200 og crossorigin https til http
+            // Tillader forspï¿½rgsler fra http://localhost:4200 og crossorigin https til http
             services.AddCors(options =>
             {
                 options.AddPolicy(name: CORSRules,
                     builder =>
                     {
-                        builder.WithOrigins("http://10.61.0.4:4200", "http://10.61.0.83:4200")
+                        builder.WithOrigins("http://10.61.0.4:4200", "http://10.61.0.83:4200, http://localhost:4200")
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                     });
