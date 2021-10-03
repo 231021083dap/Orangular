@@ -11,11 +11,13 @@ import { ProductPillGeneratorService } from '../../_services/product-pill-genera
 export class HeaderComponent implements OnInit {
 
   categories: Category[] = [];
-  constructor(private categoryService: CategoryService, private productPillGeneratorService: ProductPillGeneratorService) { }
+  constructor(
+    private categoryService: CategoryService, 
+    private productPillGeneratorService: ProductPillGeneratorService
+    ) { }
 
   ngOnInit(): void {
     this.getAllCategory();
-    
   }
 
   getAllCategory(): void {
