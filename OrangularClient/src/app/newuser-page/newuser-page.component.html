@@ -1,0 +1,25 @@
+<!-- <p>newuser-page works!</p>
+<h3>Create user</h3>
+<form action="">
+    <label for="new_user_mail">Mail: </label>
+    <input [(ngModel)]="newUser.email" id="new_user_mail" name="Mail"><br><br>
+    <label for="new_user_password">Password: </label>
+    <input [(ngModel)]="newUser.password" id="new_user_password" name="Password"><br><br>
+    <button (click)="create(newUser)">Submit</button><br><br>
+</form> -->
+
+
+
+<form action="" >
+    <div class="container">
+      <h1>Create user</h1> 
+      <hr>  
+      <label for="email"><b>Email</b></label>
+      <input [(ngModel)]="newUser.email" type="text" placeholder="Enter Email" name="email" required>  
+      <label for="psw"><b>Password</b></label>
+      <input [(ngModel)]="newUser.password" type="password" placeholder="Enter Password" name="psw" required>  
+      <div class="clearfix">      
+        <button (click)="create(newUser)" type="submit" class="signupbtn">Login</button>
+      </div>
+    </div>
+</form>
