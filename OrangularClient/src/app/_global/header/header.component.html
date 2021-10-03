@@ -1,27 +1,30 @@
 <ul>
     <li>
-        <h3>Orangular</h3>
+        <h3 (click)=clearProducts() >Orangular</h3>
     </li>
     <li>
-        <a routerLink="/">Home</a>
+        <a (click)=clearProducts() routerLink="/">Home</a>
     </li>
 
     <li *ngFor = "let cat of categories">
-        <a [routerLink]="['/category', cat.categoryName]"> {{cat.categoryName}}</a>
+        <a (click)=clearProducts() [routerLink]="['/category', cat.categoryName]"> {{cat.categoryName}}</a>
     </li>
     <!-- //console.log("hello from getbyid " + `${this.endPoint}/${id}`); -->
     <li>
-        <a routerLink="/search">Search</a>
+        <a (click)=clearProducts() routerLink="/search">Search</a>
     </li>
     <div class="left">
         <li>
-            <a routerLink="/profile">Profile</a>
+            <a [routerLink]="['/product', 'test']">test</a>
         </li>
         <li>
-            <a routerLink="/login">Login</a>
+            <a (click)=clearProducts() routerLink="/profile">Profile</a>
+        </li>
+        <li>
+            <a (click)=clearProducts() routerLink="/login">Login</a>
         </li>    
         <li>
-            <a routerLink="/basket">Basket</a>
+            <a (click)=clearProducts() routerLink="/basket">Basket</a>
         </li>    
     </div>
  
