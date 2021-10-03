@@ -37,6 +37,7 @@ export class ProductPillGeneratorService {
       case 'searchByBreedName': productArray = this._searchByBreedName(productArray, parameters); break;
       case 'searchByMinMaxPrice': productArray = this._searchByMinMaxPrice(productArray, parameters); break;
       default: console.log(`Default case: Returning all products. functionCall: ${functionCall}`)
+
     }
     return productArray
   }
@@ -56,26 +57,36 @@ export class ProductPillGeneratorService {
         case 1: thisImage = "Schaeferhund.jpg"; break;
         case 2: thisImage = "Corgi.jpg"; break;
         case 3: thisImage = "JackRussellTerrier.jpg"; break;
+        case 4: thisImage = "Siamese.jpg"; break;
+        case 5: thisImage = "SnowShoe.jpg"; break;
+        case 6: thisImage = "Persian.jpg"; break;
         default: thisImage = 'DefaultImage.jpg';
       }
-      const newChildDiv1 = document.createElement('div')
-      newChildDiv1.setAttribute('class', 'child-pill')
-      parent!.appendChild(newChildDiv1)
 
-      const newImg = document.createElement('img')
-      newImg.setAttribute('class', 'picture')
-      newImg.setAttribute('src', `./assets/${thisImage}`)
-      newImg.setAttribute('width', '200')
-      newImg.setAttribute('height', '200')
-      parent!.appendChild(newImg)
+      const newChildDiv1 = document.createElement('div');
+      newChildDiv1.setAttribute('class', 'child-pill');
+      parent!.appendChild(newChildDiv1);
 
-      const newChildP1 = document.createElement('p')
-      newChildP1.innerHTML = `price : ${element.price}`
-      const newChildP2 = document.createElement('p')
-      newChildP2.innerHTML = `name : ${element.breedName}`
+      const newLink = document.createElement('a');
+      newLink.setAttribute('href', '/test');
+      parent!.appendChild(newLink);
 
-      newChildDiv1.appendChild(newChildP1)
-      newChildDiv1.appendChild(newChildP2)
+      const newImg = document.createElement('img');
+      newImg.setAttribute('class', 'picture');
+      newImg.setAttribute('src', `./assets/${thisImage}`);
+      newImg.setAttribute('width', '200');
+      newImg.setAttribute('height', '200');
+      newImg.addEventListener('mouseenter', () => { newImg.style.opacity =  '.7' });
+      newImg.addEventListener('mouseleave', () => { newImg.style.opacity =  '1'; });
+      newLink!.appendChild(newImg);
+
+      const newChildP1 = document.createElement('p');
+      newChildP1.innerHTML = `price : ${element.price}` ;
+      const newChildP2 = document.createElement('p');
+      newChildP2.innerHTML = `name : ${element.breedName}`;
+
+      newChildDiv1.appendChild(newChildP1);
+      newChildDiv1.appendChild(newChildP2);
     })
   }
   //#endregion
