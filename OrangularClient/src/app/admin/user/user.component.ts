@@ -29,11 +29,11 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {    
     // Opdatere getAll listen en gang i sekundet.
-    // setInterval(()=> { this.getAll(false) }, 1000);
-    this.getAll(false)
-    this.userService.getAll().subscribe(
-      u => console.log(u)
-    )
+    setInterval(()=> { this.getAll(false) }, 1000);
+    // this.getAll(false)
+    // this.userService.getAll().subscribe(
+      // u => console.log(u)
+    // )
     // this.getAll(true)
     // this.create(this.newUser)
 
