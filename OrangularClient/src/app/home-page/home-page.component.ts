@@ -42,9 +42,9 @@ export class HomePageComponent implements OnInit {
 
 
     
-   this.productPillGeneratorService.getProducts('getThreeNewestProducts', {});
-  //  this.productPillGeneratorService.getProducts('getCategory', {categoryName : 'dog'});
-  //  this.productPillGeneratorService.getProducts('_searchBreedNametest', {breedName: "Russel"});
+    this.productPillGeneratorService.getProducts('home-page-body', 'getThreeNewestProducts', {});
+    // this.productPillGeneratorService.getProducts('getCategory', {categoryName : 'dog'});
+    // this.productPillGeneratorService.getProducts('_searchBreedNametest', {breedName: "Russel"});
 
       
   }
