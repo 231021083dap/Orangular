@@ -14,8 +14,6 @@ export class ProductPillGeneratorService {
     // vars
     let paramters = JSON.parse(JSON.stringify(dynamicParameters))
     let modifyArray
-    let clearProductHTML = document.getElementById("products");
-    clearProductHTML?.remove();
 
     // eksternt metode kald til product.service
     // Henter alle produkter
