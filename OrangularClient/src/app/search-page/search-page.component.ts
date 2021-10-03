@@ -6,11 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-page.component.css']
 })
 export class SearchPageComponent implements OnInit {
+  // public name
 
   constructor() { }
 
   ngOnInit(): void {
+    document.getElementById("products")?.remove(); // Clear all products    
   }
 
-  
+  // searchByBreedName(name)
 }

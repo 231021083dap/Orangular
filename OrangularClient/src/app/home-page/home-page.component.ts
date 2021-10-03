@@ -19,7 +19,7 @@ export class HomePageComponent implements OnInit {
   public sortedProducts: Product[] = [];
 
   ngOnInit(): void {
-
+    document.getElementById("products")?.remove(); // Clear all products
 
     // Victor ---- //
     // Problem
