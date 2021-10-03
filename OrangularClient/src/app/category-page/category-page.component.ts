@@ -14,7 +14,8 @@ export class CategoryPageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private productPillGeneratorService: ProductPillGeneratorService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
+    this.route.params.subscribe((params: Params) => {      
+      document.getElementById("products")?.remove(); // Clear all products      
       let categoryName = params.categoryName; 
       this.productPillGeneratorService.getProducts('getCategory', {categoryName : categoryName});
     });
