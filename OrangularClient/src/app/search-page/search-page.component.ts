@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductPillGeneratorService } from '../_services/product-pill-generator.service';
 
 @Component({
   selector: 'app-search-page',
@@ -6,13 +7,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-page.component.css']
 })
 export class SearchPageComponent implements OnInit {
-  // public name
+  public name : string = ""
+  public minprice : number = 100
+  public maxprice : number = 1000
 
-  constructor() { }
+  constructor(
+    private productPillGeneratorService: ProductPillGeneratorService
+    ) {}
 
   ngOnInit(): void {
-    document.getElementById("products")?.remove(); // Clear all products    
+    
   }
 
-  // searchByBreedName(name)
+  searchByBreedName() : void {
+    this.productPillGeneratorService.clearProducts();
+    this.productPillGeneratorService.getProducts(
+      'search-page-body',
+      'searchByBreedName',
+      {breedName: `${this.name}`});
+  }
+
+  searchByMinMaxPrice() : void {
+    this.productPillGeneratorService.clearProducts();
+    this.productPillGeneratorService
+    .getProducts(
+    'search-page-body', 
+    'searchByMinMaxPrice',
+    {
+      minPrice: `${this.minprice}`,
+      maxPrice: `${this.maxprice}`
+    });
+    console.log(`minprice: ${this.minprice} maxprice: ${this.maxprice}`)
+  }
 }
