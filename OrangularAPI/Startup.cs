@@ -38,7 +38,7 @@ namespace Orangular
 
             // --- Tilfojet af Victor --- //
             // CORS - Cross-Origin Resource Sharing
-            // Tillader forspørgsler fra http://localhost:4200 og crossorigin https til http
+            // Tillader forspï¿½rgsler fra http://localhost:4200 og crossorigin https til http
             services.AddCors(options =>
             {
                 options.AddPolicy(name: CORSRules,

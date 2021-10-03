@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Params } from '@angular/router';
+import { ProductPillGeneratorService } from '../_services/product-pill-generator.service';
+
 
 @Component({
   selector: 'app-category-page',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private productPillGeneratorService: ProductPillGeneratorService) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => {
+      let categoryName = params.categoryName; 
+      this.productPillGeneratorService.getProducts('getCategory', {categoryName : categoryName});
+    });
   }
-
 }

@@ -7,18 +7,23 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { ProductComponent } from './admin/product/product.component';
 import { UserComponent } from './admin/user/user.component';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component';
-
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { CategoryComponent } from './admin/category/category.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { HomePageTempComponent } from './home-page-temp/home-page-temp.component';
 
 const routes: Routes = [
-  {path: 'categories', component: CategoryPageComponent},
+  {path: 'category/:categoryName', component: CategoryPageComponent},
   {path: 'search', component: SearchPageComponent},
   {path: 'login', component: LoginPageComponent},
-  {path: 'product', component: ProductPageComponent},
+  {path: 'profile', component: ProfilePageComponent},
+  {path: 'product/:', component: ProductPageComponent},
   {path: 'basket', component: BasketPageComponent},
-  {path: 'admin', component: AdminPanelComponent},
   {path: 'admin/product', component: ProductComponent},
-  {path: 'admin/user', component: UserComponent}
+  {path: 'admin/user', component: UserComponent},
+  {path: "admin/category", component: CategoryComponent},
+  {path: "", component: HomePageComponent},
+  {path: "hometemp", component: HomePageTempComponent}
 ];
 
 @NgModule({

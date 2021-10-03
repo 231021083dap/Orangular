@@ -63,13 +63,13 @@ namespace OrangularAPI.Database
             //// --- Order_Lists Foreign keys opførsel --- //
 
 
-            //// --- Category Foreign keys opførsel --- //
-            //// On delete restrict
-            //modelBuilder.Entity<Product>()
-            //    .HasOne(lambda => lambda.Category)
-            //    .WithMany(lambda => lambda.Product)
-            //    .OnDelete(DeleteBehavior.Restrict);
-            //// --- Category Foreign keys opførsel --- //
+            // --- Category Foreign keys opførsel --- //
+            // On delete restrict
+            modelBuilder.Entity<Product>()
+                .HasOne(lambda => lambda.Category)
+                .WithMany(lambda => lambda.Product)
+                .OnDelete(DeleteBehavior.Restrict);
+            // --- Category Foreign keys opførsel --- //
 
             //// --- Products Foreign keys opførsel --- //
             //// On delete restrict
@@ -142,21 +142,84 @@ namespace OrangularAPI.Database
             new Category
             {
                 Id = 1,
-                CategoryName = "hund"
-            });
+                CategoryName = "dog"
+            },
+            new Category
+            {
+                Id = 2,
+                CategoryName = "cat"
+            }
+            );
 
             // Products
             modelBuilder.Entity<Product>().HasData(
+            // Schaeferhund.jpg
             new Product
             {
                 Id = 1,
-                BreedName = "chefer hund",
+                BreedName = "german shepherd",
                 Price = 750000,
                 Weight = 35000,
                 Gender = "male",
-                Description = "Description",
+                Description = "The German Shepherd is a breed of medium to large",
                 CategoryId = 1
-            });
+            },
+            // Corgi.jpg
+            new Product
+            {
+                Id = 2,
+                BreedName = "Corgi",
+                Price = 530000,
+                Weight = 12000,
+                Gender = "male",
+                Description = "The Corgi is a breed of medium to large",
+                CategoryId = 1
+            },
+            // JackRussellTerrier.jpg
+            new Product
+            {
+                Id = 3,
+                BreedName = "Jack Russell Terrier",
+                Price = 530000,
+                Weight = 12000,
+                Gender = "male",
+                Description = "The Jack Russell Terrier is a cute dog",
+                CategoryId = 1
+            },
+            // Siamese.jpg
+            new Product
+            {
+                Id = 4,
+                BreedName = "Siamese",
+                Price = 530000,
+                Weight = 12000,
+                Gender = "male",
+                Description = "The Siamese is a cute cat",
+                CategoryId = 2
+            },
+            // SnowShoe
+            new Product
+            {
+                Id = 5,
+                BreedName = "SnowShoe",
+                Price = 530000,
+                Weight = 12000,
+                Gender = "male",
+                Description = "The SnowShoe is a cute cat",
+                CategoryId = 2
+            },
+            // Persian.jpg
+            new Product
+            {
+                Id = 6,
+                BreedName = "Persian",
+                Price = 530000,
+                Weight = 12000,
+                Gender = "male",
+                Description = "The Persian is a cute cat",
+                CategoryId = 2
+            }
+            );
         }
         // ----- Fylder data ind i tabellerne ----- Victor //
      }
