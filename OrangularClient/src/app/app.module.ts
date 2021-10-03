@@ -18,6 +18,7 @@ import { CategoryComponent } from './admin/category/category.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { ProductPillComponent } from './_global/product-pill/product-pill.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { NewuserPageComponent } from './newuser-page/newuser-page.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     CategoryComponent,
     ProfilePageComponent,
     ProductPillComponent,
-    HomePageComponent
+    HomePageComponent,
+    NewuserPageComponent
   ],
   imports: [
     BrowserModule,
