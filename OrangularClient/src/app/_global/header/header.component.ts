@@ -15,12 +15,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllCategory();
-    
   }
 
   getAllCategory(): void {
     this.categoryService.getAllCategory().subscribe(a => this.categories = a);
-  
   }
 
   public clearProducts() :void {
