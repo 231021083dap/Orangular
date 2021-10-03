@@ -36,7 +36,7 @@ export class ProfilePageComponent implements OnInit {
     // this.getAll(true)
 
     // this.addressService.getById(13).subscribe(a => console.log(a))
-    setInterval(()=> {this.getById(5)}, 1000);
+    // setInterval(()=> {this.getById(5)}, 1000);
 
     // this.addressService.create(this.newAddress).subscribe(a => console.log(a))
     // this.create(this.newAddress)
