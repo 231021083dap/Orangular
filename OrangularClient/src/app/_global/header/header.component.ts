@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/_models/category';
 import { CategoryService } from 'src/app/_services/category.service';
+import { ProductPillGeneratorService } from '../../_services/product-pill-generator.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ import { CategoryService } from 'src/app/_services/category.service';
 export class HeaderComponent implements OnInit {
 
   categories: Category[] = [];
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService, private productPillGeneratorService: ProductPillGeneratorService) { }
 
   ngOnInit(): void {
     this.getAllCategory();
@@ -20,5 +21,9 @@ export class HeaderComponent implements OnInit {
   getAllCategory(): void {
     this.categoryService.getAllCategory().subscribe(a => this.categories = a);
   
+  }
+
+  public clearProducts() :void {
+    this.productPillGeneratorService.clearProducts();
   }
 }
