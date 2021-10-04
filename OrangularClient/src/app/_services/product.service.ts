@@ -15,4 +15,22 @@ export class ProductService {
   getAllProduct(): Observable<Product[]>{
     return this.http.get<Product[]>(this.apiUrl);
   }
+
+  getProduct(productId: string): Observable<Product>{
+    return this.http.get<Product>(`${this.apiUrl}/${productId}`);
+   }
+
+   setImage(productId: number): string {
+     let thisImage;
+    switch (productId) {
+      case 1: thisImage = "Schaeferhund.jpg"; break;
+      case 2: thisImage = "Corgi.jpg"; break;
+      case 3: thisImage = "JackRussellTerrier.jpg"; break;
+      case 4: thisImage = "Siamese.jpg"; break;
+      case 5: thisImage = "SnowShoe.jpg"; break;
+      case 6: thisImage = "Persian.jpg"; break;
+      default: thisImage = 'DefaultImage.jpg';
+    }
+    return thisImage;
+   }
 }
