@@ -6,7 +6,7 @@
         <a routerLink="/">Home </a>
     </li>
     <li *ngFor="let cat of categories">
-        <a [routerLink]="['/category', cat.categoryName]"> {{cat.categoryName}}</a>
+        <a [routerLink]="['/category', cat.id]"> {{cat.categoryName}}</a>
     </li>
     <li> 
         <a routerLink="/search">Search </a> 
