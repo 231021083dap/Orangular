@@ -7,6 +7,7 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { ProductComponent } from './admin/product/product.component';
 import { UserComponent } from './admin/user/user.component';
+import { OrderViewComponent } from './admin/order-view/order-view.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CategoryComponent } from './admin/category/category.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'admin/product', component: ProductComponent},
   {path: 'admin/user', component: UserComponent},
   {path: "admin/category", component: CategoryComponent},
+  {path: "admin/order-view", component: OrderViewComponent},
   {path: "", component: HomePageComponent},
   {path: "newuser", component: NewuserPageComponent}
 ];
