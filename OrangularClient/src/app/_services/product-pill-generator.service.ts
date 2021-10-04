@@ -9,17 +9,10 @@ export class ProductPillGeneratorService {
 
   constructor(private productService: ProductService) { }
   public product: Product[] = [];
-
-  //---------------------------------------------------------------------------------------------------------------------------------------------------
-  // clearProducts fjerner vores products div, og dermed alle dets child elementer ("produkt pill").
-  // clearProducts bliver kaldt i header.component og kører hver gang et link bliver trykket på. 
-  public clearProducts(): void {
-    document.getElementById("products")?.remove();
-    console.log("clearProducts()")
-  }
   //---------------------------------------------------------------------------------------------------------------------------------------------------
   //#region Creating Pills
   public getProducts(htmlElementId: string, functionString: string, dynamicParameters: object): void {
+    document.getElementById("products")?.remove();
     let parameters = JSON.parse(JSON.stringify(dynamicParameters))
     let modifyArray;
     this.productService.getAllProduct().subscribe(a => {
@@ -37,13 +30,10 @@ export class ProductPillGeneratorService {
       case 'searchByBreedName': productArray = this._searchByBreedName(productArray, parameters); break;
       case 'searchByMinMaxPrice': productArray = this._searchByMinMaxPrice(productArray, parameters); break;
       default: console.log(`Default case: Returning all products. functionCall: ${functionCall}`)
-
     }
     return productArray
   }
   private _createPill(htmlElementId : string, modifyArray: Product[] = []): void {
-    let thisImage = 'DefaultImage.jpg'
-    
 
     const body = document.getElementById(htmlElementId)
     const parent = document.createElement('div')
@@ -53,29 +43,21 @@ export class ProductPillGeneratorService {
     modifyArray.forEach(element => {
       element.price = element.price / 100
 
-      switch (element.id) {
-        case 1: thisImage = "Schaeferhund.jpg"; break;
-        case 2: thisImage = "Corgi.jpg"; break;
-        case 3: thisImage = "JackRussellTerrier.jpg"; break;
-        case 4: thisImage = "Siamese.jpg"; break;
-        case 5: thisImage = "SnowShoe.jpg"; break;
-        case 6: thisImage = "Persian.jpg"; break;
-        default: thisImage = 'DefaultImage.jpg';
-      }
-
       const newChildDiv1 = document.createElement('div');
       newChildDiv1.setAttribute('class', 'child-pill');
       parent!.appendChild(newChildDiv1);
 
       const newLink = document.createElement('a');
-      newLink.setAttribute('href', '/test');
+      newLink.setAttribute('href', `/product/${element.id}`);
       parent!.appendChild(newLink);
 
+      let thisImage = this.productService.setImage(element.id)
       const newImg = document.createElement('img');
       newImg.setAttribute('class', 'picture');
       newImg.setAttribute('src', `./assets/${thisImage}`);
       newImg.setAttribute('width', '200');
       newImg.setAttribute('height', '200');
+      newImg.setAttribute('border', '1 px')
       newImg.addEventListener('mouseenter', () => { newImg.style.opacity =  '.7' });
       newImg.addEventListener('mouseleave', () => { newImg.style.opacity =  '1'; });
       newLink!.appendChild(newImg);
@@ -139,8 +121,6 @@ export class ProductPillGeneratorService {
     console.log(result)
     return result
   }
-
-
   //#endregion
 }
 

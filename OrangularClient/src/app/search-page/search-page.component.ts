@@ -20,7 +20,6 @@ export class SearchPageComponent implements OnInit {
   }
 
   searchByBreedName() : void {
-    this.productPillGeneratorService.clearProducts();
     this.productPillGeneratorService.getProducts(
       'search-page-body',
       'searchByBreedName',
@@ -28,7 +27,6 @@ export class SearchPageComponent implements OnInit {
   }
 
   searchByMinMaxPrice() : void {
-    this.productPillGeneratorService.clearProducts();
     this.productPillGeneratorService
     .getProducts(
     'search-page-body', 

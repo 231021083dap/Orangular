@@ -24,7 +24,4 @@ export class HeaderComponent implements OnInit {
     this.categoryService.getAllCategory().subscribe(a => this.categories = a);
   }
 
-  public clearProducts() :void {
-    this.productPillGeneratorService.clearProducts();
-  }
 }
