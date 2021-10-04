@@ -2,6 +2,7 @@ import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_c
 import { Injectable } from '@angular/core';
 import { Product } from '../_models/product';
 import { ProductService } from '../_services/product.service'
+import { LibraryService } from './library.service'
 
 
 @Injectable({
@@ -9,7 +10,10 @@ import { ProductService } from '../_services/product.service'
 })
 export class ProductPillItemService {
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private libraryService: LibraryService
+    ) { }
   public product: Product[] = [];
   public productObj: Product = { id: 0, breedName: "", price: 0, weight: 0, gender: "", description: "" };
 
