@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../_models/product';
 import { ProductService } from '../_services/product.service'
+import { LibraryService } from './library.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductPillGeneratorService {
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private libraryService: LibraryService
+    ) { }
   public product: Product[] = [];
   //---------------------------------------------------------------------------------------------------------------------------------------------------
   //#region Creating Pills
@@ -102,12 +106,13 @@ export class ProductPillGeneratorService {
     let maxPrice: number
 
     // Konverter fra kroner til øre
-    function converFromKronerToOre(kroner : number) {
-      return kroner * 100
-    }
-    
-    minPrice = converFromKronerToOre(paramters.minPrice)
-    maxPrice = converFromKronerToOre(paramters.maxPrice)
+    // function converFromKronerToOre(kroner : number) {
+    //   return kroner * 100
+    // }    
+    // minPrice = converFromKronerToOre(paramters.minPrice)
+    // maxPrice = converFromKronerToOre(paramters.maxPrice)
+    minPrice = this.libraryService.convertPrice('ore', paramters.minPrice)
+    maxPrice = this.libraryService.convertPrice('ore', paramters.maxPrice)
 
     console.log(minPrice + " " + maxPrice + "element price: " + productArray[0].price)
 
@@ -119,8 +124,3 @@ export class ProductPillGeneratorService {
   }
   //#endregion
 }
-
-
-
-
-
