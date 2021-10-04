@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Params } from '@angular/router';
+import { ProductPillItemService } from '../_services/product-pill-item.service';
 
 @Component({
   selector: 'app-product-page',
@@ -9,12 +10,12 @@ import { Params } from '@angular/router';
 })
 export class ProductPageComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private productPillItemService: ProductPillItemService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {      
-      let productName = params.productName; 
-      alert(productName)
+      let productId = params.productId; 
+      this.productPillItemService.testfunc(productId);
     });
   }
 
