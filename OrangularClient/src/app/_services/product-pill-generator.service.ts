@@ -45,7 +45,6 @@ export class ProductPillGeneratorService {
     body?.appendChild(parent)
 
     modifyArray.forEach(element => {
-      // element.price = element.price / 100
 
       const newChildDiv1 = document.createElement('div');
       newChildDiv1.setAttribute('class', 'child-pill');
