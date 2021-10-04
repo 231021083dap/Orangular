@@ -49,7 +49,7 @@ export class ProductPillGeneratorService {
 
       const newLink = document.createElement('a');
       newLink.setAttribute('href', `/product/${element.id}`);
-      parent!.appendChild(newLink);
+      newChildDiv1!.appendChild(newLink);
 
       let thisImage = this.productService.setImage(element.id)
       const newImg = document.createElement('img');
@@ -63,12 +63,8 @@ export class ProductPillGeneratorService {
       newLink!.appendChild(newImg);
 
       const newChildP1 = document.createElement('p');
-      newChildP1.innerHTML = `price : ${element.price}` ;
-      const newChildP2 = document.createElement('p');
-      newChildP2.innerHTML = `name : ${element.breedName}`;
-
+      newChildP1.innerHTML = `<b>Breed:</b> ${element.breedName} | <b>Price:</b> ${element.price} kr` ;
       newChildDiv1.appendChild(newChildP1);
-      newChildDiv1.appendChild(newChildP2);
     })
   }
   //#endregion

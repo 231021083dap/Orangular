@@ -27,12 +27,42 @@ export class ProductPillItemService {
       }
 
       const body = document.getElementById("product-page-body")
-    const parent = document.createElement('div')
-    parent.setAttribute('id', 'products')
-    body?.appendChild(parent)
+      const parent = document.createElement('div')
+      parent.setAttribute('id', 'products')
+      body?.appendChild(parent)
 
+      const newChildDiv1 = document.createElement('div');
+      newChildDiv1.setAttribute('class', 'child-pill');
+      parent!.appendChild(newChildDiv1);
 
+      let thisImage = this.productService.setImage(this.productObj.id)
+      const newImg = document.createElement('img');
+      newImg.setAttribute('class', 'picture');
+      newImg.setAttribute('src', `./assets/${thisImage}`);
+      newImg.setAttribute('width', '200');
+      newImg.setAttribute('height', '200');
+      newImg.setAttribute('border', '1 px')
+      newChildDiv1!.appendChild(newImg);
+
+      const newChildP1 = document.createElement('p');
+      newChildP1.innerHTML = `<b>Breed:</b> ${this.productObj.breedName} | <b>Price:</b> ${this.productObj.price} kr
+      <br> <b>Weight:</b> ${this.productObj.weight} | <b>Gender:</b> ${this.productObj.gender}
+      <br> <b>Description:</b> ${this.productObj.description} `;
+      newChildDiv1.appendChild(newChildP1);
+
+      const newChildTextProductAmount = document.createElement('input');
+      newChildTextProductAmount.setAttribute('id', 'ProductAmountId');
+      newChildTextProductAmount.setAttribute('value', '1');
+      newChildDiv1.appendChild(newChildTextProductAmount);
+
+      const newChildbuttonAddToCart = document.createElement('input');
+      newChildbuttonAddToCart.setAttribute('type', 'button')
+      newChildbuttonAddToCart.setAttribute('value', 'Add to cart');
+      newChildbuttonAddToCart.addEventListener('click', this.alertCart)
+      newChildDiv1.appendChild(newChildbuttonAddToCart);
     });
   }
-
+  private alertCart(): void {
+    alert("You have added: " +(<HTMLInputElement>document.getElementById('ProductAmountId')).value + " to the cart");
+  }
 }
