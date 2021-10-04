@@ -82,7 +82,8 @@ export class ProductPillGeneratorService {
     let result: Product[] = []
 
     for (let i = 0; i < myObj.length; i++) {
-      if (myObj[i].category.categoryName == parameters.categoryName) result.push(myObj[i])
+      if (myObj[i].category.category == parameters.id) result.push(myObj[i])
+      console.log(myObj[i]);
     } return result
   }
 

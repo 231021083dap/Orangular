@@ -14,7 +14,6 @@ import { CategoryComponent } from './admin/category/category.component';
 
 import { ProductPageComponent } from './product-page/product-page.component';
 import { ProductComponent } from './admin/product/product.component';
-import { ProductPillComponent } from './_global/product-pill/product-pill.component';
 
 import { SearchPageComponent } from './search-page/search-page.component';
 import { BasketPageComponent } from './basket-page/basket-page.component';
@@ -42,7 +41,6 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     ProductComponent,
     CategoryComponent,
     ProfilePageComponent,
-    ProductPillComponent,
     HomePageComponent,
     NewuserPageComponent
   ],
