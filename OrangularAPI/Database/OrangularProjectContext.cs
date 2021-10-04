@@ -161,7 +161,7 @@ namespace OrangularAPI.Database
                 Price = 750000,
                 Weight = 35000,
                 Gender = "Male",
-                Description = "The German Shepherd is a breed of medium to large",
+                Description = "The German Shepherd is a breed of medium to large. German Shepherds originated from Germany in the year 1899.",
                 CategoryId = 1
             },
             // Corgi.jpg
@@ -172,7 +172,7 @@ namespace OrangularAPI.Database
                 Price = 530000,
                 Weight = 12000,
                 Gender = "Female",
-                Description = "The Corgi is a small",
+                Description = "A very cute dog. According to the Oxford English Dictionary, cor means dwarf and gi means dog.",
                 CategoryId = 1
             },
             // JackRussellTerrier.jpg
