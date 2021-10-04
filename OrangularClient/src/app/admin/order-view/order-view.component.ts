@@ -3,12 +3,14 @@ import { OrderList } from 'src/app/_models/order-list';
 import { OrderListService } from '../../_services/order-list.service'
 import { User } from 'src/app/_models/user';
 
+
 @Component({
   selector: 'app-order-view',
   templateUrl: './order-view.component.html',
   styleUrls: ['./order-view.component.css']
 })
 export class OrderViewComponent implements OnInit {
+
   public orders : any[] = []
   public id : number = 0;
   public datetime : any;
@@ -30,6 +32,7 @@ export class OrderViewComponent implements OnInit {
       this.orders = o
       if (log) console.log(o)
     })
+
   }
 
 }

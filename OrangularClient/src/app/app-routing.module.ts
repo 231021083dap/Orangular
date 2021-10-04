@@ -14,7 +14,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NewuserPageComponent } from './newuser-page/newuser-page.component';
 
 const routes: Routes = [
-  {path: 'category/:categoryName', component: CategoryPageComponent},
+  {path: 'category/:id', component: CategoryPageComponent},
   {path: 'search', component: SearchPageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'profile', component: ProfilePageComponent},
