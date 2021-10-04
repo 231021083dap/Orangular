@@ -9,7 +9,7 @@ import { ProductPillGeneratorService } from '../_services/product-pill-generator
 export class SearchPageComponent implements OnInit {
   public name : string = ""
   public minprice : number = 100
-  public maxprice : number = 1000
+  public maxprice : number = 10000
 
   constructor(
     private productPillGeneratorService: ProductPillGeneratorService

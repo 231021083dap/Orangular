@@ -15,8 +15,10 @@ export class CategoryPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {      
-      let categoryName = params.categoryName; 
-      this.productPillGeneratorService.getProducts('category-page-body', 'getCategory', {categoryName : categoryName});
+      let id = params.id; 
+      console.log(id);
+      
+      this.productPillGeneratorService.getProducts('category-page-body', 'getCategory', {id : id});
     });
   }
 }
