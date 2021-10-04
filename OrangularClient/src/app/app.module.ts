@@ -4,21 +4,28 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './_global/header/header.component';
 import { FooterComponent } from './_global/footer/footer.component';
+
 import { CategoryPageComponent } from './category-page/category-page.component';
+import { CategoryComponent } from './admin/category/category.component';
+
+import { ProductPageComponent } from './product-page/product-page.component';
+import { ProductComponent } from './admin/product/product.component';
+import { ProductPillComponent } from './_global/product-pill/product-pill.component';
+
 import { SearchPageComponent } from './search-page/search-page.component';
+import { BasketPageComponent } from './basket-page/basket-page.component';
+
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
-import { BasketPageComponent } from './basket-page/basket-page.component';
-import { ProductPageComponent } from './product-page/product-page.component';
-import { UserComponent } from './admin/user/user.component';
-import { ProductComponent } from './admin/product/product.component';
-import { CategoryComponent } from './admin/category/category.component';
-import { ProfilePageComponent } from './profile-page/profile-page.component';
-import { ProductPillComponent } from './_global/product-pill/product-pill.component';
-import { HomePageComponent } from './home-page/home-page.component';
 import { NewuserPageComponent } from './newuser-page/newuser-page.component';
+import { UserComponent } from './admin/user/user.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+
+
 
 @NgModule({
   declarations: [

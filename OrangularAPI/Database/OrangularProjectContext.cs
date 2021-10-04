@@ -103,7 +103,7 @@ namespace OrangularAPI.Database
             new Address
             {
                 Id = 1,
-                AddressName = "TEC Ballerup",
+                AddressName = "Telegrafvej 9",
                 ZipCode = 2750,
                 CityName = "Ballerup",
                 UserId = 1,
@@ -111,10 +111,10 @@ namespace OrangularAPI.Database
             new Address
             {
                 Id = 2,
-                AddressName = "Hjem Helsingør",
+                AddressName = "Karlsgårdsvej 17",
                 ZipCode = 3000,
                 CityName = "Helsingør",
-                UserId = 2
+                UserId = 2,
             });
 
             // Order_Lists
@@ -142,12 +142,12 @@ namespace OrangularAPI.Database
             new Category
             {
                 Id = 1,
-                CategoryName = "dog"
+                CategoryName = "Dog"
             },
             new Category
             {
                 Id = 2,
-                CategoryName = "cat"
+                CategoryName = "Cat"
             }
             );
 
@@ -157,11 +157,11 @@ namespace OrangularAPI.Database
             new Product
             {
                 Id = 1,
-                BreedName = "german shepherd",
+                BreedName = "German Shepherd",
                 Price = 750000,
                 Weight = 35000,
-                Gender = "male",
-                Description = "The German Shepherd is a breed of medium to large",
+                Gender = "Male",
+                Description = "The German Shepherd is a breed of medium to large. German Shepherds originated from Germany in the year 1899.",
                 CategoryId = 1
             },
             // Corgi.jpg
@@ -171,8 +171,8 @@ namespace OrangularAPI.Database
                 BreedName = "Corgi",
                 Price = 530000,
                 Weight = 12000,
-                Gender = "male",
-                Description = "The Corgi is a breed of medium to large",
+                Gender = "Female",
+                Description = "A very cute dog. According to the Oxford English Dictionary, cor means dwarf and gi means dog.",
                 CategoryId = 1
             },
             // JackRussellTerrier.jpg
@@ -182,7 +182,7 @@ namespace OrangularAPI.Database
                 BreedName = "Jack Russell Terrier",
                 Price = 530000,
                 Weight = 12000,
-                Gender = "male",
+                Gender = "Male",
                 Description = "The Jack Russell Terrier is a cute dog",
                 CategoryId = 1
             },
@@ -193,7 +193,7 @@ namespace OrangularAPI.Database
                 BreedName = "Siamese",
                 Price = 530000,
                 Weight = 12000,
-                Gender = "male",
+                Gender = "Female",
                 Description = "The Siamese is a cute cat",
                 CategoryId = 2
             },
@@ -204,7 +204,7 @@ namespace OrangularAPI.Database
                 BreedName = "SnowShoe",
                 Price = 530000,
                 Weight = 12000,
-                Gender = "male",
+                Gender = "Male",
                 Description = "The SnowShoe is a cute cat",
                 CategoryId = 2
             },
@@ -215,7 +215,7 @@ namespace OrangularAPI.Database
                 BreedName = "Persian",
                 Price = 530000,
                 Weight = 12000,
-                Gender = "male",
+                Gender = "Female",
                 Description = "The Persian is a cute cat",
                 CategoryId = 2
             }
