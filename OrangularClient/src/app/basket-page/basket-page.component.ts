@@ -18,8 +18,13 @@ export class BasketPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.basketService.getBasket().subscribe(CartItems => this.CartItems = CartItems)
-    console.log("Checkout", this.CartItems);
+    this.basketService.getBasket().subscribe(CartItems => {
+      this.CartItems = CartItems
+
+      console.log("Checkout", this.CartItems);
+      this.testfunc();
+      
+     })
   }
   testfunc(): void{
     console.log("test");
