@@ -26,8 +26,8 @@ export class ProductComponent implements OnInit {
     gender: '',
     description: ''
   };
-  public updateUserId : number = 1;
-  public updateProduct : Product = {
+  public updateProduktId : number = 1;
+  public updateProduct : Product =  {
     id: 0,
     breedName: '',
     price: 0,
@@ -37,6 +37,7 @@ export class ProductComponent implements OnInit {
   }
   public deleteProductid : number = 1
 
+
   product:Product[] = [];
   constructor(private productService:ProductService) { }
 
@@ -45,7 +46,7 @@ export class ProductComponent implements OnInit {
     setInterval(()=> { this.getAll(false) }, 1000);
 
     // this.getAll(true)
-
+    // this.productService.update(2).subscribe(u => {console.log(u);})
 
   }
 
@@ -76,14 +77,23 @@ export class ProductComponent implements OnInit {
 
   // ---------------------- Create Product ---------------------- -->
   create(product: Product) : void {
-    this.productService.create(product).subscribe(c => {this.newProduct = c})
+    this.productService.create(product).subscribe(c =>
+      {
+        // this.newProduct = c
+        console.log(c);
+        
+      })
   }
 
 
 
   // ---------------------- Update Product ---------------------- -->
   update(id : number, product : Product) : void {
-    this.productService.update(id ,product).subscribe(u => {this.updateProduct = u})
+    this.productService.update(id ,product).subscribe(u => {
+      this.updateProduct = u
+      console.log(u);
+      
+    })
   }
 
 
