@@ -19,7 +19,7 @@
 
 
 
-<!-- ---------------------- Get all users ---------------------- -->
+<!-- ---------------------- Get all Products ---------------------- -->
 <h2>Get Products</h2>
 <table>
     <tr>
@@ -39,11 +39,11 @@
         <td>{{ Product.description }}</td>
     </tr>
 </table>
-<!-- ---------------------- Get all users ---------------------- -->
+<!-- ---------------------- Get all Products ---------------------- -->
 <br>
 <br>
 <br>
-<!-- ---------------------- Get user by id ---------------------- -->
+<!-- ---------------------- Get Product by id ---------------------- -->
 <h3>Get product by id</h3>
 <form action="">
     <label for="id">id: </label>
@@ -75,8 +75,10 @@
 <!-- ---------------------- Create Product ---------------------- -->
 <h3>Create Product</h3>
 <form action="">
+    <label for="new_Product_id">categoryID: </label>
+    <input [(ngModel)]="newProduct.id" id="new_Product_id" name="categoryId"><br><br>
     <label for="new_Product_breedName">breedName: </label>
-    <input [(ngModel)]="newProduct.breedName" id="new_user_mail" name="breedName"><br><br>
+    <input [(ngModel)]="newProduct.breedName" id="new_Product_breedName" name="breedName"><br><br>
     <label for="new_Product_Price">Price: </label>
     <input [(ngModel)]="newProduct.price" id="new_Product_price" name="Price"><br><br>
     <label for="new_Product_Weight">Weight: </label>
@@ -97,6 +99,7 @@
         <th>Description</th>
     </tr>
     <tr>
+        <td>{{ newProduct.id }}</td>
         <td>{{ newProduct.breedName }}</td>
         <td>{{ newProduct.price }}</td>
         <td>{{ newProduct.weight }}</td>
@@ -111,13 +114,13 @@
 <!-- ---------------------- Update Product ---------------------- -->
 <h3>Update Product</h3>
 <form action="">
-    <label for="id">id: </label>
-    <input [(ngModel)]="updateProduct" id="id" name="id"><br><br>
-    <label for="id">Category id: </label>
-    <!-- <input [(ngModel)]="updateCategoryid" id="categoryid" name="Categoryid"><br><br> -->
+    <label for="">Id</label>
+    <input [(ngModel)]="updateProduktId" id="updateProduktId" name="updateProduktId"><br><br>
+    <label for="id">category id: </label>
+    <input [(ngModel)]="updateProduct.id" id="id" name="id"><br><br>
 
     <label for="update_Product_breedName">breedName: </label>
-    <input [(ngModel)]="updateProduct.breedName" id="update_product_breedName" name="breedName"><br><br>
+    <input [(ngModel)]="updateProduct.breedName"  name="breedName"><br><br>
 
     <label for="update_Product_Price">Price: </label>
     <input [(ngModel)]="updateProduct.price" id="update_product_Price" name="Price"><br><br>
@@ -134,6 +137,7 @@
 </form>
 <table>
     <tr>
+        <!-- <th>CategoryId</th> -->
         <th>id</th>
         <th>breedName</th>
         <th>price</th>
@@ -142,6 +146,8 @@
         <th>description</th>
     </tr>
     <tr>
+        <!-- <td>{{ updateProduct.category.category }}</td> -->
+        <td>{{ updateProduct.id }}</td>
         <td>{{ updateProduct.breedName }}</td>
         <td>{{ updateProduct.price }}</td>
         <td>{{ updateProduct.weight }}</td>
@@ -149,11 +155,11 @@
         <td>{{ updateProduct.description }}</td>
     </tr>
 </table>
-<!-- ---------------------- Update User ---------------------- -->
+<!-- ---------------------- Update Product ---------------------- -->
 <br>
 <br>
 <br>
-<!-- ---------------------- Delete User ---------------------- -->
+<!-- ---------------------- Delete Product ---------------------- -->
 <h3>Delete product</h3>
 <label for="id">id: </label>
 <input [(ngModel)]="deleteProductid" id="id" name="id"><br><br>
@@ -161,5 +167,5 @@
 <br>
 <br>
 <br>
-<!-- ---------------------- Delete User ---------------------- -->
+<!-- ---------------------- Delete Product ---------------------- -->
 
