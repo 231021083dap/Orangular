@@ -137,7 +137,7 @@ namespace OrangularAPI.Database
             new OrderItem
             {
                 Id = 1,
-                Price = 750000,     // F.eks to hunde købt til 7500 kr stykket
+                Price = 7500,     // F.eks to hunde købt til 7500 kr stykket
                 Quantity = 2,
                 OrderListId = 1,    // reference til køberen
                 ProductId = 1       // reference til produktet (hunden)
@@ -145,7 +145,7 @@ namespace OrangularAPI.Database
             new OrderItem
             {
                 Id = 2,
-                Price = 650000,     // F.eks to hunde købt til 7500 kr stykket
+                Price = 6500,     // F.eks to hunde købt til 7500 kr stykket
                 Quantity = 22,
                 OrderListId = 1,    // reference til køberen
                 ProductId = 1       // reference til produktet (hunden)
