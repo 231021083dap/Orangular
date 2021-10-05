@@ -15,7 +15,7 @@ export class ProductPageComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {      
       let productId = params.productId; 
-      this.productPillItemService.testfunc(productId);
+      this.productPillItemService.productPillItem(productId);
     });
   }
 
