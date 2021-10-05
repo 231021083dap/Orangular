@@ -21,6 +21,9 @@ export class BasketPageComponent implements OnInit {
     this.basketService.getBasket().subscribe(CartItems => this.CartItems = CartItems)
     console.log("Checkout", this.CartItems);
   }
+  testfunc(): void{
+    console.log("test");
+  }
   editbasket(id: number, antal: number): void {
     this.basketService.editbasket(id, antal);
     this.basketService.getBasket().subscribe(CartItems => this.CartItems = CartItems)
