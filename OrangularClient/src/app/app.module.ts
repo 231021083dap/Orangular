@@ -14,7 +14,6 @@ import { CategoryComponent } from './admin/category/category.component';
 
 import { ProductPageComponent } from './product-page/product-page.component';
 import { ProductComponent } from './admin/product/product.component';
-import { ProductPillComponent } from './_global/product-pill/product-pill.component';
 
 import { SearchPageComponent } from './search-page/search-page.component';
 import {BasketPageComponent} from './basket-page/basket-page.component';
@@ -24,6 +23,7 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { NewuserPageComponent } from './newuser-page/newuser-page.component';
 import { UserComponent } from './admin/user/user.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { OrderViewComponent } from './admin/order-view/order-view.component';
 
 
 
@@ -42,9 +42,9 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     ProductComponent,
     CategoryComponent,
     ProfilePageComponent,
-    ProductPillComponent,
     HomePageComponent,
-    NewuserPageComponent
+    NewuserPageComponent,
+    OrderViewComponent
   ],
   imports: [
     BrowserModule,
@@ -56,3 +56,5 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// 

@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../_models/product';
 import { ProductService } from '../_services/product.service'
+import { LibraryService } from './library.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductPillGeneratorService {
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private libraryService: LibraryService
+    ) { }
   public product: Product[] = [];
   //---------------------------------------------------------------------------------------------------------------------------------------------------
   //#region Creating Pills
@@ -41,7 +45,6 @@ export class ProductPillGeneratorService {
     body?.appendChild(parent)
 
     modifyArray.forEach(element => {
-      element.price = element.price / 100
 
       const newChildDiv1 = document.createElement('div');
       newChildDiv1.setAttribute('class', 'child-pill');
@@ -82,7 +85,8 @@ export class ProductPillGeneratorService {
     let result: Product[] = []
 
     for (let i = 0; i < myObj.length; i++) {
-      if (myObj[i].category.categoryName == parameters.categoryName) result.push(myObj[i])
+      if (myObj[i].category.category == parameters.id) result.push(myObj[i])
+      console.log(myObj[i]);
     } return result
   }
 
@@ -102,12 +106,8 @@ export class ProductPillGeneratorService {
     let maxPrice: number
 
     // Konverter fra kroner til øre
-    function converFromKronerToOre(kroner : number) {
-      return kroner * 100
-    }
-    
-    minPrice = converFromKronerToOre(paramters.minPrice)
-    maxPrice = converFromKronerToOre(paramters.maxPrice)
+    minPrice = paramters.minPrice; // this.libraryService.convertPriceTo('ore', paramters.minPrice)
+    maxPrice = paramters.maxPrice; // this.libraryService.convertPriceTo('ore', paramters.maxPrice)
 
     console.log(minPrice + " " + maxPrice + "element price: " + productArray[0].price)
 
@@ -119,8 +119,3 @@ export class ProductPillGeneratorService {
   }
   //#endregion
 }
-
-
-
-
-
