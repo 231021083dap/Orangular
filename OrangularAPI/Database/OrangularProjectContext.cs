@@ -124,6 +124,12 @@ namespace OrangularAPI.Database
                 Id = 1,
                 OrderDateTime = DateTime.Now,
                 UserId = 1
+            },
+            new OrderList
+            {
+                Id = 2,
+                OrderDateTime = DateTime.Now,
+                UserId = 1
             });
 
             // Order_Items
@@ -133,6 +139,14 @@ namespace OrangularAPI.Database
                 Id = 1,
                 Price = 750000,     // F.eks to hunde købt til 7500 kr stykket
                 Quantity = 2,
+                OrderListId = 1,    // reference til køberen
+                ProductId = 1       // reference til produktet (hunden)
+            },
+            new OrderItem
+            {
+                Id = 2,
+                Price = 650000,     // F.eks to hunde købt til 7500 kr stykket
+                Quantity = 22,
                 OrderListId = 1,    // reference til køberen
                 ProductId = 1       // reference til produktet (hunden)
             });
@@ -158,8 +172,8 @@ namespace OrangularAPI.Database
             {
                 Id = 1,
                 BreedName = "German Shepherd",
-                Price = 750000,
-                Weight = 35000,
+                Price = 7500,
+                Weight = 35,
                 Gender = "Male",
                 Description = "The German Shepherd is a breed of medium to large. German Shepherds originated from Germany in the year 1899.",
                 CategoryId = 1
@@ -169,8 +183,8 @@ namespace OrangularAPI.Database
             {
                 Id = 2,
                 BreedName = "Corgi",
-                Price = 530000,
-                Weight = 12000,
+                Price = 5300,
+                Weight = 120,
                 Gender = "Female",
                 Description = "A very cute dog. According to the Oxford English Dictionary, cor means dwarf and gi means dog.",
                 CategoryId = 1
@@ -180,8 +194,8 @@ namespace OrangularAPI.Database
             {
                 Id = 3,
                 BreedName = "Jack Russell Terrier",
-                Price = 530000,
-                Weight = 12000,
+                Price = 5300,
+                Weight = 12,
                 Gender = "Male",
                 Description = "The Jack Russell Terrier is a cute dog",
                 CategoryId = 1
@@ -191,8 +205,8 @@ namespace OrangularAPI.Database
             {
                 Id = 4,
                 BreedName = "Siamese",
-                Price = 530000,
-                Weight = 12000,
+                Price = 5300,
+                Weight = 12,
                 Gender = "Female",
                 Description = "The Siamese is a cute cat",
                 CategoryId = 2
@@ -202,8 +216,8 @@ namespace OrangularAPI.Database
             {
                 Id = 5,
                 BreedName = "SnowShoe",
-                Price = 530000,
-                Weight = 12000,
+                Price = 5300,
+                Weight = 12,
                 Gender = "Male",
                 Description = "The SnowShoe is a cute cat",
                 CategoryId = 2
@@ -213,8 +227,8 @@ namespace OrangularAPI.Database
             {
                 Id = 6,
                 BreedName = "Persian",
-                Price = 530000,
-                Weight = 12000,
+                Price = 5300,
+                Weight = 12,
                 Gender = "Female",
                 Description = "The Persian is a cute cat",
                 CategoryId = 2
