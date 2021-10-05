@@ -49,7 +49,7 @@ namespace OrangularAPI.Services.OrderListServices
         {
             OrderList orderList = new OrderList
             {
-                // UserIdxxx = newOrderList.UserId,
+                UserId = newOrderList.UserId,
                 OrderDateTime = newOrderList.OrderDateTime
 
             };
