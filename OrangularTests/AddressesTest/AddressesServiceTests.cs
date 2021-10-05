@@ -144,7 +144,7 @@ namespace OrangularTests.AddressesTest
                     User = new()
                 };
 
-                NewAddress newAddress = new NewAddress
+                Test newAddress = new Test
                 {
                     UserId = 1,
                     Address = "TEC Ballerup",

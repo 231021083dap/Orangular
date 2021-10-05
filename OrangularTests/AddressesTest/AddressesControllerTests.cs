@@ -170,7 +170,7 @@ namespace OrangularTests.AddressesTest
         public async void Create_ShouldReturnStatusCode200_WhenDataIsCreated()
         {
             // Arrange
-            NewAddress newAddress = new NewAddress
+            Test newAddress = new Test
             {
                 UserId = 1,
                 Address = "Vinkelvej",
@@ -201,7 +201,7 @@ namespace OrangularTests.AddressesTest
         public async void Create_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
             // Arrange
-            NewAddress newAddress = new NewAddress
+            Test newAddress = new Test
             {
                 UserId = 1,
                 Address = "Vinkelvej",
@@ -209,7 +209,7 @@ namespace OrangularTests.AddressesTest
                 CityName = "Lyngby"
             };
 
-            _addressService.Setup(s => s.Create(It.IsAny<NewAddress>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));
+            _addressService.Setup(s => s.Create(It.IsAny<Test>())).ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act
             var result = await _sut.Create(newAddress);
