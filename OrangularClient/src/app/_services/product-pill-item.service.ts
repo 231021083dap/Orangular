@@ -68,5 +68,12 @@ export class ProductPillItemService {
   }
   private alertCart(): void {
     alert("You have added: " +(<HTMLInputElement>document.getElementById('ProductAmountId')).value + " to the cart");
+    let clicks = "hej"
+
+    localStorage.setItem('Hejsa', clicks);
+    const test = localStorage.getItem('Hejsa')
+    console.log(test);
+
+
   }
 }
