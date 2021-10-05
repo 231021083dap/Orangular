@@ -18,8 +18,7 @@ export class ProductPillItemService {
   public productObj: Product = { id: 0, breedName: "", price: 0, weight: 0, gender: "", description: "" };
 
 
-  public testfunc(id: string) {
-    console.log(id);
+  public productPillItem(id: string) {
     this.productService.getProduct(id).subscribe(a => {
       this.productObj = {
         id: a.id,
@@ -62,18 +61,16 @@ export class ProductPillItemService {
       const newChildbuttonAddToCart = document.createElement('input');
       newChildbuttonAddToCart.setAttribute('type', 'button')
       newChildbuttonAddToCart.setAttribute('value', 'Add to cart');
-      newChildbuttonAddToCart.addEventListener('click', this.alertCart)
+      newChildbuttonAddToCart.addEventListener('click', () => this.alertCart(this.productObj))
       newChildDiv1.appendChild(newChildbuttonAddToCart);
     });
   }
-  private alertCart(): void {
-    alert("You have added: " +(<HTMLInputElement>document.getElementById('ProductAmountId')).value + " to the cart");
-    let clicks = "hej"
-
-    localStorage.setItem('Hejsa', clicks);
-    const test = localStorage.getItem('Hejsa')
-    console.log(test);
-
+  private alertCart(obj: object): any {
+    let product = JSON.stringify(this.productObj.id)
+    // const test = localStorage.getItem('Hejsa')
+    // console.log(test);
+    localStorage.setItem(`productId${this.productObj.id}`, product);
+    console.log("hey");
 
   }
 }
