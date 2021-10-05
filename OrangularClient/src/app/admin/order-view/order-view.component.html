@@ -1,1 +1,55 @@
-<p>order-view works!</p>
+
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+</style>
+
+
+
+
+<!-- ---------------------- Get all orders ---------------------- -->
+<h2>Get Orders</h2>
+<table>
+    <tr>
+        <th>Ordre Id</th>
+        <th>Date time</th>
+        <th>userId</th>
+        <th>email</th>
+    </tr>
+    <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.orderDateTime }}</td>
+        <td>{{ order.user.userId }}</td>
+        <td>{{ order.user.email }}</td>
+    </tr>
+</table>
+<!-- ---------------------- Get all orders ---------------------- -->
+
+
+<!-- [
+  {
+    "id": 1,
+    "orderDateTime": "2021-10-04T10:30:08.3859643",
+    "orderListOrderItem": null,
+    "user": {
+      "userId": 1,
+      "email": "admin@admins.com",
+      "password": null,
+      "role": "Admin"
+    }
+  }
+] -->
+

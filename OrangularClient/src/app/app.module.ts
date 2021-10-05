@@ -14,10 +14,9 @@ import { CategoryComponent } from './admin/category/category.component';
 
 import { ProductPageComponent } from './product-page/product-page.component';
 import { ProductComponent } from './admin/product/product.component';
-import { ProductPillComponent } from './_global/product-pill/product-pill.component';
 
 import { SearchPageComponent } from './search-page/search-page.component';
-import { BasketPageComponent } from './basket-page/basket-page.component';
+import {BasketPageComponent} from './basket-page/basket-page.component';
 
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
@@ -43,7 +42,6 @@ import { OrderViewComponent } from './admin/order-view/order-view.component';
     ProductComponent,
     CategoryComponent,
     ProfilePageComponent,
-    ProductPillComponent,
     HomePageComponent,
     NewuserPageComponent,
     OrderViewComponent
@@ -58,3 +56,5 @@ import { OrderViewComponent } from './admin/order-view/order-view.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// 

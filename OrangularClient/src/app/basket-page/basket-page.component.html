@@ -1,1 +1,12 @@
-<p>basket-page works!</p>
+<h1>Indkøbs Kurv</h1>
+<div *ngFor="let CartItem of CartItems">
+    <p>{{CartItem.navn}} {{CartItem.pris}} kr & du har </p>
+    <input type="text" value="{{CartItem.antal}}" #antal>
+    <a (click)="editbasket(CartItem.ProductId, 1)" class="buy">Update</a>
+    <a (click)="deleteBasket(CartItem.ProductId)" class="deleteBasket">[X] </a>
+</div>
+<!-- <div>
+    <button (click)="addtoOrder">
+        Køb alt i kurven
+    </button>
+</div> -->
