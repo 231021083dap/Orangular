@@ -12,6 +12,7 @@ export class ProductService {
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
   constructor(private http:HttpClient) { }
 
+  //Get All Products
   getAllProduct(): Observable<Product[]>{
     return this.http.get<Product[]>(this.apiUrl);
   }
@@ -33,4 +34,42 @@ export class ProductService {
     }
     return thisImage;
    }
+
+   // GET user by ID
+  getById(id : number) : Observable<Product> {
+    let x = this.http.get<Product>(`${this.apiUrl}/${id}`, this.httpOptions)
+    console.log(x)
+
+    return this.http.get<Product>(`${this.apiUrl}/${id}`, this.httpOptions)
+  }
+
+  // POST https://localhost:5001/api/User/Create
+  create(product : Product) : Observable<any> {
+    let x = {
+      breedName: product.breedName, 
+      Price: product.price,
+      Weight: product.weight,
+      Gender: product.gender,
+      Description: product.description
+    }
+    return this.http.post(`${this.apiUrl}/Create`, x, this.httpOptions)
+  }
+
+
+  update(id : number, product : Product) : Observable<any> {
+
+    let x = {
+      breedName: product.breedName, 
+      Price: product.price,
+      Weight: product.weight,
+      Gender: product.gender,
+      Description: product.description
+    }
+
+    return this.http.put(`${this.apiUrl}/${id}`, x, this.httpOptions)
+  }
+
+  delete(id : number) : Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`, this.httpOptions)
+  }
 }
