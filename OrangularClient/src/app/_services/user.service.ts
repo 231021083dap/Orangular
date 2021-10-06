@@ -39,7 +39,7 @@ export class UserService {
     //   "password": "Password"
     // }
     let x = {email: user.email, password: user.password}
-    return this.http.post(`${this.endPoint}/Create`, x, this.httpOptions)
+    return this.http.post(`${this.endPoint}`, x, this.httpOptions)
   }
 
 
