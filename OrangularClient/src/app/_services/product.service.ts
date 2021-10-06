@@ -56,14 +56,7 @@ export class ProductService {
       description: product.description
     }
 
-    // {
-    //   "categoryId": 2,
-    //   "breedName": "string",
-    //   "price": 2147483647,
-    //   "weight": 2147483647,
-    //   "gender": "string",
-    //   "description": "string"
-    // }
+  
     return this.http.post(`${this.apiUrl}`, x, this.httpOptions)
   }
 
