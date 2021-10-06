@@ -73,7 +73,7 @@ export class ProductComponent implements OnInit {
   }
   // ---------------------- Delete Product ---------------------- -->
   delete(id : number) : void {
-    this.productService.delete(id).subscribe(d => {this.updateId = 0;})
+    this.productService.delete(id).subscribe(d => {this.updateId = 0; this.deleteId = 0;})
   }
 
 }
