@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../_models/product'
+import { Category } from 'src/app/_models/category';
 import { ProductService } from '../../_services/product.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { ProductService } from '../../_services/product.service';
 })
 export class ProductComponent implements OnInit {
   public products : Product[] = [];
+  public category : Category[] = [];
   public getByIdProduct : Product = {
     id: 0,
     breedName: '',
@@ -16,6 +18,7 @@ export class ProductComponent implements OnInit {
     weight: 0,
     gender: '',
     description: ''
+    
   }
   public id : number = 1; // bruges af getById
   public newProduct : Product = {
@@ -25,6 +28,7 @@ export class ProductComponent implements OnInit {
     weight: 0,
     gender: '',
     description: ''
+    
   };
   public updateProduktId : number = 1;
   public updateProduct : Product =  {
@@ -33,7 +37,9 @@ export class ProductComponent implements OnInit {
     price: 0,
     weight: 0,
     gender: '',
-    description: ''
+    description: '',
+    category: [{id: 0, categoryName: ''}]
+    
   }
   public deleteProductid : number = 1
 

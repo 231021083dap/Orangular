@@ -115,9 +115,9 @@
 <h3>Update Product</h3>
 <form action="">
     <label for="">Id</label>
-    <input [(ngModel)]="updateProduktId" id="updateProduktId" name="updateProduktId"><br><br>
+    <input [(ngModel)]="updateProduct.id" id="updateProduct.id" name="updateProduct.id"><br><br>
     <label for="id">category id: </label>
-    <input [(ngModel)]="updateProduct.id" id="id" name="id"><br><br>
+    <input [(ngModel)]="updateProduct.category" id="updateProduct.category" name="updateProduct.category"><br><br>
 
     <label for="update_Product_breedName">breedName: </label>
     <input [(ngModel)]="updateProduct.breedName"  name="breedName"><br><br>
@@ -137,8 +137,8 @@
 </form>
 <table>
     <tr>
-        <!-- <th>CategoryId</th> -->
         <th>id</th>
+         <th>categoryId</th> 
         <th>breedName</th>
         <th>price</th>
         <th>weight</th>
@@ -146,8 +146,8 @@
         <th>description</th>
     </tr>
     <tr>
-        <!-- <td>{{ updateProduct.category.category }}</td> -->
         <td>{{ updateProduct.id }}</td>
+        <td>{{ updateProduct.category }}</td> 
         <td>{{ updateProduct.breedName }}</td>
         <td>{{ updateProduct.price }}</td>
         <td>{{ updateProduct.weight }}</td>
