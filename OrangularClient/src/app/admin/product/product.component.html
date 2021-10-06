@@ -17,8 +17,6 @@
 </style>
 
 
-
-
 <!-- ---------------------- Get all Products ---------------------- -->
 <h2>Get Products</h2>
 <table>
@@ -47,8 +45,8 @@
 <h3>Get product by id</h3>
 <form action="">
     <label for="id">id: </label>
-    <input [(ngModel)]="id" id="id" name="id"><br><br>
-    <button (click)="getById(id)">Submit</button><br><br>
+    <input [(ngModel)]="getId" id="id" name="id"><br><br>
+    <button (click)="getById(getId)">Submit</button><br><br>
 </form>
 <table>
     <tr>
@@ -75,23 +73,23 @@
 <!-- ---------------------- Create Product ---------------------- -->
 <h3>Create Product</h3>
 <form action="">
-    <label for="new_Product_id">categoryID: </label>
-    <input [(ngModel)]="newProduct.id" id="new_Product_id" name="categoryId"><br><br>
+    <label for="new_Product_id">categoryId: </label>
+    <input [(ngModel)]="createProduct.id" id="new_Product_id" name="categoryId"><br><br>
     <label for="new_Product_breedName">breedName: </label>
-    <input [(ngModel)]="newProduct.breedName" id="new_Product_breedName" name="breedName"><br><br>
+    <input [(ngModel)]="createProduct.breedName" id="new_Product_breedName" name="breedName"><br><br>
     <label for="new_Product_Price">Price: </label>
-    <input [(ngModel)]="newProduct.price" id="new_Product_price" name="Price"><br><br>
+    <input [(ngModel)]="createProduct.price" id="new_Product_price" name="Price"><br><br>
     <label for="new_Product_Weight">Weight: </label>
-    <input [(ngModel)]="newProduct.weight" id="new_Product_weight" name="Weight"><br><br>
+    <input [(ngModel)]="createProduct.weight" id="new_Product_weight" name="Weight"><br><br>
     <label for="new_Product_Gender">Gender: </label>
-    <input [(ngModel)]="newProduct.gender" id="new_Product_gender" name="Gender"><br><br>
+    <input [(ngModel)]="createProduct.gender" id="new_Product_gender" name="Gender"><br><br>
     <label for="new_Product_Description">Description: </label>
-    <input [(ngModel)]="newProduct.description" id="new_Product_description" name="Description"><br><br>
-    <button (click)="create(newProduct)">Submit</button><br><br>
+    <input [(ngModel)]="createProduct.description" id="new_Product_description" name="Description"><br><br>
+    <button (click)="create(createProduct)">Submit</button><br><br>
 </form>
 <table>
     <tr>
-        <th>id</th>
+        <th>categoryId</th>
         <th>breedName</th>
         <th>Price</th>
         <th>Weight</th>
@@ -99,12 +97,12 @@
         <th>Description</th>
     </tr>
     <tr>
-        <td>{{ newProduct.id }}</td>
-        <td>{{ newProduct.breedName }}</td>
-        <td>{{ newProduct.price }}</td>
-        <td>{{ newProduct.weight }}</td>
-        <td>{{ newProduct.gender }}</td>
-        <td>{{ newProduct.description }}</td>
+        <td>{{ createProduct.id }}</td>
+        <td>{{ createProduct.breedName }}</td>
+        <td>{{ createProduct.price }}</td>
+        <td>{{ createProduct.weight }}</td>
+        <td>{{ createProduct.gender }}</td>
+        <td>{{ createProduct.description }}</td>
     </tr>
 </table>
 <!-- ---------------------- Create Product ---------------------- -->
@@ -115,25 +113,25 @@
 <h3>Update Product</h3>
 <form action="">
     <label for="">Id</label>
-    <input [(ngModel)]="updateProduktId" id="updateProduct.id" name="updateProduct.id"><br><br>
+    <input [(ngModel)]="updateId" id="updateProduct.id" name="updateProduct.id"><br><br>
     <label for="id">category id: </label>
-    <input [(ngModel)]="product.id" id="product.category.id" name="product.category.id"><br><br>
+    <input [(ngModel)]="updateProduct.id" id="product.category.id" name="product.category.id"><br><br>
 
     <label for="update_Product_breedName">breedName: </label>
-    <input [(ngModel)]="product.breedName"  name="breedName"><br><br>
+    <input [(ngModel)]="updateProduct.breedName"  name="breedName"><br><br>
 
     <label for="update_Product_Price">Price: </label>
-    <input [(ngModel)]="product.price" id="update_product_Price" name="Price"><br><br>
+    <input [(ngModel)]="updateProduct.price" id="update_product_Price" name="Price"><br><br>
 
     <label for="update_Product_Weight">Weight: </label>
-    <input [(ngModel)]="product.weight" id="update_product_Weight" name="Weight"><br><br>
+    <input [(ngModel)]="updateProduct.weight" id="update_product_Weight" name="Weight"><br><br>
 
     <label for="update_Product_Gender">Gender: </label>
-    <input [(ngModel)]="product.gender" id="update_product_Gender" name="Gender"><br><br>
+    <input [(ngModel)]="updateProduct.gender" id="update_product_Gender" name="Gender"><br><br>
 
     <label for="update_Product_Description">Description: </label>
-    <input [(ngModel)]="product.description" id="update_product_Description" name="Description"><br><br>
-    <button (click)="update(updateProduktId, product)">Submit</button><br><br>
+    <input [(ngModel)]="updateProduct.description" id="update_product_Description" name="Description"><br><br>
+    <button (click)="update(updateId, updateProduct)">Submit</button><br><br>
 </form>
 <table>
     <tr>
@@ -146,13 +144,13 @@
         <th>description</th>
     </tr>
     <tr>
-        <td>{{ updateProduktId }}</td>
-        <td>{{ product.id }}</td> 
-        <td>{{ product.breedName }}</td>
-        <td>{{ product.price }}</td>
-        <td>{{ product.weight }}</td>
-        <td>{{ product.gender }}</td>
-        <td>{{ product.description }}</td>
+        <td>{{ updateId }}</td>
+        <td>{{ updateProduct.id }}</td> 
+        <td>{{ updateProduct.breedName }}</td>
+        <td>{{ updateProduct.price }}</td>
+        <td>{{ updateProduct.weight }}</td>
+        <td>{{ updateProduct.gender }}</td>
+        <td>{{ updateProduct.description }}</td>
     </tr>
 </table>
 <!-- ---------------------- Update Product ---------------------- -->
@@ -162,8 +160,8 @@
 <!-- ---------------------- Delete Product ---------------------- -->
 <h3>Delete product</h3>
 <label for="id">id: </label>
-<input [(ngModel)]="deleteProductid" id="id" name="id"><br><br>
-<button (click)="delete(deleteProductid)">Submit</button><br><br>
+<input [(ngModel)]="deleteId" id="id" name="id"><br><br>
+<button (click)="delete(deleteId)">Submit</button><br><br>
 <br>
 <br>
 <br>
