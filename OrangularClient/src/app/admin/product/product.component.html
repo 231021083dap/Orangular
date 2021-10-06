@@ -115,30 +115,30 @@
 <h3>Update Product</h3>
 <form action="">
     <label for="">Id</label>
-    <input [(ngModel)]="updateProduct.id" id="updateProduct.id" name="updateProduct.id"><br><br>
+    <input [(ngModel)]="updateProduktId" id="updateProduct.id" name="updateProduct.id"><br><br>
     <label for="id">category id: </label>
-    <input [(ngModel)]="updateProduct.category" id="updateProduct.category" name="updateProduct.category"><br><br>
+    <input [(ngModel)]="product.id" id="product.category.id" name="product.category.id"><br><br>
 
     <label for="update_Product_breedName">breedName: </label>
-    <input [(ngModel)]="updateProduct.breedName"  name="breedName"><br><br>
+    <input [(ngModel)]="product.breedName"  name="breedName"><br><br>
 
     <label for="update_Product_Price">Price: </label>
-    <input [(ngModel)]="updateProduct.price" id="update_product_Price" name="Price"><br><br>
+    <input [(ngModel)]="product.price" id="update_product_Price" name="Price"><br><br>
 
     <label for="update_Product_Weight">Weight: </label>
-    <input [(ngModel)]="updateProduct.weight" id="update_product_Weight" name="Weight"><br><br>
+    <input [(ngModel)]="product.weight" id="update_product_Weight" name="Weight"><br><br>
 
     <label for="update_Product_Gender">Gender: </label>
-    <input [(ngModel)]="updateProduct.gender" id="update_product_Gender" name="Gender"><br><br>
+    <input [(ngModel)]="product.gender" id="update_product_Gender" name="Gender"><br><br>
 
     <label for="update_Product_Description">Description: </label>
-    <input [(ngModel)]="updateProduct.description" id="update_product_Description" name="Description"><br><br>
-    <button (click)="update(updateProduct.id, updateProduct)">Submit</button><br><br>
+    <input [(ngModel)]="product.description" id="update_product_Description" name="Description"><br><br>
+    <button (click)="update(updateProduktId, product)">Submit</button><br><br>
 </form>
 <table>
     <tr>
         <th>id</th>
-         <th>categoryId</th> 
+        <th>categoryId</th> 
         <th>breedName</th>
         <th>price</th>
         <th>weight</th>
@@ -146,13 +146,13 @@
         <th>description</th>
     </tr>
     <tr>
-        <td>{{ updateProduct.id }}</td>
-        <td>{{ updateProduct.category }}</td> 
-        <td>{{ updateProduct.breedName }}</td>
-        <td>{{ updateProduct.price }}</td>
-        <td>{{ updateProduct.weight }}</td>
-        <td>{{ updateProduct.gender }}</td>
-        <td>{{ updateProduct.description }}</td>
+        <td>{{ updateProduktId }}</td>
+        <td>{{ product.id }}</td> 
+        <td>{{ product.breedName }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.weight }}</td>
+        <td>{{ product.gender }}</td>
+        <td>{{ product.description }}</td>
     </tr>
 </table>
 <!-- ---------------------- Update Product ---------------------- -->

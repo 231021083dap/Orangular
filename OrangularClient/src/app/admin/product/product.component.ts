@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../_models/product'
-import { Category } from 'src/app/_models/category';
 import { ProductService } from '../../_services/product.service';
 
 @Component({
@@ -10,15 +9,21 @@ import { ProductService } from '../../_services/product.service';
 })
 export class ProductComponent implements OnInit {
   public products : Product[] = [];
-  public category : Category[] = [];
+  public product : Product =  {
+    id: 0,
+    breedName: '',
+    price: 0,
+    weight: 0,
+    gender: '',
+    description: '',
+  }
   public getByIdProduct : Product = {
     id: 0,
     breedName: '',
     price: 0,
     weight: 0,
     gender: '',
-    description: ''
-    
+    description: '',
   }
   public id : number = 1; // bruges af getById
   public newProduct : Product = {
@@ -30,21 +35,20 @@ export class ProductComponent implements OnInit {
     description: ''
     
   };
-  public updateProduktId : number = 1;
-  public updateProduct : Product =  {
-    id: 0,
-    breedName: '',
-    price: 0,
-    weight: 0,
-    gender: '',
-    description: '',
-    category: [{id: 0, categoryName: ''}]
+  public updateProduktId : number = 0;
+  // public updateProduct : Product =  {
+  //   id: 0,
+  //   breedName: '',
+  //   price: 0,
+  //   weight: 0,
+  //   gender: '',
+  //   description: '',
     
-  }
+  // }
   public deleteProductid : number = 1
 
 
-  product:Product[] = [];
+  
   constructor(private productService:ProductService) { }
 
   ngOnInit(): void {
@@ -94,12 +98,21 @@ export class ProductComponent implements OnInit {
 
 
   // ---------------------- Update Product ---------------------- -->
-  update(id : number, product : Product) : void {
-    this.productService.update(id ,product).subscribe(u => {
-      this.updateProduct = u
-      console.log(u);
-      
+  update(id : number, updateProduct : Product) : void {
+    this.productService.update(id ,updateProduct).subscribe(u => {
+      this.product = u
+      console.log(this.product);
+      this.updateProduktId = 0;
+      this.product  =  {
+        id: 0,
+        breedName: '',
+        price: 0,
+        weight: 0,
+        gender: '',
+        description: '',
+      }
     })
+    
   }
 
 
