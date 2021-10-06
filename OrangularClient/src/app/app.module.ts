@@ -24,6 +24,7 @@ import { NewuserPageComponent } from './newuser-page/newuser-page.component';
 import { UserComponent } from './admin/user/user.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { OrderViewComponent } from './admin/order-view/order-view.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 
 
 
@@ -44,7 +45,8 @@ import { OrderViewComponent } from './admin/order-view/order-view.component';
     ProfilePageComponent,
     HomePageComponent,
     NewuserPageComponent,
-    OrderViewComponent
+    OrderViewComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,
