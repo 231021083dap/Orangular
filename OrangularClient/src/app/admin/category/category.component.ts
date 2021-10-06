@@ -11,6 +11,8 @@ export class CategoryComponent implements OnInit {
 
   categories: Category[] = [];
   category: Category = { id: 0, categoryName: "" };
+  rowCategory: Category = { id: 0, categoryName: "" };
+
 
   constructor(private categoryService: CategoryService) { }
 
@@ -23,7 +25,7 @@ export class CategoryComponent implements OnInit {
   }
   selectCategoriesRow(id: number): void {
     this.categories.forEach(element => {
-      if (element.id == id) this.category = {id: element.id, categoryName: element.categoryName}
+      if (element.id == id) this.rowCategory = {id: element.id, categoryName: element.categoryName}
     });
   };
   //-----------------------------------------------------------------------------------------------------------
@@ -36,16 +38,26 @@ export class CategoryComponent implements OnInit {
     if (this.category.id == 0) {
       this.categoryService.createCategory(this.category).subscribe(a => {
         this.categories.push()
-        this.refreshPage()
+        // const table1 = document.getElementById("categoryTable");
+        // const tr = <HTMLInputElement>document.getElementById("trId");
+        // const td1 = document.createElement('td');
+        // table1?.appendChild(tr);
+        // tr?.appendChild(td1);
+        // this.refreshPage()
       });
     }
   }
   updateCategory(UpdateId: number): void {
        this.selectCategoriesRow(UpdateId);
-       this.categoryService.updateCategory(this.category.id, this.category).subscribe(() => { this.refreshPage(); });
+       this.categoryService.updateCategory(this.rowCategory.id, this.rowCategory).subscribe(() => { 
+        //  this.refreshPage(); 
+        
+        });
   };
   deleteCategory(DeleteId: number): void{
     this.selectCategoriesRow(DeleteId);
-    this.categoryService.deleteCategory(this.category.id).subscribe(() => { this.refreshPage(); });
+    this.categoryService.deleteCategory(this.category.id).subscribe(() => { 
+      
+       });
   }
 }
