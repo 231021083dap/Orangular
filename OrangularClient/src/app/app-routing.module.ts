@@ -12,6 +12,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CategoryComponent } from './admin/category/category.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NewuserPageComponent } from './newuser-page/newuser-page.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 
 const routes: Routes = [
   {path: 'category/:id', component: CategoryPageComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'admin/user', component: UserComponent},
   {path: "admin/category", component: CategoryComponent},
   {path: "admin/order-view", component: OrderViewComponent},
+  {path: "admin-panel", component: AdminPanelComponent},
   {path: "", component: HomePageComponent},
   {path: "newuser", component: NewuserPageComponent}
 ];

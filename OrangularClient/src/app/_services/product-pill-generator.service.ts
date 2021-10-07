@@ -8,10 +8,7 @@ import { LibraryService } from './library.service'
 })
 export class ProductPillGeneratorService {
 
-  constructor(
-    private productService: ProductService,
-    private libraryService: LibraryService
-    ) { }
+  constructor(private productService: ProductService) { }
   public product: Product[] = [];
   //---------------------------------------------------------------------------------------------------------------------------------------------------
   //#region Creating Pills

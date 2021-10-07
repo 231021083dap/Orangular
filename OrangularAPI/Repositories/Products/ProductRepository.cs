@@ -43,6 +43,7 @@ namespace OrangularAPI.Repositories.ProductsRepository
                 updateProducts.Weight = products.Weight;
                 updateProducts.Gender = products.Gender;
                 updateProducts.Description = products.Description;
+                updateProducts.CategoryId = products.CategoryId;
                 await _context.SaveChangesAsync();
             }
             return updateProducts;
