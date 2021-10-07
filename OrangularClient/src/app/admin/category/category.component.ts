@@ -34,7 +34,6 @@ export class CategoryComponent implements OnInit {
         this.categories.push()
         this.getAllCategory();
         this.category = { id: 0, categoryName: ""}
-        console.log(document.getElementById('ulCategoryId'))
       });
     }
   }
